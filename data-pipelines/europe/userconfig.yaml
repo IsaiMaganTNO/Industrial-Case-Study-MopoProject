@@ -4,32 +4,32 @@
 pipelines:
   power_sector: 
     status: True             # include pipeline or not
-    source_resolution: PECD1 # Do not touch unless you rerun the corresponding pipeline producing data in that resolution
-    target_resolution: PECD1 # Using the weighting factors from the documentation (configurable in sysconfig.yaml file)
+    source_resolution: IC1 # Do not touch unless you rerun the corresponding pipeline producing data in that resolution
+    target_resolution: IC1 # Using the weighting factors from the documentation (configurable in sysconfig.yaml file)
   vre:
     status: True
     source_resolution:
-      "on": PECD2 
+      "on": IC1 
       "off": OFF3
     target_resolution:
-      "on": PECD1
-      "off": OFF2
+      "on": IC1
+      "off": OFF3
   hydro_systems:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   biomass_production:
     status: True
     source_resolution: PECD1
-    target_resolution: PECD1
+    target_resolution: IC1
   power_transmission:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   residual_demand:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   gas_sector:
     status: True
     source_resolution: PECD1
@@ -41,23 +41,23 @@ pipelines:
   industrial_sector:
     status: True
     source_resolution: PECD1
-    target_resolution: PECD1
+    target_resolution: IC1
   other_industrial_sector:
     status: True
     source_resolution: PECD1
     target_resolution: PECD1
   heat_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   transport_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   cargo_transport:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
 
 model:
     type:  brownfield # greenfied not included yet
@@ -89,7 +89,14 @@ global_constraints:
 
 # Use country code to model a specific country  and define Europe as country, then, the remaining countries are modeled following requirements
 countries : 
-  - Europe
+  #- Europe
+  -NL
+  -BE
+ # -UK
+ # -NO
+ # -DE
+ # -FR
+ # -DK
   # - ES
 
 # Sectors optimized
@@ -142,22 +149,22 @@ network:
     status: True # True = it is modeled
     # if true, the countries in the model are interconnected with their neighbors using an exogenous fixed price
     # WARNING: it can consider the neighboring countries have unlimited capacity and it is more affordable to import everything
-    interconnection_out_model: False
+    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
   CH4: 
     status: True
-    interconnection_out_model: False
+    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
   H2: 
     status: True
-    interconnection_out_model: False
+    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
   MeOH: 
     status: True
-    interconnection_out_model: False
+    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
   HC: 
     status: True
-    interconnection_out_model: False
+    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
   bio: 
     status: True
-    interconnection_out_model: False
+    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
 
 storage:
   battery-storage:

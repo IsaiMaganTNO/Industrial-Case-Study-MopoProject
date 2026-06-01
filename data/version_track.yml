@@ -1,19 +1,19 @@
 biomass:
   version: feb_2026
 buildings:
-  version: feb_2026
+  version: 26april_2026
   sources:
-    - https://zenodo.org/records/18505234
+    - https://vttgroup.sharepoint.com/:f:/r/sites/EUESIMopo/Shared%20Documents/General/WP5%20Cases%20CONFIDENTIAL/T5-3%20Industrial%20Case%20Study/IC1%20data/Buildings_IC1/demand-timeseries?csf=1&web=1&e=mSKrc2
 cargo:
-  version: feb_2026
+  version: 26may_2026
   sources:
-    - https://zenodo.org/records/18482337
+    - https://vttgroup.sharepoint.com/:f:/r/sites/EUESIMopo/Shared%20Documents/General/WP5%20Cases%20CONFIDENTIAL/T5-3%20Industrial%20Case%20Study/IC1%20data/Cargo_IC1?csf=1&web=1&e=qubdRg
 commodities:
   version: feb_2026
 electricity_transmission:
-  version: feb_2026
+  version: 28april_2026
   sources:
-    - https://zenodo.org/records/14501623
+    - https://vttgroup.sharepoint.com/:f:/r/sites/EUESIMopo/Shared%20Documents/General/WP5%20Cases%20CONFIDENTIAL/T5-3%20Industrial%20Case%20Study/IC1%20data/Electricity_Transmission_IC1?csf=1&web=1&e=HWrPwO
 energy_conversion:
   version: feb_2026
   sources:
@@ -24,22 +24,23 @@ gas:
   sources:
     - https://zenodo.org/records/18590390
 hydro:
-  version: feb_2026
+  version: 28april_2026
   sources:
-    - https://zenodo.org/records/18632738
+    - https://vttgroup.sharepoint.com/:f:/r/sites/EUESIMopo/Shared%20Documents/General/WP5%20Cases%20CONFIDENTIAL/T5-3%20Industrial%20Case%20Study/IC1%20data/Hydro_IC?csf=1&web=1&e=Hf5Izr
 industry:
   version: feb_2026
   sources:
     - https://zenodo.org/records/18633158
     - https://zenodo.org/records/18630252
 residual_demand:
-  version: feb_2026
+  version: 4march_2026
   sources:
-    - https://zenodo.org/records/18759195
+    - https://vttgroup.sharepoint.com/:f:/r/sites/EUESIMopo/Shared%20Documents/General/WP5%20Cases%20CONFIDENTIAL/T5-3%20Industrial%20Case%20Study/IC1%20data/Rdemand_IC1?csf=1&web=1&e=hdoGWT
 transport:
-  version: feb_2026
-vre:
-  version: feb_2026
+  version: 17march_2026
   sources:
-    - https://zenodo.org/records/17950648
-    - https://zenodo.org/records/18549865
+    - https://vttgroup.sharepoint.com/:f:/r/sites/EUESIMopo/Shared%20Documents/General/WP5%20Cases%20CONFIDENTIAL/T5-3%20Industrial%20Case%20Study/IC1%20data/Transport?csf=1&web=1&e=PXJFPY
+vre:
+  version: 24march_2026
+  sources:
+    - https://vttgroup.sharepoint.com/:f:/r/sites/EUESIMopo/Shared%20Documents/General/WP5%20Cases%20CONFIDENTIAL/T5-3%20Industrial%20Case%20Study/IC1%20data/VRE_IC1?csf=1&web=1&e=51pZte

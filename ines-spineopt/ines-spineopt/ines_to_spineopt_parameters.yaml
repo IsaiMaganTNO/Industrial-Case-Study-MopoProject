@@ -1,0 +1,10 @@
+node__to_unit:
+  unit__from_node:
+    capacity: [unit_capacity,1.0,[[2],[1]]]
+unit__to_node:
+  unit__to_node:
+    capacity: [unit_capacity, 1.0,[[1],[2]]]
+node:
+  node:
+    storage_capacity: [node_state_cap,1.0,[[1]]]
+    

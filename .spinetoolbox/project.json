@@ -72,6 +72,11 @@
                     "type": "path",
                     "relative": true,
                     "path": ".spinetoolbox/specifications/Tool/commodity_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/ines_to_spineopt.json"
                 }
             ]
         },
@@ -818,6 +823,60 @@
                         "scenario_filter": false
                     }
                 }
+            },
+            {
+                "name": "from INES_DB to Ines_to_spineopt",
+                "from": [
+                    "INES_DB",
+                    "right"
+                ],
+                "to": [
+                    "Ines_to_spineopt",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Ines_to_spineopt to SpineOpt_DB",
+                "from": [
+                    "Ines_to_spineopt",
+                    "right"
+                ],
+                "to": [
+                    "SpineOpt_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Load template to SpineOpt_DB",
+                "from": [
+                    "Load template",
+                    "bottom"
+                ],
+                "to": [
+                    "SpineOpt_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
             }
         ],
         "jumps": []
@@ -1222,12 +1281,12 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Electricity_Transmission/Electricity_Transmission.csv"
+                    "path": "data/version_track.yml"
                 },
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/version_track.yml"
+                    "path": "data/Electricity_Transmission/Electricity_Transmission_Industry.csv"
                 }
             ],
             "file_patterns": [],
@@ -1248,7 +1307,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/Electricity_Transmission/Electricity_Transmission.csv"
+                    "arg": "<project>/data/Electricity_Transmission/Electricity_Transmission_Industry.csv"
                 },
                 {
                     "type": "resource",
@@ -1609,7 +1668,7 @@
         "industry_importer": {
             "type": "Tool",
             "description": "",
-            "x": -267.4797033368458,
+            "x": -269.8667035649013,
             "y": 385.93824150894017,
             "specification": "industry_importer",
             "execute_in_work": false,
@@ -1957,6 +2016,59 @@
                 },
                 "schema": ""
             }
+        },
+        "Ines_to_spineopt": {
+            "type": "Tool",
+            "description": "",
+            "x": 417.7250399097085,
+            "y": -33.41800319277668,
+            "specification": "Ines_to_spineopt",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@INES_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@SpineOpt_DB"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "SpineOpt_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": 589.5890563297029,
+            "y": -26.25700250861025,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/spineopt_db/SpineOpt_DB.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "Load template": {
+            "type": "Tool",
+            "description": "",
+            "x": 606.2980579260912,
+            "y": -250.6350239458251,
+            "specification": "Load template",
+            "execute_in_work": true,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@SpineOpt_DB"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
         }
     }
 }

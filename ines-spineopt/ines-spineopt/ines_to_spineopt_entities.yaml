@@ -1,0 +1,12 @@
+solve_pattern: model
+node: node
+link: connection
+unit: unit
+unit__to_node: 
+  unit__to_node: [[1], [2]]
+node__to_unit: 
+  unit__from_node: [[2], [1]]
+node__link__node:
+  - connection__from_node: [[2], [1]]
+  - connection__to_node: [[2], [3]]
+  - connection__node__node: [[2], [3], [1]]
