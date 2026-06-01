@@ -5,9 +5,9 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
 # First Time Set Up Instructions
 
 1. Install Python, Julia, and (optional) VSCode.
-1. **Fork** this repository
-1. **Clone** your fork
-1. Go to the file `data/version_track.yml` and follow the link for each data source. Then be sure to download the version that matches the date in the version_track file.
+2. **Fork** this repository
+3. **Clone** your fork
+4. Go to the file `data/version_track.yml` and follow the link for each data source. Then be sure to download the version that matches the date in the version_track file.
 
     Folder structure in data/:
     - Biomass
@@ -26,11 +26,11 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
 
     !!! note: This does not seem like the ideal way to download the data. All the data should be in one location in the correct file structure, but right now that is under the Pan-European case (along with the .spinetoolbox etc) on Zenodo.
 
-1. Choose one:
+5. Choose one:
     - Open the project in **VSCode** and open a powershell terminal 
     - Open a regular **powershell or CMD terminal** and go to the project folder: `cd [path to folder]`
 
-1. Create & activate a new **python environment**:
+6. Create & activate a new **python environment**:
     ```
     py -3.13 -m venv .venv
     .venv\Scripts\Activate.ps1
@@ -40,7 +40,7 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
     .venv\Scripts\activate.bat 
     ```
     
-1. Install python dependencies: 
+7. Install python dependencies: 
 
     `python -m pip install -r python-requirements.txt`
 
@@ -48,11 +48,11 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
 
     `julia --project=. -e "using Pkg; Pkg.instantiate()"` -->
 
-1. Run spinetoolbox: `spinetoolbox`
+8. Run spinetoolbox: `spinetoolbox`
 
-1. Open the project: *File > Open Project > Industrial-Case-Study-MopoProject*
+9. Open the project: *File > Open Project > Industrial-Case-Study-MopoProject*
 
-1. To make sure SpineToolbox is using the right Python environment for the project, **choose one:**
+10. To make sure SpineToolbox is using the right Python environment for the project, **choose one:**
     - **If you're using SpineToolbox for ONLY this project** (and don't mind configuring globally for this project): 
     
         *File > Settings > Tools >* under *Python*, with Basic Console selected, click the folder button to browse and select the `python.exe` file in your .venv folder of this project. (Something like `C:/users/username/Industrial-Case-Study-MopoProject/.venv/Scripts/python.exe`)
@@ -61,15 +61,15 @@ Once constructed, this repo should be an easy way to reproduce the Industrial Ca
     
         Double-click each Python tool (Red hammer) > for the *Interpreter* field, browse to find the Python of this project and select it, then click in the code-editor window and press CTRL+S to save before closing the tool window. (The path should be something like `C:/users/username/Industrial-Case-Study-MopoProject/.venv/Scripts/python.exe`. Once you find it, you can copy-paste to other tools.)
 
-<!-- 1. Double-click on each Julia tool and set the Project to the project folder 
+<!-- 11. Double-click on each Julia tool and set the Project to the project folder 
 
     (This makes sure it sees the correct julia environment and packages) -->
 
-1. Double-click on each intermediate datastore (pink icons) > *New SpineDB > Okay* 
+12. Double-click on each intermediate datastore (pink icons) > *New SpineDB > Okay* 
     
     (This will create sqlite files in the default folders SpineToolbox chooses.)
 
-1. Set your project to "Consumer mode" so that moving blocks does not register as changing the workflow:
+13. Set your project to "Consumer mode" so that moving blocks does not register as changing the workflow:
 
     *File > Project Settings > Consumer Mode*
 
@@ -83,11 +83,17 @@ Once you've completed the first-time setup, this is how you can start-up when re
 
 1. Open a terminal in the project folder, or open it VSCode.
 
-1. Get any updates from others: 
+2. Get any updates from your forked repo: 
 
     `git fetch origin --prune`
 
-1. Merge the changes with your working directory: 
+   or from others:
+
+   'git fetch upstream --prune'
+
+   *"origin" refers to your fork, "upstream" refers to the main repo
+
+4. Merge the changes with your working directory: 
 
     `git merge --ff-only origin/main`
 
@@ -95,37 +101,37 @@ Once you've completed the first-time setup, this is how you can start-up when re
 
 Now you can open spinetoolbox and work on things. If you only work in the data and *running* the pipeline, just save and close. If you make changes to the pipeline that you want to share, follow these steps:
 
-1. Check what you have changed:
+4. Check what you have changed:
 
     `git status`
 
-1. If you want to see changes in a specific file:
+5. If you want to see changes in a specific file:
 
      `git diff [FILE]`
 
-1. **ADD** whichever changes you want to share:
+6. **ADD** whichever changes you want to share:
 
      `git add [FILE]`
 
-1. Check all the right files have been added:
+7. Check all the right files have been added:
 
     `git status`
 
-1. OPTIONAL: Undo any changes you don't want to share:
+8. OPTIONAL: Undo any changes you don't want to share:
 
     `git restore [FILE]`
 
-1. **COMMIT** your changes: 
+9. **COMMIT** your changes: 
 
     `git commit -m "My message about what has changed"`
 
-1. **PUSH** your changes to your own remote fork:
+10. **PUSH** your changes to your own remote fork:
 
     `git push remote-name branch-name`
 
-1. Click on the link, or go to your remote online to create a **PULL REQUEST** to the shared repo.
+11. Click on the link, or go to your remote online to create a **PULL REQUEST** to the shared repo.
 
-1. Someone else should review the Pull Request before merging it.
+12. Someone else should review the Pull Request before merging it.
 
 For more info on this workflow and how to fix merge errors, see the detailed version we wrote for Tulipa contributors [here.](https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/90-contributing/91-developer/#Contributing-Workflow)
 
