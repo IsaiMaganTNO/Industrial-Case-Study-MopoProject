@@ -1,5 +1,6 @@
 import spinedb_api as api
 from spinedb_api import DatabaseMapping
+from spinedb_api.exception import NothingToCommit
 from spinedb_api.parameter_value import convert_map_to_table, IndexedValue
 from sqlalchemy.exc import DBAPIError
 import datetime
@@ -11,7 +12,26 @@ import json
 import yaml 
 import time as time_lib
 
+class TeeStream:
+    def __init__(self, *streams):
+        self._streams = streams
+
+    def write(self, data):
+        for stream in self._streams:
+            stream.write(data)
+            stream.flush()
+
+    def flush(self):
+        for stream in self._streams:
+            stream.flush()
+
 network_nodes = {}
+
+def commit_session_or_warn(db_map: DatabaseMapping, comment: str) -> None:
+    try:
+        db_map.commit_session(comment)
+    except NothingToCommit:
+        print(f"WARNING: {comment}: Nothing to commit. Continuing.")
 
 def nested_index_names(value, names = None, depth = 0):
     if names is None:
@@ -1475,192 +1495,205 @@ def units_modification(db_map : DatabaseMapping, config : dict):
 
 def main():
 
-    url_db_out = sys.argv[1]
-    url_db_com = sys.argv[2]
-    url_db_pow = sys.argv[3]
-    url_db_vre = sys.argv[4]
-    url_db_tra = sys.argv[5]
-    url_db_hyd = sys.argv[6]
-    url_db_dem = sys.argv[7]
-    url_db_ind = sys.argv[8]
-    url_db_ind2= sys.argv[9]
-    url_db_bio = sys.argv[10]
-    url_db_gas = sys.argv[11]
-    url_db_veh = sys.argv[12]
-    url_db_hea = sys.argv[13]
-    url_db_car = sys.argv[14]
+    original_stdout = sys.stdout
+    original_stderr = sys.stderr
+    log_file = open("ines_target.log", "w", encoding="utf-8")
+    sys.stdout = TeeStream(original_stdout, log_file)
+    sys.stderr = TeeStream(original_stderr, log_file)
 
-    with open("ines_structure.json", 'r') as f:
-        ines_spec = json.load(f)
+    try:
 
-    config = {"sys":yaml.safe_load(open("sysconfig.yaml", "rb")),"user":yaml.safe_load(open(sys.argv[15], "rb"))}
-    config["transformer"] = pd.read_excel("region_transformation.xlsx",sheet_name=None)
+        url_db_out = sys.argv[1]
+        url_db_com = sys.argv[2]
+        url_db_pow = sys.argv[3]
+        url_db_vre = sys.argv[4]
+        url_db_tra = sys.argv[5]
+        url_db_hyd = sys.argv[6]
+        url_db_dem = sys.argv[7]
+        url_db_ind = sys.argv[8]
+        url_db_ind2= sys.argv[9]
+        url_db_bio = sys.argv[10]
+        url_db_gas = sys.argv[11]
+        url_db_veh = sys.argv[12]
+        url_db_hea = sys.argv[13]
+        url_db_car = sys.argv[14]
 
-    with DatabaseMapping(url_db_out) as db_map:
+        with open("ines_structure.json", 'r') as f:
+            ines_spec = json.load(f)
 
-        # Importing Map
-        api.import_data(db_map,
-                    entity_classes=ines_spec["entity_classes"],
-                    parameter_value_lists=ines_spec["parameter_value_lists"],
-                    parameter_definitions=ines_spec["parameter_definitions"],
-                    )
-        add_superclass_subclass(db_map,"unit_flow","node__to_unit")
-        add_superclass_subclass(db_map,"unit_flow","unit__to_node")
-        print("ines_map_added")
-        db_map.refresh_session()
-        db_map.commit_session("ines_map_added")
-        
-        # Base alternative
-        add_alternative(db_map,"Base")
+        config = {"sys":yaml.safe_load(open("sysconfig.yaml", "rb")),"user":yaml.safe_load(open(sys.argv[15], "rb"))}
+        config["transformer"] = pd.read_excel("region_transformation.xlsx",sheet_name=None)
 
-        # Timeline Structure
-        add_timeline(db_map,config)
-        print("timeline_added")
-        db_map.commit_session("timeline_added")
+        with DatabaseMapping(url_db_out) as db_map:
 
-        # Power Sector Representation
-        db_name = "power_sector"
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_pow) as db_pow:
-                db_pow.fetch_all()
-                add_power_sector(db_map,db_pow,config,db_name)
-                print("power_sector_added")
-                db_map.commit_session("power_sector_added")
+            # Importing Map
+            api.import_data(db_map,
+                        entity_classes=ines_spec["entity_classes"],
+                        parameter_value_lists=ines_spec["parameter_value_lists"],
+                        parameter_definitions=ines_spec["parameter_definitions"],
+                        )
+            add_superclass_subclass(db_map,"unit_flow","node__to_unit")
+            add_superclass_subclass(db_map,"unit_flow","unit__to_node")
+            print("ines_map_added")
+            db_map.refresh_session()
+            commit_session_or_warn(db_map,"ines_map_added")
+            
+            # Base alternative
+            add_alternative(db_map,"Base")
 
-        # Hydro Systems
-        db_name = "hydro_systems"
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_hyd) as db_hyd:
-                db_hyd.fetch_all()
-                add_hydro(db_map,db_hyd,config,db_name)
-                print("hydro_systems_added")
-                try:
-                    db_map.commit_session("hydro_systems_added")
-                except:
-                    print("Error committing the hydro pipeline, likely because you are modeling countries with no hydroelectric systems")
-        
-        # Power VRE Representation
-        db_name = "vre"
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_vre) as db_vre:
-                db_vre.fetch_all()
-                add_vre_sector(db_map,db_vre,config,db_name)
-                print("vre_added")
-                db_map.commit_session("vre_added")
+            # Timeline Structure
+            add_timeline(db_map,config)
+            print("timeline_added")
+            commit_session_or_warn(db_map,"timeline_added")
 
-        db_name = "power_transmission"
-        # Power Transmission Representation
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_tra) as db_tra:
-                db_tra.fetch_all()
-                add_power_transmission(db_map,db_tra,config,db_name)
-                print("power_transmission_added")
-                try:
-                    db_map.commit_session("power_transmission_added")
-                except:
-                    print("Error committing the transmission pipeline, likely because you have modeled one country")
+            # Power Sector Representation
+            db_name = "power_sector"
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_pow) as db_pow:
+                    db_pow.fetch_all()
+                    add_power_sector(db_map,db_pow,config,db_name)
+                    print("power_sector_added")
+                    commit_session_or_warn(db_map,"power_sector_added")
 
-        db_name = "residual_demand"
-        # Electricity Demand
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_dem) as db_dem:
-                db_dem.fetch_all()
-                add_electricity_demand(db_map,db_dem,config,db_name)
-                print("electricity_demand_added")
-                db_map.commit_session("electricity_demand_added")
-
-        #  Industrial Sector
-        db_name = "industrial_sector"
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_ind) as db_ind:
-                db_ind.fetch_all()
-                add_industrial_sector(db_map,db_ind,config,db_name)
-                print("industrial_sector_added")
-                db_map.commit_session("industrial_sector_added")
-        db_name = "other_industrial_sector"
-        if config["user"]["pipelines"][db_name]["status"]:   
-            with DatabaseMapping(url_db_ind2) as db_ind:
-                db_ind.fetch_all()
-                add_industrial_sector(db_map,db_ind,config,db_name)
-                print("other_industrial_sector_added")
-                db_map.commit_session("other_industrial_sector_added")
-
-        #  Biomass Sector
-        db_name = "biomass_production"
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_bio) as db_bio:
-                db_bio.fetch_all()
-                add_biomass_production(db_map,db_bio,config,db_name)
-                print("biomass_sector_added")
-                db_map.commit_session("biomass_sector_added")
-
-        # Gas Sector Representation
-        db_name = "gas_sector"
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_gas) as db_gas:
-                db_gas.fetch_all()
-                add_gas_sector(db_map,db_gas,config,db_name)
-                print("gas_sector_added")
-                db_map.commit_session("gas_sector_added")
-    
-                db_name = "gas_pipelines"
-                if config["user"]["pipelines"][db_name]["status"]:
-                    add_gas_pipelines(db_map,db_gas,config,db_name)
-                    print("gas_pipelines_added")
+            # Hydro Systems
+            db_name = "hydro_systems"
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_hyd) as db_hyd:
+                    db_hyd.fetch_all()
+                    add_hydro(db_map,db_hyd,config,db_name)
+                    print("hydro_systems_added")
                     try:
-                        db_map.commit_session("gas_pipelines_added")
+                        db_map.commit_session("hydro_systems_added")
                     except:
-                        print("Error committing the gas pipelines, likely because you have modeled one country")
+                        print("Error committing the hydro pipeline, likely because you are modeling countries with no hydroelectric systems")
+            
+            # Power VRE Representation
+            db_name = "vre"
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_vre) as db_vre:
+                    db_vre.fetch_all()
+                    add_vre_sector(db_map,db_vre,config,db_name)
+                    print("vre_added")
+                    commit_session_or_warn(db_map,"vre_added")
+
+            db_name = "power_transmission"
+            # Power Transmission Representation
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_tra) as db_tra:
+                    db_tra.fetch_all()
+                    add_power_transmission(db_map,db_tra,config,db_name)
+                    print("power_transmission_added")
+                    try:
+                        db_map.commit_session("power_transmission_added")
+                    except:
+                        print("Error committing the transmission pipeline, likely because you have modeled one country")
+
+            db_name = "residual_demand"
+            # Electricity Demand
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_dem) as db_dem:
+                    db_dem.fetch_all()
+                    add_electricity_demand(db_map,db_dem,config,db_name)
+                    print("electricity_demand_added")
+                    commit_session_or_warn(db_map,"electricity_demand_added")
+
+            #  Industrial Sector
+            db_name = "industrial_sector"
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_ind) as db_ind:
+                    db_ind.fetch_all()
+                    add_industrial_sector(db_map,db_ind,config,db_name)
+                    print("industrial_sector_added")
+                    commit_session_or_warn(db_map,"industrial_sector_added")
+            db_name = "other_industrial_sector"
+            if config["user"]["pipelines"][db_name]["status"]:   
+                with DatabaseMapping(url_db_ind2) as db_ind:
+                    db_ind.fetch_all()
+                    add_industrial_sector(db_map,db_ind,config,db_name)
+                    print("other_industrial_sector_added")
+                    commit_session_or_warn(db_map,"other_industrial_sector_added")
+
+            #  Biomass Sector
+            db_name = "biomass_production"
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_bio) as db_bio:
+                    db_bio.fetch_all()
+                    add_biomass_production(db_map,db_bio,config,db_name)
+                    print("biomass_sector_added")
+                    commit_session_or_warn(db_map,"biomass_sector_added")
+
+            # Gas Sector Representation
+            db_name = "gas_sector"
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_gas) as db_gas:
+                    db_gas.fetch_all()
+                    add_gas_sector(db_map,db_gas,config,db_name)
+                    print("gas_sector_added")
+                    commit_session_or_warn(db_map,"gas_sector_added")
         
-        # Transport Representation
-        db_name = "transport_sector"
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_veh) as db_veh:
-                db_veh.fetch_all()
-                add_transport(db_map,db_veh,config,db_name)
-                print("transport_added")
-                db_map.commit_session("transport_added")
+                    db_name = "gas_pipelines"
+                    if config["user"]["pipelines"][db_name]["status"]:
+                        add_gas_pipelines(db_map,db_gas,config,db_name)
+                        print("gas_pipelines_added")
+                        try:
+                            db_map.commit_session("gas_pipelines_added")
+                        except:
+                            print("Error committing the gas pipelines, likely because you have modeled one country")
+            
+            # Transport Representation
+            db_name = "transport_sector"
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_veh) as db_veh:
+                    db_veh.fetch_all()
+                    add_transport(db_map,db_veh,config,db_name)
+                    print("transport_added")
+                    commit_session_or_warn(db_map,"transport_added")
 
-        # Heat Sector Representation
-        db_name = "heat_sector"
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_hea) as db_hea:
-                db_hea.fetch_all()
-                add_heat_sector(db_map,db_hea,config,db_name)
-                print("heat_sector_added")
-                db_map.commit_session("heat_sector_added")
+            # Heat Sector Representation
+            db_name = "heat_sector"
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_hea) as db_hea:
+                    db_hea.fetch_all()
+                    add_heat_sector(db_map,db_hea,config,db_name)
+                    print("heat_sector_added")
+                    commit_session_or_warn(db_map,"heat_sector_added")
 
-        # Cargo Sector Representation
-        db_name = "cargo_transport"
-        if config["user"]["pipelines"][db_name]["status"]:
-            with DatabaseMapping(url_db_car) as db_car:
-                db_car.fetch_all()
-                add_cargo_sector(db_map,db_car,config,db_name)
-                print("cargo_sector_added")
-                try:
-                    db_map.commit_session("cargo_sector_added")
-                except:
-                    print("Error committing the cargo pipeline, likely because you have modeled one country")
+            # Cargo Sector Representation
+            db_name = "cargo_transport"
+            if config["user"]["pipelines"][db_name]["status"]:
+                with DatabaseMapping(url_db_car) as db_car:
+                    db_car.fetch_all()
+                    add_cargo_sector(db_map,db_car,config,db_name)
+                    print("cargo_sector_added")
+                    try:
+                        db_map.commit_session("cargo_sector_added")
+                    except:
+                        print("Error committing the cargo pipeline, likely because you have modeled one country")
 
-        # Commodity Nodes parameters
-        with DatabaseMapping(url_db_com) as db_com:
-            db_com.fetch_all()
-            add_nodes(db_map,db_com,config)
-            print("nodes_added")
-            db_map.commit_session("nodes_added")
+            # Commodity Nodes parameters
+            with DatabaseMapping(url_db_com) as db_com:
+                db_com.fetch_all()
+                add_nodes(db_map,db_com,config)
+                print("nodes_added")
+                commit_session_or_warn(db_map,"nodes_added")
 
-        # Coupling sector with different resolution
-        coupling_spatial_resolutions(db_map, config)
-        # Policy Constraints
-        add_policy_constraints(db_map,config)
-        print("policy_constraints")
-        # Policy Constraints
-        units_modification(db_map,config)
-        print("units_modification")
-        try:
-            db_map.commit_session("units_modification")
-        except:
-            print("Error committing the units modification, likely you are using the same units as the source databases")
+            # Coupling sector with different resolution
+            coupling_spatial_resolutions(db_map, config)
+            # Policy Constraints
+            add_policy_constraints(db_map,config)
+            print("policy_constraints")
+            # Policy Constraints
+            units_modification(db_map,config)
+            print("units_modification")
+            try:
+                db_map.commit_session("units_modification")
+            except:
+                print("Error committing the units modification, likely you are using the same units as the source databases")
+
+    finally:
+        sys.stdout = original_stdout
+        sys.stderr = original_stderr
+        log_file.close()
 
 if __name__ == "__main__":
     main()
