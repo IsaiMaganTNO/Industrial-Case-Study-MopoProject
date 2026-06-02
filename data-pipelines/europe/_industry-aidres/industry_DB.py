@@ -10,6 +10,13 @@ from typing import Optional
 
 TARGET_RESOLUTION = "ic1"
 SOURCE_RESOLUTION_PRIORITY = ["nuts3", "nuts1", "nuts0"]
+NUTS3_IC1_FALLBACK_ALIASES = {
+    "BE221": "BE224",
+    "BE222": "BE225",
+    "BE322": "BE32B",
+    "BE324": "BE328",
+    "BE327": "BE328",
+}
 
 def add_entity(db_map : DatabaseMapping, class_name : str, element_names : tuple) -> None:
     _, error = db_map.add_entity_item(entity_byname=element_names, entity_class_name=class_name)
@@ -29,6 +36,12 @@ def add_alternative(db_map : DatabaseMapping,name_alternative : str) -> None:
 
 def warn(msg: str) -> None:
     print(f"WARNING: {msg}")
+
+def resolve_existing_path(*candidates: str) -> Optional[str]:
+    for candidate in candidates:
+        if candidate and os.path.exists(candidate):
+            return candidate
+    return None
 
 def add_entity_if_missing(db_map: DatabaseMapping, class_name: str, element_names: tuple) -> None:
     try:
@@ -100,6 +113,106 @@ def load_region_transformations_to_ic1(file_path: str) -> dict:
 
     return transformations
 
+def load_part2_capacity_override(file_path: str, part2_nodes: list) -> Optional[pd.DataFrame]:
+    if not os.path.exists(file_path):
+        warn(f"part2 capacity override file not found: {file_path}. Falling back to default capacity sheets.")
+        return None
+
+    try:
+        df = pd.read_excel(file_path)
+    except Exception as e:
+        warn(f"Could not read part2 capacity override file '{file_path}': {e}. Falling back to default capacity sheets.")
+        return None
+
+    if df is None or df.empty:
+        warn(f"part2 capacity override file '{file_path}' is empty. Falling back to default capacity sheets.")
+        return None
+
+    col_to_node = find_column_case_insensitive(df, ["to_node"])
+    col_industry = find_column_case_insensitive(df, ["Industry"])
+    col_unit = find_column_case_insensitive(df, ["unit"])
+    col_production = find_column_case_insensitive(df, ["production", "2018"])
+    col_nuts3 = find_column_case_insensitive(df, ["nuts3"])
+
+    missing = []
+    for col_name, col_value in [
+        ("to_node", col_to_node),
+        ("Industry", col_industry),
+        ("unit", col_unit),
+        ("production/2018", col_production),
+        ("nuts3", col_nuts3),
+    ]:
+        if col_value is None:
+            missing.append(col_name)
+
+    if missing:
+        warn(f"part2 capacity override file '{file_path}' missing required columns {missing}. Falling back to default capacity sheets.")
+        return None
+
+    col_country_code = find_column_case_insensitive(df, ["country_code"])
+
+    selected_columns = [col_to_node, col_industry, col_unit, col_production, col_nuts3]
+    if col_country_code is not None:
+        selected_columns.append(col_country_code)
+
+    out_df = df[selected_columns].copy()
+    new_columns = ["to_node", "Industry", "unit", "2018", "nuts3"]
+    if col_country_code is not None:
+        new_columns.append("country_code")
+    out_df.columns = new_columns
+    out_df["to_node"] = out_df["to_node"].astype(str).str.strip()
+    out_df["Industry"] = out_df["Industry"].astype(str).str.strip()
+    out_df["nuts3"] = out_df["nuts3"].astype(str).str.strip()
+    if "country_code" in out_df.columns:
+        out_df["country_code"] = out_df["country_code"].astype(str).str.strip()
+
+    part2_set = {str(n).strip() for n in part2_nodes}
+    file_set = set(out_df["to_node"].dropna().astype(str).str.strip().tolist())
+    file_set.discard("")
+
+    only_in_file = sorted(list(file_set - part2_set))
+    only_in_part2 = sorted(list(part2_set - file_set))
+    if only_in_file:
+        warn(f"part2 override has to_node values not in part2 selection: {only_in_file[:10]} (total {len(only_in_file)})")
+    if only_in_part2:
+        warn(f"part2 selection has values not present in part2 override file: {only_in_part2[:10]} (total {len(only_in_part2)})")
+
+    out_df = out_df[out_df["to_node"].isin(part2_set)].copy()
+    if out_df.empty:
+        warn(f"part2 capacity override file '{file_path}' has no rows matching part2 selection after filtering. Falling back to default capacity sheets.")
+        return None
+
+    # Filter out nuts3 rows that look malformed (dates, very long strings, etc.)
+    invalid_nuts3 = []
+    for idx, nuts3_val in out_df["nuts3"].items():
+        # Check for obvious issues: contains spaces, too long (>10 chars usually means something went wrong)
+        if not isinstance(nuts3_val, str) or len(nuts3_val) > 10 or " " in nuts3_val or "-" in nuts3_val:
+            invalid_nuts3.append(idx)
+    
+    if invalid_nuts3:
+        warn(f"part2 capacity override: removing {len(invalid_nuts3)} rows with malformed nuts3 values (e.g., dates or invalid formats).")
+        out_df = out_df.drop(invalid_nuts3).copy()
+    
+    if out_df.empty:
+        warn(f"part2 capacity override file '{file_path}' has no valid rows after filtering malformed nuts3 values. Falling back to default capacity sheets.")
+        return None
+
+    return out_df
+
+def warn_missing_be_nl_nuts3(mapped_df: pd.DataFrame, region_col: str, unmapped_mask: pd.Series, context_name: str) -> None:
+    if "country_code" not in mapped_df.columns:
+        return
+
+    country_col = mapped_df["country_code"].astype(str).str.strip()
+    be_nl_mask = country_col.isin(["BE", "NL"])
+    missing_mask = be_nl_mask & unmapped_mask
+    if not missing_mask.any():
+        return
+
+    missing_codes = sorted(mapped_df.loc[missing_mask, region_col].dropna().astype(str).str.strip().unique().tolist())
+    if missing_codes:
+        warn(f"[{context_name}] BE/NL rows without IC1 mapping: {missing_codes[:20]} (total {len(missing_codes)})")
+
 def get_region_column_for_resolution(df: pd.DataFrame, resolution: str) -> Optional[str]:
     if resolution == "nuts0":
         return find_column_case_insensitive(df, ["nuts0", "country_code"])
@@ -114,6 +227,13 @@ def normalize_sheet_to_ic1(df: pd.DataFrame, source_resolution: str, transformat
 
     out_df[region_col] = out_df[region_col].astype(str).str.strip()
 
+    if source_resolution == "nuts3":
+        alias_mask = out_df[region_col].isin(NUTS3_IC1_FALLBACK_ALIASES.keys())
+        if alias_mask.any():
+            out_df.loc[alias_mask, region_col] = out_df.loc[alias_mask, region_col].map(NUTS3_IC1_FALLBACK_ALIASES)
+            used_aliases = sorted(set(df.loc[alias_mask, region_col].astype(str).str.strip().tolist()))
+            warn(f"[{context_name}] Applied nuts3 fallback aliases for: {used_aliases}")
+
     if source_resolution == TARGET_RESOLUTION:
         if region_col != TARGET_RESOLUTION:
             out_df[TARGET_RESOLUTION] = out_df[region_col]
@@ -126,6 +246,7 @@ def normalize_sheet_to_ic1(df: pd.DataFrame, source_resolution: str, transformat
 
     mapped = out_df.merge(map_df, how="left", left_on=region_col, right_on="source")
     unmapped = mapped["target"].isna()
+    warn_missing_be_nl_nuts3(mapped, region_col, unmapped, context_name)
     if unmapped.any():
         missing_regions = sorted(mapped.loc[unmapped, region_col].dropna().astype(str).unique().tolist())
         warn(f"[{context_name}] {len(missing_regions)} regions could not be mapped to IC1 and will be dropped. Examples: {missing_regions[:10]}")
@@ -482,8 +603,26 @@ def main():
                     "transport-equipment","wood-and-wood-products"]],
         }
     ind_df = pd.read_excel(sys.argv[3],sheet_name=None)
-    region_transformations = load_region_transformations_to_ic1("region_transformation_IC1.xlsx")
-
+    region_transformations = load_region_transformations_to_ic1(os.path.join(os.path.dirname(os.path.abspath(sys.argv[3])), "region_transformation_IC1.xlsx"))
+    script_dir = os.path.dirname(os.path.abspath(__file__)) if "__file__" in globals() else os.getcwd()
+    industry_dir = os.path.dirname(os.path.abspath(sys.argv[3]))
+    region_transformation_file = resolve_existing_path(
+        os.path.join(industry_dir, "regions_transformation_IC1.xlsx"),
+        os.path.join(industry_dir, "regions_transformation.xlsx"),
+        os.path.join(industry_dir, "region_transformation_IC1.xlsx"),
+        os.path.join(script_dir, "regions_transformation_IC1.xlsx"),
+        os.path.join(script_dir, "regions_transformation.xlsx"),
+        os.path.join(script_dir, "region_transformation_IC1.xlsx"),
+        os.path.join(os.path.dirname(script_dir), "regions_transformation_IC1.xlsx"),
+        os.path.join(os.path.dirname(script_dir), "regions_transformation.xlsx"),
+        os.path.join(os.path.dirname(script_dir), "region_transformation_IC1.xlsx"),
+        "regions_transformation_IC1.xlsx",
+        "regions_transformation.xlsx",
+        "region_transformation_IC1.xlsx",
+    )
+    if region_transformation_file is None:
+        region_transformation_file = os.path.join(industry_dir, "regions_transformation_IC1.xlsx")
+    region_transformations = load_region_transformations_to_ic1(region_transformation_file)
     for part in dbs_dict:
         print(f"############### Filling the output DB ############### {part}")
         url_db_out = dbs_dict[part][0]
@@ -517,23 +656,54 @@ def main():
             commit_session_safe(target_db, "conversion added")
             print("conversion added")
 
-            cap_sheet_name, cap_source_resolution, cap_needs_transform = pick_sheet_for_prefix(ind_df, "ind_production_2018")
-            if cap_sheet_name is None:
-                warn(f"[{part}] capacity skipped because no source sheet could be selected.")
-                cap_df_ic1 = pd.DataFrame()
-            else:
-                cap_df_raw = ind_df[cap_sheet_name]
-                cap_df_ic1 = normalize_sheet_to_ic1(
-                    cap_df_raw,
-                    cap_source_resolution,
-                    region_transformations,
-                    ["2018"],
-                    f"{part}:capacity:{cap_sheet_name}"
-                )
-                if cap_needs_transform:
-                    print(f"[{part}] capacity transformed from {cap_source_resolution} to {TARGET_RESOLUTION} using {cap_sheet_name}")
+            if part == "part2":
+                part2_override_file = os.path.join(os.path.dirname(os.path.abspath(sys.argv[3])), "production_JRC_IDEES_nuts3.xlsx")
+                cap_df_override = load_part2_capacity_override(part2_override_file, nodes)
+                if cap_df_override is not None:
+                    cap_df_ic1 = normalize_sheet_to_ic1(
+                        cap_df_override,
+                        "nuts3",
+                        region_transformations,
+                        ["2018"],
+                        f"{part}:capacity:{part2_override_file}"
+                    )
+                    print(f"[{part}] capacity override applied from {part2_override_file} and transformed to {TARGET_RESOLUTION}")
                 else:
-                    print(f"[{part}] capacity used native {TARGET_RESOLUTION} sheet {cap_sheet_name}")
+                    cap_sheet_name, cap_source_resolution, cap_needs_transform = pick_sheet_for_prefix(ind_df, "ind_production_2018")
+                    if cap_sheet_name is None:
+                        warn(f"[{part}] capacity skipped because no source sheet could be selected.")
+                        cap_df_ic1 = pd.DataFrame()
+                    else:
+                        cap_df_raw = ind_df[cap_sheet_name]
+                        cap_df_ic1 = normalize_sheet_to_ic1(
+                            cap_df_raw,
+                            cap_source_resolution,
+                            region_transformations,
+                            ["2018"],
+                            f"{part}:capacity:{cap_sheet_name}"
+                        )
+                        if cap_needs_transform:
+                            print(f"[{part}] capacity transformed from {cap_source_resolution} to {TARGET_RESOLUTION} using {cap_sheet_name}")
+                        else:
+                            print(f"[{part}] capacity used native {TARGET_RESOLUTION} sheet {cap_sheet_name}")
+            else:
+                cap_sheet_name, cap_source_resolution, cap_needs_transform = pick_sheet_for_prefix(ind_df, "ind_production_2018")
+                if cap_sheet_name is None:
+                    warn(f"[{part}] capacity skipped because no source sheet could be selected.")
+                    cap_df_ic1 = pd.DataFrame()
+                else:
+                    cap_df_raw = ind_df[cap_sheet_name]
+                    cap_df_ic1 = normalize_sheet_to_ic1(
+                        cap_df_raw,
+                        cap_source_resolution,
+                        region_transformations,
+                        ["2018"],
+                        f"{part}:capacity:{cap_sheet_name}"
+                    )
+                    if cap_needs_transform:
+                        print(f"[{part}] capacity transformed from {cap_source_resolution} to {TARGET_RESOLUTION} using {cap_sheet_name}")
+                    else:
+                        print(f"[{part}] capacity used native {TARGET_RESOLUTION} sheet {cap_sheet_name}")
 
             demand_sheet_name, demand_source_resolution, demand_needs_transform = pick_sheet_for_prefix(ind_df, "ind_production_30_50")
             if demand_sheet_name is None:
