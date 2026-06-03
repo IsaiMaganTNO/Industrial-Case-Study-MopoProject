@@ -316,8 +316,6 @@ def main():
     userconfig = yaml.safe_load(open(sys.argv[8], "rb"))
     weather_years = [pd.Timestamp(userconfig["timeline"]["historical_alt"][i]["start"]).year for i in userconfig["timeline"]["historical_alt"]]
 
-    print("sys.argv:", sys.argv)
-
     print("############### Filling the output DB ###############")
     with DatabaseMapping(url_db_out) as target_db:
 
