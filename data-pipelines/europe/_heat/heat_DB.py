@@ -316,6 +316,8 @@ def main():
     userconfig = yaml.safe_load(open(sys.argv[8], "rb"))
     weather_years = [pd.Timestamp(userconfig["timeline"]["historical_alt"][i]["start"]).year for i in userconfig["timeline"]["historical_alt"]]
 
+    print("sys.argv:", sys.argv)
+
     print("############### Filling the output DB ###############")
     with DatabaseMapping(url_db_out) as target_db:
 
@@ -329,7 +331,8 @@ def main():
         versionconfig = yaml.safe_load(open(sys.argv[-1], "rb"))
         add_scenario(target_db,f"v_{versionconfig["buildings"]["version"]}")
 
-        with open("heat_template_DB.json", 'r') as f:
+        project_root = os.path.dirname(os.path.dirname(os.path.dirname(sys.argv[2])))
+        with open(os.path.join(project_root, 'data-pipelines', 'europe', '_heat', 'heat_template_DB.json'), 'r') as f:
             db_template = json.load(f)
         # Importing Map
         api.import_data(target_db,
