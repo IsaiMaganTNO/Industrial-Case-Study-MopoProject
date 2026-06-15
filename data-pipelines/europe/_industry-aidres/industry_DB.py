@@ -547,6 +547,9 @@ def demand_sectors(target_db, sheet, nodes, region_column=TARGET_RESOLUTION):
 
         # region entity
         add_entity_if_missing(target_db, "region", (region,))
+        
+        # commodity entity
+        add_entity_if_missing(target_db, "commodity", (commodity,))
 
         # commodity__region entity (unique now)
         entity_name = "commodity__region"

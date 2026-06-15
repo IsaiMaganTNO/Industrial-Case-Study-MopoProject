@@ -1,0 +1,11 @@
+,storage_name,y2030,y2040,y2050,technology,node,scenario,polygon
+0,biomass-stock_IE,35950.17,35950.17,35950.17,biomass-stock,biomass,wy_2009,IE
+1,atmosphere,46800.0,10440.0,0.0,atmosphere,atmosphere,wy_2009,re
+2,CO2-storage,3600.0,3600.0,3600.0,CO2-storage,CO2-sink,wy_2009,ge
+3,battery-storage_IE,3.02,4.44,11.43,battery-storage,elec,wy_2009,IE
+4,salt-cavern_IE,-0.0,184.59,483.59,salt-cavern,H2,wy_2009,IE
+5,EU_total,3600.0,3600.0,3600.0,CO2-storage,CO2-sink,wy_2009,Europe
+6,EU_total,0.0,184.59,483.59,salt-cavern,H2,wy_2009,Europe
+7,EU_total,46800.0,10440.0,0.0,atmosphere,atmosphere,wy_2009,Europe
+8,EU_total,35950.17,35950.17,35950.17,biomass-stock,biomass,wy_2009,Europe
+9,EU_total,3.02,4.44,11.43,battery-storage,elec,wy_2009,Europe

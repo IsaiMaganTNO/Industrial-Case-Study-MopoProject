@@ -20,7 +20,7 @@ pipelines:
     target_resolution: IC1
   biomass_production:
     status: True
-    source_resolution: PECD1
+    source_resolution: IC1
     target_resolution: IC1
   power_transmission:
     status: True
@@ -32,20 +32,20 @@ pipelines:
     target_resolution: IC1
   gas_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   gas_pipelines: 
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   industrial_sector:
     status: True
-    source_resolution: PECD1
+    source_resolution: IC1
     target_resolution: IC1
   other_industrial_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   heat_sector:
     status: True
     source_resolution: IC1

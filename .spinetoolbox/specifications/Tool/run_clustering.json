@@ -1,0 +1,13 @@
+{
+    "name": "run_clustering",
+    "tooltype": "julia",
+    "includes": [
+        "tulipa_call.jl"
+    ],
+    "description": "",
+    "inputfiles": [],
+    "inputfiles_opt": [],
+    "outputfiles": [],
+    "cmdline_args": [],
+    "includes_main_path": "../../../_clustering"
+}

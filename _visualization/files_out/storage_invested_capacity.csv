@@ -1,0 +1,5 @@
+,storage_name,y2030,y2040,y2050,technology,node,scenario,polygon
+0,battery-storage_IE,3.02,1.42,6.99,battery-storage,elec,wy_2009,IE
+1,salt-cavern_IE,0.0,184.59,299.0,salt-cavern,H2,wy_2009,IE
+2,EU_total,0.0,184.59,299.0,salt-cavern,H2,wy_2009,Europe
+3,EU_total,3.02,1.42,6.99,battery-storage,elec,wy_2009,Europe

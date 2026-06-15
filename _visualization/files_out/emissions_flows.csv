@@ -1,0 +1,13 @@
+,source,target,y2030,y2040,y2050,polygon,technology,scenario
+0,electricity,emission,1747.0675675675673,0.0,0.0,IE,atmosphere,wy_2009
+1,other-non-ferrous-metals,emission,0.3994766050715478,0.0,0.559267247100167,IE,atmosphere,wy_2009
+2,pharmaceuticals,emission,0.7687313719635418,0.0,0.0,IE,atmosphere,wy_2009
+3,methane,emission,2251.386323541867,2136.6604121245114,1388.0896971102798,IE,atmosphere,wy_2009
+4,hydrocarbons,emission,11122.254,4594.436233276324,0.0,IE,atmosphere,wy_2009
+5,food-beverages-tobacco,emission,15.948158354147417,8.156643563241234,7.307479461932408,IE,atmosphere,wy_2009
+6,aluminium,emission,57.41279915399705,0.0,16.745399753249007,IE,atmosphere,wy_2009
+7,hydrocarbons,emission,10893.083104803105,10893.083104803105,9967.16187666787,IE,atmosphere,wy_2009
+8,emission,CO2-sink,0.0,3600.0000000000027,3599.9999999989755,Europe,CO2-injection,wy_2009
+9,emission,CO2,0.0,3623.5129126016236,7779.863720241454,IE,DAC_IE,wy_2009
+10,electricity,emission,381.84615384615387,0.0,0.0,IE,atmosphere,wy_2009
+11,buildings heat,emission,3017.9683939111706,31.176518834432905,0.0,IE,atmosphere,wy_2009

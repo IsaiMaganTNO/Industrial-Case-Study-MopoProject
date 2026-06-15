@@ -1,0 +1,55 @@
+,unit_name,y2030,y2040,y2050,node,scenario,polygon,technology
+0,methanation_IE,-0.0,-0.0,0.23,methane,wy_2009,IE,Methanation
+1,air-heatpump-cool_IE,0.38,0.12,0.57,buildings,wy_2009,IE,Cooling Unit
+2,bio-diges-up_IE,0.15,0.28,1.04,methane,wy_2009,IE,Bio-digestion and Upgrading
+3,alumina-production-alternative_IE,0.21,0.0,0.0,aluminium,wy_2009,IE,alumina-production-alternative
+4,leather-and-textile-production-alternative_IE,0.01,0.0,0.0,leather-and-textile,wy_2009,IE,leather-and-textile-production-alternative
+5,SMR_IE,0.0,0.0,0.1,hydrogen,wy_2009,IE,Steam Methane Reforming
+6,battery-storage_IE__elec_IE,0.47,0.41,1.33,electricity,wy_2009,IE,Battery Charger
+7,pharmaceuticals-production-alternative_IE,0.06,0.0,0.0,pharmaceuticals,wy_2009,IE,pharmaceuticals-production-alternative
+8,machinery-equipment-production-alternative_IE,0.12,0.0,0.0,machinery-equipment,wy_2009,IE,machinery-equipment-production-alternative
+9,paper-production-alternative_IE,0.01,0.0,0.0,paper,wy_2009,IE,paper-production-alternative
+10,ground-heatpump_IE,-0.0,1.35,0.08,buildings heat,wy_2009,IE,Ground HP
+11,wind-off-FB-SP370-HH155_ATIE,-0.0,0.0,5.28,electricity,wy_2009,IE,Offshore Wind
+12,(BM)FT_IE,-0.0,0.78,-0.0,hydrocarbons,wy_2009,IE,Biofuel Production
+13,wood-and-wood-products-production-alternative_IE,0.09,0.0,0.0,wood,wy_2009,IE,wood-and-wood-products-production-alternative
+14,other-non-ferrous-metals-production-alternative_IE,0.01,0.0,0.0,other-non-ferrous-metals,wy_2009,IE,other-non-ferrous-metals-production-alternative
+15,DAC_IE,-0.0,0.43,0.46,CO2,wy_2009,IE,DAC
+16,air-heatpump_IE,-0.0,4.52,0.27,buildings heat,wy_2009,IE,Air HP
+17,REF(H2)_IE,3.06,0.0,0.0,hydrocarbons,wy_2009,IE,Refinery
+18,PEM_IE,0.1,0.31,3.51,hydrogen,wy_2009,IE,Electrolyzer
+19,wind-on-SP277-HH100_IE,0.02,2.44,4.35,electricity,wy_2009,IE,Onshore Wind
+20,transport-equipment-production-alternative_IE,0.0,0.0,0.0,transport-equipment,wy_2009,IE,transport-equipment-production-alternative
+21,printing-and-media-production-alternative_IE,0.01,0.0,0.0,printing-and-media,wy_2009,IE,printing-and-media-production-alternative
+22,bioST_IE,2.19,0.0,0.42,electricity,wy_2009,IE,Biomass Steam Turbine
+23,food-beverages-tobacco-production-alternative_IE,0.32,0.0,0.0,food-beverages-tobacco,wy_2009,IE,food-beverages-tobacco-production-alternative
+24,electric-heating_IE,0.7,0.0,1.32,buildings heat,wy_2009,IE,Electric Heater
+25,(H2)FT-DC_IE,-0.0,0.01,2.02,hydrocarbons,wy_2009,IE,Synfuel Production
+26,solar-PV-no-tracking_IE,0.93,6.93,12.58,electricity,wy_2009,IE,Solar
+27,EU_total,0.0,0.43,0.46,CO2,wy_2009,Europe,DAC
+28,EU_total,0.21,0.0,0.0,aluminium,wy_2009,Europe,alumina-production-alternative
+29,EU_total,0.38,0.12,0.57,buildings,wy_2009,Europe,Cooling Unit
+30,EU_total,0.0,4.52,0.27,buildings heat,wy_2009,Europe,Air HP
+31,EU_total,0.7,0.0,1.32,buildings heat,wy_2009,Europe,Electric Heater
+32,EU_total,0.0,1.35,0.08,buildings heat,wy_2009,Europe,Ground HP
+33,EU_total,0.47,0.41,1.33,electricity,wy_2009,Europe,Battery Charger
+34,EU_total,2.19,0.0,0.42,electricity,wy_2009,Europe,Biomass Steam Turbine
+35,EU_total,0.0,0.0,5.28,electricity,wy_2009,Europe,Offshore Wind
+36,EU_total,0.02,2.44,4.35,electricity,wy_2009,Europe,Onshore Wind
+37,EU_total,0.93,6.93,12.58,electricity,wy_2009,Europe,Solar
+38,EU_total,0.32,0.0,0.0,food-beverages-tobacco,wy_2009,Europe,food-beverages-tobacco-production-alternative
+39,EU_total,0.0,0.78,0.0,hydrocarbons,wy_2009,Europe,Biofuel Production
+40,EU_total,3.06,0.0,0.0,hydrocarbons,wy_2009,Europe,Refinery
+41,EU_total,0.0,0.01,2.02,hydrocarbons,wy_2009,Europe,Synfuel Production
+42,EU_total,0.1,0.31,3.51,hydrogen,wy_2009,Europe,Electrolyzer
+43,EU_total,0.0,0.0,0.1,hydrogen,wy_2009,Europe,Steam Methane Reforming
+44,EU_total,0.01,0.0,0.0,leather-and-textile,wy_2009,Europe,leather-and-textile-production-alternative
+45,EU_total,0.12,0.0,0.0,machinery-equipment,wy_2009,Europe,machinery-equipment-production-alternative
+46,EU_total,0.15,0.28,1.04,methane,wy_2009,Europe,Bio-digestion and Upgrading
+47,EU_total,0.0,0.0,0.23,methane,wy_2009,Europe,Methanation
+48,EU_total,0.01,0.0,0.0,other-non-ferrous-metals,wy_2009,Europe,other-non-ferrous-metals-production-alternative
+49,EU_total,0.01,0.0,0.0,paper,wy_2009,Europe,paper-production-alternative
+50,EU_total,0.06,0.0,0.0,pharmaceuticals,wy_2009,Europe,pharmaceuticals-production-alternative
+51,EU_total,0.01,0.0,0.0,printing-and-media,wy_2009,Europe,printing-and-media-production-alternative
+52,EU_total,0.0,0.0,0.0,transport-equipment,wy_2009,Europe,transport-equipment-production-alternative
+53,EU_total,0.09,0.0,0.0,wood,wy_2009,Europe,wood-and-wood-products-production-alternative
