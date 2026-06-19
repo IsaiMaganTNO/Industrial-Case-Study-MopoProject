@@ -7,8 +7,8 @@ using CSV
 
 println("WARNING: Check whether there are extreme periods from the loop with the operational assessments")
 
-number_of_representatives = 15
-number_of_timesteps = 24
+number_of_representatives = 1
+number_of_timesteps = 4
 
 function get_data(input_folder,year)
   dir = joinpath(input_folder, "profiles")

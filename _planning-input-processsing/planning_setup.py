@@ -204,7 +204,7 @@ def solver_options():
                         "Gurobi.jl":{"type":"map","index_type":"str","index_name":"x","data":{"Method":2.0,"NumericFocus":2.0,"Crossover":0.0}}}}
         
         add_parameter_value(sopt_db,"model","db_mip_solver_options","Base",("capacity_planning",),map_options)
-        add_parameter_value(sopt_db,"model","db_mip_solver","Base",("capacity_planning",),"Gurobi.jl")
+        add_parameter_value(sopt_db,"model","db_mip_solver","Base",("capacity_planning",),"HiGHS.jl")
         sopt_db.commit_session("Added solver_options")
 
 def main():

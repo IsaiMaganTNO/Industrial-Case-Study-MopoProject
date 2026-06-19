@@ -73,13 +73,17 @@ def scenario_development(config):
             
             if scenario_name not in scenarios_in_db:
                 add_scenario(sopt_db,scenario_name)
-                alt_names = config["scenarios"][scenario_name]
-                for alt_name in alt_names:
+            
+            alt_names = config["scenarios"][scenario_name]
+            for alt_name in alt_names:
+                try:
                     add_scenario_alternative(sopt_db,scenario_name,alt_name,alt_names.index(alt_name)+1)
+                except RuntimeError as e:
+                    print(f"WARNING: scenario_alternative already exists: {e}")
         try:
             sopt_db.commit_session("Added scenario")
         except:
-            print("###################################################################### commit error")  
+            print("###################################################################### commit error")
 
 def storage_setup(config):
 

@@ -1,7 +1,7 @@
 scenarios:
-  baseline_blended_representative_periods: ["Base","wy2009","y2030_wy2009","y2040_wy2009","y2050_wy2009","medium_bio","current","GA","GA_flex0"]#,"y2030_wy2009","y2040_wy2009","y2050_wy2009"
+  baseline_blended_representative_periods: ["Base","wy2009","y2030_wy2009","y2030_wy2009","y2040_wy2009","y2050_wy2009","medium_bio","current","GA","GA_flex0"]
 emission_factor: 0.018 #percentage of carbon budget considered in the model based on the included countries
-resolution: "1D"
+resolution: "1Y"
 future_inflation: 0.03
 default_technology_discount_rate: 0.05
 solver: "HiGHS.jl" # HiGHS.jl
