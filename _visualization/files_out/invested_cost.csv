@@ -1,55 +1,38 @@
 ,unit_name,y2030,y2040,y2050,node,scenario,polygon,technology
-0,methanation_IE,-0.0,-0.0,155.34,methane,wy_2009,IE,Methanation
-1,air-heatpump-cool_IE,496.73,150.19,428.13,buildings,wy_2009,IE,Cooling Unit
-2,bio-diges-up_IE,297.98,512.26,1067.34,methane,wy_2009,IE,Bio-digestion and Upgrading
-3,alumina-production-alternative_IE,95.01,0.0,0.0,aluminium,wy_2009,IE,alumina-production-alternative
-4,leather-and-textile-production-alternative_IE,8.22,0.0,0.0,leather-and-textile,wy_2009,IE,leather-and-textile-production-alternative
-5,SMR_IE,0.0,0.81,52.82,hydrogen,wy_2009,IE,Steam Methane Reforming
-6,battery-storage_IE__elec_IE,50.86,36.59,70.89,electricity,wy_2009,IE,Battery Charger
-7,pharmaceuticals-production-alternative_IE,62.62,0.0,0.0,pharmaceuticals,wy_2009,IE,pharmaceuticals-production-alternative
-8,machinery-equipment-production-alternative_IE,41.57,0.0,0.0,machinery-equipment,wy_2009,IE,machinery-equipment-production-alternative
-9,paper-production-alternative_IE,8.0,0.0,0.0,paper,wy_2009,IE,paper-production-alternative
-10,ground-heatpump_IE,-0.0,2181.39,73.63,buildings heat,wy_2009,IE,Ground HP
-11,wind-off-FB-SP370-HH155_ATIE,-0.0,0.0,8329.7,electricity,wy_2009,IE,Offshore Wind
-12,(BM)FT_IE,-0.0,2986.46,-0.0,hydrocarbons,wy_2009,IE,Biofuel Production
-13,wood-and-wood-products-production-alternative_IE,51.53,0.0,0.0,wood,wy_2009,IE,wood-and-wood-products-production-alternative
-14,other-non-ferrous-metals-production-alternative_IE,3.64,0.0,0.0,other-non-ferrous-metals,wy_2009,IE,other-non-ferrous-metals-production-alternative
-15,DAC_IE,-0.0,1787.26,984.12,CO2,wy_2009,IE,DAC
-16,air-heatpump_IE,-0.0,5445.27,206.67,buildings heat,wy_2009,IE,Air HP
-17,REF(H2)_IE,2179.62,0.0,0.0,hydrocarbons,wy_2009,IE,Refinery
-18,PEM_IE,202.22,377.86,1734.75,hydrogen,wy_2009,IE,Electrolyzer
-19,wind-on-SP277-HH100_IE,48.97,3272.19,3234.55,electricity,wy_2009,IE,Onshore Wind
-20,transport-equipment-production-alternative_IE,1.28,0.0,0.0,transport-equipment,wy_2009,IE,transport-equipment-production-alternative
-21,printing-and-media-production-alternative_IE,2.89,0.0,0.0,printing-and-media,wy_2009,IE,printing-and-media-production-alternative
-22,bioST_IE,2111.44,0.0,211.2,electricity,wy_2009,IE,Biomass Steam Turbine
-23,food-beverages-tobacco-production-alternative_IE,132.52,0.0,0.0,food-beverages-tobacco,wy_2009,IE,food-beverages-tobacco-production-alternative
-24,electric-heating_IE,837.73,0.0,617.01,buildings heat,wy_2009,IE,Electric Heater
-25,(H2)FT-DC_IE,-0.0,22.41,2392.06,hydrocarbons,wy_2009,IE,Synfuel Production
-26,solar-PV-no-tracking_IE,501.15,2323.06,2253.95,electricity,wy_2009,IE,Solar
-27,EU_total,0.0,1787.26,984.12,CO2,wy_2009,Europe,DAC
-28,EU_total,95.01,0.0,0.0,aluminium,wy_2009,Europe,alumina-production-alternative
-29,EU_total,496.73,150.19,428.13,buildings,wy_2009,Europe,Cooling Unit
-30,EU_total,0.0,5445.27,206.67,buildings heat,wy_2009,Europe,Air HP
-31,EU_total,837.73,0.0,617.01,buildings heat,wy_2009,Europe,Electric Heater
-32,EU_total,0.0,2181.39,73.63,buildings heat,wy_2009,Europe,Ground HP
-33,EU_total,50.86,36.59,70.89,electricity,wy_2009,Europe,Battery Charger
-34,EU_total,2111.44,0.0,211.2,electricity,wy_2009,Europe,Biomass Steam Turbine
-35,EU_total,0.0,0.0,8329.7,electricity,wy_2009,Europe,Offshore Wind
-36,EU_total,48.97,3272.19,3234.55,electricity,wy_2009,Europe,Onshore Wind
-37,EU_total,501.15,2323.06,2253.95,electricity,wy_2009,Europe,Solar
-38,EU_total,132.52,0.0,0.0,food-beverages-tobacco,wy_2009,Europe,food-beverages-tobacco-production-alternative
-39,EU_total,0.0,2986.46,0.0,hydrocarbons,wy_2009,Europe,Biofuel Production
-40,EU_total,2179.62,0.0,0.0,hydrocarbons,wy_2009,Europe,Refinery
-41,EU_total,0.0,22.41,2392.06,hydrocarbons,wy_2009,Europe,Synfuel Production
-42,EU_total,202.22,377.86,1734.75,hydrogen,wy_2009,Europe,Electrolyzer
-43,EU_total,0.0,0.81,52.82,hydrogen,wy_2009,Europe,Steam Methane Reforming
-44,EU_total,8.22,0.0,0.0,leather-and-textile,wy_2009,Europe,leather-and-textile-production-alternative
-45,EU_total,41.57,0.0,0.0,machinery-equipment,wy_2009,Europe,machinery-equipment-production-alternative
-46,EU_total,297.98,512.26,1067.34,methane,wy_2009,Europe,Bio-digestion and Upgrading
-47,EU_total,0.0,0.0,155.34,methane,wy_2009,Europe,Methanation
-48,EU_total,3.64,0.0,0.0,other-non-ferrous-metals,wy_2009,Europe,other-non-ferrous-metals-production-alternative
-49,EU_total,8.0,0.0,0.0,paper,wy_2009,Europe,paper-production-alternative
-50,EU_total,62.62,0.0,0.0,pharmaceuticals,wy_2009,Europe,pharmaceuticals-production-alternative
-51,EU_total,2.89,0.0,0.0,printing-and-media,wy_2009,Europe,printing-and-media-production-alternative
-52,EU_total,1.28,0.0,0.0,transport-equipment,wy_2009,Europe,transport-equipment-production-alternative
-53,EU_total,51.53,0.0,0.0,wood,wy_2009,Europe,wood-and-wood-products-production-alternative
+0,oil-eng_NLC6,3206.42,0.0,0.0,electricity,wy_2009,NLC6,Diesel Group
+1,gas-boiler_BEC4,0.0,0.0,109.98,buildings heat,wy_2009,BEC4,Gas Boiler
+2,oil-eng_BEC6,882.59,0.0,0.0,electricity,wy_2009,BEC6,Diesel Group
+3,oil-eng_NLC4,127.07,0.0,0.0,electricity,wy_2009,NLC4,Diesel Group
+4,gas-boiler_NLC2,0.0,0.0,256.3,buildings heat,wy_2009,NLC2,Gas Boiler
+5,gas-boiler_BEC6,0.0,0.0,239.05,buildings heat,wy_2009,BEC6,Gas Boiler
+6,gas-boiler_NLC4,0.0,0.0,815.48,buildings heat,wy_2009,NLC4,Gas Boiler
+7,gas-boiler_NLC7,0.0,0.0,68.83,buildings heat,wy_2009,NLC7,Gas Boiler
+8,gas-boiler_BEC3,0.0,0.0,249.82,buildings heat,wy_2009,BEC3,Gas Boiler
+9,oil-eng_NLC9,247.92,0.0,0.0,electricity,wy_2009,NLC9,Diesel Group
+10,oil-eng_NLC5,0.0,104.43,0.0,electricity,wy_2009,NLC5,Diesel Group
+11,gas-boiler_NLC5,0.0,0.0,432.43,buildings heat,wy_2009,NLC5,Gas Boiler
+12,gas-boiler_BEC5,0.0,0.0,208.78,buildings heat,wy_2009,BEC5,Gas Boiler
+13,gas-boiler_NLC6,0.0,0.0,414.16,buildings heat,wy_2009,NLC6,Gas Boiler
+14,oil-eng_BEC8,671.6,0.0,51.98,electricity,wy_2009,BEC8,Diesel Group
+15,gas-boiler_BEC8,0.0,0.0,227.71,buildings heat,wy_2009,BEC8,Gas Boiler
+16,gas-boiler_NLC1,0.0,0.0,178.63,buildings heat,wy_2009,NLC1,Gas Boiler
+17,gas-boiler_BEC7,0.0,0.0,124.84,buildings heat,wy_2009,BEC7,Gas Boiler
+18,gas-boiler_NLC8,0.0,0.0,482.34,buildings heat,wy_2009,NLC8,Gas Boiler
+19,gas-boiler_NLC3,0.0,0.0,679.57,buildings heat,wy_2009,NLC3,Gas Boiler
+20,gas-boiler_BEC1,0.0,0.0,221.49,buildings heat,wy_2009,BEC1,Gas Boiler
+21,gas-boiler_BEC2,0.0,0.0,572.05,buildings heat,wy_2009,BEC2,Gas Boiler
+22,gas-boiler_NLC9,0.0,0.0,125.98,buildings heat,wy_2009,NLC9,Gas Boiler
+23,Diaphragm_BEC3,0.0,0.0,5.02,chemicals,wy_2009,BEC3,Diaphragm
+24,CEM2-(BMW)MEA_NLC6,0.0,0.0,28.75,cement,wy_2009,NLC6,CEM2-(BMW)MEA
+25,(H2)DRI-EAF_BEC4,3734.99,0.0,0.0,steel,wy_2009,BEC4,(H2)DRI-EAF
+26,(H2)DRI-EAF_NLC5,4966.13,0.0,0.0,steel,wy_2009,NLC5,(H2)DRI-EAF
+27,Diaphragm_BEC1,0.0,0.0,14.43,chemicals,wy_2009,BEC1,Diaphragm
+28,Diaphragm_NLC1,0.0,0.0,3.49,chemicals,wy_2009,NLC1,Diaphragm
+29,Diaphragm_NLC6,0.0,0.0,20.95,chemicals,wy_2009,NLC6,Diaphragm
+30,Diaphragm_BEC5,0.0,0.0,11.54,chemicals,wy_2009,BEC5,Diaphragm
+31,CEM2-(BMW)MEA_BEC7,0.0,0.0,156.24,cement,wy_2009,BEC7,CEM2-(BMW)MEA
+32,EU_total,0.0,0.0,5407.44,buildings heat,wy_2009,Europe,Gas Boiler
+33,EU_total,0.0,0.0,184.99,cement,wy_2009,Europe,CEM2-(BMW)MEA
+34,EU_total,0.0,0.0,55.43,chemicals,wy_2009,Europe,Diaphragm
+35,EU_total,5135.6,104.43,51.98,electricity,wy_2009,Europe,Diesel Group
+36,EU_total,8701.13,0.0,0.0,steel,wy_2009,Europe,(H2)DRI-EAF

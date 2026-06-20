@@ -134,6 +134,18 @@ def preprocess_data(installed, invested, invested_cost, decommissioned, unit_to_
     merged["UnitFlows"] = merged["UnitFlows"] / 1e3
 
     return merged
+    
+def polygon_to_country(p):
+    if not isinstance(p, str):
+        return p
+    if p == "Europe":
+        return "Europe"
+    elif p.startswith("NL"):
+        return "NL"
+    elif p.startswith("BE"):
+        return "BE"
+    else:
+        return p
 
 # ----------------------
 # CACHED: Preprocess storage data
@@ -328,6 +340,7 @@ def main():
 
     # CACHED: Preprocess data once
     merged = preprocess_data(installed, invested, invested_cost, decommissioned, unit_to_flows, ID_VARS)
+    merged["country"] = merged["polygon"].map(polygon_to_country)
 
     # CACHED: Preprocess storage capacity data
     storage_id_vars = [c for c in ID_VARS if c in storage_installed.columns]
@@ -336,7 +349,7 @@ def main():
     # breakpoint()
     # Extract metadata
     scenarios = sorted(merged["scenario"].dropna().unique())
-    countries = sorted(merged["polygon"].dropna().unique())
+    countries = sorted(merged["polygon"].dropna().unique(), key=lambda x: (x != "Europe", x))
     nodes = sorted(merged["node"].dropna().unique())
     years = sorted(merged["year"].dropna().unique())
 
@@ -418,6 +431,8 @@ def main():
             st.plotly_chart(fig_installed, width="stretch")
             download_plot(fig_installed, "installed_capacity")
 
+            #st.write("✅ END OF TAB1 REACHED")
+
 
 
     # ----------------------
@@ -425,6 +440,7 @@ def main():
     # ----------------------
     with tab2:
         st.header("Energy Production")
+        #st.write("🟢 ENTERED TAB2")
         col1, col2 = st.columns(2)
         with col1:
             selected_countries_f = st.multiselect("Countries", ["Europe"] + countries, default=countries, key="flows_countries")
@@ -526,6 +542,7 @@ def main():
     # ----------------------
     with tab4:
         st.header("Investment Cost")
+        #st.write("🟡 ENTERED TAB4")
         col1, col2 = st.columns(2)
         with col1:
             selected_countries = st.multiselect("Countries", countries, default=countries, key="investment_cost_countries")
@@ -566,7 +583,7 @@ def main():
     with tab5:
         st.header("Installed Capacity Map Comparison")
         POLY_COL = "id"
-        geojson_obj, gdf_base = load_geodata("config/onshore_PECD1.geojson", POLY_COL)
+        geojson_obj, gdf_base = load_geodata("config/IC1.geojson", POLY_COL)
         map_tech = st.selectbox("Technology", TECH_ORDER)  # no "All Technologies"
 
         df_cap = merged[(merged["scenario"] == scenario) & (merged["technology"] == map_tech)].copy()
@@ -681,7 +698,7 @@ def main():
     with tab11:
         st.header("Flow Map (Cross-border)")  # noqa
         POLY_COL = "id"
-        geojson_obj, gdf_base = load_geodata("config/onshore_PECD1.geojson", POLY_COL)
+        geojson_obj, gdf_base = load_geodata("config/IC1.geojson", POLY_COL)
         if crossborder_flows.empty: st.info("No cross-border flow data loaded."); st.stop()
 
         # Commodity (node) selection

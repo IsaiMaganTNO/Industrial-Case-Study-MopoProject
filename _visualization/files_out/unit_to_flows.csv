@@ -1,112 +1,529 @@
 ,unit_name,node,y2030,y2040,y2050,scenario,polygon,technology
-0,other-non-ferrous-metals-production-alternative_IE,other-non-ferrous-metals,63.38,70.0,60.74,wy_2009,IE,other-non-ferrous-metals-production-alternative
-1,gas-boiler-existing_IE,buildings heat,1949.46,117.27,0.0,wy_2009,IE,Gas Boiler
-2,SCPC-existing_IE,emission,1747.07,0.0,0.0,wy_2009,IE,Coal Power Plant
-3,other-non-ferrous-metals-production-reference_IE,emission,0.4,0.0,0.56,wy_2009,IE,other-non-ferrous-metals-production-reference
-4,SMR_IE,hydrogen,0.0,3.36,269.09,wy_2009,IE,Steam Methane Reforming
-5,pharmaceuticals-production-reference_IE,emission,0.77,0.0,0.0,wy_2009,IE,pharmaceuticals-production-reference
-6,(H2)FT-DC_IE,hydrocarbons,0.0,81.1,13834.43,wy_2009,IE,Synfuel Production
-7,gas-extraction_IE,emission,2251.39,2136.66,1388.09,wy_2009,IE,Gas Extractions
-8,air-heatpump-existing_IE,buildings heat,57.66,26.92,0.0,wy_2009,IE,Air HP
-9,methanation_IE,methane,0.0,0.0,852.05,wy_2009,IE,Methanation
-10,air-heatpump-cool_IE,buildings,705.35,937.44,1291.43,wy_2009,IE,Cooling Unit
-11,bio-boiler-existing_IE,buildings heat,3389.62,721.91,0.0,wy_2009,IE,Biomass Boiler
-12,printing-and-media-production-alternative_IE,printing-and-media,60.0,60.0,60.0,wy_2009,IE,printing-and-media-production-alternative
-13,CO2-injection,CO2-sink,0.0,3600.0,3600.0,wy_2009,Europe,CO2-injection
-14,bio-diges-up_IE,methane,1329.76,3727.78,11526.51,wy_2009,IE,Bio-digestion and Upgrading
-15,gas-extraction_IE,methane,11256.93,10683.3,6940.45,wy_2009,IE,Gas Extractions
-16,coal-boiler-existing_IE,buildings heat,7760.49,80.17,0.0,wy_2009,IE,Coal Boiler
-17,DAC_IE,CO2,0.0,3623.51,7779.86,wy_2009,IE,DAC
-18,wind-off-FB-SP370-HH155_ATIE,electricity,0.0,0.0,27251.99,wy_2009,IE,Offshore Wind
-19,alumina-production-alternative_IE,aluminium,1028.53,1883.0,1633.78,wy_2009,IE,alumina-production-alternative
-20,pharmaceuticals-production-alternative_IE,pharmaceuticals,533.45,546.33,546.33,wy_2009,IE,pharmaceuticals-production-alternative
-21,leather-and-textile-production-alternative_IE,leather-and-textile,124.98,124.98,124.98,wy_2009,IE,leather-and-textile-production-alternative
-22,battery-storage_IE__elec_IE,electricity,718.22,1458.36,3638.5,wy_2009,IE,Battery Charger
-23,electric-heating_IE,buildings heat,2898.16,723.39,1429.94,wy_2009,IE,Electric Heater
-24,REF-SMR_IE,hydrocarbons,27377.86,11309.38,0.0,wy_2009,IE,Refinery
-25,machinery-equipment-production-alternative_IE,machinery-equipment,1056.06,1056.06,1056.06,wy_2009,IE,machinery-equipment-production-alternative
-26,EU-mix-2018_IE,cement,4436.54,4436.54,4436.54,wy_2009,IE,EU-mix-2018
-27,Diaphragm_IE,chemicals,7.57,7.57,7.57,wy_2009,IE,Diaphragm
-28,REF-SMR_IE,emission,11122.25,4594.44,0.0,wy_2009,IE,Refinery
-29,solar-PV-no-tracking_IE,electricity,894.45,7586.28,19734.79,wy_2009,IE,Solar
-30,wasteST-existing_IE,electricity,595.68,0.0,0.0,wy_2009,IE,Waste Steam Turbine
-31,paper-production-alternative_IE,paper,60.0,60.0,60.0,wy_2009,IE,paper-production-alternative
-32,food-beverages-tobacco-production-reference_IE,emission,15.95,8.16,7.31,wy_2009,IE,food-beverages-tobacco-production-reference
-33,alumina-production-reference_IE,emission,57.41,0.0,16.75,wy_2009,IE,alumina-production-reference
-34,RoR_IE,electricity,777.31,777.31,777.31,wy_2009,IE,Run-of-River
-35,wind-on-existing_IE,electricity,24316.49,19528.89,0.0,wy_2009,IE,Onshore Wind
-36,electric-heating-existing_IE,buildings heat,4393.1,308.74,28.71,wy_2009,IE,Electric Heater
-37,(BM)FT_IE,hydrocarbons,0.0,6844.46,6844.46,wy_2009,IE,Biofuel Production
-38,air-heatpump_IE,buildings heat,0.0,18070.24,18740.85,wy_2009,IE,Air HP
-39,wind-on-SP277-HH100_IE,electricity,128.18,12530.47,35936.23,wy_2009,IE,Onshore Wind
-40,ground-heatpump_IE,buildings heat,0.0,7915.3,8391.98,wy_2009,IE,Ground HP
-41,REF(H2)_IE,emission,10893.08,10893.08,9967.16,wy_2009,IE,Refinery
-42,REF(H2)_IE,hydrocarbons,26813.74,26813.74,24534.55,wy_2009,IE,Refinery
-43,wood-and-wood-products-production-alternative_IE,wood,804.43,804.43,804.43,wy_2009,IE,wood-and-wood-products-production-alternative
-44,pharmaceuticals-production-reference_IE,pharmaceuticals,12.88,0.0,0.0,wy_2009,IE,pharmaceuticals-production-reference
-45,other-non-ferrous-metals-production-reference_IE,other-non-ferrous-metals,6.62,0.0,9.26,wy_2009,IE,other-non-ferrous-metals-production-reference
-46,food-beverages-tobacco-production-alternative_IE,food-beverages-tobacco,1630.88,2191.49,2252.58,wy_2009,IE,food-beverages-tobacco-production-alternative
-47,transport-equipment-production-alternative_IE,transport-equipment,32.45,32.45,32.45,wy_2009,IE,transport-equipment-production-alternative
-48,SCPC-existing_IE,electricity,2216.28,0.0,0.0,wy_2009,IE,Coal Power Plant
-49,battery-storage_IE__elec_IE,electricity-storage,740.43,1503.47,3751.03,wy_2009,IE,Battery Charger
-50,food-beverages-tobacco-production-reference_IE,food-beverages-tobacco,1147.49,586.88,525.78,wy_2009,IE,food-beverages-tobacco-production-reference
-51,alumina-production-reference_IE,aluminium,854.47,0.0,249.22,wy_2009,IE,alumina-production-reference
-52,ground-heatpump-existing_IE,buildings heat,25.98,24.13,0.0,wy_2009,IE,Ground HP
-53,wasteST-existing_IE,emission,381.85,0.0,0.0,wy_2009,IE,Waste Steam Turbine
-54,solar-PV-existing_IE,electricity,1642.1,1642.1,0.0,wy_2009,IE,Solar
-55,coal-boiler-existing_IE,emission,3017.97,31.18,0.0,wy_2009,IE,Coal Boiler
-56,oil-boiler-existing_IE,buildings heat,8337.65,0.0,0.0,wy_2009,IE,Diesel Boiler
-57,PEM_IE,hydrogen,838.62,1466.91,21896.39,wy_2009,IE,Electrolyzer
-58,bioST_IE,electricity,12444.56,6322.97,1113.97,wy_2009,IE,Biomass Steam Turbine
-59,EU_total,CO2,0.0,3623.51,7779.86,wy_2009,Europe,DAC
-60,EU_total,CO2-sink,0.0,3600.0,3600.0,wy_2009,Europe,CO2-injection
-61,EU_total,aluminium,1028.53,1883.0,1633.78,wy_2009,Europe,alumina-production-alternative
-62,EU_total,aluminium,854.47,0.0,249.22,wy_2009,Europe,alumina-production-reference
-63,EU_total,buildings,705.35,937.44,1291.43,wy_2009,Europe,Cooling Unit
-64,EU_total,buildings heat,57.66,18097.16,18740.85,wy_2009,Europe,Air HP
-65,EU_total,buildings heat,3389.62,721.91,0.0,wy_2009,Europe,Biomass Boiler
-66,EU_total,buildings heat,7760.49,80.17,0.0,wy_2009,Europe,Coal Boiler
-67,EU_total,buildings heat,8337.65,0.0,0.0,wy_2009,Europe,Diesel Boiler
-68,EU_total,buildings heat,7291.26,1032.14,1458.65,wy_2009,Europe,Electric Heater
-69,EU_total,buildings heat,1949.46,117.27,0.0,wy_2009,Europe,Gas Boiler
-70,EU_total,buildings heat,25.98,7939.43,8391.98,wy_2009,Europe,Ground HP
-71,EU_total,cement,4436.54,4436.54,4436.54,wy_2009,Europe,EU-mix-2018
-72,EU_total,chemicals,7.57,7.57,7.57,wy_2009,Europe,Diaphragm
-73,EU_total,electricity,718.22,1458.36,3638.5,wy_2009,Europe,Battery Charger
-74,EU_total,electricity,12444.56,6322.97,1113.97,wy_2009,Europe,Biomass Steam Turbine
-75,EU_total,electricity,2216.28,0.0,0.0,wy_2009,Europe,Coal Power Plant
-76,EU_total,electricity,0.0,0.0,27251.99,wy_2009,Europe,Offshore Wind
-77,EU_total,electricity,24444.67,32059.36,35936.23,wy_2009,Europe,Onshore Wind
-78,EU_total,electricity,777.31,777.31,777.31,wy_2009,Europe,Run-of-River
-79,EU_total,electricity,2536.55,9228.38,19734.79,wy_2009,Europe,Solar
-80,EU_total,electricity,595.68,0.0,0.0,wy_2009,Europe,Waste Steam Turbine
-81,EU_total,electricity-storage,740.43,1503.47,3751.03,wy_2009,Europe,Battery Charger
-82,EU_total,emission,3017.97,31.18,0.0,wy_2009,Europe,Coal Boiler
-83,EU_total,emission,1747.07,0.0,0.0,wy_2009,Europe,Coal Power Plant
-84,EU_total,emission,2251.39,2136.66,1388.09,wy_2009,Europe,Gas Extractions
-85,EU_total,emission,22015.34,15487.52,9967.16,wy_2009,Europe,Refinery
-86,EU_total,emission,381.85,0.0,0.0,wy_2009,Europe,Waste Steam Turbine
-87,EU_total,emission,57.41,0.0,16.75,wy_2009,Europe,alumina-production-reference
-88,EU_total,emission,15.95,8.16,7.31,wy_2009,Europe,food-beverages-tobacco-production-reference
-89,EU_total,emission,0.4,0.0,0.56,wy_2009,Europe,other-non-ferrous-metals-production-reference
-90,EU_total,emission,0.77,0.0,0.0,wy_2009,Europe,pharmaceuticals-production-reference
-91,EU_total,food-beverages-tobacco,1630.88,2191.49,2252.58,wy_2009,Europe,food-beverages-tobacco-production-alternative
-92,EU_total,food-beverages-tobacco,1147.49,586.88,525.78,wy_2009,Europe,food-beverages-tobacco-production-reference
-93,EU_total,hydrocarbons,0.0,6844.46,6844.46,wy_2009,Europe,Biofuel Production
-94,EU_total,hydrocarbons,54191.6,38123.12,24534.55,wy_2009,Europe,Refinery
-95,EU_total,hydrocarbons,0.0,81.1,13834.43,wy_2009,Europe,Synfuel Production
-96,EU_total,hydrogen,838.62,1466.91,21896.39,wy_2009,Europe,Electrolyzer
-97,EU_total,hydrogen,0.0,3.36,269.09,wy_2009,Europe,Steam Methane Reforming
-98,EU_total,leather-and-textile,124.98,124.98,124.98,wy_2009,Europe,leather-and-textile-production-alternative
-99,EU_total,machinery-equipment,1056.06,1056.06,1056.06,wy_2009,Europe,machinery-equipment-production-alternative
-100,EU_total,methane,1329.76,3727.78,11526.51,wy_2009,Europe,Bio-digestion and Upgrading
-101,EU_total,methane,11256.93,10683.3,6940.45,wy_2009,Europe,Gas Extractions
-102,EU_total,methane,0.0,0.0,852.05,wy_2009,Europe,Methanation
-103,EU_total,other-non-ferrous-metals,63.38,70.0,60.74,wy_2009,Europe,other-non-ferrous-metals-production-alternative
-104,EU_total,other-non-ferrous-metals,6.62,0.0,9.26,wy_2009,Europe,other-non-ferrous-metals-production-reference
-105,EU_total,paper,60.0,60.0,60.0,wy_2009,Europe,paper-production-alternative
-106,EU_total,pharmaceuticals,533.45,546.33,546.33,wy_2009,Europe,pharmaceuticals-production-alternative
-107,EU_total,pharmaceuticals,12.88,0.0,0.0,wy_2009,Europe,pharmaceuticals-production-reference
-108,EU_total,printing-and-media,60.0,60.0,60.0,wy_2009,Europe,printing-and-media-production-alternative
-109,EU_total,transport-equipment,32.45,32.45,32.45,wy_2009,Europe,transport-equipment-production-alternative
-110,EU_total,wood,804.43,804.43,804.43,wy_2009,Europe,wood-and-wood-products-production-alternative
+0,oil-boiler-existing_BEC1,buildings heat,24.1,17.05,0.0,wy_2009,BEC1,Diesel Boiler
+1,coal-boiler-existing_BEC6,emission,0.32,0.22,0.0,wy_2009,BEC6,Coal Boiler
+2,gas-boiler-existing_BEC7,buildings heat,18.6,17.17,0.0,wy_2009,BEC7,Gas Boiler
+3,coal-boiler-existing_NLC1,emission,0.02,0.02,0.0,wy_2009,NLC1,Coal Boiler
+4,gas-boiler-existing_BEC3,buildings heat,37.38,34.33,0.0,wy_2009,BEC3,Gas Boiler
+5,coal-boiler-existing_NLC7,emission,0.01,0.01,0.0,wy_2009,NLC7,Coal Boiler
+6,oil-boiler-existing_NLC8,buildings heat,3.99,2.82,0.0,wy_2009,NLC8,Diesel Boiler
+7,oil-boiler-existing_NLC9,buildings heat,1.02,0.72,0.0,wy_2009,NLC9,Diesel Boiler
+8,coal-boiler-existing_BEC3,emission,0.33,0.23,0.0,wy_2009,BEC3,Coal Boiler
+9,oil-boiler-existing_BEC4,buildings heat,11.92,8.43,0.0,wy_2009,BEC4,Diesel Boiler
+10,oil-boiler-existing_NLC7,buildings heat,0.55,0.39,0.0,wy_2009,NLC7,Diesel Boiler
+11,oil-eng-existing_BEC8,electricity,0.43,0.21,0.0,wy_2009,BEC8,Diesel Group
+12,gas-boiler_NLC4,buildings heat,0.0,0.0,140.5,wy_2009,NLC4,Gas Boiler
+13,oil-eng_NLC9,electricity,15.03,15.03,15.03,wy_2009,NLC9,Diesel Group
+14,coal-boiler-existing_NLC9,emission,0.02,0.01,0.0,wy_2009,NLC9,Coal Boiler
+15,coal-boiler-existing_BEC1,buildings heat,0.66,0.46,0.0,wy_2009,BEC1,Coal Boiler
+16,coal-boiler-existing_BEC7,buildings heat,0.41,0.29,0.0,wy_2009,BEC7,Coal Boiler
+17,coal-boiler-existing_NLC7,buildings heat,0.02,0.01,0.0,wy_2009,NLC7,Coal Boiler
+18,RoR_BEC5,electricity,0.02,0.02,0.02,wy_2009,BEC5,Run-of-River
+19,gas-boiler_NLC6,buildings heat,0.0,0.0,71.36,wy_2009,NLC6,Gas Boiler
+20,oil-boiler-existing_BEC7,buildings heat,13.41,9.49,0.0,wy_2009,BEC7,Diesel Boiler
+21,oil-eng-existing_BEC6,electricity,0.43,0.43,0.0,wy_2009,BEC6,Diesel Group
+22,gas-boiler_BEC6,buildings heat,0.0,0.0,41.19,wy_2009,BEC6,Gas Boiler
+23,coal-boiler-existing_BEC7,emission,0.17,0.12,0.0,wy_2009,BEC7,Coal Boiler
+24,RoR_BEC3,electricity,0.1,0.1,0.1,wy_2009,BEC3,Run-of-River
+25,gas-boiler_NLC7,buildings heat,0.0,0.0,11.86,wy_2009,NLC7,Gas Boiler
+26,oil-boiler-existing_BEC2,buildings heat,62.69,44.36,0.0,wy_2009,BEC2,Diesel Boiler
+27,coal-boiler-existing_NLC3,emission,0.09,0.06,0.0,wy_2009,NLC3,Coal Boiler
+28,gas-boiler_BEC1,buildings heat,0.0,0.0,38.16,wy_2009,BEC1,Gas Boiler
+29,coal-boiler-existing_BEC6,buildings heat,0.77,0.55,0.0,wy_2009,BEC6,Coal Boiler
+30,gas-boiler-existing_BEC8,buildings heat,34.07,31.3,0.0,wy_2009,BEC8,Gas Boiler
+31,coal-boiler-existing_BEC4,emission,0.14,0.1,0.0,wy_2009,BEC4,Coal Boiler
+32,gas-boiler_NLC1,buildings heat,0.0,0.0,30.78,wy_2009,NLC1,Gas Boiler
+33,coal-boiler-existing_BEC2,buildings heat,1.59,1.13,0.0,wy_2009,BEC2,Coal Boiler
+34,gas-boiler_BEC2,buildings heat,0.0,0.0,98.56,wy_2009,BEC2,Gas Boiler
+35,coal-boiler-existing_NLC3,buildings heat,0.21,0.15,0.0,wy_2009,NLC3,Coal Boiler
+36,oil-boiler-existing_BEC3,buildings heat,26.93,19.06,0.0,wy_2009,BEC3,Diesel Boiler
+37,coal-boiler-existing_BEC3,buildings heat,0.79,0.56,0.0,wy_2009,BEC3,Coal Boiler
+38,oil-boiler-existing_NLC6,buildings heat,3.56,2.52,0.0,wy_2009,NLC6,Diesel Boiler
+39,coal-boiler-existing_NLC8,buildings heat,0.15,0.11,0.0,wy_2009,NLC8,Coal Boiler
+40,oil-boiler-existing_NLC5,buildings heat,4.04,2.86,0.0,wy_2009,NLC5,Diesel Boiler
+41,gas-boiler-existing_BEC2,buildings heat,86.94,78.37,0.0,wy_2009,BEC2,Gas Boiler
+42,coal-boiler-existing_BEC8,emission,0.3,0.21,0.0,wy_2009,BEC8,Coal Boiler
+43,gas-boiler-existing_NLC2,buildings heat,57.89,49.34,0.0,wy_2009,NLC2,Gas Boiler
+44,gas-boiler_BEC4,buildings heat,0.0,0.0,18.95,wy_2009,BEC4,Gas Boiler
+45,coal-boiler-existing_NLC4,emission,0.11,0.08,0.0,wy_2009,NLC4,Coal Boiler
+46,oil-eng_BEC6,electricity,53.51,53.51,53.51,wy_2009,BEC6,Diesel Group
+47,coal-boiler-existing_NLC2,buildings heat,0.08,0.06,0.0,wy_2009,NLC2,Coal Boiler
+48,coal-boiler-existing_NLC8,emission,0.06,0.04,0.0,wy_2009,NLC8,Coal Boiler
+49,oil-eng-existing_BEC7,electricity,0.43,0.43,0.0,wy_2009,BEC7,Diesel Group
+50,gas-boiler-existing_NLC6,buildings heat,91.66,78.89,0.0,wy_2009,NLC6,Gas Boiler
+51,coal-boiler-existing_NLC5,buildings heat,0.14,0.1,0.0,wy_2009,NLC5,Coal Boiler
+52,gas-boiler-existing_NLC3,buildings heat,152.29,130.28,0.0,wy_2009,NLC3,Gas Boiler
+53,gas-boiler-existing_NLC1,buildings heat,40.31,34.37,0.0,wy_2009,NLC1,Gas Boiler
+54,oil-boiler-existing_BEC5,buildings heat,22.53,15.94,0.0,wy_2009,BEC5,Diesel Boiler
+55,RoR_NLC8,electricity,0.1,0.1,0.1,wy_2009,NLC8,Run-of-River
+56,coal-boiler-existing_BEC5,buildings heat,0.66,0.47,0.0,wy_2009,BEC5,Coal Boiler
+57,gas-boiler_BEC3,buildings heat,0.0,0.0,43.04,wy_2009,BEC3,Gas Boiler
+58,gas-boiler-existing_NLC8,buildings heat,108.19,92.52,0.0,wy_2009,NLC8,Gas Boiler
+59,RoR_BEC2,electricity,0.01,0.01,0.01,wy_2009,BEC2,Run-of-River
+60,gas-boiler-existing_NLC9,buildings heat,28.43,24.24,0.0,wy_2009,NLC9,Gas Boiler
+61,RoR_BEC6,electricity,0.42,0.42,0.42,wy_2009,BEC6,Run-of-River
+62,gas-boiler_BEC5,buildings heat,0.0,0.0,35.97,wy_2009,BEC5,Gas Boiler
+63,oil-eng_NLC4,electricity,7.7,7.7,7.7,wy_2009,NLC4,Diesel Group
+64,coal-boiler-existing_NLC4,buildings heat,0.26,0.18,0.0,wy_2009,NLC4,Coal Boiler
+65,gas-boiler_BEC8,buildings heat,0.0,0.0,39.23,wy_2009,BEC8,Gas Boiler
+66,coal-boiler-existing_BEC4,buildings heat,0.34,0.24,0.0,wy_2009,BEC4,Coal Boiler
+67,gas-boiler-existing_NLC7,buildings heat,15.62,13.28,0.0,wy_2009,NLC7,Gas Boiler
+68,gas-boiler-existing_NLC5,buildings heat,92.8,81.1,0.0,wy_2009,NLC5,Gas Boiler
+69,oil-boiler-existing_NLC2,buildings heat,2.07,1.47,0.0,wy_2009,NLC2,Diesel Boiler
+70,gas-boiler-existing_BEC6,buildings heat,35.69,32.87,0.0,wy_2009,BEC6,Gas Boiler
+71,coal-boiler-existing_NLC6,buildings heat,0.13,0.09,0.0,wy_2009,NLC6,Coal Boiler
+72,oil-eng-existing_BEC4,electricity,0.43,0.43,0.0,wy_2009,BEC4,Diesel Group
+73,oil-eng_BEC8,electricity,40.72,40.72,47.29,wy_2009,BEC8,Diesel Group
+74,gas-boiler_NLC2,buildings heat,0.0,0.0,44.16,wy_2009,NLC2,Gas Boiler
+75,oil-boiler-existing_NLC4,buildings heat,7.1,5.03,0.0,wy_2009,NLC4,Diesel Boiler
+76,gas-boiler_NLC8,buildings heat,0.0,0.0,83.1,wy_2009,NLC8,Gas Boiler
+77,RoR_NLC3,electricity,0.2,0.2,0.2,wy_2009,NLC3,Run-of-River
+78,oil-eng-existing_BEC5,electricity,0.76,0.38,0.0,wy_2009,BEC5,Diesel Group
+79,oil-eng_NLC5,electricity,0.0,7.78,7.78,wy_2009,NLC5,Diesel Group
+80,coal-boiler-existing_NLC5,emission,0.06,0.04,0.0,wy_2009,NLC5,Coal Boiler
+81,gas-boiler_NLC3,buildings heat,0.0,0.0,117.08,wy_2009,NLC3,Gas Boiler
+82,oil-boiler-existing_NLC1,buildings heat,1.45,1.03,0.0,wy_2009,NLC1,Diesel Boiler
+83,oil-boiler-existing_BEC8,buildings heat,24.55,17.37,0.0,wy_2009,BEC8,Diesel Boiler
+84,coal-boiler-existing_NLC2,emission,0.03,0.02,0.0,wy_2009,NLC2,Coal Boiler
+85,oil-boiler-existing_BEC6,buildings heat,25.72,18.2,0.0,wy_2009,BEC6,Diesel Boiler
+86,gas-boiler-existing_NLC4,buildings heat,179.61,154.96,0.0,wy_2009,NLC4,Gas Boiler
+87,coal-boiler-existing_BEC5,emission,0.27,0.19,0.0,wy_2009,BEC5,Coal Boiler
+88,gas-boiler-existing_BEC4,buildings heat,16.54,15.1,0.0,wy_2009,BEC4,Gas Boiler
+89,coal-boiler-existing_NLC6,emission,0.05,0.04,0.0,wy_2009,NLC6,Coal Boiler
+90,coal-boiler-existing_BEC2,emission,0.66,0.46,0.0,wy_2009,BEC2,Coal Boiler
+91,gas-boiler_BEC7,buildings heat,0.0,0.0,21.51,wy_2009,BEC7,Gas Boiler
+92,gas-boiler-existing_BEC5,buildings heat,31.26,28.69,0.0,wy_2009,BEC5,Gas Boiler
+93,oil-boiler-existing_NLC3,buildings heat,5.63,3.99,0.0,wy_2009,NLC3,Diesel Boiler
+94,coal-boiler-existing_NLC9,buildings heat,0.04,0.03,0.0,wy_2009,NLC9,Coal Boiler
+95,gas-boiler-existing_BEC1,buildings heat,33.43,30.39,0.0,wy_2009,BEC1,Gas Boiler
+96,coal-boiler-existing_BEC8,buildings heat,0.72,0.51,0.0,wy_2009,BEC8,Coal Boiler
+97,coal-boiler-existing_BEC1,emission,0.27,0.19,0.0,wy_2009,BEC1,Coal Boiler
+98,gas-boiler_NLC9,buildings heat,0.0,0.0,21.71,wy_2009,NLC9,Gas Boiler
+99,gas-boiler_NLC5,buildings heat,0.0,0.0,74.5,wy_2009,NLC5,Gas Boiler
+100,coal-boiler-existing_NLC1,buildings heat,0.06,0.04,0.0,wy_2009,NLC1,Coal Boiler
+101,oil-eng_NLC6,electricity,194.4,194.4,194.4,wy_2009,NLC6,Diesel Group
+102,pharmaceuticals-production-reference_BEC2,emission,0.0,0.0,0.0,wy_2009,BEC2,pharmaceuticals-production-reference
+103,printing-and-media-production-reference_BEC8,printing-and-media,0.22,0.22,0.22,wy_2009,BEC8,printing-and-media-production-reference
+104,transport-equipment-production-reference_NLC8,emission,0.0,0.0,0.0,wy_2009,NLC8,transport-equipment-production-reference
+105,wood-and-wood-products_production-reference_BEC6,emission,0.0,0.0,0.0,wy_2009,BEC6,wood-and-wood-products_production-reference
+106,leather-and-textile-production-reference_BEC2,leather-and-textile,0.28,0.28,0.28,wy_2009,BEC2,leather-and-textile-production-reference
+107,wood-and-wood-products_production-reference_NLC9,wood,0.09,0.09,0.09,wy_2009,NLC9,wood-and-wood-products_production-reference
+108,food-beverages-tobacco-production-reference_NLC5,food-beverages-tobacco,2.44,2.44,2.44,wy_2009,NLC5,food-beverages-tobacco-production-reference
+109,printing-and-media-production-reference_BEC5,printing-and-media,0.41,0.41,0.41,wy_2009,BEC5,printing-and-media-production-reference
+110,transport-equipment-production-reference_NLC8,transport-equipment,0.26,0.26,0.26,wy_2009,NLC8,transport-equipment-production-reference
+111,aluminium-primary-production-reference_NLC7,emission,0.0,0.0,0.0,wy_2009,NLC7,aluminium-primary-production-reference
+112,(NG)PEA_BEC8,chemicals,0.42,0.42,0.42,wy_2009,BEC8,(NG)PEA
+113,transport-equipment-production-reference_NLC3,emission,0.0,0.0,0.0,wy_2009,NLC3,transport-equipment-production-reference
+114,machinery-equipment-production-reference_BEC6,emission,0.0,0.0,0.0,wy_2009,BEC6,machinery-equipment-production-reference
+115,machinery-equipment-production-reference_NLC5,machinery-equipment,0.42,0.42,0.42,wy_2009,NLC5,machinery-equipment-production-reference
+116,paper-production-reference_BEC5,paper,0.82,0.82,0.82,wy_2009,BEC5,paper-production-reference
+117,paper-production-reference_NLC1,paper,1.14,1.14,1.14,wy_2009,NLC1,paper-production-reference
+118,printing-and-media-production-reference_BEC7,printing-and-media,0.17,0.17,0.17,wy_2009,BEC7,printing-and-media-production-reference
+119,machinery-equipment-production-reference_NLC4,machinery-equipment,0.66,0.66,0.66,wy_2009,NLC4,machinery-equipment-production-reference
+120,pulp-production-reference_NLC6,pulp,0.02,0.02,0.02,wy_2009,NLC6,pulp-production-reference
+121,other-industrial-sectors_production-reference_BEC1,emission,0.02,0.02,0.02,wy_2009,BEC1,other-industrial-sectors_production-reference
+122,transport-equipment-production-reference_BEC1,transport-equipment,0.47,0.47,0.47,wy_2009,BEC1,transport-equipment-production-reference
+123,ceramics-and-other-non-metalic-minerals-production-reference_NLC8,,2.39,2.39,2.39,wy_2009,NLC8,ceramics-and-other-non-metalic-minerals-production-reference
+124,other-chemicals-production-reference_BEC5,emission,0.02,0.02,0.02,wy_2009,BEC5,other-chemicals-production-reference
+125,pulp-production-reference_BEC6,emission,0.04,0.04,0.04,wy_2009,BEC6,pulp-production-reference
+126,ceramics-and-other-non-metalic-minerals-production-reference_NLC3,,5.65,5.65,5.65,wy_2009,NLC3,ceramics-and-other-non-metalic-minerals-production-reference
+127,transport-equipment-production-reference_BEC5,transport-equipment,0.42,0.42,0.42,wy_2009,BEC5,transport-equipment-production-reference
+128,printing-and-media-production-reference_BEC4,printing-and-media,0.14,0.14,0.14,wy_2009,BEC4,printing-and-media-production-reference
+129,(NG)_gco_NLC6,glass,0.47,0.47,0.47,wy_2009,NLC6,(NG)_gco
+130,other-industrial-sectors_production-reference_NLC6,emission,0.03,0.03,0.03,wy_2009,NLC6,other-industrial-sectors_production-reference
+131,leather-and-textile-production-reference_NLC4,leather-and-textile,0.11,0.11,0.11,wy_2009,NLC4,leather-and-textile-production-reference
+132,pharmaceuticals-production-reference_NLC9,emission,0.0,0.0,0.0,wy_2009,NLC9,pharmaceuticals-production-reference
+133,food-beverages-tobacco-production-reference_NLC1,food-beverages-tobacco,5.96,5.96,5.96,wy_2009,NLC1,food-beverages-tobacco-production-reference
+134,ceramics-and-other-non-metalic-minerals-production-reference_NLC1,emission,0.0,0.0,0.0,wy_2009,NLC1,ceramics-and-other-non-metalic-minerals-production-reference
+135,food-beverages-tobacco-production-reference_BEC5,emission,0.02,0.02,0.02,wy_2009,BEC5,food-beverages-tobacco-production-reference
+136,ceramics-and-other-non-metalic-minerals-production-reference_NLC3,emission,0.18,0.18,0.18,wy_2009,NLC3,ceramics-and-other-non-metalic-minerals-production-reference
+137,other-chemicals-production-reference_BEC4,emission,0.01,0.01,0.01,wy_2009,BEC4,other-chemicals-production-reference
+138,other-industrial-sectors_production-reference_BEC2,emission,0.01,0.01,0.01,wy_2009,BEC2,other-industrial-sectors_production-reference
+139,other-chemicals-production-reference_BEC8,emission,0.0,0.0,0.0,wy_2009,BEC8,other-chemicals-production-reference
+140,food-beverages-tobacco-production-reference_NLC1,emission,0.09,0.09,0.09,wy_2009,NLC1,food-beverages-tobacco-production-reference
+141,transport-equipment-production-reference_BEC7,transport-equipment,0.18,0.18,0.18,wy_2009,BEC7,transport-equipment-production-reference
+142,leather-and-textile-production-reference_BEC2,emission,0.0,0.0,0.0,wy_2009,BEC2,leather-and-textile-production-reference
+143,machinery-equipment-production-reference_BEC7,machinery-equipment,0.44,0.44,0.44,wy_2009,BEC7,machinery-equipment-production-reference
+144,other-non-ferrous-metals-production-reference_BEC5,other-non-ferrous-metals,2.27,2.27,2.27,wy_2009,BEC5,other-non-ferrous-metals-production-reference
+145,(NG)NH3_BEC1,ammonia,2.9,2.9,2.9,wy_2009,BEC1,(NG)NH3
+146,pulp-production-reference_NLC7,pulp,0.01,0.01,0.01,wy_2009,NLC7,pulp-production-reference
+147,printing-and-media-production-reference_NLC2,printing-and-media,0.05,0.05,0.05,wy_2009,NLC2,printing-and-media-production-reference
+148,other-industrial-sectors_production-reference_BEC2,,0.77,0.77,0.77,wy_2009,BEC2,other-industrial-sectors_production-reference
+149,other-industrial-sectors_production-reference_BEC6,emission,0.01,0.01,0.01,wy_2009,BEC6,other-industrial-sectors_production-reference
+150,pharmaceuticals-production-reference_NLC7,pharmaceuticals,0.03,0.03,0.03,wy_2009,NLC7,pharmaceuticals-production-reference
+151,(NG)_gfl_BEC5,glass,0.44,0.44,0.44,wy_2009,BEC5,(NG)_gfl
+152,transport-equipment-production-reference_BEC2,emission,0.0,0.0,0.0,wy_2009,BEC2,transport-equipment-production-reference
+153,Scraps_EAF_BEC5,steel,2.49,2.49,2.49,wy_2009,BEC5,Scraps_EAF
+154,transport-equipment-production-reference_BEC6,emission,0.0,0.0,0.0,wy_2009,BEC6,transport-equipment-production-reference
+155,food-beverages-tobacco-production-reference_NLC7,emission,0.05,0.05,0.05,wy_2009,NLC7,food-beverages-tobacco-production-reference
+156,(NG)NH3_NLC9,ammonia,2.83,2.83,2.83,wy_2009,NLC9,(NG)NH3
+157,other-industrial-sectors_production-reference_NLC9,,1.09,1.09,1.09,wy_2009,NLC9,other-industrial-sectors_production-reference
+158,pharmaceuticals-production-reference_NLC8,pharmaceuticals,0.06,0.06,0.06,wy_2009,NLC8,pharmaceuticals-production-reference
+159,(NG)PE_BEC4,chemicals,0.45,0.45,0.45,wy_2009,BEC4,(NG)PE
+160,(NG)PE_NLC9,chemicals,3.39,3.39,3.39,wy_2009,NLC9,(NG)PE
+161,other-industrial-sectors_production-reference_BEC8,emission,0.01,0.01,0.01,wy_2009,BEC8,other-industrial-sectors_production-reference
+162,(NG)_gfi_BEC6,glass,0.39,0.39,0.39,wy_2009,BEC6,(NG)_gfi
+163,(NG)PE_BEC1,chemicals,11.18,11.18,11.18,wy_2009,BEC1,(NG)PE
+164,transport-equipment-production-reference_BEC4,transport-equipment,0.15,0.15,0.15,wy_2009,BEC4,transport-equipment-production-reference
+165,(NG)_gco_NLC9,glass,0.66,0.66,0.66,wy_2009,NLC9,(NG)_gco
+166,pulp-production-reference_NLC8,emission,0.0,0.0,0.0,wy_2009,NLC8,pulp-production-reference
+167,food-beverages-tobacco-production-reference_BEC6,emission,0.05,0.05,0.05,wy_2009,BEC6,food-beverages-tobacco-production-reference
+168,pharmaceuticals-production-reference_BEC5,emission,0.02,0.02,0.02,wy_2009,BEC5,pharmaceuticals-production-reference
+169,transport-equipment-production-reference_BEC2,transport-equipment,0.22,0.22,0.22,wy_2009,BEC2,transport-equipment-production-reference
+170,leather-and-textile-production-reference_BEC1,emission,0.0,0.0,0.0,wy_2009,BEC1,leather-and-textile-production-reference
+171,ceramics-and-other-non-metalic-minerals-production-reference_NLC4,emission,0.01,0.01,0.01,wy_2009,NLC4,ceramics-and-other-non-metalic-minerals-production-reference
+172,(NG)PEA_NLC7,chemicals,3.75,3.75,3.75,wy_2009,NLC7,(NG)PEA
+173,EU-mix-2018_NLC5,emission,0.43,0.43,0.43,wy_2009,NLC5,EU-mix-2018
+174,paper-production-reference_NLC3,paper,3.04,3.04,3.04,wy_2009,NLC3,paper-production-reference
+175,(H2)DRI-EAF_NLC5,steel,18.5,18.5,18.5,wy_2009,NLC5,(H2)DRI-EAF
+176,paper-production-reference_BEC2,emission,0.04,0.04,0.04,wy_2009,BEC2,paper-production-reference
+177,paper-production-reference_NLC9,emission,0.02,0.02,0.02,wy_2009,NLC9,paper-production-reference
+178,transport-equipment-production-reference_NLC9,transport-equipment,0.14,0.14,0.14,wy_2009,NLC9,transport-equipment-production-reference
+179,leather-and-textile-production-reference_NLC2,leather-and-textile,0.07,0.07,0.07,wy_2009,NLC2,leather-and-textile-production-reference
+180,other-industrial-sectors_production-reference_NLC7,emission,0.01,0.01,0.01,wy_2009,NLC7,other-industrial-sectors_production-reference
+181,Diaphragm_BEC5,chemicals,0.72,0.72,0.72,wy_2009,BEC5,Diaphragm
+182,machinery-equipment-production-reference_NLC9,emission,0.0,0.0,0.0,wy_2009,NLC9,machinery-equipment-production-reference
+183,wood-and-wood-products_production-reference_BEC8,wood,2.67,2.67,2.67,wy_2009,BEC8,wood-and-wood-products_production-reference
+184,pharmaceuticals-production-reference_NLC6,pharmaceuticals,0.09,0.09,0.09,wy_2009,NLC6,pharmaceuticals-production-reference
+185,printing-and-media-production-reference_BEC6,printing-and-media,0.13,0.13,0.13,wy_2009,BEC6,printing-and-media-production-reference
+186,leather-and-textile-production-reference_NLC1,leather-and-textile,0.19,0.19,0.19,wy_2009,NLC1,leather-and-textile-production-reference
+187,other-chemicals-production-reference_NLC3,,0.01,0.01,0.01,wy_2009,NLC3,other-chemicals-production-reference
+188,machinery-equipment-production-reference_NLC2,machinery-equipment,0.42,0.42,0.42,wy_2009,NLC2,machinery-equipment-production-reference
+189,machinery-equipment-production-reference_NLC8,machinery-equipment,1.31,1.31,1.31,wy_2009,NLC8,machinery-equipment-production-reference
+190,other-non-ferrous-metals-production-reference_NLC8,other-non-ferrous-metals,1.68,1.68,1.68,wy_2009,NLC8,other-non-ferrous-metals-production-reference
+191,machinery-equipment-production-reference_BEC7,emission,0.0,0.0,0.0,wy_2009,BEC7,machinery-equipment-production-reference
+192,leather-and-textile-production-reference_BEC7,emission,0.0,0.0,0.0,wy_2009,BEC7,leather-and-textile-production-reference
+193,machinery-equipment-production-reference_NLC1,machinery-equipment,1.19,1.19,1.19,wy_2009,NLC1,machinery-equipment-production-reference
+194,leather-and-textile-production-reference_NLC7,leather-and-textile,0.1,0.1,0.1,wy_2009,NLC7,leather-and-textile-production-reference
+195,machinery-equipment-production-reference_BEC2,machinery-equipment,0.54,0.54,0.54,wy_2009,BEC2,machinery-equipment-production-reference
+196,(NG)PEA_NLC5,chemicals,0.11,0.11,0.11,wy_2009,NLC5,(NG)PEA
+197,(NG)PE_NLC7,chemicals,5.48,5.48,5.48,wy_2009,NLC7,(NG)PE
+198,(H2)DRI-EAF_NLC5,emission,0.76,0.76,0.76,wy_2009,NLC5,(H2)DRI-EAF
+199,pharmaceuticals-production-reference_NLC7,emission,0.0,0.0,0.0,wy_2009,NLC7,pharmaceuticals-production-reference
+200,other-industrial-sectors_production-reference_NLC5,emission,0.01,0.01,0.01,wy_2009,NLC5,other-industrial-sectors_production-reference
+201,other-non-ferrous-metals-production-reference_BEC1,other-non-ferrous-metals,3.01,3.01,3.01,wy_2009,BEC1,other-non-ferrous-metals-production-reference
+202,(LN)O_NLC6,chemicals,5.7,5.7,5.7,wy_2009,NLC6,(LN)O
+203,pulp-production-reference_NLC1,pulp,0.01,0.01,0.01,wy_2009,NLC1,pulp-production-reference
+204,leather-and-textile-production-reference_NLC9,leather-and-textile,0.12,0.12,0.12,wy_2009,NLC9,leather-and-textile-production-reference
+205,ceramics-and-other-non-metalic-minerals-production-reference_NLC8,emission,0.08,0.08,0.08,wy_2009,NLC8,ceramics-and-other-non-metalic-minerals-production-reference
+206,pharmaceuticals-production-reference_BEC5,pharmaceuticals,0.34,0.34,0.34,wy_2009,BEC5,pharmaceuticals-production-reference
+207,aluminium-primary-production-reference_NLC7,aluminium,0.12,0.12,0.12,wy_2009,NLC7,aluminium-primary-production-reference
+208,other-industrial-sectors_production-reference_NLC3,emission,0.03,0.03,0.03,wy_2009,NLC3,other-industrial-sectors_production-reference
+209,Scraps_EAF_BEC3,steel,4.57,4.57,4.57,wy_2009,BEC3,Scraps_EAF
+210,pharmaceuticals-production-reference_NLC3,pharmaceuticals,0.09,0.09,0.09,wy_2009,NLC3,pharmaceuticals-production-reference
+211,leather-and-textile-production-reference_NLC5,leather-and-textile,0.07,0.07,0.07,wy_2009,NLC5,leather-and-textile-production-reference
+212,paper-production-reference_NLC8,emission,0.04,0.04,0.04,wy_2009,NLC8,paper-production-reference
+213,food-beverages-tobacco-production-reference_BEC4,emission,0.04,0.04,0.04,wy_2009,BEC4,food-beverages-tobacco-production-reference
+214,pulp-production-reference_NLC6,emission,0.0,0.0,0.0,wy_2009,NLC6,pulp-production-reference
+215,(NG)PEA_BEC5,chemicals,4.59,4.59,4.59,wy_2009,BEC5,(NG)PEA
+216,food-beverages-tobacco-production-reference_BEC7,food-beverages-tobacco,5.2,5.2,5.2,wy_2009,BEC7,food-beverages-tobacco-production-reference
+217,paper-production-reference_NLC1,emission,0.02,0.02,0.02,wy_2009,NLC1,paper-production-reference
+218,leather-and-textile-production-reference_BEC3,emission,0.0,0.0,0.0,wy_2009,BEC3,leather-and-textile-production-reference
+219,transport-equipment-production-reference_NLC5,transport-equipment,0.08,0.08,0.08,wy_2009,NLC5,transport-equipment-production-reference
+220,printing-and-media-production-reference_BEC1,printing-and-media,0.46,0.46,0.46,wy_2009,BEC1,printing-and-media-production-reference
+221,machinery-equipment-production-reference_BEC3,machinery-equipment,0.27,0.27,0.27,wy_2009,BEC3,machinery-equipment-production-reference
+222,machinery-equipment-production-reference_NLC7,emission,0.0,0.0,0.0,wy_2009,NLC7,machinery-equipment-production-reference
+223,leather-and-textile-production-reference_NLC1,emission,0.0,0.0,0.0,wy_2009,NLC1,leather-and-textile-production-reference
+224,pulp-production-reference_NLC5,pulp,0.0,0.0,0.0,wy_2009,NLC5,pulp-production-reference
+225,other-chemicals-production-reference_NLC3,emission,0.0,0.0,0.0,wy_2009,NLC3,other-chemicals-production-reference
+226,EU-mix-2018_NLC6,cement,1.64,1.64,0.0,wy_2009,NLC6,EU-mix-2018
+227,(NG)PE_NLC5,chemicals,0.12,0.12,0.12,wy_2009,NLC5,(NG)PE
+228,ceramics-and-other-non-metalic-minerals-production-reference_NLC4,,0.45,0.45,0.45,wy_2009,NLC4,ceramics-and-other-non-metalic-minerals-production-reference
+229,food-beverages-tobacco-production-reference_NLC4,emission,0.03,0.03,0.03,wy_2009,NLC4,food-beverages-tobacco-production-reference
+230,other-chemicals-production-reference_NLC4,emission,0.0,0.0,0.0,wy_2009,NLC4,other-chemicals-production-reference
+231,other-chemicals-production-reference_BEC3,,0.13,0.13,0.13,wy_2009,BEC3,other-chemicals-production-reference
+232,other-chemicals-production-reference_NLC2,,0.01,0.01,0.01,wy_2009,NLC2,other-chemicals-production-reference
+233,machinery-equipment-production-reference_BEC5,machinery-equipment,1.05,1.05,1.05,wy_2009,BEC5,machinery-equipment-production-reference
+234,pharmaceuticals-production-reference_NLC4,pharmaceuticals,0.03,0.03,0.03,wy_2009,NLC4,pharmaceuticals-production-reference
+235,machinery-equipment-production-reference_NLC6,emission,0.0,0.0,0.0,wy_2009,NLC6,machinery-equipment-production-reference
+236,leather-and-textile-production-reference_NLC8,leather-and-textile,0.21,0.21,0.21,wy_2009,NLC8,leather-and-textile-production-reference
+237,paper-production-reference_BEC4,emission,0.03,0.03,0.03,wy_2009,BEC4,paper-production-reference
+238,other-chemicals-production-reference_BEC8,,0.02,0.02,0.02,wy_2009,BEC8,other-chemicals-production-reference
+239,machinery-equipment-production-reference_NLC7,machinery-equipment,0.6,0.6,0.6,wy_2009,NLC7,machinery-equipment-production-reference
+240,other-industrial-sectors_production-reference_BEC3,,0.39,0.39,0.39,wy_2009,BEC3,other-industrial-sectors_production-reference
+241,other-chemicals-production-reference_BEC4,,0.1,0.1,0.1,wy_2009,BEC4,other-chemicals-production-reference
+242,pulp-production-reference_NLC9,pulp,0.01,0.01,0.01,wy_2009,NLC9,pulp-production-reference
+243,leather-and-textile-production-reference_NLC6,emission,0.0,0.0,0.0,wy_2009,NLC6,leather-and-textile-production-reference
+244,wood-and-wood-products_production-reference_NLC3,wood,0.23,0.23,0.23,wy_2009,NLC3,wood-and-wood-products_production-reference
+245,food-beverages-tobacco-production-reference_NLC4,food-beverages-tobacco,2.03,2.03,2.03,wy_2009,NLC4,food-beverages-tobacco-production-reference
+246,printing-and-media-production-reference_NLC1,printing-and-media,0.13,0.13,0.13,wy_2009,NLC1,printing-and-media-production-reference
+247,other-chemicals-production-reference_NLC5,,0.01,0.01,0.01,wy_2009,NLC5,other-chemicals-production-reference
+248,other-chemicals-production-reference_BEC5,,0.21,0.21,0.21,wy_2009,BEC5,other-chemicals-production-reference
+249,other-chemicals-production-reference_NLC5,emission,0.0,0.0,0.0,wy_2009,NLC5,other-chemicals-production-reference
+250,other-industrial-sectors_production-reference_BEC5,,1.5,1.5,1.5,wy_2009,BEC5,other-industrial-sectors_production-reference
+251,machinery-equipment-production-reference_NLC6,machinery-equipment,1.79,1.79,1.79,wy_2009,NLC6,machinery-equipment-production-reference
+252,other-industrial-sectors_production-reference_NLC8,,2.0,2.0,2.0,wy_2009,NLC8,other-industrial-sectors_production-reference
+253,other-industrial-sectors_production-reference_NLC3,,2.73,2.73,2.73,wy_2009,NLC3,other-industrial-sectors_production-reference
+254,(H2)DRI-EAF_BEC4,steel,13.92,13.92,13.92,wy_2009,BEC4,(H2)DRI-EAF
+255,(H2)DRI-EAF_BEC4,emission,0.57,0.57,0.57,wy_2009,BEC4,(H2)DRI-EAF
+256,(LN)O_NLC5,chemicals,0.1,0.1,0.1,wy_2009,NLC5,(LN)O
+257,printing-and-media-production-reference_NLC9,printing-and-media,0.08,0.08,0.08,wy_2009,NLC9,printing-and-media-production-reference
+258,food-beverages-tobacco-production-reference_NLC3,emission,0.04,0.04,0.04,wy_2009,NLC3,food-beverages-tobacco-production-reference
+259,(NG)PE_BEC7,chemicals,0.1,0.1,0.1,wy_2009,BEC7,(NG)PE
+260,printing-and-media-production-reference_NLC3,printing-and-media,0.19,0.19,0.19,wy_2009,NLC3,printing-and-media-production-reference
+261,leather-and-textile-production-reference_BEC3,leather-and-textile,0.14,0.14,0.14,wy_2009,BEC3,leather-and-textile-production-reference
+262,(NG)PE_BEC5,chemicals,6.5,6.5,6.5,wy_2009,BEC5,(NG)PE
+263,(LN)O_NLC7,chemicals,9.41,9.41,9.41,wy_2009,NLC7,(LN)O
+264,other-chemicals-production-reference_BEC7,emission,0.01,0.01,0.01,wy_2009,BEC7,other-chemicals-production-reference
+265,leather-and-textile-production-reference_NLC6,leather-and-textile,0.29,0.29,0.29,wy_2009,NLC6,leather-and-textile-production-reference
+266,food-beverages-tobacco-production-reference_NLC8,food-beverages-tobacco,3.91,3.91,3.91,wy_2009,NLC8,food-beverages-tobacco-production-reference
+267,other-industrial-sectors_production-reference_NLC9,emission,0.01,0.01,0.01,wy_2009,NLC9,other-industrial-sectors_production-reference
+268,pharmaceuticals-production-reference_NLC5,emission,0.0,0.0,0.0,wy_2009,NLC5,pharmaceuticals-production-reference
+269,leather-and-textile-production-reference_BEC5,emission,0.0,0.0,0.0,wy_2009,BEC5,leather-and-textile-production-reference
+270,food-beverages-tobacco-production-reference_NLC8,emission,0.06,0.06,0.06,wy_2009,NLC8,food-beverages-tobacco-production-reference
+271,leather-and-textile-production-reference_BEC8,leather-and-textile,0.29,0.29,0.29,wy_2009,BEC8,leather-and-textile-production-reference
+272,other-industrial-sectors_production-reference_BEC8,,0.82,0.82,0.82,wy_2009,BEC8,other-industrial-sectors_production-reference
+273,food-beverages-tobacco-production-reference_NLC6,emission,0.09,0.09,0.09,wy_2009,NLC6,food-beverages-tobacco-production-reference
+274,food-beverages-tobacco-production-reference_BEC5,food-beverages-tobacco,1.52,1.52,1.52,wy_2009,BEC5,food-beverages-tobacco-production-reference
+275,leather-and-textile-production-reference_BEC8,emission,0.0,0.0,0.0,wy_2009,BEC8,leather-and-textile-production-reference
+276,ceramics-and-other-non-metalic-minerals-production-reference_BEC7,emission,0.17,0.17,0.17,wy_2009,BEC7,ceramics-and-other-non-metalic-minerals-production-reference
+277,leather-and-textile-production-reference_BEC1,leather-and-textile,0.61,0.61,0.61,wy_2009,BEC1,leather-and-textile-production-reference
+278,leather-and-textile-production-reference_BEC4,leather-and-textile,0.19,0.19,0.19,wy_2009,BEC4,leather-and-textile-production-reference
+279,other-industrial-sectors_production-reference_BEC4,emission,0.01,0.01,0.01,wy_2009,BEC4,other-industrial-sectors_production-reference
+280,Scraps_EAF_BEC3,emission,0.14,0.14,0.14,wy_2009,BEC3,Scraps_EAF
+281,wood-and-wood-products_production-reference_NLC5,wood,0.05,0.05,0.05,wy_2009,NLC5,wood-and-wood-products_production-reference
+282,transport-equipment-production-reference_NLC4,transport-equipment,0.13,0.13,0.13,wy_2009,NLC4,transport-equipment-production-reference
+283,leather-and-textile-production-reference_BEC7,leather-and-textile,0.23,0.23,0.23,wy_2009,BEC7,leather-and-textile-production-reference
+284,paper-production-reference_BEC6,paper,0.24,0.24,0.24,wy_2009,BEC6,paper-production-reference
+285,transport-equipment-production-reference_BEC5,emission,0.0,0.0,0.0,wy_2009,BEC5,transport-equipment-production-reference
+286,wood-and-wood-products_production-reference_BEC6,wood,0.93,0.93,0.93,wy_2009,BEC6,wood-and-wood-products_production-reference
+287,pharmaceuticals-production-reference_NLC2,emission,0.0,0.0,0.0,wy_2009,NLC2,pharmaceuticals-production-reference
+288,other-chemicals-production-reference_BEC1,emission,0.1,0.1,0.1,wy_2009,BEC1,other-chemicals-production-reference
+289,(NG)PEA_BEC2,chemicals,0.04,0.04,0.04,wy_2009,BEC2,(NG)PEA
+290,(NG)PEA_NLC6,chemicals,35.6,35.6,35.6,wy_2009,NLC6,(NG)PEA
+291,other-industrial-sectors_production-reference_BEC6,,0.54,0.54,0.54,wy_2009,BEC6,other-industrial-sectors_production-reference
+292,other-industrial-sectors_production-reference_BEC4,,0.53,0.53,0.53,wy_2009,BEC4,other-industrial-sectors_production-reference
+293,food-beverages-tobacco-production-reference_NLC5,emission,0.04,0.04,0.04,wy_2009,NLC5,food-beverages-tobacco-production-reference
+294,EU-mix-2018_NLC6,emission,0.26,0.26,0.0,wy_2009,NLC6,EU-mix-2018
+295,leather-and-textile-production-reference_NLC8,emission,0.0,0.0,0.0,wy_2009,NLC8,leather-and-textile-production-reference
+296,(NG)PE_BEC2,chemicals,0.07,0.07,0.07,wy_2009,BEC2,(NG)PE
+297,other-industrial-sectors_production-reference_BEC7,emission,0.01,0.01,0.01,wy_2009,BEC7,other-industrial-sectors_production-reference
+298,transport-equipment-production-reference_BEC3,transport-equipment,0.11,0.11,0.11,wy_2009,BEC3,transport-equipment-production-reference
+299,machinery-equipment-production-reference_BEC4,emission,0.0,0.0,0.0,wy_2009,BEC4,machinery-equipment-production-reference
+300,food-beverages-tobacco-production-reference_NLC2,emission,0.04,0.04,0.04,wy_2009,NLC2,food-beverages-tobacco-production-reference
+301,transport-equipment-production-reference_NLC3,transport-equipment,0.35,0.35,0.35,wy_2009,NLC3,transport-equipment-production-reference
+302,transport-equipment-production-reference_NLC9,emission,0.0,0.0,0.0,wy_2009,NLC9,transport-equipment-production-reference
+303,other-chemicals-production-reference_NLC7,,1.11,1.11,1.11,wy_2009,NLC7,other-chemicals-production-reference
+304,pulp-production-reference_NLC1,emission,0.0,0.0,0.0,wy_2009,NLC1,pulp-production-reference
+305,(LN)O_BEC7,chemicals,0.1,0.1,0.1,wy_2009,BEC7,(LN)O
+306,transport-equipment-production-reference_NLC7,transport-equipment,0.12,0.12,0.12,wy_2009,NLC7,transport-equipment-production-reference
+307,other-industrial-sectors_production-reference_NLC4,,1.0,1.0,1.0,wy_2009,NLC4,other-industrial-sectors_production-reference
+308,Diaphragm_NLC6,chemicals,1.31,1.31,1.31,wy_2009,NLC6,Diaphragm
+309,(NG)PEA_BEC1,chemicals,37.17,37.17,37.17,wy_2009,BEC1,(NG)PEA
+310,paper-production-reference_BEC5,emission,0.02,0.02,0.02,wy_2009,BEC5,paper-production-reference
+311,ceramics-and-other-non-metalic-minerals-production-reference_BEC8,emission,0.29,0.29,0.29,wy_2009,BEC8,ceramics-and-other-non-metalic-minerals-production-reference
+312,leather-and-textile-production-reference_NLC9,emission,0.0,0.0,0.0,wy_2009,NLC9,leather-and-textile-production-reference
+313,pharmaceuticals-production-reference_NLC5,pharmaceuticals,0.02,0.02,0.02,wy_2009,NLC5,pharmaceuticals-production-reference
+314,transport-equipment-production-reference_BEC6,transport-equipment,0.12,0.12,0.12,wy_2009,BEC6,transport-equipment-production-reference
+315,(NG)PEA_NLC4,chemicals,0.11,0.11,0.11,wy_2009,NLC4,(NG)PEA
+316,food-beverages-tobacco-production-reference_BEC8,food-beverages-tobacco,3.93,3.93,3.93,wy_2009,BEC8,food-beverages-tobacco-production-reference
+317,(NG)PEA_BEC4,chemicals,2.2,2.2,2.2,wy_2009,BEC4,(NG)PEA
+318,other-industrial-sectors_production-reference_NLC7,,0.91,0.91,0.91,wy_2009,NLC7,other-industrial-sectors_production-reference
+319,(NG)PE_BEC8,chemicals,0.69,0.69,0.69,wy_2009,BEC8,(NG)PE
+320,transport-equipment-production-reference_BEC1,emission,0.0,0.0,0.0,wy_2009,BEC1,transport-equipment-production-reference
+321,other-chemicals-production-reference_BEC6,emission,0.0,0.0,0.0,wy_2009,BEC6,other-chemicals-production-reference
+322,food-beverages-tobacco-production-reference_BEC7,emission,0.08,0.08,0.08,wy_2009,BEC7,food-beverages-tobacco-production-reference
+323,wood-and-wood-products_production-reference_NLC2,wood,0.05,0.05,0.05,wy_2009,NLC2,wood-and-wood-products_production-reference
+324,other-chemicals-production-reference_BEC2,emission,0.01,0.01,0.01,wy_2009,BEC2,other-chemicals-production-reference
+325,other-non-ferrous-metals-production-reference_NLC8,emission,0.11,0.11,0.11,wy_2009,NLC8,other-non-ferrous-metals-production-reference
+326,transport-equipment-production-reference_BEC4,emission,0.0,0.0,0.0,wy_2009,BEC4,transport-equipment-production-reference
+327,other-non-ferrous-metals-production-reference_BEC5,emission,0.14,0.14,0.14,wy_2009,BEC5,other-non-ferrous-metals-production-reference
+328,(NG)PE_NLC6,chemicals,1.49,1.49,1.49,wy_2009,NLC6,(NG)PE
+329,EU-mix-2018_BEC7,cement,10.93,10.93,2.0,wy_2009,BEC7,EU-mix-2018
+330,wood-and-wood-products_production-reference_BEC5,wood,0.22,0.22,0.22,wy_2009,BEC5,wood-and-wood-products_production-reference
+331,transport-equipment-production-reference_NLC6,emission,0.0,0.0,0.0,wy_2009,NLC6,transport-equipment-production-reference
+332,printing-and-media-production-reference_NLC4,printing-and-media,0.07,0.07,0.07,wy_2009,NLC4,printing-and-media-production-reference
+333,machinery-equipment-production-reference_BEC6,machinery-equipment,0.39,0.39,0.39,wy_2009,BEC6,machinery-equipment-production-reference
+334,paper-production-reference_NLC3,emission,0.06,0.06,0.06,wy_2009,NLC3,paper-production-reference
+335,other-chemicals-production-reference_NLC1,emission,0.0,0.0,0.0,wy_2009,NLC1,other-chemicals-production-reference
+336,leather-and-textile-production-reference_NLC3,leather-and-textile,0.29,0.29,0.29,wy_2009,NLC3,leather-and-textile-production-reference
+337,Diaphragm_NLC1,chemicals,0.22,0.22,0.22,wy_2009,NLC1,Diaphragm
+338,other-industrial-sectors_production-reference_BEC1,,1.69,1.69,1.69,wy_2009,BEC1,other-industrial-sectors_production-reference
+339,other-chemicals-production-reference_NLC6,emission,0.08,0.08,0.08,wy_2009,NLC6,other-chemicals-production-reference
+340,Scraps_EAF_BEC5,emission,0.08,0.08,0.08,wy_2009,BEC5,Scraps_EAF
+341,other-chemicals-production-reference_BEC2,,0.09,0.09,0.09,wy_2009,BEC2,other-chemicals-production-reference
+342,EU-mix-2018_BEC6,emission,0.67,0.67,0.67,wy_2009,BEC6,EU-mix-2018
+343,other-chemicals-production-reference_NLC2,emission,0.0,0.0,0.0,wy_2009,NLC2,other-chemicals-production-reference
+344,pharmaceuticals-production-reference_BEC2,pharmaceuticals,0.08,0.08,0.08,wy_2009,BEC2,pharmaceuticals-production-reference
+345,food-beverages-tobacco-production-reference_BEC8,emission,0.06,0.06,0.06,wy_2009,BEC8,food-beverages-tobacco-production-reference
+346,machinery-equipment-production-reference_NLC8,emission,0.0,0.0,0.0,wy_2009,NLC8,machinery-equipment-production-reference
+347,paper-production-reference_BEC6,emission,0.01,0.01,0.01,wy_2009,BEC6,paper-production-reference
+348,(LN)O_NLC9,chemicals,3.25,3.25,3.25,wy_2009,NLC9,(LN)O
+349,pharmaceuticals-production-reference_BEC3,pharmaceuticals,0.48,0.48,0.48,wy_2009,BEC3,pharmaceuticals-production-reference
+350,CEM2-(BMW)MEA_NLC6,cement,0.0,0.0,1.58,wy_2009,NLC6,CEM2-(BMW)MEA
+351,food-beverages-tobacco-production-reference_BEC3,emission,0.0,0.0,0.0,wy_2009,BEC3,food-beverages-tobacco-production-reference
+352,transport-equipment-production-reference_NLC7,emission,0.0,0.0,0.0,wy_2009,NLC7,transport-equipment-production-reference
+353,ceramics-and-other-non-metalic-minerals-production-reference_NLC9,,1.52,1.52,1.52,wy_2009,NLC9,ceramics-and-other-non-metalic-minerals-production-reference
+354,EU-mix-2018_BEC6,cement,4.24,4.24,4.24,wy_2009,BEC6,EU-mix-2018
+355,machinery-equipment-production-reference_NLC1,emission,0.0,0.0,0.0,wy_2009,NLC1,machinery-equipment-production-reference
+356,(LN)O_BEC1,chemicals,10.33,10.33,10.33,wy_2009,BEC1,(LN)O
+357,pharmaceuticals-production-reference_NLC1,pharmaceuticals,0.06,0.06,0.06,wy_2009,NLC1,pharmaceuticals-production-reference
+358,wood-and-wood-products_production-reference_NLC4,wood,0.08,0.08,0.08,wy_2009,NLC4,wood-and-wood-products_production-reference
+359,machinery-equipment-production-reference_NLC3,emission,0.0,0.0,0.0,wy_2009,NLC3,machinery-equipment-production-reference
+360,machinery-equipment-production-reference_NLC9,machinery-equipment,0.72,0.72,0.72,wy_2009,NLC9,machinery-equipment-production-reference
+361,wood-and-wood-products_production-reference_NLC1,wood,0.15,0.15,0.15,wy_2009,NLC1,wood-and-wood-products_production-reference
+362,other-chemicals-production-reference_BEC7,,0.17,0.17,0.17,wy_2009,BEC7,other-chemicals-production-reference
+363,other-chemicals-production-reference_BEC1,,1.3,1.3,1.3,wy_2009,BEC1,other-chemicals-production-reference
+364,other-chemicals-production-reference_NLC7,emission,0.08,0.08,0.08,wy_2009,NLC7,other-chemicals-production-reference
+365,printing-and-media-production-reference_NLC7,printing-and-media,0.06,0.06,0.06,wy_2009,NLC7,printing-and-media-production-reference
+366,ceramics-and-other-non-metalic-minerals-production-reference_BEC1,emission,0.2,0.2,0.2,wy_2009,BEC1,ceramics-and-other-non-metalic-minerals-production-reference
+367,ceramics-and-other-non-metalic-minerals-production-reference_BEC8,,9.1,9.1,9.1,wy_2009,BEC8,ceramics-and-other-non-metalic-minerals-production-reference
+368,other-chemicals-production-reference_NLC6,,1.0,1.0,1.0,wy_2009,NLC6,other-chemicals-production-reference
+369,pulp-production-reference_NLC4,pulp,0.01,0.01,0.01,wy_2009,NLC4,pulp-production-reference
+370,machinery-equipment-production-reference_BEC3,emission,0.0,0.0,0.0,wy_2009,BEC3,machinery-equipment-production-reference
+371,(NG)PE_BEC3,chemicals,2.37,2.37,2.37,wy_2009,BEC3,(NG)PE
+372,pulp-production-reference_NLC3,pulp,0.02,0.02,0.02,wy_2009,NLC3,pulp-production-reference
+373,other-chemicals-production-reference_BEC6,,0.05,0.05,0.05,wy_2009,BEC6,other-chemicals-production-reference
+374,pharmaceuticals-production-reference_BEC3,emission,0.03,0.03,0.03,wy_2009,BEC3,pharmaceuticals-production-reference
+375,pharmaceuticals-production-reference_NLC6,emission,0.01,0.01,0.01,wy_2009,NLC6,pharmaceuticals-production-reference
+376,food-beverages-tobacco-production-reference_NLC3,food-beverages-tobacco,2.84,2.84,2.84,wy_2009,NLC3,food-beverages-tobacco-production-reference
+377,ceramics-and-other-non-metalic-minerals-production-reference_BEC5,emission,0.41,0.41,0.41,wy_2009,BEC5,ceramics-and-other-non-metalic-minerals-production-reference
+378,CEM2-(BMW)MEA_BEC7,cement,0.0,0.0,8.56,wy_2009,BEC7,CEM2-(BMW)MEA
+379,leather-and-textile-production-reference_BEC6,emission,0.0,0.0,0.0,wy_2009,BEC6,leather-and-textile-production-reference
+380,wood-and-wood-products_production-reference_BEC8,emission,0.0,0.0,0.0,wy_2009,BEC8,wood-and-wood-products_production-reference
+381,food-beverages-tobacco-production-reference_BEC3,food-beverages-tobacco,0.28,0.28,0.28,wy_2009,BEC3,food-beverages-tobacco-production-reference
+382,(NG)PEA_BEC7,chemicals,0.11,0.11,0.11,wy_2009,BEC7,(NG)PEA
+383,printing-and-media-production-reference_BEC3,printing-and-media,0.1,0.1,0.1,wy_2009,BEC3,printing-and-media-production-reference
+384,other-industrial-sectors_production-reference_BEC7,,0.63,0.63,0.63,wy_2009,BEC7,other-industrial-sectors_production-reference
+385,(NG)NH3_NLC7,ammonia,4.54,4.54,4.54,wy_2009,NLC7,(NG)NH3
+386,leather-and-textile-production-reference_BEC6,leather-and-textile,0.17,0.17,0.17,wy_2009,BEC6,leather-and-textile-production-reference
+387,paper-production-reference_NLC5,paper,0.5,0.5,0.5,wy_2009,NLC5,paper-production-reference
+388,wood-and-wood-products_production-reference_NLC6,wood,0.23,0.23,0.23,wy_2009,NLC6,wood-and-wood-products_production-reference
+389,transport-equipment-production-reference_NLC1,emission,0.0,0.0,0.0,wy_2009,NLC1,transport-equipment-production-reference
+390,transport-equipment-production-reference_BEC8,transport-equipment,0.23,0.23,0.23,wy_2009,BEC8,transport-equipment-production-reference
+391,Diaphragm_BEC3,chemicals,0.31,0.31,0.31,wy_2009,BEC3,Diaphragm
+392,EU-mix-2018_BEC7,emission,1.74,1.74,0.32,wy_2009,BEC7,EU-mix-2018
+393,paper-production-reference_BEC4,paper,1.52,1.52,1.52,wy_2009,BEC4,paper-production-reference
+394,ceramics-and-other-non-metalic-minerals-production-reference_NLC1,,0.14,0.14,0.14,wy_2009,NLC1,ceramics-and-other-non-metalic-minerals-production-reference
+395,other-industrial-sectors_production-reference_NLC1,emission,0.02,0.02,0.02,wy_2009,NLC1,other-industrial-sectors_production-reference
+396,machinery-equipment-production-reference_NLC4,emission,0.0,0.0,0.0,wy_2009,NLC4,machinery-equipment-production-reference
+397,CEM2-(BMW)MEA_BEC7,CO2,0.0,0.0,5.56,wy_2009,BEC7,CEM2-(BMW)MEA
+398,printing-and-media-production-reference_NLC8,printing-and-media,0.14,0.14,0.14,wy_2009,NLC8,printing-and-media-production-reference
+399,(NG)_gco_BEC3,glass,0.33,0.33,0.33,wy_2009,BEC3,(NG)_gco
+400,(NG)_gco_BEC7,glass,0.53,0.53,0.53,wy_2009,BEC7,(NG)_gco
+401,transport-equipment-production-reference_BEC7,emission,0.0,0.0,0.0,wy_2009,BEC7,transport-equipment-production-reference
+402,(NG)_gfi_NLC1,glass,0.21,0.21,0.21,wy_2009,NLC1,(NG)_gfi
+403,other-industrial-sectors_production-reference_NLC5,,0.64,0.64,0.64,wy_2009,NLC5,other-industrial-sectors_production-reference
+404,printing-and-media-production-reference_BEC2,printing-and-media,0.21,0.21,0.21,wy_2009,BEC2,printing-and-media-production-reference
+405,machinery-equipment-production-reference_BEC8,emission,0.0,0.0,0.0,wy_2009,BEC8,machinery-equipment-production-reference
+406,paper-production-reference_NLC8,paper,2.0,2.0,2.0,wy_2009,NLC8,paper-production-reference
+407,pulp-production-reference_NLC3,emission,0.0,0.0,0.0,wy_2009,NLC3,pulp-production-reference
+408,other-industrial-sectors_production-reference_NLC1,,1.82,1.82,1.82,wy_2009,NLC1,other-industrial-sectors_production-reference
+409,ceramics-and-other-non-metalic-minerals-production-reference_BEC7,,5.36,5.36,5.36,wy_2009,BEC7,ceramics-and-other-non-metalic-minerals-production-reference
+410,printing-and-media-production-reference_NLC5,printing-and-media,0.05,0.05,0.05,wy_2009,NLC5,printing-and-media-production-reference
+411,pulp-production-reference_NLC8,pulp,0.01,0.01,0.01,wy_2009,NLC8,pulp-production-reference
+412,food-beverages-tobacco-production-reference_BEC1,food-beverages-tobacco,1.58,1.58,1.58,wy_2009,BEC1,food-beverages-tobacco-production-reference
+413,pharmaceuticals-production-reference_NLC4,emission,0.0,0.0,0.0,wy_2009,NLC4,pharmaceuticals-production-reference
+414,machinery-equipment-production-reference_BEC1,emission,0.0,0.0,0.0,wy_2009,BEC1,machinery-equipment-production-reference
+415,other-industrial-sectors_production-reference_NLC4,emission,0.01,0.01,0.01,wy_2009,NLC4,other-industrial-sectors_production-reference
+416,food-beverages-tobacco-production-reference_NLC2,food-beverages-tobacco,2.52,2.52,2.52,wy_2009,NLC2,food-beverages-tobacco-production-reference
+417,ceramics-and-other-non-metalic-minerals-production-reference_NLC9,emission,0.05,0.05,0.05,wy_2009,NLC9,ceramics-and-other-non-metalic-minerals-production-reference
+418,machinery-equipment-production-reference_BEC8,machinery-equipment,0.58,0.58,0.58,wy_2009,BEC8,machinery-equipment-production-reference
+419,food-beverages-tobacco-production-reference_BEC6,food-beverages-tobacco,3.73,3.73,3.73,wy_2009,BEC6,food-beverages-tobacco-production-reference
+420,(NG)PEA_NLC1,chemicals,2.15,2.15,2.15,wy_2009,NLC1,(NG)PEA
+421,food-beverages-tobacco-production-reference_BEC4,food-beverages-tobacco,2.47,2.47,2.47,wy_2009,BEC4,food-beverages-tobacco-production-reference
+422,transport-equipment-production-reference_NLC4,emission,0.0,0.0,0.0,wy_2009,NLC4,transport-equipment-production-reference
+423,other-chemicals-production-reference_NLC1,,0.03,0.03,0.03,wy_2009,NLC1,other-chemicals-production-reference
+424,food-beverages-tobacco-production-reference_BEC2,food-beverages-tobacco,6.49,6.49,6.49,wy_2009,BEC2,food-beverages-tobacco-production-reference
+425,other-chemicals-production-reference_NLC4,,0.02,0.02,0.02,wy_2009,NLC4,other-chemicals-production-reference
+426,leather-and-textile-production-reference_BEC5,leather-and-textile,0.54,0.54,0.54,wy_2009,BEC5,leather-and-textile-production-reference
+427,(LN)O_NLC4,chemicals,0.1,0.1,0.1,wy_2009,NLC4,(LN)O
+428,food-beverages-tobacco-production-reference_BEC2,emission,0.1,0.1,0.1,wy_2009,BEC2,food-beverages-tobacco-production-reference
+429,ceramics-and-other-non-metalic-minerals-production-reference_BEC1,,6.34,6.34,6.34,wy_2009,BEC1,ceramics-and-other-non-metalic-minerals-production-reference
+430,machinery-equipment-production-reference_BEC4,machinery-equipment,0.37,0.37,0.37,wy_2009,BEC4,machinery-equipment-production-reference
+431,transport-equipment-production-reference_NLC2,transport-equipment,0.08,0.08,0.08,wy_2009,NLC2,transport-equipment-production-reference
+432,other-industrial-sectors_production-reference_NLC6,,2.73,2.73,2.73,wy_2009,NLC6,other-industrial-sectors_production-reference
+433,machinery-equipment-production-reference_BEC1,machinery-equipment,1.18,1.18,1.18,wy_2009,BEC1,machinery-equipment-production-reference
+434,pharmaceuticals-production-reference_NLC3,emission,0.01,0.01,0.01,wy_2009,NLC3,pharmaceuticals-production-reference
+435,food-beverages-tobacco-production-reference_BEC1,emission,0.02,0.02,0.02,wy_2009,BEC1,food-beverages-tobacco-production-reference
+436,Diaphragm_BEC1,chemicals,0.9,0.9,0.9,wy_2009,BEC1,Diaphragm
+437,machinery-equipment-production-reference_NLC3,machinery-equipment,1.79,1.79,1.79,wy_2009,NLC3,machinery-equipment-production-reference
+438,(NG)_gco_NLC4,glass,0.86,0.86,0.86,wy_2009,NLC4,(NG)_gco
+439,ceramics-and-other-non-metalic-minerals-production-reference_BEC5,,12.74,12.74,12.74,wy_2009,BEC5,ceramics-and-other-non-metalic-minerals-production-reference
+440,machinery-equipment-production-reference_BEC2,emission,0.0,0.0,0.0,wy_2009,BEC2,machinery-equipment-production-reference
+441,other-industrial-sectors_production-reference_NLC2,,0.64,0.64,0.64,wy_2009,NLC2,other-industrial-sectors_production-reference
+442,other-industrial-sectors_production-reference_BEC3,emission,0.0,0.0,0.0,wy_2009,BEC3,other-industrial-sectors_production-reference
+443,paper-production-reference_NLC9,paper,1.03,1.03,1.03,wy_2009,NLC9,paper-production-reference
+444,pulp-production-reference_NLC2,pulp,0.0,0.0,0.0,wy_2009,NLC2,pulp-production-reference
+445,other-chemicals-production-reference_NLC8,,0.0,0.0,0.0,wy_2009,NLC8,other-chemicals-production-reference
+446,EU-mix-2018_NLC5,cement,2.72,2.72,2.72,wy_2009,NLC5,EU-mix-2018
+447,leather-and-textile-production-reference_NLC3,emission,0.0,0.0,0.0,wy_2009,NLC3,leather-and-textile-production-reference
+448,machinery-equipment-production-reference_NLC5,emission,0.0,0.0,0.0,wy_2009,NLC5,machinery-equipment-production-reference
+449,pharmaceuticals-production-reference_NLC1,emission,0.0,0.0,0.0,wy_2009,NLC1,pharmaceuticals-production-reference
+450,(NG)_gco_NLC8,glass,0.71,0.71,0.71,wy_2009,NLC8,(NG)_gco
+451,transport-equipment-production-reference_NLC6,transport-equipment,0.35,0.35,0.35,wy_2009,NLC6,transport-equipment-production-reference
+452,machinery-equipment-production-reference_NLC2,emission,0.0,0.0,0.0,wy_2009,NLC2,machinery-equipment-production-reference
+453,other-industrial-sectors_production-reference_NLC8,emission,0.02,0.02,0.02,wy_2009,NLC8,other-industrial-sectors_production-reference
+454,transport-equipment-production-reference_NLC1,transport-equipment,0.24,0.24,0.24,wy_2009,NLC1,transport-equipment-production-reference
+455,pharmaceuticals-production-reference_NLC9,pharmaceuticals,0.03,0.03,0.03,wy_2009,NLC9,pharmaceuticals-production-reference
+456,wood-and-wood-products_production-reference_NLC7,wood,0.08,0.08,0.08,wy_2009,NLC7,wood-and-wood-products_production-reference
+457,printing-and-media-production-reference_NLC6,printing-and-media,0.19,0.19,0.19,wy_2009,NLC6,printing-and-media-production-reference
+458,wood-and-wood-products_production-reference_NLC8,wood,0.17,0.17,0.17,wy_2009,NLC8,wood-and-wood-products_production-reference
+459,food-beverages-tobacco-production-reference_NLC6,food-beverages-tobacco,6.13,6.13,6.13,wy_2009,NLC6,food-beverages-tobacco-production-reference
+460,(NG)_gfl_BEC3,glass,1.99,1.99,1.99,wy_2009,BEC3,(NG)_gfl
+461,other-chemicals-production-reference_BEC3,emission,0.01,0.01,0.01,wy_2009,BEC3,other-chemicals-production-reference
+462,other-chemicals-production-reference_NLC9,emission,0.05,0.05,0.05,wy_2009,NLC9,other-chemicals-production-reference
+463,paper-production-reference_BEC2,paper,1.89,1.89,1.89,wy_2009,BEC2,paper-production-reference
+464,(NG)PEA_BEC3,chemicals,1.12,1.12,1.12,wy_2009,BEC3,(NG)PEA
+465,food-beverages-tobacco-production-reference_NLC7,food-beverages-tobacco,3.69,3.69,3.69,wy_2009,NLC7,food-beverages-tobacco-production-reference
+466,other-chemicals-production-reference_NLC9,,0.67,0.67,0.67,wy_2009,NLC9,other-chemicals-production-reference
+467,transport-equipment-production-reference_BEC8,emission,0.0,0.0,0.0,wy_2009,BEC8,transport-equipment-production-reference
+468,leather-and-textile-production-reference_BEC4,emission,0.0,0.0,0.0,wy_2009,BEC4,leather-and-textile-production-reference
+469,(NG)PE_NLC4,chemicals,0.12,0.12,0.12,wy_2009,NLC4,(NG)PE
+470,other-non-ferrous-metals-production-reference_BEC1,emission,0.19,0.19,0.19,wy_2009,BEC1,other-non-ferrous-metals-production-reference
+471,pulp-production-reference_BEC6,pulp,1.35,1.35,1.35,wy_2009,BEC6,pulp-production-reference
+472,other-industrial-sectors_production-reference_BEC5,emission,0.02,0.02,0.02,wy_2009,BEC5,other-industrial-sectors_production-reference
+473,machinery-equipment-production-reference_BEC5,emission,0.0,0.0,0.0,wy_2009,BEC5,machinery-equipment-production-reference
+474,other-industrial-sectors_production-reference_NLC2,emission,0.01,0.01,0.01,wy_2009,NLC2,other-industrial-sectors_production-reference
+475,pharmaceuticals-production-reference_NLC2,pharmaceuticals,0.02,0.02,0.02,wy_2009,NLC2,pharmaceuticals-production-reference
+476,pharmaceuticals-production-reference_NLC8,emission,0.0,0.0,0.0,wy_2009,NLC8,pharmaceuticals-production-reference
+477,CEM2-(BMW)MEA_NLC6,CO2,0.0,0.0,1.02,wy_2009,NLC6,CEM2-(BMW)MEA
+478,paper-production-reference_NLC5,emission,0.01,0.01,0.01,wy_2009,NLC5,paper-production-reference
+479,EU_total,CO2,0.0,0.0,6.59,wy_2009,Europe,CEM2-(BMW)MEA
+480,EU_total,aluminium,0.12,0.12,0.12,wy_2009,Europe,aluminium-primary-production-reference
+481,EU_total,ammonia,10.27,10.27,10.27,wy_2009,Europe,(NG)NH3
+482,EU_total,buildings heat,7.03,4.97,0.0,wy_2009,Europe,Coal Boiler
+483,EU_total,buildings heat,241.25,170.72,0.0,wy_2009,Europe,Diesel Boiler
+484,EU_total,buildings heat,1060.71,927.18,931.64,wy_2009,Europe,Gas Boiler
+485,EU_total,cement,0.0,0.0,10.14,wy_2009,Europe,CEM2-(BMW)MEA
+486,EU_total,cement,19.54,19.54,8.96,wy_2009,Europe,EU-mix-2018
+487,EU_total,chemicals,28.98,28.98,28.98,wy_2009,Europe,(LN)O
+488,EU_total,chemicals,31.97,31.97,31.97,wy_2009,Europe,(NG)PE
+489,EU_total,chemicals,87.38,87.38,87.38,wy_2009,Europe,(NG)PEA
+490,EU_total,chemicals,3.47,3.47,3.47,wy_2009,Europe,Diaphragm
+491,EU_total,electricity,313.84,321.02,325.71,wy_2009,Europe,Diesel Group
+492,EU_total,electricity,0.84,0.84,0.84,wy_2009,Europe,Run-of-River
+493,EU_total,emission,1.34,1.34,1.34,wy_2009,Europe,(H2)DRI-EAF
+494,EU_total,emission,2.89,2.04,0.0,wy_2009,Europe,Coal Boiler
+495,EU_total,emission,3.11,3.11,1.42,wy_2009,Europe,EU-mix-2018
+496,EU_total,emission,0.21,0.21,0.21,wy_2009,Europe,Scraps_EAF
+497,EU_total,emission,0.0,0.0,0.0,wy_2009,Europe,aluminium-primary-production-reference
+498,EU_total,emission,1.4,1.4,1.4,wy_2009,Europe,ceramics-and-other-non-metalic-minerals-production-reference
+499,EU_total,emission,0.8,0.8,0.8,wy_2009,Europe,food-beverages-tobacco-production-reference
+500,EU_total,emission,0.01,0.01,0.01,wy_2009,Europe,leather-and-textile-production-reference
+501,EU_total,emission,0.02,0.02,0.02,wy_2009,Europe,machinery-equipment-production-reference
+502,EU_total,emission,0.37,0.37,0.37,wy_2009,Europe,other-chemicals-production-reference
+503,EU_total,emission,0.22,0.22,0.22,wy_2009,Europe,other-industrial-sectors_production-reference
+504,EU_total,emission,0.44,0.44,0.44,wy_2009,Europe,other-non-ferrous-metals-production-reference
+505,EU_total,emission,0.26,0.26,0.26,wy_2009,Europe,paper-production-reference
+506,EU_total,emission,0.08,0.08,0.08,wy_2009,Europe,pharmaceuticals-production-reference
+507,EU_total,emission,0.04,0.04,0.04,wy_2009,Europe,pulp-production-reference
+508,EU_total,emission,0.01,0.01,0.01,wy_2009,Europe,transport-equipment-production-reference
+509,EU_total,emission,0.0,0.0,0.0,wy_2009,Europe,wood-and-wood-products_production-reference
+510,EU_total,food-beverages-tobacco,54.74,54.74,54.74,wy_2009,Europe,food-beverages-tobacco-production-reference
+511,EU_total,glass,3.57,3.57,3.57,wy_2009,Europe,(NG)_gco
+512,EU_total,glass,0.6,0.6,0.6,wy_2009,Europe,(NG)_gfi
+513,EU_total,glass,2.43,2.43,2.43,wy_2009,Europe,(NG)_gfl
+514,EU_total,leather-and-textile,3.89,3.89,3.89,wy_2009,Europe,leather-and-textile-production-reference
+515,EU_total,machinery-equipment,13.7,13.7,13.7,wy_2009,Europe,machinery-equipment-production-reference
+516,EU_total,other-non-ferrous-metals,6.96,6.96,6.96,wy_2009,Europe,other-non-ferrous-metals-production-reference
+517,EU_total,paper,12.19,12.19,12.19,wy_2009,Europe,paper-production-reference
+518,EU_total,pharmaceuticals,1.33,1.33,1.33,wy_2009,Europe,pharmaceuticals-production-reference
+519,EU_total,printing-and-media,2.81,2.81,2.81,wy_2009,Europe,printing-and-media-production-reference
+520,EU_total,pulp,1.45,1.45,1.45,wy_2009,Europe,pulp-production-reference
+521,EU_total,steel,32.42,32.42,32.42,wy_2009,Europe,(H2)DRI-EAF
+522,EU_total,steel,7.06,7.06,7.06,wy_2009,Europe,Scraps_EAF
+523,EU_total,transport-equipment,3.66,3.66,3.66,wy_2009,Europe,transport-equipment-production-reference
+524,EU_total,wood,4.97,4.97,4.97,wy_2009,Europe,wood-and-wood-products_production-reference
+525,EU_total,,43.68,43.68,43.68,wy_2009,Europe,ceramics-and-other-non-metalic-minerals-production-reference
+526,EU_total,,4.92,4.92,4.92,wy_2009,Europe,other-chemicals-production-reference
+527,EU_total,,20.43,20.43,20.43,wy_2009,Europe,other-industrial-sectors_production-reference

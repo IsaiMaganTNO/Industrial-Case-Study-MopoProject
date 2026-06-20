@@ -26,12 +26,12 @@ import dill
 import time as time_lib
 
 start_time = time_lib.time()
-url_results = r"sqlite:///C:\Users\papo002\Desktop\Pan-European_Framework\.spinetoolbox\items\investment_results\Investment_Results.sqlite" #sys.argv[1]
+url_results = sys.argv[1]
 result_db = DatabaseMapping(url_results)
 result_db.fetch_all()
 
 if len(sys.argv) > 2:
-    sopt_results = r"sqlite:///C:\Users\papo002\Desktop\Pan-European_Framework\.spinetoolbox\items\final_spineopt_model\Final_SpineOpt_Model.sqlite" # sys.argv[2]
+    sopt_results = sys.argv[2]
     sopt_db = DatabaseMapping(sopt_results)
     sopt_db.fetch_all()
 else:
@@ -49,6 +49,7 @@ with open("config/unit_mapping.yml","r") as file:
     unit_map = yaml.safe_load(file)
 with open("config/scenario_mapping.yml","r") as file:
     scenario_map = yaml.safe_load(file)
+    print("scenario_map keys:", list(scenario_map.keys()))
 with open("config/bidirectional_storage_node_map.yml","r") as file:
     storage_bi_node_map = yaml.safe_load(file)
 with open("config/storage_node_mapping.yml","r") as file:
@@ -58,8 +59,11 @@ with open("config/storage_node_mapping.yml","r") as file:
 def extract_polygon(unit_name: str):
     if not isinstance(unit_name, str):
         return None
-    part = unit_name.rsplit('_', 1)[-1][-2:]
-    return (part if part!="on" else "Europe") or None
+    part = unit_name.rsplit('_', 1)[-1][-4:]
+    if part.startswith("NL") or part.startswith("BE"):
+        return part
+    else:
+        return None
 
 def apply_unit_name(unit_name: str):
     new_name = None
