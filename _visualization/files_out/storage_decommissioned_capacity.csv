@@ -1,0 +1,11 @@
+,storage_name,y2030,y2040,y2050,technology,node,scenario,polygon
+0,salt-cavern_NLC6,0.0,27.78,0.0,salt-cavern,H2,wy_2009,NLC6
+1,salt-cavern_NLC5,0.0,27.78,0.0,salt-cavern,H2,wy_2009,NLC5
+2,salt-cavern_NLC3,0.0,27.78,0.0,salt-cavern,H2,wy_2009,NLC3
+3,salt-cavern_NLC4,0.0,27.78,0.0,salt-cavern,H2,wy_2009,NLC4
+4,salt-cavern_NLC1,0.0,27.78,0.0,salt-cavern,H2,wy_2009,NLC1
+5,salt-cavern_NLC2,0.0,27.78,0.0,salt-cavern,H2,wy_2009,NLC2
+6,salt-cavern_NLC7,0.0,27.78,0.0,salt-cavern,H2,wy_2009,NLC7
+7,salt-cavern_NLC9,0.0,27.78,0.0,salt-cavern,H2,wy_2009,NLC9
+8,salt-cavern_NLC8,0.0,27.78,0.0,salt-cavern,H2,wy_2009,NLC8
+9,EU_total,0.0,250.0,0.0,salt-cavern,H2,wy_2009,Europe

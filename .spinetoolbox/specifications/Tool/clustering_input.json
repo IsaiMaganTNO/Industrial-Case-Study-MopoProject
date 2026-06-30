@@ -1,0 +1,13 @@
+{
+    "name": "clustering_input",
+    "tooltype": "python",
+    "includes": [
+        "clustering_input.py"
+    ],
+    "description": "",
+    "inputfiles": [],
+    "inputfiles_opt": [],
+    "outputfiles": [],
+    "cmdline_args": [],
+    "includes_main_path": "../../../_clustering"
+}

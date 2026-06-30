@@ -808,6 +808,40 @@ def add_industrial_sector(db_map : DatabaseMapping, db_source : DatabaseMapping,
                                         for value_ in values_:
                                             value_param = (param_list[param_source][1]*value_["parsed_value"] if value_["type"] == "float" else value_["parsed_value"]) if value_["type"] != "map" else {"type":"map","index_type":"str","index_name":"period","data":{key:param_list[param_source][1]*item for key,item in dict(json.loads(value_["value"])["data"]).items()}}
                                             add_parameter_value(db_map,entity_class_target,param_list[param_source][0],value_["alternative_name"],entity_target_name,value_param)
+
+                        # Investment method (technology -> unit)
+                        # Industrial source DB does not contain this parameter, so pull it from
+                        # userconfig.yaml and assign it to every generated regional unit.
+
+                        if entity_class_target == "unit" and "technology" in entity_class_elements:
+
+                            technology_name = entity_names[
+                                entity_class_elements.index("technology")
+                            ]
+
+                            investment_method = (
+                                config["user"]["technology"]
+                                .get(technology_name, {})
+                                .get("investment_method", "no_limits")
+                            )
+
+                            # Reconstruct the actual unit entity name exactly as done elsewhere
+                            # in this entity_class_target loop.
+                            for entity_target_building in config["sys"][db_name]["entities"][entity_class][entity_class_target]:
+
+                                unit_target_name = tuple(
+                                    "__".join([entity_target_names[i - 1] for i in k])
+                                    for k in entity_target_building
+                                )
+
+                                add_or_update_parameter_value(
+                                    db_map,
+                                    "unit",
+                                    "investment_method",
+                                    "Base",
+                                    unit_target_name,
+                                    investment_method,
+                                )
                         
                         # Regional Parameter
                         entity_class_region = f"{entity_class}__region"
@@ -821,7 +855,6 @@ def add_industrial_sector(db_map : DatabaseMapping, db_source : DatabaseMapping,
                                     # Default value when demand is defined
                                     if param_source == "demand":
                                         add_parameter_value(db_map,entity_class_target,"flow_scaling_method","Base",entity_target_name,"use_profile_directly")
-
 def add_biomass_production(db_map : DatabaseMapping, db_source : DatabaseMapping, config :dict, db_name : str) -> None:
 
     for alternative_i in db_source.get_alternative_items():

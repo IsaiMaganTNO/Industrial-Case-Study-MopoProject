@@ -1,0 +1,13 @@
+{
+    "name": "clustering_output",
+    "tooltype": "python",
+    "includes": [
+        "clustering_output.py"
+    ],
+    "description": "",
+    "inputfiles": [],
+    "inputfiles_opt": [],
+    "outputfiles": [],
+    "cmdline_args": [],
+    "includes_main_path": "../../../_clustering"
+}

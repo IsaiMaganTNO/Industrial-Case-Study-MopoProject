@@ -20,7 +20,7 @@ pipelines:
     target_resolution: IC1
   biomass_production:
     status: True
-    source_resolution: PECD1
+    source_resolution: IC1
     target_resolution: IC1
   power_transmission:
     status: True
@@ -32,20 +32,20 @@ pipelines:
     target_resolution: IC1
   gas_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   gas_pipelines: 
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   industrial_sector:
     status: True
-    source_resolution: PECD1
+    source_resolution: IC1
     target_resolution: IC1
   other_industrial_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   heat_sector:
     status: True
     source_resolution: IC1
@@ -61,8 +61,8 @@ pipelines:
 
 model:
     type:  brownfield # greenfied not included yet
-    operations_resolution: "1h"
-    planning_resolution: "365D" # it builds this optimization window for each planning year
+    operations_resolution: "8760h"
+    planning_resolution: "8760h" # it builds this optimization window for each planning year
     planning_years: # options: 2030, 2040 and 2050 (parameters limitation)
       "2030": ["2030-01-01T00:00:00",10.0] # start datetime and years represented
       "2040": ["2041-01-01T00:00:00",10.0] # 2041 no leap year
@@ -628,16 +628,8 @@ technology:
   WPI-BOF-MEA:
     status: true
   alumina-production-alternative:
-    status: True
+    status: true
   alumina-production-reference:
-    status: True
-  aluminium-primary-production-alternative:
-    status: True
-  aluminium-primary-production-reference:
-    status: True
-  aluminium-secondary-production-alternative:
-    status: True
-  aluminium-secondary-production-reference:
     status: True
   food-beverages-tobacco-production-alternative:
     status: True

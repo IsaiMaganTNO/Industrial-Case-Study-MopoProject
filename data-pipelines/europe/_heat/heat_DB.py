@@ -329,7 +329,8 @@ def main():
         versionconfig = yaml.safe_load(open(sys.argv[-1], "rb"))
         add_scenario(target_db,f"v_{versionconfig["buildings"]["version"]}")
 
-        with open("heat_template_DB.json", 'r') as f:
+        project_root = os.path.dirname(os.path.dirname(os.path.dirname(sys.argv[2])))
+        with open(os.path.join(project_root, 'data-pipelines', 'europe', '_heat', 'heat_template_DB.json'), 'r') as f:
             db_template = json.load(f)
         # Importing Map
         api.import_data(target_db,

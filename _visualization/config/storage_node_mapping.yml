@@ -1,0 +1,13 @@
+battery-storage: elec
+battery-storage-iron-air: elec
+truck-DR: elec
+bus-DR: elec
+van-DR: elec
+car-DR: elec
+salt-cavern: H2
+CH4-geo-formation: CH4
+reservoir: hydro
+PH-reservoir: elec
+biomass-stock: biomass
+atmosphere: atmosphere
+CO2-storage: CO2-sink

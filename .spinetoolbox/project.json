@@ -77,6 +77,41 @@
                     "type": "path",
                     "relative": true,
                     "path": ".spinetoolbox/specifications/Tool/ines_to_spineopt.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/opt_setup.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/scenario_run.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/clustering_input.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/clustering_output.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/feedback.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/planning_setup.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/run_clustering.json"
                 }
             ]
         },
@@ -877,6 +912,204 @@
                         "scenario_filter": true
                     }
                 }
+            },
+            {
+                "name": "from Run SpineOpt to Investment_results_DB",
+                "from": [
+                    "Run SpineOpt",
+                    "right"
+                ],
+                "to": [
+                    "Investment_results_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from SpineOpt_DB to Merger",
+                "from": [
+                    "SpineOpt_DB",
+                    "right"
+                ],
+                "to": [
+                    "Merger",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Merger to SpineOpt_final_DB",
+                "from": [
+                    "Merger",
+                    "right"
+                ],
+                "to": [
+                    "SpineOpt_final_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from SpineOpt_final_DB to Run SpineOpt",
+                "from": [
+                    "SpineOpt_final_DB",
+                    "right"
+                ],
+                "to": [
+                    "Run SpineOpt",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from planning_setup to SpineOpt_DB",
+                "from": [
+                    "planning_setup",
+                    "right"
+                ],
+                "to": [
+                    "SpineOpt_DB",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from clustering_output to SpineOpt_final_DB",
+                "from": [
+                    "clustering_output",
+                    "right"
+                ],
+                "to": [
+                    "SpineOpt_final_DB",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from clustering_input to SpineOpt_final_DB",
+                "from": [
+                    "clustering_input",
+                    "right"
+                ],
+                "to": [
+                    "SpineOpt_final_DB",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from scenario_run to SpineOpt_final_DB",
+                "from": [
+                    "scenario_run",
+                    "right"
+                ],
+                "to": [
+                    "SpineOpt_final_DB",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from Scenario_config to scenario_run",
+                "from": [
+                    "Scenario_config",
+                    "right"
+                ],
+                "to": [
+                    "scenario_run",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from clustering_input to run_clustering",
+                "from": [
+                    "clustering_input",
+                    "right"
+                ],
+                "to": [
+                    "run_clustering",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from run_clustering to clustering_output",
+                "from": [
+                    "run_clustering",
+                    "right"
+                ],
+                "to": [
+                    "clustering_output",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
             }
         ],
         "jumps": []
@@ -1586,8 +1819,8 @@
         "Heat_DB": {
             "type": "Data Store",
             "description": "",
-            "x": -131.79990127421308,
-            "y": 204.4064342403944,
+            "x": -130.13409846786817,
+            "y": 202.74063143404945,
             "url": {
                 "dialect": "sqlite",
                 "host": "",
@@ -1603,7 +1836,7 @@
         "heat_importer": {
             "type": "Tool",
             "description": "",
-            "x": -276.0543896918303,
+            "x": -274.06033059575486,
             "y": 202.6830933914852,
             "specification": "heat_importer",
             "execute_in_work": false,
@@ -1798,12 +2031,12 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Gas/Gas_Sectors_Dataset.xlsx"
+                    "path": "data/version_track.yml"
                 },
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/version_track.yml"
+                    "path": "data/Gas/Gas_Sectors_Dataset_IC1_placeholder.xlsx"
                 }
             ],
             "file_patterns": [],
@@ -1824,7 +2057,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/Gas/Gas_Sectors_Dataset.xlsx"
+                    "arg": "<project>/data/Gas/Gas_Sectors_Dataset_IC1_placeholder.xlsx"
                 },
                 {
                     "type": "resource",
@@ -2057,8 +2290,8 @@
         "Load template": {
             "type": "Tool",
             "description": "",
-            "x": 606.2980579260912,
-            "y": -250.6350239458251,
+            "x": 420.8505619910836,
+            "y": -164.89048281458506,
             "specification": "Load template",
             "execute_in_work": true,
             "cmd_line_args": [
@@ -2067,6 +2300,162 @@
                     "arg": "db_url@SpineOpt_DB"
                 }
             ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "scenario_run": {
+            "type": "Tool",
+            "description": "",
+            "x": 697.3156079284122,
+            "y": 102.31343605951199,
+            "specification": "scenario_run",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@SpineOpt_final_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "<project>/_planning-input-processsing/scenario_config.yml"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "Run SpineOpt": {
+            "type": "Tool",
+            "description": "",
+            "x": 985.6029272102712,
+            "y": -20.69711978853902,
+            "specification": "Run SpineOpt",
+            "execute_in_work": true,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@SpineOpt_final_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@Investment_results_DB"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "Investment_results_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": 1141.1508831658575,
+            "y": -15.530178200447953,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/investment_results_db/Investment_results_DB.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "Scenario_config": {
+            "type": "Data Connection",
+            "description": "",
+            "x": 580.135776238762,
+            "y": 100.71231809541672,
+            "file_references": [
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": "_planning-input-processsing/scenario_config.yml"
+                }
+            ],
+            "file_patterns": [],
+            "directory_references": [],
+            "db_references": []
+        },
+        "clustering_input": {
+            "type": "Tool",
+            "description": "",
+            "x": 723.8434518753519,
+            "y": 237.62128872269713,
+            "specification": "clustering_input",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@SpineOpt_final_DB"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "clustering_output": {
+            "type": "Tool",
+            "description": "",
+            "x": 971.1067797886951,
+            "y": 235.2989733368914,
+            "specification": "clustering_output",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@SpineOpt_final_DB"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "Merger": {
+            "type": "Merger",
+            "description": "",
+            "x": 709.8850382028246,
+            "y": -19.9405909607535,
+            "cancel_on_error": false
+        },
+        "SpineOpt_final_DB": {
+            "type": "Data Store",
+            "description": "",
+            "x": 857.4454113124006,
+            "y": -25.92276824897955,
+            "url": {
+                "dialect": "sqlite",
+                "host": "",
+                "port": null,
+                "database": {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/items/spineopt_final_db/SpineOpt_final_DB.sqlite"
+                },
+                "schema": ""
+            }
+        },
+        "planning_setup": {
+            "type": "Tool",
+            "description": "",
+            "x": 430.71676475227565,
+            "y": 93.72077751554146,
+            "specification": "planning_setup",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@SpineOpt_DB"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "run_clustering": {
+            "type": "Tool",
+            "description": "",
+            "x": 859.4394704084759,
+            "y": 233.30491424081598,
+            "specification": "run_clustering",
+            "execute_in_work": false,
+            "cmd_line_args": [],
             "kill_completed_processes": false,
             "log_process_output": false
         }
