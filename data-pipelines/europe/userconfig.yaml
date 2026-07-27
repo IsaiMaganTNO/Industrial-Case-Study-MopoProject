@@ -82,10 +82,10 @@ timeline:
 
 global_constraints:
   co2_annual_budget:
-    "2030": 2200000000 # European level, if running a country-level model, then adjust this factor
-    "2040": 550000000  # European level
+    "2030": 170000000 # BE+NL scope (170 Mt CO2/yr); was European 2200 Mt/yr
+    "2040": 40000000  # BE+NL scope (40 Mt CO2/yr); was European 550 Mt/yr
     "2050": 0.0
-  co2_annual_sequestration: 200000000 # system level
+  co2_annual_sequestration: 200000000 # system level (still European scope; adjust separately if desired)
 
 # Use country code to model a specific country  and define Europe as country, then, the remaining countries are modeled following requirements
 countries : 

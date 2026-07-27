@@ -2,3 +2,6 @@
 .spinetoolbox/items/**/*.sqlite
 data/*/
 !data/geodata
+
+# Local A/B result snapshots — kept out of PRs; see _baselines/*/README.md
+_baselines/

@@ -1,6 +1,30 @@
 scenarios:
   baseline_blended_representative_periods: ["Base","wy2009","y2030_wy2009","y2030_wy2009","y2040_wy2009","y2050_wy2009","medium_bio","current","GA","GA_flex0"]
-emission_factor: 0.018 #percentage of carbon budget considered in the model based on the included countries
+emission_factor: 0.018 #percentage of carbon budget considered in the model based on the included countries (LEGACY: used by disabled update_parameters(); replaced by emission_cap below)
+
+# BE+NL CO2 emission cap. Applied by emission_cap_setup() in scenario_run.py.
+# Writes atmosphere.storage_state_max (set to peak) and storage_state_max_fraction (schedule / peak).
+# Step interpolation: value at YYYY-01-01 holds until the next anchor (e.g. 2040 value applies at 2041-01-01).
+emission_cap:
+  enabled: true
+  # Annual CO2 emission caps in Mt CO2/year for BE+NL scope.
+  # Enforced via SpineOpt v1.0.0's `user_constraint` mechanism on unit_flow
+  # into `atmosphere`. The constraint fires per HOUR at representative
+  # timesteps, and the RHS is interpreted per-hour. Because demand and VRE
+  # availability are BOTH flat within each 24-hour representative period in
+  # this model (verified — all peak/avg = 1.0x), the per-hour cap is
+  # mathematically equivalent to an annual cap divided by 8760 hours.
+  # We keep the schedule in familiar Mt/yr units and use scale_factor to
+  # convert to kt/hr: kt/hr = Mt/yr * 1000 / 8760 = Mt/yr * 0.1142.
+  schedule_Mt_per_year:
+    2030: 170
+    2040: 40
+    2050: 10   # tight but tries to hit user's original policy target
+    2060: 10
+  scale_factor_to_native_kt: 0.1142   # Mt/yr -> kt/hr (=1000/8760)
+  # Note: if 2050 = 10 Mt/yr is infeasible due to locked-in transport /
+  # industrial emissions, relax to e.g. 30-50 Mt/yr.
+
 resolution: "1Y"
 future_inflation: 0.03
 default_technology_discount_rate: 0.05
