@@ -9,6 +9,10 @@ import pandas as pd
 import json
 import numpy as np
 
+import os
+from pathlib import Path
+
+os.chdir(Path(__file__).resolve().parent)
 
 def nested_index_names(value, names=None, depth=0):
     if names is None:
@@ -250,7 +254,7 @@ def process_emissions(source_db, target_db):
             add_parameter_value(
                 target_db,
                 "node",
-                "has_state",
+                "storage_active",
                 param_map["alternative_name"],
                 ("atmosphere",),
                 True,
@@ -321,7 +325,7 @@ def process_emissions(source_db, target_db):
                     add_parameter_value(
                         target_db,
                         "node",
-                        "node_availability_factor",
+                        "storage_state_max_fraction",
                         param_map["alternative_name"],
                         param_map["entity_byname"],
                         ts_to_export,
@@ -329,7 +333,7 @@ def process_emissions(source_db, target_db):
                     add_parameter_value(
                         target_db,
                         "node",
-                        "node_state_cap",
+                        "storage_state_max",
                         param_map["alternative_name"],
                         param_map["entity_byname"],
                         max(values_),
@@ -348,58 +352,69 @@ def process_emissions(source_db, target_db):
     }
 
     for unit_entity in target_db.get_entity_items(entity_class_name="unit"):
+        # v1.0.0: unit__from_node is gone; look up node__to_unit with swapped byname.
         unit__from_nodes = [
             from_node
             for from_node in co2_value
             if target_db.get_entity_item(
-                entity_class_name="unit__from_node",
-                entity_byname=(unit_entity["name"], from_node),
+                entity_class_name="node__to_unit",
+                entity_byname=(from_node, unit_entity["name"]),
             )
         ]
         unit_name = unit_entity["name"]
         if len(unit__from_nodes) > 1:
             add_entity(target_db, "unit__to_node", (unit_name, "atmosphere"))
             add_entity(target_db, "user_constraint", (unit_name + "_emissions",))
+            # v1.0.0: unit__to_node__user_constraint -> unit_flow__user_constraint.
+            # Flat byname is (unit, node, uc) where (unit, node) is the underlying
+            # unit__to_node flow entity acting as a unit_flow superclass member.
             add_entity(
                 target_db,
-                "unit__to_node__user_constraint",
+                "unit_flow__user_constraint",
                 (unit_name, "atmosphere", unit_name + "_emissions"),
             )
             add_parameter_value(
                 target_db,
-                "unit__to_node__user_constraint",
-                "unit_flow_coefficient",
+                "unit_flow__user_constraint",
+                "coefficient_for_unit_flow",
                 "Base",
                 (unit_name, "atmosphere", unit_name + "_emissions"),
                 -1.0,
             )
             for from_node in unit__from_nodes:
+                # v1.0.0: unit__from_node__user_constraint -> unit_flow__user_constraint.
+                # Flat byname (node, unit, uc) where (node, unit) is the underlying
+                # node__to_unit flow entity acting as a unit_flow superclass member.
                 add_entity(
                     target_db,
-                    "unit__from_node__user_constraint",
-                    (unit_name, from_node, unit_name + "_emissions"),
+                    "unit_flow__user_constraint",
+                    (from_node, unit_name, unit_name + "_emissions"),
                 )
                 add_parameter_value(
                     target_db,
-                    "unit__from_node__user_constraint",
-                    "unit_flow_coefficient",
+                    "unit_flow__user_constraint",
+                    "coefficient_for_unit_flow",
                     "Base",
-                    (unit_name, from_node, unit_name + "_emissions"),
+                    (from_node, unit_name, unit_name + "_emissions"),
                     co2_value[from_node],
                 )
         elif len(unit__from_nodes) == 1:
             add_entity(target_db, "unit__to_node", (unit_name, "atmosphere"))
+            # v1.0.0: unit__node__node with fix_ratio_out_in_unit_flow  ->
+            # unit_flow__unit_flow((out_flow), (in_flow)) with flow_ratio_equality_coefficient.
+            # out_flow: unit__to_node(unit, atmosphere); in_flow: node__to_unit(from_node, unit).
+            # Flat 4-tuple byname: (unit, atmosphere, from_node, unit).
             add_entity(
                 target_db,
-                "unit__node__node",
-                (unit_name, "atmosphere", unit__from_nodes[0]),
+                "unit_flow__unit_flow",
+                (unit_name, "atmosphere", unit__from_nodes[0], unit_name),
             )
             add_parameter_value(
                 target_db,
-                "unit__node__node",
-                "fix_ratio_out_in_unit_flow",
+                "unit_flow__unit_flow",
+                "flow_ratio_equality_coefficient",
                 "Base",
-                (unit_name, "atmosphere", unit__from_nodes[0]),
+                (unit_name, "atmosphere", unit__from_nodes[0], unit_name),
                 co2_value[unit__from_nodes[0]],
             )
 
@@ -410,14 +425,21 @@ def process_emissions(source_db, target_db):
     ]:
         entity_byname = entity_items["entity_byname"]
         unit_name, node_out = entity_byname
-        add_entity(target_db, "unit__from_node", (unit_name, "atmosphere"))
-        add_entity(target_db, "unit__node__node", (unit_name, node_out, "atmosphere"))
+        # v1.0.0: unit__from_node(unit, atmosphere) -> node__to_unit(atmosphere, unit).
+        add_entity(target_db, "node__to_unit", ("atmosphere", unit_name))
+        # v1.0.0: unit__node__node with fix_ratio_out_in_unit_flow  ->
+        # unit_flow__unit_flow((unit, node_out), (atmosphere, unit)) with flow_ratio_equality_coefficient.
+        add_entity(
+            target_db,
+            "unit_flow__unit_flow",
+            (unit_name, node_out, "atmosphere", unit_name),
+        )
         add_parameter_value(
             target_db,
-            "unit__node__node",
-            "fix_ratio_out_in_unit_flow",
+            "unit_flow__unit_flow",
+            "flow_ratio_equality_coefficient",
             "Base",
-            (unit_name, node_out, "atmosphere"),
+            (unit_name, node_out, "atmosphere", unit_name),
             1.0,
         )
 
@@ -1008,7 +1030,7 @@ def storage_state_fix_method(source_db, target_db):
                                 add_parameter_value(
                                     target_db,
                                     "node",
-                                    "fix_node_state",
+                                    "storage_state_fix",
                                     alternative_name,
                                     value_["entity_byname"],
                                     target_ts_,
@@ -1071,19 +1093,19 @@ def limiting_investments_notallowed(source_db, target_db):
     }
     target_class = {"unit": "unit", "link": "connection", "node": "node"}
     target_param = {
-        "unit": "candidate_units",
-        "link": "candidate_connections",
-        "node": "candidate_storages",
+        "unit": "investment_count_max_cumulative",
+        "link": "investment_count_max_cumulative",
+        "node": "storage_investment_count_max_cumulative",
     }
     fix_param = {
-        "unit": "fix_units_invested",
-        "link": "fix_connections_invested",
-        "node": "fix_storages_invested",
+        "unit": "investment_count_fix_new",
+        "link": "investment_count_fix_new",
+        "node": "storage_investment_count_fix_new",
     }
     fix_av_param = {
-        "unit": "fix_units_invested_available",
-        "link": "fix_connections_invested_available",
-        "node": "fix_storages_invested_available",
+        "unit": "investment_count_fix_cumulative",
+        "link": "investment_count_fix_cumulative",
+        "node": "storage_investment_count_fix_cumulative",
     }
     starttime = {}
     year_repr = {}
@@ -1296,7 +1318,7 @@ def set_to_entities_and_parameters(source_db, target_db):
                 add_parameter_value(
                     target_db,
                     "investment_group",
-                    "maximum_entities_invested_available",
+                    "investment_count_total_max_cumulative",
                     source_dict_parameter["alternative_name"],
                     source_dict_parameter["entity_byname"],
                     source_dict_parameter["parsed_value"],
@@ -1328,16 +1350,14 @@ def set_to_entities_and_parameters(source_db, target_db):
                             source_flow = source_db.get_entity_items(
                                 entity_byname=names_relation[1:]
                             )[0]["entity_class_name"]
+                            # v1.0.0: unit__from_node is gone; use node__to_unit
+                            # which has the same (node, unit) byname order as the INES source.
                             target_entity_class = (
-                                "unit__from_node"
+                                "node__to_unit"
                                 if source_flow == "node__to_unit"
                                 else "unit__to_node"
                             )
-                            target_entity_names = (
-                                (names_relation[2], names_relation[1])
-                                if source_flow == "node__to_unit"
-                                else (names_relation[1], names_relation[2])
-                            )
+                            target_entity_names = (names_relation[1], names_relation[2])
                             try:
                                 add_entity(
                                     target_db, target_entity_class, target_entity_names
@@ -1354,7 +1374,7 @@ def set_to_entities_and_parameters(source_db, target_db):
                             add_parameter_value(
                                 target_db,
                                 target_entity_class,
-                                "max_total_cumulated_unit_flow_to_node",
+                                "flow_limits_max_cumulative",
                                 source_dict_parameter["alternative_name"],
                                 target_entity_names,
                                 param_value,
@@ -1388,19 +1408,24 @@ def default_parameters(target_db, settings):
 
 
 def candidates_to_number_of(target_db):
-    parameter_conversion = {
-        "candidate_units": "number_of_units",
-        "candidate_connections": "number_of_connections",
-        "candidate_storages": "number_of_storages",
-    }
-    for parameter_name in parameter_conversion:
+    # v1.0.0 rename: candidate_* -> investment_count_max_cumulative (unit/connection)
+    # and storage_investment_count_max_cumulative (node); number_of_* -> existing_*.
+    # Both unit and connection use the SAME new parameter name, so we must key by
+    # (class, param) to avoid collisions.
+    parameter_conversion = [
+        ("unit", "investment_count_max_cumulative", "existing_units"),
+        ("connection", "investment_count_max_cumulative", "existing_connections"),
+        ("node", "storage_investment_count_max_cumulative", "existing_storages"),
+    ]
+    for source_class, source_param, target_param in parameter_conversion:
         for param_map in target_db.get_parameter_value_items(
-            parameter_definition_name=parameter_name
+            entity_class_name=source_class,
+            parameter_definition_name=source_param,
         ):
             add_parameter_value(
                 target_db,
-                param_map["entity_class_name"],
-                parameter_conversion[parameter_name],
+                source_class,
+                target_param,
                 param_map["alternative_name"],
                 param_map["entity_byname"],
                 0.0,
@@ -1415,10 +1440,13 @@ def candidates_to_number_of(target_db):
 def existing_capacity(source_db, target_db):
 
     entity_map = {"unit": "unit", "node": "node", "link": "connection"}
+    # v1.0.0 rename: initial_units_invested_available   -> investment_count_initial_cumulative
+    #                initial_connections_invested_available -> investment_count_initial_cumulative
+    #                initial_storages_invested_available    -> storage_investment_count_initial_cumulative
     parameter_conversion = {
-        "units_existing": "initial_units_invested_available",
-        "links_existing": "initial_connections_invested_available",
-        "storages_existing": "initial_storages_invested_available",
+        "units_existing": "investment_count_initial_cumulative",
+        "links_existing": "investment_count_initial_cumulative",
+        "storages_existing": "storage_investment_count_initial_cumulative",
     }
     for source_parameter in parameter_conversion:
         target_parameter = parameter_conversion[source_parameter]
@@ -1490,10 +1518,14 @@ def lifetime_to_duration(source_db, target_db, settings):
 
 def unit_flow_variants(source_db, target_db, settings):
 
+    # v1.0.0: unit__node__node is gone; ratios move to unit_flow__unit_flow with
+    # new parameter names (no more _out_in / _in_out / _in_in / _out_out suffixes).
+    # Direction is now implicit in whichever unit_flow subclass (unit__to_node or
+    # node__to_unit) each flow entity belongs to.
     parameters_mapping = {
-        "equality_ratio": "fix_ratio",
-        "less_than_ratio": "max_ratio_",
-        "greater_than_ration": "min_ratio_",
+        "equality_ratio": "flow_ratio_equality_coefficient",
+        "less_than_ratio": "flow_ratio_less_than_coefficient",
+        "greater_than_ration": "flow_ratio_greater_than_coefficient",
     }
     for param_map in source_db.get_parameter_value_items(
         entity_class_name="unit_flow__unit_flow"
@@ -1509,27 +1541,34 @@ def unit_flow_variants(source_db, target_db, settings):
             "entity_class_name"
         ]
 
+        # In v1.0.0 the ratio parameter name no longer encodes direction; the
+        # underlying unit_flow subclass (unit__to_node vs node__to_unit) does.
+        # We keep the direction detection variables in case downstream logic
+        # needs them, but the parameter name is direction-agnostic now.
         flow_direction_1 = "in" if entity_1 == "node__to_unit" else "out"
         flow_direction_2 = "in" if entity_2 == "node__to_unit" else "out"
+        _ = (flow_direction_1, flow_direction_2)  # kept for clarity, unused after v1.0.0
 
         unit_name = unit_flow_1[1] if entity_1 == "node__to_unit" else unit_flow_1[0]
         node_1 = unit_flow_1[0] if entity_1 == "node__to_unit" else unit_flow_1[1]
         node_2 = unit_flow_2[0] if entity_2 == "node__to_unit" else unit_flow_2[1]
+        _ = (unit_name, node_1, node_2)  # kept for clarity, unused after v1.0.0
 
-        target_parameter = (
-            parameters_mapping[param_map["parameter_definition_name"]]
-            + f"_{flow_direction_1}_{flow_direction_2}_unit_flow"
-        )
+        target_parameter = parameters_mapping[param_map["parameter_definition_name"]]
 
-        add_entity(target_db, "unit__node__node", (unit_name, node_1, node_2))
+        # v1.0.0: target is unit_flow__unit_flow, byname is the 4-tuple flattening
+        # of the two unit_flow bynames (same as source INES structure).
+        target_byname = tuple(param_map["entity_byname"])
+
+        add_entity(target_db, "unit_flow__unit_flow", target_byname)
 
         if param_map["type"] == "float":
             add_parameter_value(
                 target_db,
-                "unit__node__node",
+                "unit_flow__unit_flow",
                 target_parameter,
                 param_map["alternative_name"],
-                (unit_name, node_1, node_2),
+                target_byname,
                 param_map["parsed_value"],
             )
 
@@ -1613,10 +1652,10 @@ def unit_flow_variants(source_db, target_db, settings):
                 }
                 add_parameter_value(
                     target_db,
-                    "unit__node__node",
+                    "unit_flow__unit_flow",
                     target_parameter,
                     param_map["alternative_name"],
-                    (unit_name, node_1, node_2),
+                    target_byname,
                     ts_export,
                 )
 
@@ -1648,10 +1687,10 @@ def unit_flow_variants(source_db, target_db, settings):
                     }
                     add_parameter_value(
                         target_db,
-                        "unit__node__node",
+                        "unit_flow__unit_flow",
                         target_parameter,
                         alternative_name,
-                        (unit_name, node_1, node_2),
+                        target_byname,
                         ts_export,
                     )
 
@@ -1702,7 +1741,7 @@ def flow_profile_method(source_db, target_db):
                 "balance_type",
                 "Base",
                 (target_name,),
-                "balance_type_none",
+                "none",
             )
             add_entity_group(target_db, "node", target_name, param_map["entity_name"])
             definition_condition = True

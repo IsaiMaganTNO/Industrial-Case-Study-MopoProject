@@ -49,7 +49,7 @@ def input_data():
     for alternative_name in ["wy2009"]:
         columns_names = []
         array_ts = np.array([])
-        for name_parameter in ["unit_availability_factor","demand","fix_unit_flow"]:
+        for name_parameter in ["availability_factor","demand","flow_limits_fix"]:
             for param_map in sopt_db.get_parameter_value_items(parameter_definition_name = name_parameter,alternative_name = alternative_name):
                 if param_map["type"] == "time_series":
                     columns_names.append(param_map["entity_name"])

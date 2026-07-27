@@ -116,7 +116,7 @@ def get_invested_available(latest_alternatives):
 
 def fix_invested_available(invested_available_items):
 
-    target_parameter = {"units_invested_available":"number_of_units","connections_invested_available":"number_of_connections","storages_invested_available":"number_of_storages"}
+    target_parameter = {"units_invested_available":"existing_units","connections_invested_available":"existing_connections","storages_invested_available":"existing_storages"}
     target_class = {"units_invested_available":"unit","connections_invested_available":"connection","storages_invested_available":"node"}
     with DatabaseMapping(url_spineopt) as spineopt_db:
         
@@ -135,21 +135,21 @@ def fix_invested_available(invested_available_items):
         spineopt_db.commit_session("number_of_added")
 
 def eliminate_investment_variables():
-    to_remove_parameters = ["fix_units_invested",
-                            "fix_connections_invested",
-                            "fix_storages_invested",
-                            "candidate_units",
-                            "candidate_connections",
-                            "candidate_storages",
-                            "fix_units_invested_available",
-                            "initial_units_invested_available",
-                            "number_of_units",
-                            "fix_connections_invested_available",
-                            "initial_connections_invested_available",
-                            "number_of_connections",
-                            "fix_storages_invested_available",
-                            "initial_storages_invested_available",
-                            "number_of_storages"]
+    to_remove_parameters = ["investment_count_fix_new",
+                            "investment_count_fix_new",
+                            "storage_investment_count_fix_new",
+                            "investment_count_max_cumulative",
+                            "investment_count_max_cumulative",
+                            "storage_investment_count_max_cumulative",
+                            "investment_count_fix_cumulative",
+                            "investment_count_initial_cumulative",
+                            "existing_units",
+                            "investment_count_fix_cumulative",
+                            "investment_count_initial_cumulative",
+                            "existing_connections",
+                            "storage_investment_count_fix_cumulative",
+                            "storage_investment_count_initial_cumulative",
+                            "existing_storages"]
     with DatabaseMapping(url_spineopt) as spineopt_db:
         for parameter_name in to_remove_parameters:
             for parameter_map in spineopt_db.get_parameter_value_items(parameter_definition_name = parameter_name):
@@ -256,7 +256,7 @@ def scenario_definition(model_stage):
             model_name = [entity_i["name"] for entity_i in spineopt_db.get_entity_items(entity_class_name="model")][0]
             add_parameter_value(spineopt_db,"model","roll_forward",stage_alternative,(model_name,),None)
             
-            for has_state in spineopt_db.get_parameter_value_items(entity_class_name = "node", parameter_definition_name = "has_state"):
+            for has_state in spineopt_db.get_parameter_value_items(entity_class_name = "node", parameter_definition_name = "storage_active"):
                 if bool(has_state["parsed_value"]):
                     for output in ["node_state"]:
                         add_entity(spineopt_db,"stage__output__node",(stage_name,output,has_state["entity_byname"][0]))
@@ -293,7 +293,7 @@ def scenario_definition(model_stage):
 
 def add_slack_var_demand():
     with DatabaseMapping(url_spineopt) as spineopt_db:
-        for parameter_name in ["demand","fractional_demand"]:
+        for parameter_name in ["demand","demand_fraction"]:
             for parameter_map in spineopt_db.get_parameter_value_items(parameter_definition_name = parameter_name):
                 entity_name = parameter_map["entity_name"]
                 if parameter_map["type"] == "time_series":
@@ -306,7 +306,7 @@ def add_slack_var_demand():
                     data_positive = True if data > 0.0 else False
                 if data_positive:
                     try:
-                        add_parameter_value(spineopt_db,"node","node_slack_penalty","Base",(entity_name,),1e4)
+                        add_parameter_value(spineopt_db,"node","balance_penalty","Base",(entity_name,),1e4)
                     except:
                         pass
         spineopt_db.commit_session("Added slack variable")
