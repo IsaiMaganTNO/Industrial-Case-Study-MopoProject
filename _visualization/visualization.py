@@ -290,7 +290,7 @@ def from_DB_to_df(map_years):
                     unit_to_node_map[node_name] = "residual-"+node_name.split("_")[0]
                     energy_map_list[alte_name].append([node_name.split("_")[0],node_name] + [yearly_sums.get(year_i, 0) for year_i in map_years])
 
-    unit_capacity_map = {p["entity_byname"][1]: p["parsed_value"].values[0] for p in result_db.get_parameter_value_items(parameter_definition_name="unit_capacity")}
+    unit_capacity_map = {p["entity_byname"][1]: p["parsed_value"].values[0] for p in result_db.get_parameter_value_items(parameter_definition_name="capacity_per_unit")}
     for param_map in result_db.get_parameter_value_items(parameter_definition_name = "units_invested_available"):
         scenario_name, timestamp = param_map["alternative_name"].split("@")
         timestamp = pd.Timestamp(timestamp)
@@ -327,7 +327,7 @@ def from_DB_to_df(map_years):
                 
                 units_dec_list[alte_name].append([unit_name] + (capacity_value*data[unit_name]).to_list())
 
-    sto_capacity_map = {p["entity_byname"][1]: p["parsed_value"].values[0] for p in result_db.get_parameter_value_items(parameter_definition_name="node_state_cap")}
+    sto_capacity_map = {p["entity_byname"][1]: p["parsed_value"].values[0] for p in result_db.get_parameter_value_items(parameter_definition_name="storage_state_max")}
     for param_map in result_db.get_parameter_value_items(parameter_definition_name = "storages_invested_available"):
         scenario_name, timestamp = param_map["alternative_name"].split("@")
         timestamp = pd.Timestamp(timestamp)

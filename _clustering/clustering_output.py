@@ -73,7 +73,7 @@ def ouput_data():
                     print(f"WARNING: Error creating the temporal block {year}_{rp_day}")
                     pass
                 add_or_update_parameter_value(sopt_db, "temporal_block","resolution","Base",entity_name,{"type":"duration","data":"1h"})
-                add_or_update_parameter_value(sopt_db, "temporal_block", "representative_period_index", alternative_name, entity_name, int(["2030","2040","2050"].index(year)*total_rps+rp_day))
+                add_or_update_parameter_value(sopt_db, "temporal_block", "representative_block_index", alternative_name, entity_name, int(["2030","2040","2050"].index(year)*total_rps+rp_day))
                 add_or_update_parameter_value(sopt_db, "temporal_block", "weight", alternative_name, entity_name, weights[rp_day].sum())
 
                 time_index = pd.date_range(start=f"{(year if year != '2040' else '2041')}-01-01 00:00:00",end=f"{(year if year != '2040' else '2041')}-12-31 23:00:00",freq="1h")
@@ -86,7 +86,7 @@ def ouput_data():
 
             map_rp = {"type":"map","index_type":"date_time","index_name":"t","data":[((time_index[24*(i-1)]).isoformat(),{"type":"array","data":[weights.at[i,j]*(year == year_i) for year_i in ["2030","2040","2050"] for j in weights.columns],"value_type": "float",}) for i in weights.index]}
             #print(map_rp)
-            add_or_update_parameter_value(sopt_db,"temporal_block","representative_periods_mapping",alternative_name,(f"operations_y{year}",),map_rp)
+            add_or_update_parameter_value(sopt_db,"temporal_block","representative_blocks_by_period",alternative_name,(f"operations_y{year}",),map_rp)
     try:
         sopt_db.commit_session("Added representative periods")
     except:

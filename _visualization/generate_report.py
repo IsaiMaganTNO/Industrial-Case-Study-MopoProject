@@ -394,7 +394,7 @@ def plot_storage(pdf, storage_dict, year_order=None):
         # FILL GAPS WITH NaN:
         # Now that the index is unique, create a row for every hour.
         # Hours with no data will be NaN and therefore break the line in the plot.
-        df = df.resample('H').asfreq()
+        df = df.resample('h').asfreq()  # pandas >=2.2: 'H' deprecated in favour of 'h'
         # Identify technologies (prefix before the '_')
         techs = sorted(list(set(col.split('_')[0] for col in df.columns)))
         for tech in techs:

@@ -75,11 +75,11 @@ def investment_cost_update():
 
         entities = ["unit","connection","node"]
         icost    = ["unit_investment_cost","connection_investment_cost","storage_investment_cost"]
-        fcost    = ["fom_cost","","storage_fom_cost"]
-        ilife    = ["unit_investment_econ_lifetime","connection_investment_econ_lifetime","storage_investment_econ_lifetime"]
-        tlife    = ["unit_investment_tech_lifetime","connection_investment_tech_lifetime","storage_investment_tech_lifetime"]
-        isense   = ["unit_investment_lifetime_sense","connection_investment_lifetime_sense","storage_investment_lifetime_sense"]
-        irate    = ["unit_discount_rate_technology_specific","connection_discount_rate_technology_specific","storage_discount_rate_technology_specific"]
+        fcost    = ["fom_cost","","storage_fixed_annual_cost"]
+        ilife    = ["lifetime_economic","lifetime_economic","storage_lifetime_economic"]
+        tlife    = ["lifetime_technical","lifetime_technical","storage_lifetime_technical"]
+        isense   = ["lifetime_constraint_sense","lifetime_constraint_sense","storage_lifetime_constraint_sense"]
+        irate    = ["discount_rate_technology_specific","discount_rate_technology_specific","storage_discount_rate_technology_specific"]
         
         for index, entity_class_name in enumerate(entities): 
 
@@ -167,9 +167,9 @@ def air_ground_heatpump():
             polygon_name = entity_name.split("_")[1]
             add_entity(sopt_db,"user_constraint",("heatpump-ratio"+"_"+polygon_name,))
             add_entity(sopt_db,"unit__user_constraint",(entity_name,"heatpump-ratio"+"_"+polygon_name))
-            add_parameter_value(sopt_db,"unit__user_constraint","units_invested_coefficient","Base",(entity_name,"heatpump-ratio"+"_"+polygon_name),1.0)
+            add_parameter_value(sopt_db,"unit__user_constraint","coefficient_for_units_invested","Base",(entity_name,"heatpump-ratio"+"_"+polygon_name),1.0)
             add_entity(sopt_db,"unit__user_constraint",("air-heatpump"+"_"+polygon_name,"heatpump-ratio"+"_"+polygon_name))
-            add_parameter_value(sopt_db,"unit__user_constraint","units_invested_coefficient","Base",("air-heatpump"+"_"+polygon_name,"heatpump-ratio"+"_"+polygon_name),-0.3)
+            add_parameter_value(sopt_db,"unit__user_constraint","coefficient_for_units_invested","Base",("air-heatpump"+"_"+polygon_name,"heatpump-ratio"+"_"+polygon_name),-0.3)
         
         try:
             sopt_db.commit_session("Add User Constraint Heat Pumps")
@@ -182,7 +182,7 @@ def manage_output():
         report_name = "default_report"
         add_entity(sopt_db,"report",(report_name,))
         add_entity(sopt_db,"model__report",("capacity_planning",report_name))
-        outputs = ["unit_capacity","connection_capacity","node_state_cap","demand",
+        outputs = ["capacity_per_unit","capacity_per_connection","storage_state_max","demand",
                    "connections_invested","connections_invested_available","connections_decommissioned","units_invested","units_invested_available","units_mothballed",
                    "storages_invested","storages_invested_available","storages_decommissioned","unit_flow","connection_flow","node_state","node_state_longterm","node_injection",
                    #"unit_investment_cost","connection_investment_cost","storage_investment_cost",
@@ -203,8 +203,8 @@ def solver_options():
                        {"HiGHS.jl" :{"type":"map","index_type":"str","index_name":"x","data":{"presolve":"on","time_limit":3600.01}},
                         "Gurobi.jl":{"type":"map","index_type":"str","index_name":"x","data":{"Method":2.0,"NumericFocus":2.0,"Crossover":0.0}}}}
         
-        add_parameter_value(sopt_db,"model","db_mip_solver_options","Base",("capacity_planning",),map_options)
-        add_parameter_value(sopt_db,"model","db_mip_solver","Base",("capacity_planning",),"HiGHS.jl")
+        add_parameter_value(sopt_db,"model","solver_mip_options","Base",("capacity_planning",),map_options)
+        add_parameter_value(sopt_db,"model","solver_mip","Base",("capacity_planning",),"HiGHS.jl")
         sopt_db.commit_session("Added solver_options")
 
 def main():
