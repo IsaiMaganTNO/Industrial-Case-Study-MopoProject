@@ -199,6 +199,133 @@ def update_parameters(config):
         except:
             print("###################################################################### commit error")  
 
+def emission_cap_setup(config):
+    """Enforce a BE+NL CO2 emission cap via a SpineOpt `user_constraint` on
+    unit_flow to atmosphere.
+
+    Temporal semantics (important — read carefully)
+    -----------------------------------------------
+    In SpineOpt v1.0.0 the `user_constraint` mechanism fires at REPRESENTATIVE
+    timesteps only (see `constraint_user_constraint_indices` in
+    src/constraints/constraint_user_constraint.jl and the `_is_representative(t)`
+    filter). In this project, representative blocks are `all_rps` and
+    `representative_period_YYYY_1` at 1-hour resolution, so the constraint
+    fires per HOUR. RHS is interpreted per-hour, not per-year.
+
+    BUT because this specific model has FLAT demand and FLAT VRE availability
+    within each 24-hour representative period (verified empirically — all
+    demand and availability_factor values have peak/avg = 1.0x), the per-hour
+    cap is mathematically EQUIVALENT to an annual cap ÷ 8760.
+
+    That is: setting RHS = 19.4 kt/hr per hour (=170 Mt/yr / 8760 h) enforces
+    exactly the same feasible region as an annual cap of 170 Mt/yr would,
+    because emissions ARE constant hour-to-hour by construction. The
+    scale_factor_to_native_kt config value defaults to 0.1142 (=1000/8760)
+    so the schedule can stay in familiar Mt/yr units.
+
+    Should the model ever be extended with hourly-varying demand or VRE
+    profiles (e.g., using longer representative periods with intra-day
+    variance), the per-hour semantic would start over-constraining and this
+    conversion factor should be re-evaluated.
+
+    Why NOT `flow_limits_max_cumulative` (the "proper" cumulative mechanism)
+    -----------------------------------------------------------------------
+    `flow_limits_max_cumulative` DOES exist and produces one constraint
+    summing all flows over the horizon — but it hits a KeyError in v1.0.0
+    when the model uses representative_periods_mapping. The constraint code
+    iterates `unit_flow_indices(temporal_block=anything)` which returns
+    timesteps at non-representative blocks (operations_yXXXX at 365D), but
+    the `unit_flow` variable dict only has entries at representative
+    timesteps. Lookup at the annual timestep throws KeyError. Filed as a
+    known SpineOpt limitation for follow-up upstream.
+
+    Why NOT `storage_state_max` on atmosphere (the ines-spineopt intent)
+    -------------------------------------------------------------------
+    The `ines_to_spineopt.process_emissions()` function sets storage_state_max
+    on atmosphere intending it to be an annual/cumulative cap via node_state.
+    But SpineOpt v1.0.0 doesn't create a `node_state` variable for atmosphere
+    (a pure-sink node with only inflows). We tried 6+ parameter combinations,
+    including matching CH4-geo-formation (which works) exactly, without
+    success. Likely a SpineOpt bug or undocumented requirement.
+
+    Setup written to the SpineOpt DB
+    --------------------------------
+    - `user_constraint` entity named "emission_cap"
+    - constraint_sense = "<="
+    - right_hand_side = time series [(year, RHS(year))] in native units (kt/hr)
+    - `unit_flow__user_constraint` entities linking every unit-with-flow-to-atmosphere
+      to the constraint, each with coefficient_for_unit_flow = 1.0
+
+    Configuration
+    -------------
+    Reads config["emission_cap"]:
+      - enabled: bool
+      - schedule_Mt_per_year: dict {year: X} — X interpreted as kt/hr after scaling
+      - scale_factor_to_native_kt: float (default 1000; Mt -> kt)
+      - (cumulative_budget_Mt: still read but unused in this per-hour version)
+    """
+    cap_cfg = config.get("emission_cap", {})
+    if not cap_cfg.get("enabled", False):
+        print("  emission_cap disabled or missing — skipping")
+        return
+    schedule = cap_cfg.get("schedule_Mt_per_year", {})
+    scale    = float(cap_cfg.get("scale_factor_to_native_kt",
+                                 cap_cfg.get("scale_factor_to_storage_units", 1000)))
+    if not schedule:
+        print("  emission_cap.schedule_Mt_per_year empty — skipping")
+        return
+
+    items         = sorted((int(y), float(v)) for y, v in schedule.items())
+    dates         = [f"{y}-01-01T00:00:00" for y, _ in items]
+    values_native = [v * scale for _, v in items]
+
+    with DatabaseMapping(url_spineopt) as sopt_db:
+        # ---- (1) create the user_constraint entity (idempotent) ----
+        add_entity_if_missing(sopt_db, "user_constraint", ("emission_cap",))
+
+        # ---- (2) constraint_sense = "<=" ----
+        add_or_update_parameter_value(
+            sopt_db, "user_constraint", "constraint_sense", "Base",
+            ("emission_cap",), "<=",
+        )
+
+        # ---- (3) right_hand_side as time series in native units ----
+        rhs_ts = {"type": "time_series", "data": dict(zip(dates, values_native))}
+        add_or_update_parameter_value(
+            sopt_db, "user_constraint", "right_hand_side", "Base",
+            ("emission_cap",), rhs_ts,
+        )
+
+        # ---- (4) link every unit emitting to atmosphere ----
+        atmosphere_units = [
+            rel["entity_byname"][0]
+            for rel in sopt_db.get_entity_items(entity_class_name="unit__to_node")
+            if rel["entity_byname"][1] == "atmosphere"
+            and rel["entity_byname"][0] != "atmosphere_emitters"
+        ]
+
+        n_linked = 0
+        for unit_name in atmosphere_units:
+            add_entity_if_missing(
+                sopt_db, "unit_flow__user_constraint",
+                (unit_name, "atmosphere", "emission_cap"),
+            )
+            add_or_update_parameter_value(
+                sopt_db, "unit_flow__user_constraint",
+                "coefficient_for_unit_flow", "Base",
+                (unit_name, "atmosphere", "emission_cap"), 1.0,
+            )
+            n_linked += 1
+
+        try:
+            sopt_db.commit_session("Update emission cap (user_constraint, per-hour)")
+            print(f"  emission_cap user_constraint set: "
+                  f"{n_linked} emitting units linked, "
+                  f"RHS (native units per hour) = {dict(zip([d[:4] for d in dates], values_native))}, "
+                  f"config schedule Mt/yr = {dict(items)}")
+        except Exception:
+            print("###################################################################### emission_cap commit error")
+
 def fix_no_investable_by_2030(config):
 
     indexes_ = ["2030-01-01T00:00:00","2040-01-01T00:00:00","2050-01-01T00:00:00","2060-01-01T00:00:00"]
@@ -546,6 +673,9 @@ def main():
 
     print("storage_setup")
     storage_setup(config)
+
+    print("emission_cap_setup")
+    emission_cap_setup(config)
 
     print("updating_parameters")
     # update_parameters(config)
