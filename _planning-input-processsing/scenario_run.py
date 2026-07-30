@@ -10,6 +10,7 @@ import numpy as np
 import json
 import yaml 
 import time as time_lib
+from pathlib import Path
 
 if len(sys.argv) > 1:
     url_spineopt = sys.argv[1]
@@ -110,11 +111,7 @@ def storage_setup(config):
                     add_or_update_parameter_value(sopt_db,"node","storage_longterm_active","Base",(param_map["entity_byname"][0],),True)
                     cyclic_condition_status = [entity_i for entity_i in sopt_db.get_parameter_value_items(entity_class_name = "node__temporal_block", alternative_name = "Base", parameter_definition_name = "cyclic_condition") if param_map["entity_byname"][0] == entity_i["entity_byname"][0]]
                     if cyclic_condition_status and sopt_db.get_entity_item(entity_class_name = "temporal_block",name = "all_rps"):
-                        try:
-                            add_entity(sopt_db,"node__temporal_block",(param_map["entity_byname"][0],"all_rps"))
-                        except:
-                            print(f"Entity class node__temporal_block with all_rps already added")
-                            pass
+                        add_entity_if_missing(sopt_db,"node__temporal_block",(param_map["entity_byname"][0],"all_rps"))
                     elif any(sto+"_" in param_map["entity_byname"][0] for sto in config["long-term-storage"]):
                         # ------------------------------------------------------------------
                         # HOTFIX-02: conditional cyclic_condition for long-term storage.
@@ -142,13 +139,13 @@ def storage_setup(config):
                         # that case fine.
                         # ------------------------------------------------------------------
                         if list_rep:
-                            add_entity(sopt_db,"node__temporal_block",(param_map["entity_byname"][0],"all_rps"))
+                            add_entity_if_missing(sopt_db,"node__temporal_block",(param_map["entity_byname"][0],"all_rps"))
                             add_or_update_parameter_value(sopt_db,"node__temporal_block","cyclic_condition","Base",(param_map["entity_byname"][0],"all_rps"),True)
                             for tb in list_otb:
-                                add_entity(sopt_db,"node__temporal_block",(param_map["entity_byname"][0],tb))
+                                add_entity_if_missing(sopt_db,"node__temporal_block",(param_map["entity_byname"][0],tb))
                         else:
                             for tb in list_otb:
-                                add_entity(sopt_db,"node__temporal_block",(param_map["entity_byname"][0],tb))
+                                add_entity_if_missing(sopt_db,"node__temporal_block",(param_map["entity_byname"][0],tb))
                                 add_or_update_parameter_value(sopt_db,"node__temporal_block","cyclic_condition","Base",(param_map["entity_byname"][0],tb),True)
 
                 else:
@@ -325,6 +322,383 @@ def emission_cap_setup(config):
                   f"config schedule Mt/yr = {dict(items)}")
         except Exception:
             print("###################################################################### emission_cap commit error")
+
+def co2_content_setup(config):
+    """Backfill co2_content on polygon-specific fossil nodes AND create the
+    associated unit → atmosphere emission-tracking linkages.
+
+    Why this exists
+    ---------------
+    The pipeline sets co2_content on GLOBAL commodities (CH4=0.20, HC=0.24,
+    coal=0.35, ...) and on external-country nodes (CH4_UK, HC_FR, ...), but
+    NOT on the per-polygon fossil nodes (CH4_BEC*, CH4_NLC*, HC_BEC*, ...).
+
+    Because `ines_to_spineopt.process_emissions()` looks up co2_content to
+    decide which units to attach to the atmosphere node, ~500 BE+NL units
+    consuming these polygon-specific fossil nodes end up with NO emission
+    tracking — the model reports ~11 Mt/yr total emissions (baseline A)
+    instead of ~230 Mt/yr (realistic).
+
+    What we do
+    ----------
+    1. Backfill co2_content on the polygon-specific fossil nodes in the
+       SpineOpt DB directly (the ines_to_spineopt.process_emissions logic
+       has already run by this point, so patching the source INES DB is
+       too late).
+    2. Replicate the ines_to_spineopt.process_emissions logic for units
+       that consume any of the newly-emitting fossil nodes but don't yet
+       have a unit__to_node(unit, atmosphere) linkage:
+         - Single fossil source: create unit_flow__unit_flow with
+           flow_ratio_equality_coefficient = co2_content
+         - Multi-fossil source: create a user_constraint per unit
+           summing (fossil_flow × co2_content) − emission_flow = 0
+
+    Idempotent — safe to re-run.
+
+    Configuration (all optional, sensible defaults)
+    -----------------------------------------------
+    config["co2_content_patch"]:
+      - enabled: bool (default True)
+      - co2_factors: dict {fuel_prefix: tCO2/MWh}
+    """
+    cfg = config.get("co2_content_patch", {}) or {}
+    if not cfg.get("enabled", True):
+        print("  co2_content_patch disabled — skipping")
+        return
+
+    # Emission factors (tCO2 / MWh_th) — mirrors values in
+    # data-pipelines/europe/_commodities/commodity_data.csv and heat_DB.py
+    co2_factors = cfg.get("co2_factors", {
+        "CH4":        0.20,   # natural gas / methane
+        "HC":         0.24,   # light oil / hydrocarbons
+        "coal":       0.35,   # bituminous coal
+        "crude":      0.26,   # crude oil
+        "waste":      0.30,   # fossil non-renewable waste
+        "MeOH":       0.20,   # methanol (fossil-derived)
+        "fossil-CH4": 0.20,
+        "fossil-HC":  0.24,
+    })
+
+    with DatabaseMapping(url_spineopt) as sopt_db:
+        # ---- (1) Determine co2_content for every fossil node ------------
+        # NOTE: `co2_content` is an INES-schema parameter on `node`; it does
+        # NOT exist as a parameter_definition in the SpineOpt DB. We track
+        # the values in an in-memory dict only. The values then drive the
+        # unit_flow__unit_flow / user_constraint emission-tracking linkages,
+        # which IS the SpineOpt-native way of accounting emissions.
+        #
+        # Prefixes sorted longest-first so "fossil-CH4" matches before "CH4".
+        fossil_prefixes = sorted(co2_factors, key=len, reverse=True)
+
+        node_co2 = {}       # {node_name: co2_content (tCO2/MWh)}
+        for node_i in sopt_db.get_entity_items(entity_class_name="node"):
+            name = node_i["name"]
+            if name == "CO2":
+                continue
+            best_prefix = None
+            for fuel in fossil_prefixes:
+                if name == fuel or name.startswith(fuel + "_"):
+                    best_prefix = fuel
+                    break
+            if best_prefix is None:
+                continue
+            node_co2[name] = float(co2_factors[best_prefix])
+
+        # ---- (2) Cache node__to_unit relations for fossil nodes ---------
+        # v1.0.0: unit__from_node -> node__to_unit(from_node, unit)
+        fossil_to_units = {n: [] for n in node_co2}
+        for r in sopt_db.get_entity_items(entity_class_name="node__to_unit"):
+            from_node, unit_name = r["entity_byname"][:2]
+            if from_node in fossil_to_units:
+                fossil_to_units[from_node].append(unit_name)
+
+        # ---- (3) For each unit, replicate process_emissions logic --------
+        # if it consumes fossil AND doesn't yet have a WORKING emission-tracking
+        # constraint.
+        #
+        # SAFETY: A unit is "already properly linked" only if it has BOTH:
+        #   (a) unit__to_node(unit, atmosphere) — the topology entity, AND
+        #   (b) unit_flow__unit_flow (unit, atmosphere, X, unit) with
+        #       flow_ratio_equality_coefficient set — the actual constraint.
+        # Under the pipeline as-shipped many polygon-fossil consumers have (a)
+        # from ines_to_spineopt setup, but NOT (b), because their fossil source
+        # nodes lacked co2_content. Result: `unit_flow(u, atmosphere)` is a
+        # free variable and the LP sets it to zero → silent under-counting.
+        # We therefore backfill (b) whenever it's missing.
+        # We also avoid overwriting an existing (b) for the same (unit, source)
+        # pair, so any prior ines_to_spineopt-set coefficient stays authoritative.
+        n_new_linkages_single = 0
+        n_new_linkages_multi  = 0
+        n_units_already_linked = 0
+
+        # Pre-index existing unit_flow__unit_flow with atmosphere at position 1
+        # into: {unit_name: set(from_nodes with existing flow-ratio constraint)}
+        existing_flow_ratio = {}
+        for r in sopt_db.get_entity_items(entity_class_name="unit_flow__unit_flow"):
+            byname = r["entity_byname"]
+            if len(byname) < 4 or byname[1] != "atmosphere":
+                continue
+            # Format: (unit, atmosphere, from_node, unit)
+            u, _, from_node, _ = byname
+            # Only count as "existing" if a coefficient is actually set
+            p = sopt_db.get_parameter_value_item(
+                entity_class_name="unit_flow__unit_flow",
+                entity_byname=byname,
+                parameter_definition_name="flow_ratio_equality_coefficient",
+                alternative_name="Base",
+            )
+            if p is not None and p.get("parsed_value") is not None:
+                existing_flow_ratio.setdefault(u, set()).add(from_node)
+
+        # Invert: {unit_name: [fossil_nodes it consumes]}
+        unit_fossil = {}
+        for from_node, units in fossil_to_units.items():
+            for u in units:
+                unit_fossil.setdefault(u, []).append(from_node)
+
+        for unit_name, fossil_in in unit_fossil.items():
+            already_covered = existing_flow_ratio.get(unit_name, set())
+            missing_fossils = [f for f in fossil_in if f not in already_covered]
+
+            if not missing_fossils:
+                # Every fossil this unit consumes already has a flow-ratio
+                # constraint — nothing to add.
+                n_units_already_linked += 1
+                continue
+
+            # SAFETY: if any prior flow-ratio exists, adding a user_constraint
+            # for the same emission variable would create a redundant / conflicting
+            # constraint (both would drive unit_flow(u, atmosphere), the existing
+            # one from the previously-covered fossil and ours from the full set).
+            # We can't safely delete/rewrite the prior linkage without breaking
+            # other things, so we accept partial coverage.
+            if already_covered:
+                n_units_already_linked += 1
+                continue
+
+            if len(missing_fossils) == 1:
+                # SINGLE-FOSSIL PATTERN (fresh unit, one fossil source):
+                # unit__to_node(unit, atmosphere) + unit_flow__unit_flow with
+                # flow_ratio_equality_coefficient = co2_content
+                from_node = missing_fossils[0]
+                add_entity_if_missing(sopt_db, "unit__to_node", (unit_name, "atmosphere"))
+                add_entity_if_missing(
+                    sopt_db, "unit_flow__unit_flow",
+                    (unit_name, "atmosphere", from_node, unit_name),
+                )
+                add_or_update_parameter_value(
+                    sopt_db, "unit_flow__unit_flow",
+                    "flow_ratio_equality_coefficient", "Base",
+                    (unit_name, "atmosphere", from_node, unit_name),
+                    node_co2[from_node],
+                )
+                n_new_linkages_single += 1
+            else:
+                # MULTI-FOSSIL PATTERN (fresh unit, multiple fossil sources):
+                # user_constraint summing sum_i (fossil_i × co2_content_i) − emission = 0
+                uc_name = unit_name + "_emissions"
+                existing_uc = sopt_db.get_entity_item(
+                    entity_class_name="user_constraint",
+                    name=uc_name,
+                )
+                if existing_uc is not None:
+                    continue
+
+                add_entity_if_missing(sopt_db, "unit__to_node", (unit_name, "atmosphere"))
+                add_entity_if_missing(sopt_db, "user_constraint", (uc_name,))
+
+                # emission_flow (out) contributes coefficient = -1
+                add_entity_if_missing(
+                    sopt_db, "unit_flow__user_constraint",
+                    (unit_name, "atmosphere", uc_name),
+                )
+                add_or_update_parameter_value(
+                    sopt_db, "unit_flow__user_constraint",
+                    "coefficient_for_unit_flow", "Base",
+                    (unit_name, "atmosphere", uc_name), -1.0,
+                )
+                # Each fossil_flow (in) contributes coefficient = co2_content
+                # (missing_fossils is the full set for this fresh unit since we
+                # skip any unit with prior coverage above).
+                for from_node in missing_fossils:
+                    add_entity_if_missing(
+                        sopt_db, "unit_flow__user_constraint",
+                        (from_node, unit_name, uc_name),
+                    )
+                    add_or_update_parameter_value(
+                        sopt_db, "unit_flow__user_constraint",
+                        "coefficient_for_unit_flow", "Base",
+                        (from_node, unit_name, uc_name), node_co2[from_node],
+                    )
+                n_new_linkages_multi += 1
+
+        try:
+            sopt_db.commit_session("Backfill emission linkages for polygon fossil consumers")
+            print(f"  co2_content_patch: "
+                  f"identified {len(node_co2)} fossil nodes, "
+                  f"created {n_new_linkages_single} single-fossil emission linkages, "
+                  f"created {n_new_linkages_multi} multi-fossil user_constraint linkages, "
+                  f"skipped {n_units_already_linked} units already linked to atmosphere")
+        except Exception:
+            print("###################################################################### co2_content_patch commit error")
+
+def vre_availability_setup(config):
+    """Overwrite VRE `availability_factor` with the ANNUAL MEAN from the source
+    hourly profiles.
+
+    Why this exists
+    ---------------
+    Under `operations_resolution = "8760h"` (the pipeline's intended annual mode)
+    `ines_to_spineopt.map_of_periods_or_historical_to_ts` collapses each hourly
+    availability profile to a SINGLE SCALAR sampled at the weather-year start
+    (e.g., 1995-01-01 00:00, 2008-01-01 00:00, 2009-01-01 00:00). For solar the
+    resulting value is ~0 (midnight → no sun), so the LP treats solar as
+    producing nothing and refuses to invest in it. For wind the value is
+    whatever the weather did at that specific hour (wildly weather-year-dependent).
+
+    Fix: replace the scalar with the ANNUAL MEAN capacity factor for the
+    matching (unit, weather year). This is the statistically correct scalar
+    to use in an annual planning model, and preserves the SpineOpt
+    TimeSeriesFixedResolution structure so downstream code is unaffected.
+
+    Configuration
+    -------------
+    Reads config["vre_availability"] (optional; sensible defaults):
+      - enabled: bool (default True)
+      - vre_dir: str (default relative to repo: data/VRE/VRE_time_series)
+      - weather_year_alternatives: dict {alt_name: source_year_int}
+                                    (default {wy1995:1995, wy2008:2008, wy2009:2009})
+
+    Idempotent — safe to re-run.
+    """
+    cfg = config.get("vre_availability", {}) or {}
+    if not cfg.get("enabled", True):
+        print("  vre_availability disabled — skipping")
+        return
+
+    # Resolve the source CSV directory. Default = data/VRE/VRE_time_series
+    # relative to the repo root (two levels up from this script:
+    # _planning-input-processsing/scenario_run.py -> repo root)
+    default_vre_dir = Path(__file__).resolve().parent.parent / "data" / "VRE" / "VRE_time_series"
+    vre_dir = Path(cfg.get("vre_dir", default_vre_dir))
+    if not vre_dir.exists():
+        print(f"  vre_availability: source dir not found: {vre_dir} — skipping")
+        return
+
+    weather_years = cfg.get("weather_year_alternatives",
+                            {"wy1995": 1995, "wy2008": 2008, "wy2009": 2009})
+
+    # Map "unit-name stem" to the source CSV filename. The stem is everything
+    # before the polygon suffix (e.g. "solar-PV-existing_BEC1" -> stem
+    # "solar-PV-existing", polygon "BEC1").
+    stem_to_csv = {
+        "solar-PV-existing":         "solar-PV-no-tracking.csv",  # existing PV is fixed-tilt
+        "solar-PV-no-tracking":      "solar-PV-no-tracking.csv",
+        "solar-PV-tracking":         "solar-PV-tracking.csv",
+        "solar-PV-rooftop":          "solar-PV-rooftop.csv",
+        "wind-on-existing":          "wind-on-existing.csv",
+        "wind-on-SP199-HH100":       "wind-on-SP199-HH100.csv",
+        "wind-on-SP199-HH150":       "wind-on-SP199-HH150.csv",
+        "wind-on-SP199-HH200":       "wind-on-SP199-HH200.csv",
+        "wind-on-SP277-HH100":       "wind-on-SP277-HH100.csv",
+        "wind-on-SP277-HH150":       "wind-on-SP277-HH150.csv",
+        "wind-on-SP277-HH200":       "wind-on-SP277-HH200.csv",
+        "wind-on-SP335-HH100":       "wind-on-SP335-HH100.csv",
+        "wind-on-SP335-HH150":       "wind-on-SP335-HH150.csv",
+        "wind-on-SP335-HH200":       "wind-on-SP335-HH200.csv",
+        "wind-off-FB-existing":      "wind-off-FB-existing.csv",
+        "wind-off-FB-SP316-HH155":   "wind-off-FB-SP316-HH155.csv",
+        "wind-off-FB-SP370-HH155":   "wind-off-FB-SP370-HH155.csv",
+        "wind-off-FO-SP316-HH155":   "wind-off-FO-SP316-HH155.csv",
+        "wind-off-FO-SP370-HH155":   "wind-off-FO-SP370-HH155.csv",
+    }
+
+    def split_stem_and_polygon(name):
+        for stem in stem_to_csv:
+            prefix = stem + "_"
+            if name.startswith(prefix):
+                return stem, name[len(prefix):]
+        return None, None
+
+    csv_cache = {}
+    def annual_means_for_stem(stem):
+        if stem in csv_cache:
+            return csv_cache[stem]
+        csv = vre_dir / stem_to_csv[stem]
+        df = pd.read_csv(csv)
+        df["time"] = pd.to_datetime(df["time"])
+        df["year"] = df["time"].dt.year
+        numeric_cols = [c for c in df.columns if c not in ("time", "year")]
+        # Clip [0, 1] to remove ~-0.0004 numerical-noise negatives in source data
+        means = df.groupby("year")[numeric_cols].mean().clip(lower=0.0, upper=1.0)
+        csv_cache[stem] = means
+        return means
+
+    updated = 0
+    skipped_non_vre = 0
+    skipped_other_alt = 0
+    not_found = 0
+    per_stem = {}
+
+    with DatabaseMapping(url_spineopt) as sopt_db:
+        params = sopt_db.get_parameter_value_items(
+            entity_class_name="unit",
+            parameter_definition_name="availability_factor",
+        )
+        for p in params:
+            unit_name = p["entity_byname"][0]
+            alt_name = p["alternative_name"]
+
+            stem, polygon = split_stem_and_polygon(unit_name)
+            if stem is None:
+                skipped_non_vre += 1
+                continue
+            if alt_name not in weather_years:
+                skipped_other_alt += 1
+                continue
+
+            wy = weather_years[alt_name]
+            try:
+                means = annual_means_for_stem(stem)
+            except Exception as exc:
+                print(f"  ERROR loading source for {stem}: {exc}")
+                not_found += 1
+                continue
+
+            if polygon not in means.columns or wy not in means.index:
+                not_found += 1
+                continue
+
+            mean_val = float(means.at[wy, polygon])
+            new_value = {
+                "type": "time_series",
+                "data": [mean_val],
+                "index": {"start": "2018-01-01T00:00:00",
+                          "resolution": "8760h",
+                          "ignore_year": True},
+            }
+            db_value, value_type = api.to_database(new_value)
+            sopt_db.update_parameter_value_item(
+                id=p["id"],
+                entity_class_name="unit",
+                entity_byname=(unit_name,),
+                parameter_definition_name="availability_factor",
+                alternative_name=alt_name,
+                value=db_value,
+                type=value_type,
+            )
+            updated += 1
+            per_stem[stem] = per_stem.get(stem, 0) + 1
+
+        try:
+            sopt_db.commit_session("VRE availability_factor set to annual mean")
+            print(f"  vre_availability: updated {updated} availability_factor values "
+                  f"(non-VRE skipped {skipped_non_vre}, other-alt skipped {skipped_other_alt}, "
+                  f"not-found {not_found})")
+            for stem, cnt in sorted(per_stem.items()):
+                print(f"    {stem:35s}: {cnt}")
+        except Exception:
+            print("###################################################################### vre_availability commit error")
 
 def fix_no_investable_by_2030(config):
 
@@ -578,11 +952,11 @@ def air_ground_heatpump(config):
         
         for entity_name in [element["name"] for element in sopt_db.get_entity_items(entity_class_name = "unit") if "ground-heatpump_" in element["name"]]:
             polygon_name = entity_name.split("_")[1]
-            add_entity(sopt_db,"user_constraint",("heatpump-ratio"+"_"+polygon_name,))
-            add_entity(sopt_db,"unit__user_constraint",(entity_name,"heatpump-ratio"+"_"+polygon_name))
-            add_parameter_value(sopt_db,"unit__user_constraint","coefficient_for_units_invested","Base",(entity_name,"heatpump-ratio"+"_"+polygon_name),1.0)
-            add_entity(sopt_db,"unit__user_constraint",("air-heatpump"+"_"+polygon_name,"heatpump-ratio"+"_"+polygon_name))
-            add_parameter_value(sopt_db,"unit__user_constraint","coefficient_for_units_invested","Base",("air-heatpump"+"_"+polygon_name,"heatpump-ratio"+"_"+polygon_name),-config["ratio_ground_air_HP"])
+            add_entity_if_missing(sopt_db,"user_constraint",("heatpump-ratio"+"_"+polygon_name,))
+            add_entity_if_missing(sopt_db,"unit__user_constraint",(entity_name,"heatpump-ratio"+"_"+polygon_name))
+            add_or_update_parameter_value(sopt_db,"unit__user_constraint","coefficient_for_units_invested","Base",(entity_name,"heatpump-ratio"+"_"+polygon_name),1.0)
+            add_entity_if_missing(sopt_db,"unit__user_constraint",("air-heatpump"+"_"+polygon_name,"heatpump-ratio"+"_"+polygon_name))
+            add_or_update_parameter_value(sopt_db,"unit__user_constraint","coefficient_for_units_invested","Base",("air-heatpump"+"_"+polygon_name,"heatpump-ratio"+"_"+polygon_name),-config["ratio_ground_air_HP"])
         
         try:
             sopt_db.commit_session("Add User Constraint Heat Pumps")
@@ -593,8 +967,8 @@ def manage_output():
     with DatabaseMapping(url_spineopt) as sopt_db:
 
         report_name = "default_report"
-        add_entity(sopt_db,"report",(report_name,))
-        add_entity(sopt_db,"model__report",("capacity_planning",report_name))
+        add_entity_if_missing(sopt_db,"report",(report_name,))
+        add_entity_if_missing(sopt_db,"model__report",("capacity_planning",report_name))
         outputs = ["capacity_per_unit","capacity_per_connection","storage_state_max","demand",
                    "connections_invested","connections_invested_available","connections_decommissioned","units_invested","units_invested_available","units_mothballed",
                    "storages_invested","storages_invested_available","storages_decommissioned","unit_flow","connection_flow","node_state","node_state_longterm","node_injection",
@@ -606,8 +980,8 @@ def manage_output():
                    #"bound_units_on"]
         
         for output in outputs:
-            add_entity(sopt_db,"output",(output,))
-            add_entity(sopt_db,"report__output",(report_name,output))
+            add_entity_if_missing(sopt_db,"output",(output,))
+            add_entity_if_missing(sopt_db,"report__output",(report_name,output))
         try:
             sopt_db.commit_session("Added outputs")
         except:
@@ -674,8 +1048,14 @@ def main():
     print("storage_setup")
     storage_setup(config)
 
+    print("co2_content_setup")
+    co2_content_setup(config)
+
     print("emission_cap_setup")
     emission_cap_setup(config)
+
+    print("vre_availability_setup")
+    vre_availability_setup(config)
 
     print("updating_parameters")
     # update_parameters(config)

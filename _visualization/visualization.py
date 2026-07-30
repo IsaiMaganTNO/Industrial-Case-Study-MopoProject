@@ -529,8 +529,6 @@ def main():
     installed_cap_df['polygon'] = installed_cap_df["unit_name"].map(extract_polygon)
     installed_cap_df['technology'] = installed_cap_df["unit_name"].map(apply_unit_name)
     installed_cap_df["scenario"] = installed_cap_df["scenario"].map(scenario_map)
-    installed_cap_df_total = (installed_cap_df.groupby(["node","technology","scenario"], dropna=False)[["y2030","y2040","y2050"]].sum().reset_index()).assign(polygon="Europe", unit_name="EU_total")
-    installed_cap_df = pd.concat([installed_cap_df,installed_cap_df_total],ignore_index=True)
     installed_cap_df.round(2).to_csv("files_out/installed_capacity.csv")
 
     invested_cap = []
@@ -545,8 +543,6 @@ def main():
     invested_cap_df['polygon'] = invested_cap_df["unit_name"].map(extract_polygon)
     invested_cap_df['technology'] = invested_cap_df["unit_name"].map(apply_unit_name)
     invested_cap_df["scenario"] = invested_cap_df["scenario"].map(scenario_map)
-    invested_cap_df_total = (invested_cap_df.groupby(["node","technology","scenario"], dropna=False)[["y2030","y2040","y2050"]].sum().reset_index()).assign(polygon="Europe", unit_name="EU_total")
-    invested_cap_df = pd.concat([invested_cap_df,invested_cap_df_total],ignore_index=True)
     invested_cap_df.round(2).to_csv("files_out/invested_capacity.csv")
 
     invested_cost = []
@@ -561,8 +557,6 @@ def main():
     invested_cost_df['polygon'] = invested_cost_df["unit_name"].map(extract_polygon)
     invested_cost_df['technology'] = invested_cost_df["unit_name"].map(apply_unit_name)
     invested_cost_df["scenario"] = invested_cost_df["scenario"].map(scenario_map)
-    invested_cost_df_total = (invested_cost_df.groupby(["node","technology","scenario"], dropna=False)[["y2030","y2040","y2050"]].sum().reset_index()).assign(polygon="Europe", unit_name="EU_total")
-    invested_cost_df = pd.concat([invested_cost_df,invested_cost_df_total],ignore_index=True)
     invested_cost_df.round(2).to_csv("files_out/invested_cost.csv")
 
     decommissioned = []
@@ -577,8 +571,6 @@ def main():
     decommissioned_df['polygon'] = decommissioned_df["unit_name"].map(extract_polygon)
     decommissioned_df['technology'] = decommissioned_df["unit_name"].map(apply_unit_name)
     decommissioned_df["scenario"] = decommissioned_df["scenario"].map(scenario_map)
-    decommissioned_df_total = (decommissioned_df.groupby(["node","technology","scenario"], dropna=False)[["y2030","y2040","y2050"]].sum().reset_index()).assign(polygon="Europe", unit_name="EU_total")
-    decommissioned_df = pd.concat([decommissioned_df,decommissioned_df_total],ignore_index=True)
     decommissioned_df.round(2).to_csv("files_out/decommissioned_capacity.csv")
 
     unit2node_flow = []
@@ -591,8 +583,6 @@ def main():
     unit2node_flow_df['polygon'] = unit2node_flow_df["unit_name"].map(extract_polygon)
     unit2node_flow_df['technology'] = unit2node_flow_df["unit_name"].map(apply_unit_name)
     unit2node_flow_df["scenario"] = unit2node_flow_df["scenario"].map(scenario_map)
-    unit2node_flow_df_total = (unit2node_flow_df.groupby(["node","technology","scenario"], dropna=False)[["y2030","y2040","y2050"]].sum().reset_index()).assign(polygon="Europe", unit_name="EU_total")
-    unit2node_flow_df = pd.concat([unit2node_flow_df,unit2node_flow_df_total],ignore_index=True)
     unit2node_flow_df.round(2).to_csv("files_out/unit_to_flows.csv")
 
     installed_sto_cap = []
@@ -605,8 +595,6 @@ def main():
     installed_sto_cap_df = pd.concat(installed_sto_cap,axis=0,ignore_index=True)
     installed_sto_cap_df['polygon'] = installed_sto_cap_df["storage_name"].map(extract_polygon)
     installed_sto_cap_df["scenario"] = installed_sto_cap_df["scenario"].map(scenario_map)
-    installed_sto_cap_df_total = (installed_sto_cap_df.groupby(["node","technology","scenario"], dropna=False)[["y2030","y2040","y2050"]].sum().reset_index()).assign(polygon="Europe", storage_name="EU_total")
-    installed_sto_cap_df = pd.concat([installed_sto_cap_df,installed_sto_cap_df_total],ignore_index=True)
     installed_sto_cap_df.round(2).to_csv("files_out/storage_installed_capacity.csv")
 
     installed_sto_cost = []
@@ -619,8 +607,6 @@ def main():
     installed_sto_cost_df = pd.concat(installed_sto_cost,axis=0,ignore_index=True)
     installed_sto_cost_df['polygon'] = installed_sto_cost_df["storage_name"].map(extract_polygon)
     installed_sto_cost_df["scenario"] = installed_sto_cost_df["scenario"].map(scenario_map)
-    installed_sto_cost_df_total = (installed_sto_cost_df.groupby(["node","technology","scenario"], dropna=False)[["y2030","y2040","y2050"]].sum().reset_index()).assign(polygon="Europe", storage_name="EU_total")
-    installed_sto_cost_df = pd.concat([installed_sto_cost_df,installed_sto_cost_df_total],ignore_index=True)
     installed_sto_cost_df.round(2).to_csv("files_out/storage_cost_capacity.csv")
 
     installed_sto_inv = []
@@ -633,8 +619,6 @@ def main():
     installed_sto_inv_df = pd.concat(installed_sto_inv,axis=0,ignore_index=True)
     installed_sto_inv_df['polygon'] = installed_sto_inv_df["storage_name"].map(extract_polygon)
     installed_sto_inv_df["scenario"] = installed_sto_inv_df["scenario"].map(scenario_map)
-    installed_sto_inv_df_total = (installed_sto_inv_df.groupby(["node","technology","scenario"], dropna=False)[["y2030","y2040","y2050"]].sum().reset_index()).assign(polygon="Europe", storage_name="EU_total")
-    installed_sto_inv_df = pd.concat([installed_sto_inv_df,installed_sto_inv_df_total],ignore_index=True)
     installed_sto_inv_df.round(2).to_csv("files_out/storage_invested_capacity.csv")
 
     installed_sto_dec = []
@@ -647,8 +631,6 @@ def main():
     installed_sto_dec_df = pd.concat(installed_sto_dec,axis=0,ignore_index=True)
     installed_sto_dec_df['polygon'] = installed_sto_dec_df["storage_name"].map(extract_polygon)
     installed_sto_dec_df["scenario"] = installed_sto_dec_df["scenario"].map(scenario_map)
-    installed_sto_dec_df_total = (installed_sto_dec_df.groupby(["node","technology","scenario"], dropna=False)[["y2030","y2040","y2050"]].sum().reset_index()).assign(polygon="Europe", storage_name="EU_total")
-    installed_sto_dec_df = pd.concat([installed_sto_dec_df,installed_sto_dec_df_total],ignore_index=True)
     installed_sto_dec_df.round(2).to_csv("files_out/storage_decommissioned_capacity.csv")
 
     flows = []
