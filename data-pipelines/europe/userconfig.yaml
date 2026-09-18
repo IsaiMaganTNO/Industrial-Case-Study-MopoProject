@@ -4,60 +4,60 @@
 pipelines:
   power_sector: 
     status: True             # include pipeline or not
-    source_resolution: PECD1 # Do not touch unless you rerun the corresponding pipeline producing data in that resolution
-    target_resolution: PECD1 # Using the weighting factors from the documentation (configurable in sysconfig.yaml file)
+    source_resolution: IC1 # Do not touch unless you rerun the corresponding pipeline producing data in that resolution
+    target_resolution: IC1 # Using the weighting factors from the documentation (configurable in sysconfig.yaml file)
   vre:
     status: True
     source_resolution:
-      "on": PECD2 
+      "on": IC1 
       "off": OFF3
     target_resolution:
-      "on": PECD1
-      "off": OFF2
+      "on": IC1
+      "off": OFF3
   hydro_systems:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   biomass_production:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   power_transmission:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   residual_demand:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   gas_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   gas_pipelines: 
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   industrial_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   other_industrial_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   heat_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   transport_sector:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
   cargo_transport:
     status: True
-    source_resolution: PECD1
-    target_resolution: PECD1
+    source_resolution: IC1
+    target_resolution: IC1
 
 model:
     type:  brownfield # greenfied not included yet
@@ -82,15 +82,18 @@ timeline:
 
 global_constraints:
   co2_annual_budget:
-    "2030": 2600000000 # European level, if running a country-level model, then adjust this factor
-    "2040": 580000000  # European level
+    "2030": 170000000 # BE+NL scope (170 Mt CO2/yr); European level would be 2600 Mt/yr
+    "2040": 40000000  # BE+NL scope (40 Mt CO2/yr); European level would be 580 Mt/yr
     "2050": 0.0
   co2_sequestration_cost: 65 # €/ton CO2
   co2_transport_cost: 40 # €/ton CO2
 
 # Use country code to model a specific country  and define Europe as country, then, the remaining countries are modeled following requirements
+# IC1 industrial case: BE and NL only. Previously written as the scalar "-NL -BE",
+# which YAML parsed as a string and which only selected BE/NL by substring accident.
 countries : 
-  - Europe
+  - BE
+  - NL
 
 # Sectors optimized
 commodity: 
@@ -158,15 +161,16 @@ network:
   CO2: 
     status: True
     interconnection_out_model: False
+  # IC1: True lets other EU countries connect to the IC1 regions for these commodities
   MeOH: 
     status: True
-    interconnection_out_model: False
+    interconnection_out_model: True
   HC: 
     status: True
-    interconnection_out_model: False
+    interconnection_out_model: True
   bio: 
     status: True
-    interconnection_out_model: False
+    interconnection_out_model: True
 
 storage:
   battery-storage:

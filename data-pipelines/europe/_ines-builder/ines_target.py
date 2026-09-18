@@ -52,35 +52,37 @@ def add_alternative(db_map : DatabaseMapping,name_alternative : str) -> None:
 
 def define_polygons(config : dict, region_data : dict, on_level : str, off_level : str) -> dict:
     
+    # IC1 industrial case: BE+NL at IC1 resolution plus first-order neighbours.
+    # Uncomment the rest to restore the pan-European scope.
     countries = [
-        "AT",  # Austria
+        #"AT",  # Austria
         "BE",  # Belgium
-        "BG",  # Bulgaria
-        "HR",  # Croatia
-        "CY",  # Cyprus
-        "CZ",  # Czech Republic
+        #"BG",  # Bulgaria
+        #"HR",  # Croatia
+        #"CY",  # Cyprus
+        #"CZ",  # Czech Republic
         "DK",  # Denmark
-        "EE",  # Estonia
-        "FI",  # Finland
+        #"EE",  # Estonia
+        #"FI",  # Finland
         "FR",  # France
         "DE",  # Germany
-        "GR",  # Greece
-        "HU",  # Hungary
-        "IE",  # Ireland
-        "IT",  # Italy
-        "LV",  # Latvia
-        "LT",  # Lithuania
-        "LU",  # Luxembourg
-        "MT",  # Malta
+        #"GR",  # Greece
+        #"HU",  # Hungary
+        #"IE",  # Ireland
+        #"IT",  # Italy
+        #"LV",  # Latvia
+        #"LT",  # Lithuania
+        #"LU",  # Luxembourg
+        #"MT",  # Malta
         "NL",  # Netherlands
-        "PL",  # Poland
-        "PT",  # Portugal
-        "RO",  # Romania
-        "SK",  # Slovakia
-        "SI",  # Slovenia
-        "ES",  # Spain
-        "SE",  # Sweden
-        "CH",  # Switzerland
+        #"PL",  # Poland
+        #"PT",  # Portugal
+        #"RO",  # Romania
+        #"SK",  # Slovakia
+        #"SI",  # Slovenia
+        #"ES",  # Spain
+        #"SE",  # Sweden
+        #"CH",  # Switzerland
         "UK",  # United Kingdom
         "NO"   # Norway
     ]
@@ -789,6 +791,40 @@ def add_industrial_sector(db_map : DatabaseMapping, db_source : DatabaseMapping,
                                         for value_ in values_:
                                             value_param = (param_list[param_source][1]*value_["parsed_value"] if value_["type"] == "float" else value_["parsed_value"]) if value_["type"] != "map" else {"type":"map","index_type":"str","index_name":"period","data":{key:param_list[param_source][1]*item for key,item in dict(json.loads(value_["value"])["data"]).items()}}
                                             add_parameter_value(db_map,entity_class_target,param_list[param_source][0],value_["alternative_name"],entity_target_name,value_param)
+
+                        # Investment method (technology -> unit)
+                        # Industrial source DB does not contain this parameter, so pull it from
+                        # userconfig.yaml and assign it to every generated regional unit.
+
+                        if entity_class_target == "unit" and "technology" in entity_class_elements:
+
+                            technology_name = entity_names[
+                                entity_class_elements.index("technology")
+                            ]
+
+                            investment_method = (
+                                config["user"]["technology"]
+                                .get(technology_name, {})
+                                .get("investment_method", "no_limits")
+                            )
+
+                            # Reconstruct the actual unit entity name exactly as done elsewhere
+                            # in this entity_class_target loop.
+                            for entity_target_building in config["sys"][db_name]["entities"][entity_class][entity_class_target]:
+
+                                unit_target_name = tuple(
+                                    "__".join([entity_target_names[i - 1] for i in k])
+                                    for k in entity_target_building
+                                )
+
+                                add_or_update_parameter_value(
+                                    db_map,
+                                    "unit",
+                                    "investment_method",
+                                    "Base",
+                                    unit_target_name,
+                                    investment_method,
+                                )
                         
                         # Regional Parameter
                         entity_class_region = f"{entity_class}__region"
@@ -1190,8 +1226,16 @@ def add_heat_sector(db_map : DatabaseMapping, db_source : DatabaseMapping, confi
                 # checking hard-coding conditions
                 if "technology" in entity_class_elements and definition_condition == True:
                     for index_in_class in [i for i in range(len(entity_class_elements)) if entity_class_elements[i]=="technology"]:
-                        if sum(sum(region_params["technology"]["units_existing"][entity_names[index_in_class]][poly][alternative]["data"].values()) for alternative in region_params["technology"]["units_existing"][entity_names[index_in_class]][poly]) == 0.0 and config["user"]["technology"][entity_names[index_in_class]]["investment_method"] == "not_allowed":
-                            definition_condition *= False
+                        # IC1 source data does not define units_existing for every technology
+                        tech_name = entity_names[index_in_class]
+                        existing_dict = region_params.get("technology", {}).get("units_existing", {}).get(tech_name, {})
+                        user_tech = config["user"]["technology"].get(tech_name, {})
+                        if user_tech.get("investment_method") == "not_allowed":
+                            if existing_dict:
+                                if sum(sum(existing_dict[poly][alternative]["data"].values()) for alternative in existing_dict.get(poly, {})) == 0.0:
+                                    definition_condition *= False
+                            else:
+                                definition_condition *= False
 
                 if definition_condition == True:
                     for entity_class_target in config["sys"][db_name]["entities"][entity_class]:
@@ -1211,7 +1255,12 @@ def add_heat_sector(db_map : DatabaseMapping, db_source : DatabaseMapping, confi
                                 for param_target in param_list:
                                     entity_source_name = "__".join([entity_names[i-1] for k in param_list[param_target][2] for i in k])
                                     entity_target_name = tuple(["__".join([entity_target_names[i-1] for i in k]) for k in param_list[param_target][3]])
-                                    add_parameter_value(db_map,entity_class_target,param_target,"Base",entity_target_name,config["user"][param_list[param_target][0]][entity_source_name][param_list[param_target][1]])
+                                    # IC1 userconfig does not cover every source entity
+                                    user_section = config["user"].get(param_list[param_target][0], {})
+                                    if entity_source_name in user_section:
+                                        add_parameter_value(db_map,entity_class_target,param_target,"Base",entity_target_name,user_section[entity_source_name][param_list[param_target][1]])
+                                    else:
+                                        print(f"WARNING: No user config found for '{entity_source_name}', skipping parameter '{param_target}'")
 
                         # Default Parameters
                         if entity_class in config["sys"][db_name]["parameters"]["default"]:
@@ -1319,7 +1368,8 @@ def add_cargo_sector(db_map : DatabaseMapping, db_source : DatabaseMapping, conf
 
 def coupling_spatial_resolutions(db_map : DatabaseMapping, config : dict):
 
-    mopo_resolutions = ["PECD1","PECD2","NUTS2","NUTS3"]
+#    mopo_resolutions = ["PECD1","PECD2","NUTS2","NUTS3"] #used for EU case study
+    mopo_resolutions = ["PECD1","IC1","NUTS3"]  #used for IC1 resolution industrial case study
     commodity_pipeline = {"elec":"power_transmission","CH4":"gas_pipelines","H2":"gas_pipelines","bio":"cargo_transport","HC":"cargo_transport","MeOH":"cargo_transport", "CO2":"gas_sector"}
     for commodity in config["user"]["network"]:
         if config["user"]["commodity"][commodity]["status"]:
