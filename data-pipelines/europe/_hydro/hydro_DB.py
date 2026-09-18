@@ -144,6 +144,15 @@ def pump_hydro_storage(target_db, sheet):
 
 def ror_parameters(target_db, path, wyears):
 
+    if not os.path.isdir(path):
+        print("RoR path does not exist — skipping.")
+        return
+
+    files = [f for f in os.listdir(path) if f.endswith(".csv")]
+    if not files:
+        print("RoR folder is empty — skipping.")
+        return
+
     entity_name = "technology"
     entity_byname = ("RoR",)
     add_entity(target_db, entity_name, entity_byname)
@@ -151,7 +160,7 @@ def ror_parameters(target_db, path, wyears):
     entity_byname = ("RoR","elec")
     add_entity(target_db, entity_name, entity_byname)
 
-    for file in os.listdir(path):
+    for file in files:
         sheet = pd.read_csv(os.path.join(path,file),index_col=0).iloc[:,0]
 
         time_index = [pd.Timestamp(i).tz_convert(None).isoformat() for i in sheet.index if not (pd.Timestamp(i).month == 2 and pd.Timestamp(i).day == 29) and pd.Timestamp(i).year in wyears]
@@ -174,7 +183,16 @@ def ror_parameters(target_db, path, wyears):
 
 def inflow_parameters(target_db, path, inflow_factor, wyears):
 
-    for file in os.listdir(path):
+    files = [
+        f for f in os.listdir(path)
+        if f.endswith(".csv") and os.path.isfile(os.path.join(path, f))
+    ]
+
+    if not files:
+        print("Inflow directory contains no valid CSV files — skipping.")
+        return
+
+    for file in files:
         sheet = pd.read_csv(os.path.join(path,file),index_col=0).iloc[:,0]
 
         time_index = [pd.Timestamp(i).tz_convert(None).isoformat() for i in sheet.index if not (pd.Timestamp(i).month == 2 and pd.Timestamp(i).day == 29) and pd.Timestamp(i).year in wyears]
@@ -231,13 +249,27 @@ def main():
         target_db.commit_session("pump_static_params_added")
         print("pump_static_params_added")
 
-        inflow_parameters(target_db,inflow_params,static_params["WP2.3 hydro Reservoir"]["Inflow adjustment factor"],weather_years)
-        target_db.commit_session("inflow_params_added")
-        print("inflow_params_added")
+        if os.path.isdir(inflow_params) and any(
+            f.endswith(".csv") and os.path.isfile(os.path.join(inflow_params, f))
+            for f in os.listdir(inflow_params)
+        ):
+            inflow_parameters(
+                target_db,
+                inflow_params,
+                static_params["WP2.3 hydro Reservoir"]["Inflow adjustment factor"],
+                weather_years
+            )
+            target_db.commit_session("inflow_params_added")
+            print("inflow_params_added")
+        else:
+            print("No inflow files found — skipping inflow import.")                
 
-        ror_parameters(target_db,ror_params,weather_years)
-        target_db.commit_session("ror_params_added")
-        print("ror_params_added")
+        if os.path.isdir(ror_params) and any(f.endswith(".csv") for f in os.listdir(ror_params)):
+            ror_parameters(target_db, ror_params, weather_years)
+            target_db.commit_session("ror_params_added")
+            print("ror_params_added")
+        else:
+            print("No RoR files found — skipping RoR parameter import.")
 
 if __name__ == "__main__":
     main()

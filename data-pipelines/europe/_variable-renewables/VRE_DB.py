@@ -47,7 +47,24 @@ def add_technology_relationship(db_map, tech_type, tech, poly, potential, availa
     except Exception as e:
         pass#print(f"Error adding technology relationship {tech_type} for {poly}: {e}")
 
-    profile = {"type":"map","index_type":"date_time","index_name":"t","data":dict(zip(CY_index["iso"], availability.loc[CY_index["standard"], poly].round(3).tolist()))}
+    # Ensure both index and CY_index are datetime
+    availability.index = pd.to_datetime(availability.index)
+    CY_std_dt = pd.to_datetime(CY_index["standard"])
+    CY_iso_dt = pd.to_datetime(CY_index["iso"])
+
+    # Filter only timestamps that exist in the availability index
+    existing_times_mask = CY_std_dt.isin(availability.index)
+    existing_std = CY_std_dt[existing_times_mask]
+    existing_iso = CY_iso_dt[existing_times_mask]
+
+    # Build profile only for existing timestamps
+    profile = {
+    "type": "map",
+    "index_type": "date_time",
+    "index_name": "t",
+    "data": dict(zip([t.isoformat() for t in existing_iso],
+                     availability.loc[existing_std, poly].round(3).tolist()))
+    }
     # profile = {"type": "time_series", "data": availability.loc[CY_index["standard"], poly].round(3).tolist(), "index": {"start": "2018-01-01T00:00:00", "resolution": "1h", "ignore_year": True}}
     add_entity(db_map, "technology__to_commodity__region", (tech, "elec",poly))
     add_parameter_value(db_map, "technology__to_commodity__region", "profile_limit_upper", "Base", (tech, "elec",poly), profile)

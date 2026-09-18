@@ -52,7 +52,6 @@ def tech_conversion(target_db,sheet):
         if pd.notna(row.iloc[3]):
             # map_conv = {"type":"map","index_type":"str","index_name":"period","data":{"y2030":row.iloc[3],"y2040":row.iloc[4],"y2050":row.iloc[5]}}
             add_parameter_value(target_db,"commodity__to_technology__to_commodity","conversion_rate","Base",(from_node,tech,to_node),np.array([row.iloc[3],row.iloc[4],row.iloc[5]]).mean().round(3))
-
     try:
         target_db.commit_session("Added tech conversion")
     except DBAPIError as e:
@@ -392,8 +391,6 @@ def h2_network(target_db,sheet):
         target_db.commit_session("Added H2 network")
     except DBAPIError as e:
         print("commit H2 network error")
-
-
 
 def add_scenario(db_map : DatabaseMapping,name_scenario : str) -> None:
     _, error = db_map.add_scenario_item(name=name_scenario)

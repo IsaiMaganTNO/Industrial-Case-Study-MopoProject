@@ -36,7 +36,7 @@ def add_scenario(db_map : DatabaseMapping,name_scenario : str) -> None:
     
 def main():
     url_db_out = sys.argv[1]
-    electricity_demand = pd.read_csv(sys.argv[2],index_col=0)
+    electricity_demand = pd.read_csv(sys.argv[2],parse_dates=True,index_col=0)
     userconfig = yaml.safe_load(open(sys.argv[3], "rb"))
     weather_years = [pd.Timestamp(userconfig["timeline"]["historical_alt"][i]["start"]).year for i in userconfig["timeline"]["historical_alt"]]
 
@@ -73,7 +73,26 @@ def main():
             '''add_parameter_value(db_map,"region","type","Base",(country,),"onshore")
             add_parameter_value(db_map,"region","GIS_level","Base",(country,),"PECD1")'''
             add_relationship(db_map,"commodity__region",("elec",country))
-            demand_v = (-1*electricity_demand.loc[index_pick,country].values).round(1)
+            demand_v = (-1*electricity_demand.loc[index_pick,country].values).round(1).astype(float).tolist()
+            electricity_demand = pd.read_csv(sys.argv[2], index_col=0)
+
+            # Validate CSV datetime format and index coverage
+            electricity_demand.index = pd.to_datetime(electricity_demand.index, errors='coerce')
+            invalid_timestamps = electricity_demand.index[electricity_demand.index.isna()]
+            if not invalid_timestamps.empty:
+                raise ValueError(f"electricity_demand CSV contains {len(invalid_timestamps)} unparseable datetime entries.")
+
+            # Check that all expected timestamps are present in the CSV
+            index_pick_dt = pd.to_datetime(index_pick)
+            missing_timestamps = index_pick_dt[~index_pick_dt.isin(electricity_demand.index)]
+            if not missing_timestamps.empty:
+                raise ValueError(
+                    f"electricity_demand CSV is missing {len(missing_timestamps)} expected timestamps. "
+                    f"First few missing: {missing_timestamps[:5].tolist()}"
+                )
+
+            print("CSV datetime validation passed.")
+            
             value_de = {"type":"map","index_type":"date_time","index_name":"t","data":dict(zip(index_map,demand_v))}
             add_parameter_value(db_map,"commodity__region","flow_profile","Base",("elec",country),value_de)
              
