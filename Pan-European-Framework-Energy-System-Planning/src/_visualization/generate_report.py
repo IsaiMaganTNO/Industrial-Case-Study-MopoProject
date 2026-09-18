@@ -702,7 +702,7 @@ def main():
     parser = argparse.ArgumentParser(description="Generate energy model PDF report")
     parser.add_argument("--out",      default="report.pdf", help="Output PDF path  (default: report.pdf)")
     parser.add_argument("--data-dir", default="files_out", help="Directory with CSV/dill files  (default: files_out)")
-    parser.add_argument("--geo",      default="config/onshore_PECD1.geojson", help="GeoJSON for flow maps  (default: config/onshore_PECD1.geojson)")
+    parser.add_argument("--geo",      default="config/IC1.geojson", help="GeoJSON for flow maps  (default: config/IC1.geojson)")
     args = parser.parse_args()
     print(f"[1/11] Loading data from '{args.data_dir}' ...")
     (installed, invested, invested_cost, decommissioned, unit_to_flows,

@@ -89,5 +89,8 @@ maritime-MeOH: transport
 int-maritime-MeOH: transport
 rail: transport
 thermal-rail: transport
+# IC1 transport pipeline emits the unsuffixed maritime nodes
+maritime: transport
+int-maritime: transport
 atmosphere: emission
 CO2-storage: CO2-sink

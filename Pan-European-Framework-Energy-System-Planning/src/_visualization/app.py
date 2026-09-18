@@ -566,7 +566,7 @@ def main():
     with tab5:
         st.header("Installed Capacity Map Comparison")
         POLY_COL = "id"
-        geojson_obj, gdf_base = load_geodata("config/onshore_PECD1.geojson", POLY_COL)
+        geojson_obj, gdf_base = load_geodata("config/IC1.geojson", POLY_COL)
         map_tech = st.selectbox("Technology", TECH_ORDER)  # no "All Technologies"
 
         df_cap = merged[(merged["scenario"] == scenario) & (merged["technology"] == map_tech)].copy()
@@ -681,7 +681,7 @@ def main():
     with tab11:
         st.header("Flow Map (Cross-border)")  # noqa
         POLY_COL = "id"
-        geojson_obj, gdf_base = load_geodata("config/onshore_PECD1.geojson", POLY_COL)
+        geojson_obj, gdf_base = load_geodata("config/IC1.geojson", POLY_COL)
         if crossborder_flows.empty: st.info("No cross-border flow data loaded."); st.stop()
 
         # Commodity (node) selection

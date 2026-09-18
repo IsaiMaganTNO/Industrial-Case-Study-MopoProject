@@ -42,3 +42,10 @@ harber-bosch: Harber Bosch
 methanation: Methanation
 (H2)MeOH-DC: Syn-production of Methanol
 (BM)MeOH: Bio-production of Methanol
+# IC1: unsuffixed gas turbine keys and transport demand-response units
+CCGT: Combined-cycle Gas Turbine
+OCGT: Open-cycle Gas Turbine
+truck-DR: EV chargers
+bus-DR: EV chargers
+car-DR: EV chargers
+van-DR: EV chargers
