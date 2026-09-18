@@ -5,7 +5,7 @@ resolution: "1h"
 future_inflation: 0.03
 default_technology_discount_rate: 0.05
 economic_reference_year: 2025
-solver: "Gurobi.jl" # HiGHS.jl
+solver: "HiGHS.jl" # Gurobi.jl - IC1 stays on HiGHS to keep the toolchain open source
 # configurable cyclic condition, storage options: battery-storage-iron-air,batter-storage,truck-DR,bus-DR,van-DR,car-DR
 long-term-storage: [battery-storage-iron-air]
 short-term-storage: [battery-storage,PH-reservoir,truck-DR,bus-DR,van-DR,car-DR]
