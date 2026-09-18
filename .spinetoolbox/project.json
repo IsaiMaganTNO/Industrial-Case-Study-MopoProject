@@ -1694,7 +1694,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Hydro/EU_parameters_data_20260215_version1.xlsx"
+                    "path": "data/Hydro/IC1_parameters_data.xlsx"
                 },
                 {
                     "type": "path",
@@ -1796,7 +1796,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Electricity_Transmission/Electricity_Transmission.csv"
+                    "path": "data/Electricity_Transmission/Electricity_Transmission_Industry.csv"
                 },
                 {
                     "type": "path",
@@ -2029,7 +2029,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Rdemand/other_electricity_demand.csv"
+                    "path": "data/Rdemand/other_electricity_demand_IC1.csv"
                 },
                 {
                     "type": "path",
@@ -2366,7 +2366,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Gas/Gas_Sectors_Dataset.xlsx"
+                    "path": "data/Gas/Gas_Sectors_Dataset_IC1_placeholder.xlsx"
                 },
                 {
                     "type": "path",
@@ -2574,7 +2574,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Transport/fleets_per_scenario.csv"
+                    "path": "data/Transport/fleet.csv"
                 },
                 {
                     "type": "path",
