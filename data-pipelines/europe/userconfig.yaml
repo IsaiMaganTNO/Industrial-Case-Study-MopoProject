@@ -784,6 +784,12 @@ vehicle:
     status: True
   int-aviation:
     status: True
+  # IC1 transport pipeline emits unsuffixed maritime vehicles; the EU pipeline
+  # splits them by fuel. Both sets are listed so either pipeline resolves.
+  maritime:
+    status: True
+  int-maritime:
+    status: True
   maritime-HC:
     status: True
   int-maritime-HC:
