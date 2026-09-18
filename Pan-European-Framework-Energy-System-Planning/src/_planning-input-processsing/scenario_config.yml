@@ -120,7 +120,13 @@ refineries:
       - (H2)FT-DC
 
 renewable_potentials:
-  include_onshore_potential_limitations: True
+  # Disabled for IC1. onshore_potentials() keys max_capacity_history by the
+  # polygon in the entity name (wind-on_BEC1 -> BEC1), but the table below is
+  # per country. Our previous pipeline had this function commented out in
+  # main(), so IC1 has never applied it. Re-enable once per-IC1-region
+  # historical wind/solar capacities exist; the country figures cannot simply
+  # be reused, as each would become a floor for all 17 regions.
+  include_onshore_potential_limitations: False
   onshore_potentials: 0.15 # percentage of available onshore potentials for wind and solar. 
   max_capacity_history:
     wind-on:
