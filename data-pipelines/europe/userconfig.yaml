@@ -4,65 +4,65 @@
 pipelines:
   power_sector: 
     status: True             # include pipeline or not
-    source_resolution: IC1 # Do not touch unless you rerun the corresponding pipeline producing data in that resolution
-    target_resolution: IC1 # Using the weighting factors from the documentation (configurable in sysconfig.yaml file)
+    source_resolution: PECD1 # Do not touch unless you rerun the corresponding pipeline producing data in that resolution
+    target_resolution: PECD1 # Using the weighting factors from the documentation (configurable in sysconfig.yaml file)
   vre:
     status: True
     source_resolution:
-      "on": IC1 
+      "on": PECD2 
       "off": OFF3
     target_resolution:
-      "on": IC1
-      "off": OFF3
+      "on": PECD1
+      "off": OFF2
   hydro_systems:
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
   biomass_production:
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
   power_transmission:
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
   residual_demand:
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
   gas_sector:
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
   gas_pipelines: 
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
   industrial_sector:
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
   other_industrial_sector:
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
   heat_sector:
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
   transport_sector:
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
   cargo_transport:
     status: True
-    source_resolution: IC1
-    target_resolution: IC1
+    source_resolution: PECD1
+    target_resolution: PECD1
 
 model:
     type:  brownfield # greenfied not included yet
-    operations_resolution: "8760h"
-    planning_resolution: "8760h" # it builds this optimization window for each planning year
+    operations_resolution: "1h"
+    planning_resolution: "365D" # it builds this optimization window for each planning year
     planning_years: # options: 2030, 2040 and 2050 (parameters limitation)
       "2030": ["2030-01-01T00:00:00",10.0] # start datetime and years represented
       "2040": ["2041-01-01T00:00:00",10.0] # 2041 no leap year
@@ -82,22 +82,15 @@ timeline:
 
 global_constraints:
   co2_annual_budget:
-    "2030": 170000000 # BE+NL scope (170 Mt CO2/yr); was European 2200 Mt/yr
-    "2040": 40000000  # BE+NL scope (40 Mt CO2/yr); was European 550 Mt/yr
+    "2030": 2600000000 # European level, if running a country-level model, then adjust this factor
+    "2040": 580000000  # European level
     "2050": 0.0
-  co2_annual_sequestration: 200000000 # system level (still European scope; adjust separately if desired)
+  co2_sequestration_cost: 65 # €/ton CO2
+  co2_transport_cost: 40 # €/ton CO2
 
 # Use country code to model a specific country  and define Europe as country, then, the remaining countries are modeled following requirements
 countries : 
-  #- Europe
-  -NL
-  -BE
- # -UK
- # -NO
- # -DE
- # -FR
- # -DK
-  # - ES
+  - Europe
 
 # Sectors optimized
 commodity: 
@@ -111,7 +104,7 @@ commodity:
     status: True
     node_type: balance
   CO2: 
-    status: False
+    status: True
     node_type: storage
   bio: 
     status: True
@@ -120,6 +113,9 @@ commodity:
     status: True
     node_type: balance
   MeOH: 
+    status: True
+    node_type: balance
+  NH3:
     status: True
     node_type: balance
   fossil-CH4: 
@@ -143,28 +139,34 @@ commodity:
   waste: 
     status: False
     node_type: commodity
+  atmosphere:
+    status: False
+    node_type: storage
 
 network: 
   elec: 
     status: True # True = it is modeled
     # if true, the countries in the model are interconnected with their neighbors using an exogenous fixed price
     # WARNING: it can consider the neighboring countries have unlimited capacity and it is more affordable to import everything
-    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
+    interconnection_out_model: True
   CH4: 
     status: True
-    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
+    interconnection_out_model: True
   H2: 
     status: True
-    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
+    interconnection_out_model: True
+  CO2: 
+    status: True
+    interconnection_out_model: False
   MeOH: 
     status: True
-    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
+    interconnection_out_model: False
   HC: 
     status: True
-    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
+    interconnection_out_model: False
   bio: 
     status: True
-    interconnection_out_model: True #False for EU case #True allows connections between other EU countries and IC1 regions to be imported here
+    interconnection_out_model: False
 
 storage:
   battery-storage:
@@ -198,13 +200,13 @@ technology:
     status: False
     investment_method: "no_limits"
   OCGT:
-    status: False
+    status: True
     investment_method: "no_limits"
   OCGT+CC:
     status: False
     investment_method: "no_limits"
   CCGT:
-    status: False
+    status: True
     investment_method: "no_limits"
   CCGT-existing:
     status: True
@@ -213,10 +215,10 @@ technology:
     status: True
     investment_method: "no_limits"
   OCGT-H2:
-    status: False
+    status: True
     investment_method: "no_limits"
   CCGT-H2:
-    status: False
+    status: True
     investment_method: "no_limits"
   wasteST:
     status: False
@@ -258,13 +260,13 @@ technology:
     status: False
     investment_method: "no_limits"
   wind-on-SP277-HH100:
-    status: False
+    status: True
     investment_method: "no_limits"
   wind-on-SP277-HH150: 
     status: False
     investment_method: "no_limits"
   wind-on-SP199-HH100:
-    status: True
+    status: False
     investment_method: "no_limits"
   wind-on-SP199-HH150:
     status: False
@@ -294,7 +296,7 @@ technology:
     status: False
     investment_method: "no_limits"
   fuelcell:
-    status: False
+    status: True
     investment_method: "no_limits"
   hydro-turbine:
     status: True
@@ -321,6 +323,9 @@ technology:
   SOEC: 
     status: False
     investment_method: "no_limits"
+  harber-bosch:
+    status: True
+    investment_method: "no_limits"
   gas-pyrolysis: 
     status: False
     investment_method: "no_limits"
@@ -331,7 +336,7 @@ technology:
     status: True
     investment_method: "no_limits"
   bio-diges-up+CC: 
-    status: False
+    status: True
     investment_method: "no_limits"
   bio-diges-metha: 
     status: False
@@ -389,7 +394,7 @@ technology:
     status: False
     investment_method: "not_allowed"
   oil-boiler:
-    status: True
+    status: False
     investment_method: "no_limits"
   oil-boiler-existing:
     status: True
@@ -628,8 +633,16 @@ technology:
   WPI-BOF-MEA:
     status: true
   alumina-production-alternative:
-    status: true
+    status: True
   alumina-production-reference:
+    status: True
+  aluminium-primary-production-alternative:
+    status: True
+  aluminium-primary-production-reference:
+    status: True
+  aluminium-secondary-production-alternative:
+    status: True
+  aluminium-secondary-production-reference:
     status: True
   food-beverages-tobacco-production-alternative:
     status: True
@@ -767,9 +780,17 @@ vehicle:
     status: True
   int-aviation:
     status: True
-  maritime:
+  maritime-HC:
     status: True
-  int-maritime:
+  int-maritime-HC:
+    status: True
+  maritime-NH3:
+    status: True
+  int-maritime-NH3:
+    status: True
+  maritime-MeOH:
+    status: True
+  int-maritime-MeOH:
     status: True
   rail:
     status: True

@@ -1,0 +1,13 @@
+{
+    "name": "ines_to_spinetop",
+    "tooltype": "python",
+    "includes": [
+        "ines_to_spineopt.py"
+    ],
+    "description": "",
+    "inputfiles": [],
+    "inputfiles_opt": [],
+    "outputfiles": [],
+    "cmdline_args": [],
+    "includes_main_path": "../../../ines-spineopt/ines-spineopt"
+}

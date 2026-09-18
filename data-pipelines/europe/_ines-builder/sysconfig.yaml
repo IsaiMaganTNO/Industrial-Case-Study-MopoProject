@@ -151,7 +151,7 @@ vre:
           units_existing: [units_existing,[[1]],[area,{}],null]
       technology__to_commodity__region:
         unit__to_node:
-          profile_limit_upper: [profile_limit_upper,[[1],[2]],[potential,{existing: capacity}],null]
+          profile_limit_upper: [profile_limit_upper,[[1],[2]],[potential,{wind-on-existing: capacity_wind-on, solar-PV-existing: capacity_solar-PV, wind-off-FB-existing: capacity_FB, wind-on-SP: potential_wind-on, solar-PV-no-tracking: potential_solar-PV, solar-PV-tracking: potential_solar-PV, solar-PV-rooftop: potential_solar-PV, wind-off-FB-SP: potential_FB, wind-off-FO-SP: potential_FO}],null]
       technology_type__region:
         set:
           potential: [max_cumulative,[[1]],[area,{}],null]
@@ -576,7 +576,7 @@ transport_sector:
         unit__to_node:
           - [capacity,1.0,[[1,2],[1]],{node_type: storage}]
     fixed:
-      commodity__vehicle__region:
+      commodity__vehicle:
         node:
           node_type: [node_type,1.0,[[2]]]
     dynamic:
@@ -616,10 +616,14 @@ heat_sector:
       node:
         - [[1]]
     commodity__to_end-use:
-      link:
+      unit:
         - [[1,2]]
-      node__link__node:
-        - [[1],[1,2],[2]]
+      node__to_unit:
+        - [[1],[1,2]]
+      unit__to_node:
+        - [[1,2],[2]]
+      unit_flow__unit_flow:
+        - [[1,2],[2],[1],[1,2]]
     storage:
       node: 
         - [[1]]
@@ -657,8 +661,8 @@ heat_sector:
           - [node_type,balance,[[1]]]
           - [flow_scaling_method,scale_to_annual,[[1]]]
       commodity__to_end-use:
-        node__link__node:
-          - [efficiency,1.0,[[1],[1,2],[2]]]
+        unit_flow__unit_flow:
+          - [equality_ratio,1.0,[[1,2],[2],[1],[1,2]]]
     fixed:
       technology:
         unit:
