@@ -394,6 +394,7 @@ Things investigated and cleared — recorded so they are not re-investigated:
 | 7 | Phantom-connection root cause | still unresolved; both old and new models have 100 % flow-ratio coverage, so the earlier `link_parameters_to_directions` hypothesis was wrong |
 | 8 | Mixed spatial resolution | adding NO/DE/DK/UK at country resolution alongside BE/NL at IC1. **Not currently implemented** — today's neighbour nodes are exogenous boundary nodes only |
 | 9 | Stage 2 (dispatch) | skipped on the colleague's advice |
+| 10 | Remove `geodata/onshore_plus_ic.geojson` | 67.3 MB, above GitHub's 50 MB warning threshold. **Introduced by this branch** (`5917e57`), absent from `upstream/main`, and unused since `power_importer` was repointed at `IC1.geojson` — the only remaining mention is in this document. `git rm` stops it being carried forward but leaves the blob in `5917e57`, so clones still pull it; only a history rewrite removes it completely, which needs a force-push to an already-published branch. Do this before the upstream PR, not before a run |
 
 ### Remaining infeasibility suspects, if the run still fails
 
