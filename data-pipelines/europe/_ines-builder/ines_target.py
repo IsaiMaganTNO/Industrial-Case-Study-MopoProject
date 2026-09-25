@@ -1406,7 +1406,8 @@ def coupling_spatial_resolutions(db_map : DatabaseMapping, config : dict):
                                 break
 
 def add_policy_constraints(db_map : DatabaseMapping, config : dict):
-    co2_data = pd.read_excel("CO2_data.xlsx",sheet_name = None)
+    # The network sheets are keyed by the spatial resolution in use, so the workbook follows userconfig.
+    co2_data = pd.read_excel(config["user"]["global_constraints"].get("co2_data_file","CO2_data.xlsx"),sheet_name = None)
 
     energy_units = config["user"]["model"]["units"]["energy"]
     co2_values = [config["user"]["global_constraints"]["co2_annual_budget"][year]/1000 for year in config["user"]["global_constraints"]["co2_annual_budget"]]
@@ -1488,6 +1489,9 @@ def add_policy_constraints(db_map : DatabaseMapping, config : dict):
         
         polygons = define_polygons(config["user"],config["transformer"],on_target_resolution,off_target_resolution)
 
+        # A reservoir reachable from several regions is one physical site, so its node is shared between them.
+        co2_storage_nodes = set()
+
         for country in polygons["onshore_polygons"]:
             
             entity_name = "node"
@@ -1502,53 +1506,57 @@ def add_policy_constraints(db_map : DatabaseMapping, config : dict):
             nodes = co2_data["storage"][(co2_data["storage"]["node"] == country)|(co2_data["storage"]["node"].isin(from_nodes))]["node"].unique()
             
             for node in nodes:
-                if node in co2_data["network_to_storage"]["to"].tolist():
-                    index_ = co2_data["network_to_storage"][co2_data["network_to_storage"]["to"]==node].index[0]
-                    tariff = co2_data["network_to_storage"].at[index_,"tariff"]
-                    storage_name = "CO2-storage-"+node+"_"+country
+                # A storage site is reachable from several regions, so the tariff must match this region's link.
+                links = co2_data["network_to_storage"][(co2_data["network_to_storage"]["to"]==node) & (co2_data["network_to_storage"]["from"]==country)]
+                if not links.empty:
+                    tariff = links.at[links.index[0],"tariff"]
+                    storage_name = "CO2-storage-"+node
                 else: 
                     tariff = 0.0
                     storage_name = "CO2-storage"+"_"+country
+                injection_name = "CO2-injection-"+node+"_"+country
 
                 entity_name = "node"
                 entity_byname = (storage_name,)
-                add_entity(db_map,entity_name,entity_byname)
-                add_parameter_value(db_map,entity_name,"node_type","Base",entity_byname,"storage")
-                add_parameter_value(db_map,entity_name,"storage_investment_method","Base",entity_byname,"no_limits")
-                add_parameter_value(db_map,entity_name,"storage_state_fix_method","Base",entity_byname,"fix_start")
-                add_parameter_value(db_map,entity_name,"storage_state_fix","Base",entity_byname,0.0)
-        
-                for alternative in ["low","medium","high"]:
-                    try:
-                        add_alternative(db_map,alternative+"_CO2")
-                    except:
-                        pass
-                    data_values = {}
-                    for year in [2030,2040,2050]:
-                        data_values[f"y{str(year)}"] = co2_data["storage"].at[co2_data["storage"][(co2_data["storage"]["node"]==node)&(co2_data["storage"]["year"]==year)].index[0],alternative]*1000
-                    co2_storage = {"type":"map","index_type":"str","index_name":"period","data":data_values}
-                    add_parameter_value(db_map,entity_name,"storages_fix_cumulative",alternative+"_CO2",entity_byname,co2_storage)
-                add_parameter_value(db_map,entity_name,"storage_capacity","Base",entity_byname,float(1000))
+                if storage_name not in co2_storage_nodes:
+                    co2_storage_nodes.add(storage_name)
+                    add_entity(db_map,entity_name,entity_byname)
+                    add_parameter_value(db_map,entity_name,"node_type","Base",entity_byname,"storage")
+                    add_parameter_value(db_map,entity_name,"storage_investment_method","Base",entity_byname,"no_limits")
+                    add_parameter_value(db_map,entity_name,"storage_state_fix_method","Base",entity_byname,"fix_start")
+                    add_parameter_value(db_map,entity_name,"storage_state_fix","Base",entity_byname,0.0)
+
+                    for alternative in ["low","medium","high"]:
+                        try:
+                            add_alternative(db_map,alternative+"_CO2")
+                        except:
+                            pass
+                        data_values = {}
+                        for year in [2030,2040,2050]:
+                            data_values[f"y{str(year)}"] = co2_data["storage"].at[co2_data["storage"][(co2_data["storage"]["node"]==node)&(co2_data["storage"]["year"]==year)].index[0],alternative]*1000
+                        co2_storage = {"type":"map","index_type":"str","index_name":"period","data":data_values}
+                        add_parameter_value(db_map,entity_name,"storages_fix_cumulative",alternative+"_CO2",entity_byname,co2_storage)
+                    add_parameter_value(db_map,entity_name,"storage_capacity","Base",entity_byname,float(1000))
         
                 entity_name = "unit"
-                entity_byname = ("CO2-injection-"+node,)
+                entity_byname = (injection_name,)
                 add_entity(db_map,entity_name,entity_byname)
                 entity_name = "node__to_unit"
-                entity_byname = ("CO2_"+country,"CO2-injection-"+node)
+                entity_byname = ("CO2_"+country,injection_name)
                 add_entity(db_map,entity_name,entity_byname)
                 entity_name = "node__to_unit"
-                entity_byname = ("atmosphere","CO2-injection-"+node)
+                entity_byname = ("atmosphere",injection_name)
                 add_entity(db_map,entity_name,entity_byname)
                 entity_name = "unit__to_node"
-                entity_byname = ("CO2-injection-"+node,storage_name)
+                entity_byname = (injection_name,storage_name)
                 add_entity(db_map,entity_name,entity_byname)
                 if tariff > 0.0:
                     add_parameter_value(db_map,entity_name,"other_operational_cost","Base",entity_byname,tariff)
                 entity_name = "unit_flow__unit_flow"
-                entity_byname = ("CO2-injection-"+node,storage_name,"CO2_"+country,"CO2-injection-"+node)
+                entity_byname = (injection_name,storage_name,"CO2_"+country,injection_name)
                 add_entity(db_map,entity_name,entity_byname)
                 add_parameter_value(db_map,entity_name,"equality_ratio","Base",entity_byname,1.0)
-                entity_byname = ("CO2-injection-"+node,storage_name,"atmosphere","CO2-injection-"+node)
+                entity_byname = (injection_name,storage_name,"atmosphere",injection_name)
                 add_entity(db_map,entity_name,entity_byname)
                 add_parameter_value(db_map,entity_name,"equality_ratio","Base",entity_byname,1.0)
 

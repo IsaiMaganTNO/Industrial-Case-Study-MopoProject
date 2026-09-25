@@ -82,11 +82,13 @@ timeline:
 
 global_constraints:
   co2_annual_budget:
-    "2030": 170000000 # BE+NL scope (170 Mt CO2/yr); European level would be 2600 Mt/yr
-    "2040": 40000000  # BE+NL scope (40 Mt CO2/yr); European level would be 580 Mt/yr
+    "2030": 165400000 # BE 65.6 + NL 99.8 Mt CO2eq
+    "2040": 36800000  # BE 14.6 + NL 22.2 Mt CO2eq
     "2050": 0.0
   co2_sequestration_cost: 65 # €/ton CO2
   co2_transport_cost: 40 # €/ton CO2
+  # Must be keyed by the same polygons as the gas_sector target_resolution; CCS_data/ holds the source variants.
+  co2_data_file: CO2_data_IC1.xlsx
 
 # Use country code to model a specific country  and define Europe as country, then, the remaining countries are modeled following requirements
 # IC1 industrial case: BE and NL only. Previously written as the scalar "-NL -BE",

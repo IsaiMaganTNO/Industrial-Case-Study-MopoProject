@@ -179,6 +179,11 @@ def update_parameters(config):
                     parameter_value["data"] = {k:v*config["emission_factor"] for k,v in parameter_value["data"].items()}
 
                 add_or_update_parameter_value(sopt_db, "node", atm_parameter, target_parameter["alternative_name"], ("atmosphere", ), parameter_value)
+
+        # Slack on the carbon budget: an unreachable target then reports a cost instead of an infeasible model.
+        if config.get("co2_overshoot_penalty"):
+            add_or_update_parameter_value(sopt_db, "node", "balance_penalty", "Base", ("atmosphere", ), float(config["co2_overshoot_penalty"]))
+
         try:
             sopt_db.commit_session("Update parameters")
         except:

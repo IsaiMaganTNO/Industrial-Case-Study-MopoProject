@@ -1,8 +1,10 @@
 scenarios:
-  # GA_flex0 not GA_flex5: our transport pipeline emits flex scenarios 0/10/20,
-  # the EU pipeline 0/5/10. high_CO2 dropped - no such alternative in IC1 data.
-  baseline_blended_representative_periods: ["Base","wy2009","medium_bio","current","GA","GA_flex0",flex_buildings,flex_buildings_wy2009_current,flex_industry] 
+  # GA_flex0 not GA_flex5: our transport pipeline emits flex scenarios 0/10/20, the EU pipeline 0/5/10.
+  # high_CO2 carries storages_fix_cumulative for the CO2 storage nodes; without it sequestration is uncapped.
+  baseline_blended_representative_periods: ["Base","wy2009","medium_bio","current","GA","GA_flex0","high_CO2",flex_buildings,flex_buildings_wy2009_current,flex_industry] 
 emission_factor: 1.0 #percentage of carbon budget considered in the model based on the included countries
+# balance_penalty on the atmosphere node. Set to null once the model solves without it.
+co2_overshoot_penalty: 10000
 resolution: "1h"
 future_inflation: 0.03
 default_technology_discount_rate: 0.05
