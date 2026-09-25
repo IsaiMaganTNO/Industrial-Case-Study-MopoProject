@@ -1871,7 +1871,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "geodata/onshore_plus_ic.geojson"
+                    "path": "geodata/IC1.geojson"
                 },
                 {
                     "type": "path",
@@ -1940,7 +1940,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/geodata/onshore_plus_ic.geojson"
+                    "arg": "<project>/geodata/IC1.geojson"
                 },
                 {
                     "type": "resource",
