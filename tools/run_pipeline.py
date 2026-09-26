@@ -36,7 +36,54 @@ JULIA = Path(os.environ.get(
     r"C:\Users\maganih\.julia\juliaup\julia-1.12.6+0.x64.w64.mingw32\bin\julia.exe"))
 JENV = ROOT / "jenv"
 
-EXCLUDED = {"Run_Model_Planning", "Run_Dispatch", "fix_investments", "visualization"}
+# Never run automatically.
+#   Run_Model_Planning / Run_Dispatch  - solves, launched explicitly
+#   fix_investments / visualization    - stage 2 / post-processing
+#   feedback_extremes                  - reads db_url@Dispatch_Results, i.e. the
+#                                        output of stage 2. It refines the
+#                                        representative-period choice from solved
+#                                        dispatch results, so it is a feedback
+#                                        loop from a later stage and is
+#                                        meaningless on a first build (and the
+#                                        DAG sorts it BEFORE run_clustering,
+#                                        where it would just fail).
+EXCLUDED = {
+    "Run_Model_Planning",
+    "Run_Dispatch",
+    "fix_investments",
+    "visualization",
+    "feedback_extremes",
+}
+
+# The topological sort follows data-flow edges, which do not imply a safe
+# execution sequence: clustering_input and scenario_setup both touch
+# Final_SpineOpt_Model, which does not exist until ines_to_spinetop has run, yet
+# they sort to positions 1 and 14. Pin the real order explicitly.
+STAGE1_ORDER = [
+    # sector importers - independent of each other
+    "VRE_importer",
+    "biomass_importer",
+    "cargo_import",
+    "commodity_importer",
+    "gas_import",
+    "heat_importer",
+    "hydro_importer",
+    "industry_importer",
+    "power_importer",
+    "rdemand_importer",
+    "transmission_importer",
+    "transport_importer",
+    # merge every sector database into INES_DB
+    "ines_builder",
+    # INES -> SpineOpt
+    "template_1",
+    "ines_to_spinetop",
+    # temporal structure, then scenario configuration, both on Final_SpineOpt_Model
+    "clustering_input",
+    "run_clustering",
+    "clustering_output",
+    "scenario_setup",
+]
 
 MIN_FREE_DISK_GB = 20.0
 MAX_RAM_FRACTION = 0.85
@@ -214,7 +261,11 @@ def main():
     a = ap.parse_args()
 
     proj = load_project()
-    order = [t for t in tool_order(proj) if t not in EXCLUDED]
+    # Use the explicit stage-1 sequence; fall back to the topological sort for
+    # anything not listed (so a newly added tool is still reachable).
+    topo = [t for t in tool_order(proj) if t not in EXCLUDED]
+    order = [t for t in STAGE1_ORDER if t in proj["items"]]
+    order += [t for t in topo if t not in order]
 
     if a.stats:
         for k, v in db_stats().items():
