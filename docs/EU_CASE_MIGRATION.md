@@ -441,8 +441,25 @@ inertness, so a revert to the stock plugin file does not silently reinstate 1-ho
 | `time_limit` | 3600.01 | **14400** | 1 h was not enough to converge |
 | `simplex_scale_strategy` | 2 | **4** (max) | attacks the 7.5e13 range directly — the right lever for a badly-scaled matrix, rather than distorting input data |
 | `primal/dual_feasibility_tolerance` | 1e-7 | **1e-9** | targets "optimal but discarded on tolerance": a solution can pass a *relative* test while still violating constraints *absolutely* |
+| `ipm_optimality_tolerance` | 1e-8 | **1e-9** | must match the feasibility tolerances — see below |
 | `mip_feasibility_tolerance` | 1e-6 | **1e-7** | as above |
 | `mip_rel_gap` | 1e-4 | **1e-3** | deliberately *looser*: 0.1 % is far below input-data uncertainty, and 0.01 % can cost hours of branching |
+
+**Algorithm selection is deliberately left to HiGHS.** `solver` stays at its default `choose`
+and `simplex_strategy` at `1` (dual), so HiGHS picks dual simplex for LPs and branch-and-cut for
+MIPs, and may use interior point where it judges it better. Pinning the method on a model that
+has never solved would remove an option we may need.
+
+That freedom forces one coupled change. `ipm_optimality_tolerance` defaults to **1e-8, looser
+than the 1e-9 feasibility bar we set**, so if HiGHS chose interior point it would terminate at a
+point that cannot satisfy our own tolerance — reproducing the "optimal but discarded" symptom
+precisely. IPM is demonstrably reachable in this model: the dual-ray computation that crashed the
+previous host was HiGHS re-solving the LP by interior point (§4.2). Hence `ipm_optimality_tolerance
+=> 1e-9`. Verified: `choose`, `simplex` and `ipm` all solve with the full option set applied.
+
+Note also `run_crossover` remains `on` (default). If IPM runs, crossover helps reach a basic
+solution that meets tight tolerances, but is itself expensive on a model this size — a candidate
+to revisit if memory becomes the binding constraint.
 
 All option names were probed against HiGHS before use, and the attribute set was verified applied
 (`time_limit = 14400.0`, `simplex_scale_strategy = 4`, tolerances `1e-9`) on a deliberately

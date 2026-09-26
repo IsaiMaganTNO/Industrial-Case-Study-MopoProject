@@ -474,10 +474,10 @@ def solver_options(config):
         map_options = {"type":"map","index_type":"str","index_name":"x","data":
                        {"HiGHS.jl" :{"type":"map","index_type":"str","index_name":"x","data":{
                             "presolve":"on",
-                            "time_limit":14400.0,
-                            "simplex_scale_strategy":4.0,
+                            "time_limit":14400.0,                            "simplex_scale_strategy":4.0,
                             "primal_feasibility_tolerance":1e-9,
                             "dual_feasibility_tolerance":1e-9,
+                            "ipm_optimality_tolerance":1e-9,
                             "mip_feasibility_tolerance":1e-7,
                             "mip_rel_gap":1e-3}},
                         "Gurobi.jl":{"type":"map","index_type":"str","index_name":"x","data":{"Method":2.0,"NumericFocus":2.0,"Crossover":0.0}}}}

@@ -87,7 +87,6 @@ end
 # unlikely, but this stays as a backstop.
 @eval SpineOpt _compute_and_print_conflict!(m) = @info "IIS computation disabled (local testing configuration)"
 
-# --- Solver ------------------------------------------------------------------
 # --- Solver -------------------------------------------------------------------
 # IMPORTANT: passing mip_solver/lp_solver here means SpineOpt uses THIS solver and
 # never reads `solver_mip_options` from the database. See SpineOpt
@@ -110,6 +109,17 @@ end
 #   * mip_rel_gap 1e-4 -> 1e-3. Deliberately LOOSER: a 0.1 % optimality gap is far
 #     below the uncertainty in the input data, and insisting on 0.01 % can cost
 #     hours of branching for a difference nobody can defend.
+#
+# Algorithm selection is left to HiGHS (`solver` stays at its default "choose",
+# `simplex_strategy` at 1 = dual). We do not pin the method: this model has never
+# solved, so removing an option HiGHS might need is premature.
+#
+# But ipm_optimality_tolerance MUST be tightened alongside the feasibility
+# tolerances. Its default is 1e-8, i.e. LOOSER than the 1e-9 we demand, so if
+# HiGHS chooses interior point it would stop at a point that cannot satisfy our
+# own feasibility bar - reproducing the "optimal but discarded" symptom exactly.
+# IPM is demonstrably reachable here: the dual-ray computation that crashed the
+# previous host was HiGHS re-solving the LP by interior point (see doc 4.2).
 solver = JuMP.optimizer_with_attributes(
     HiGHS.Optimizer,
     HiGHS.ComputeInfeasibilityCertificate() => false,
@@ -120,6 +130,7 @@ solver = JuMP.optimizer_with_attributes(
     "simplex_scale_strategy"       => 4,        # default 2; 4 = max scaling
     "primal_feasibility_tolerance" => 1.0e-9,   # default 1e-7
     "dual_feasibility_tolerance"   => 1.0e-9,   # default 1e-7
+    "ipm_optimality_tolerance"     => 1.0e-9,   # default 1e-8; must match the above
     "mip_feasibility_tolerance"    => 1.0e-7,   # default 1e-6
     "mip_rel_gap"                  => 1.0e-3,   # default 1e-4, loosened on purpose
 )
