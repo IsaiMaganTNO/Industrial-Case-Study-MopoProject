@@ -1,0 +1,106 @@
+# =============================================================================
+# SpineOpt run wrapper - IC1 / eu-case-migration, LOCAL TESTING CONFIGURATION
+# Do NOT upstream this file as-is.
+#
+# Purpose: run stage 1 (investment planning) without rendering the machine
+# unreachable. A previous run on another host left it pingable but refusing
+# RDP, which is the signature of memory pressure starving interactive
+# services rather than an outright crash.
+#
+# Three protections, in order of importance:
+#   1. RAM watchdog   - aborts the process before the OS starts thrashing.
+#   2. Disk watchdog  - result writes are multi-GB; a full system disk makes
+#                       Windows unreachable just as effectively as no RAM.
+#   3. IIS / dual-ray suppression - the original crash cause (see doc 4.2).
+# =============================================================================
+
+using SpineOpt
+using Dates
+using Printf
+
+const JuMP  = SpineOpt.JuMP
+const HiGHS = SpineOpt.HiGHS
+
+# --- Tunables ----------------------------------------------------------------
+const RAM_ABORT_FRACTION = 0.80    # abort if total system RAM use exceeds this
+const DISK_ABORT_FREE_GB = 20.0    # abort if free space on the output drive drops below
+const WATCHDOG_PERIOD_S  = 10      # how often to check
+const SOLVER_TIME_LIMIT  = 4 * 3600.0   # 4 hours, per operator request
+
+# --- Helpers -----------------------------------------------------------------
+total_ram_gb() = Sys.total_memory() / 2^30
+used_ram_gb()  = (Sys.total_memory() - Sys.free_memory()) / 2^30
+
+function free_disk_gb(path::AbstractString)
+    try
+        drive = splitdrive(abspath(path))[1]
+        isempty(drive) && return Inf
+        out = read(`powershell -NoProfile -Command "(Get-PSDrive $(drive[1])).Free"`, String)
+        return parse(Float64, strip(out)) / 2^30
+    catch
+        return Inf   # never let the guard itself break the run
+    end
+end
+
+ts() = Dates.format(now(), "HH:MM:SS")
+
+# --- Watchdog ----------------------------------------------------------------
+# Runs on a separate thread. Julia cannot reliably cap its own heap, so instead
+# we observe and exit cleanly while the OS is still responsive. exit() here is
+# deliberate: a controlled abort we can diagnose beats an unreachable machine.
+function start_watchdog(outdir::AbstractString)
+    @async begin
+        peak = 0.0
+        while true
+            sleep(WATCHDOG_PERIOD_S)
+            used = used_ram_gb()
+            tot  = total_ram_gb()
+            peak = max(peak, used)
+            frac = used / tot
+
+            if frac > RAM_ABORT_FRACTION
+                @error @sprintf("[%s] WATCHDOG ABORT: RAM %.1f/%.1f GB (%.0f%%) exceeded %.0f%% limit. Peak %.1f GB.",
+                                ts(), used, tot, 100frac, 100RAM_ABORT_FRACTION, peak)
+                flush(stderr); flush(stdout)
+                exit(97)
+            end
+
+            freegb = free_disk_gb(outdir)
+            if freegb < DISK_ABORT_FREE_GB
+                @error @sprintf("[%s] WATCHDOG ABORT: only %.1f GB free on output drive (limit %.1f GB).",
+                                ts(), freegb, DISK_ABORT_FREE_GB)
+                flush(stderr); flush(stdout)
+                exit(98)
+            end
+
+            @info @sprintf("[%s] watchdog: RAM %.1f/%.1f GB (%.0f%%), peak %.1f GB, disk free %.1f GB",
+                           ts(), used, tot, 100frac, peak, freegb)
+        end
+    end
+end
+
+# --- Crash protection (see EU_CASE_MIGRATION.md 4.2) -------------------------
+# On infeasibility SpineOpt computes an IIS, and HiGHS re-solves the un-presolved
+# LP by interior point to get a dual ray. Both are memory catastrophes on a model
+# this size. The atmosphere balance_penalty slack should make infeasibility
+# unlikely, but this stays as a backstop.
+@eval SpineOpt _compute_and_print_conflict!(m) = @info "IIS computation disabled (local testing configuration)"
+
+# --- Solver ------------------------------------------------------------------
+solver = JuMP.optimizer_with_attributes(
+    HiGHS.Optimizer,
+    HiGHS.ComputeInfeasibilityCertificate() => false,
+    "presolve"   => "on",
+    "time_limit" => SOLVER_TIME_LIMIT,
+    "threads"    => 8,        # leave cores for the OS so RDP stays responsive
+    "parallel"   => "on",
+)
+
+@info @sprintf("[%s] starting run_spineopt | RAM %.1f GB total | time_limit %.0f s | RAM abort at %.0f%% | disk abort below %.0f GB",
+               ts(), total_ram_gb(), SOLVER_TIME_LIMIT, 100RAM_ABORT_FRACTION, DISK_ABORT_FREE_GB)
+
+start_watchdog(pwd())
+
+m = run_spineopt(ARGS...; mip_solver=solver, lp_solver=solver)
+
+@info @sprintf("[%s] run_spineopt returned. Peak RAM observed %.1f GB.", ts(), used_ram_gb())
