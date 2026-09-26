@@ -1,5 +1,6 @@
 # =============================================================================
-# SpineOpt run wrapper - IC1 / eu-case-migration, LOCAL TESTING CONFIGURATION
+# SpineO# --- Solver -------------------------------------------------------------------
+# IMPORTANT: passing mip_solver/lp_solver here means SpineOpt uses THIS solver andrun wrapper - IC1 / eu-case-migration, LOCAL TESTING CONFIGURATION
 # Do NOT upstream this file as-is.
 #
 # Purpose: run stage 1 (investment planning) without rendering the machine
@@ -87,13 +88,40 @@ end
 @eval SpineOpt _compute_and_print_conflict!(m) = @info "IIS computation disabled (local testing configuration)"
 
 # --- Solver ------------------------------------------------------------------
+# --- Solver -------------------------------------------------------------------
+# IMPORTANT: passing mip_solver/lp_solver here means SpineOpt uses THIS solver and
+# never reads `solver_mip_options` from the database. See SpineOpt
+# src/run_spineopt.jl: `_solver(f::Function, given_solver) = given_solver`,
+# documented as "If given solver is not `nothing`, just return it."
+#
+# Consequence: the EU case's DB settings - including Gurobi's NumericFocus=2 -
+# are inert for us. Every solver option we want must be set HERE.
+#
+# Numerical conditioning: the EU model spans |v| in [3.3e-08, 2.5e+06], a dynamic
+# range of ~7.5e13, and still solves - under Gurobi with NumericFocus=2. HiGHS has
+# no direct equivalent, so we approximate it:
+#   * simplex_scale_strategy=4 (max scaling) attacks the range directly, which is
+#     the right lever for a badly-scaled matrix - better than floors on input data,
+#     which would distort the economics to fix a symptom.
+#   * tolerances tightened 1e-7 -> 1e-9 so "optimal" means optimal in absolute
+#     terms too. This targets the reported "optimal but discarded on tolerance"
+#     symptom, which is what you see when a solution passes a relative test while
+#     still violating constraints absolutely.
+#   * mip_rel_gap 1e-4 -> 1e-3. Deliberately LOOSER: a 0.1 % optimality gap is far
+#     below the uncertainty in the input data, and insisting on 0.01 % can cost
+#     hours of branching for a difference nobody can defend.
 solver = JuMP.optimizer_with_attributes(
     HiGHS.Optimizer,
     HiGHS.ComputeInfeasibilityCertificate() => false,
-    "presolve"   => "on",
-    "time_limit" => SOLVER_TIME_LIMIT,
-    "threads"    => 8,        # leave cores for the OS so RDP stays responsive
-    "parallel"   => "on",
+    "presolve"                     => "on",
+    "time_limit"                   => SOLVER_TIME_LIMIT,
+    "threads"                      => 8,        # leave cores for the OS so RDP stays responsive
+    "parallel"                     => "on",
+    "simplex_scale_strategy"       => 4,        # default 2; 4 = max scaling
+    "primal_feasibility_tolerance" => 1.0e-9,   # default 1e-7
+    "dual_feasibility_tolerance"   => 1.0e-9,   # default 1e-7
+    "mip_feasibility_tolerance"    => 1.0e-7,   # default 1e-6
+    "mip_rel_gap"                  => 1.0e-3,   # default 1e-4, loosened on purpose
 )
 
 @info @sprintf("[%s] starting run_spineopt | RAM %.1f GB total | time_limit %.0f s | RAM abort at %.0f%% | disk abort below %.0f GB",

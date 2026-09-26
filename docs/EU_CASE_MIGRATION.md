@@ -1,6 +1,6 @@
 # Industrial Case Study (IC1) — migration onto the validated EU case workflow
 
-Branch: `eu-case-migration` · Base: `upstream/main` (f0ece41) · Last updated: 2026-09-25
+Branch: `session-2026-09-27-guardrails-and-scaling` (from `eu-case-migration`) · Base: `upstream/main` (f0ece41) · Last updated: 2026-09-27
 
 This document records what was changed, why, what was found, and what is still open.
 It is written so that someone else — or ourselves in three months — can pick the work up
@@ -364,10 +364,111 @@ accumulate, but the mechanism is indirect and only a run will confirm it. Direct
 
 ---
 
+## 6A. Session 2026-09-27 — machine guard rails and solver configuration
+
+Context: a stage-1 run on the previous host left that machine **pingable but refusing RDP**,
+costing about a week of access. (An earlier outage was different — no ping at all.) The two
+changes made on that host immediately before it became unreachable — a value-flooring procedure
+and relaxed solver tolerances — were **never committed** and are lost. The last commit is
+`b73d984` (2026-09-25).
+
+Work is on branch `session-2026-09-27-guardrails-and-scaling`.
+
+### 6A.1 Machine guard rails
+
+The plugin wrapper is now **vendored into the repo** at `tools/spineopt-plugin/run_spineopt.jl`,
+because it lives in `~\.spinetoolbox\plugins\` and therefore does not travel with a clone — it
+had already been lost once. `tools/README.md` documents installation and rationale.
+
+| Guard | Threshold | Exit code |
+|---|---|---|
+| RAM watchdog (background thread) | 80 % of system memory | 97 |
+| Disk watchdog | below 20 GB free on output drive | 98 |
+| Solver threads | 8 of 20, leaving cores for the OS | — |
+
+Julia cannot reliably cap its own heap, so the strategy is to observe and exit cleanly *while the
+OS is still responsive*. Both watchdogs were tested and fire with the expected exit codes.
+`free_disk_gb` returns `Inf` on any error so the guard cannot itself break a run.
+
+### 6A.2 The flooring hypothesis was tested and **rejected**
+
+The remembered fix was to raise FOM-type costs of order `1e-8`. Evidence against:
+
+- Every shared `.py`/`.yaml`/`.jl` file was diffed against the EU case: 31 identical, 20 different.
+  `ines_to_spineopt.py` is **byte-identical**; `scenario_run.py` differed by only the 5 lines of
+  our atmosphere slack. **The EU case contains no flooring code anywhere.** The only `1e-12`
+  comparisons are in visualization colour scaling; the only `1e-3` factors in `ines_target.py`
+  are GW/MW unit conversions.
+- A value scan of the EU case's *solved* `Final_SpineOpt_Model`:
+
+  | | value |
+  |---|---|
+  | global min \|v\| | 3.326e-08 (`storage_fixed_annual_cost`, `salt-cavern_ES`/`_FR`) |
+  | global max \|v\| | 2.500e+06 |
+  | dynamic range | ~7.5e13 |
+  | values > 1e7 | none |
+
+**The same `1e-8` values exist in the model that solves reliably**, and it produced 11,208 result
+values. Raising them would distort the economics (making salt-cavern storage artificially
+expensive) to fix something the reference case demonstrates is survivable. Do not reconstruct
+this fix from memory; if a scan of *our* model shows a materially worse range than 7.5e13, treat
+that as new evidence and act on what the scan actually finds.
+
+### 6A.3 The real finding: DB solver options are inert
+
+`scenario_run.py::solver_options()` writes `solver_mip_options` to the database. SpineOpt only
+reads it when it builds the solver **itself**. Our wrapper passes `mip_solver`/`lp_solver`, and
+SpineOpt then returns that solver untouched — `src/run_spineopt.jl`:
+
+```julia
+_solver(f::Function, given_solver) = given_solver   # "If given solver is not `nothing`, just return it."
+```
+
+Two consequences:
+
+1. The EU case's numerical-conditioning setting is **Gurobi's `NumericFocus=2`**. We run HiGHS,
+   which has no equivalent — so we inherited the EU toolchain *without* its conditioning fix.
+2. Everything in `solver_mip_options` has been **silently discarded** on every run through the
+   wrapper. Solver options must be set in the wrapper.
+
+### 6A.4 Solver configuration now applied
+
+Set in the wrapper (and mirrored into `solver_options()` with a comment explaining the
+inertness, so a revert to the stock plugin file does not silently reinstate 1-hour runs):
+
+| Option | Default | Now | Why |
+|---|---|---|---|
+| `time_limit` | 3600.01 | **14400** | 1 h was not enough to converge |
+| `simplex_scale_strategy` | 2 | **4** (max) | attacks the 7.5e13 range directly — the right lever for a badly-scaled matrix, rather than distorting input data |
+| `primal/dual_feasibility_tolerance` | 1e-7 | **1e-9** | targets "optimal but discarded on tolerance": a solution can pass a *relative* test while still violating constraints *absolutely* |
+| `mip_feasibility_tolerance` | 1e-6 | **1e-7** | as above |
+| `mip_rel_gap` | 1e-4 | **1e-3** | deliberately *looser*: 0.1 % is far below input-data uncertainty, and 0.01 % can cost hours of branching |
+
+All option names were probed against HiGHS before use, and the attribute set was verified applied
+(`time_limit = 14400.0`, `simplex_scale_strategy = 4`, tolerances `1e-9`) on a deliberately
+badly-scaled test problem. The options map was also verified to round-trip through `spinedb_api`.
+
+Note the direction of travel: tolerances are **tightened**, not relaxed. Loosening them until an
+answer is accepted produces an "optimal" solution that may contain meaningfully violated energy
+balances. Scaling first; relax only if still necessary, and knowingly.
+
+### 6A.5 Temporal resolution reduced further
+
+`number_of_timesteps` 24 → 4 in `tulipa_call.jl` (representatives stay at 2), for feasibility
+testing only. **This is not a defensible modelling setting**: `number_of_timesteps` is the period
+duration in hours, so below 24 the representative periods are no longer whole days, which
+degrades intra-day storage cycling and anything with a diurnal profile — solar above all, since a
+4-hour period cannot represent a day/night cycle. Restore to 24 (ideally ≥5 representatives, as
+the EU case uses 10) before reporting or comparing any result.
+
+---
+
 ## 7. Verified non-issues
 
 Things investigated and cleared — recorded so they are not re-investigated:
 
+- **Input-value flooring** (2026-09-27). See 6A.2: the EU case has no flooring code and carries
+  the same `3.3e-08` values in a model that solves. Not the cause; do not "fix".
 - **DAC is not wired backwards.** Both cases wire DAC as energy in → `CO2_<R>` out with *no*
   atmosphere link. The negative-emissions accounting happens at the injection unit, which draws
   from `atmosphere` at an equality ratio of 1. An earlier claim to the contrary was wrong.
@@ -385,7 +486,9 @@ Things investigated and cleared — recorded so they are not re-investigated:
 
 | Priority | Item | Notes |
 |---|---|---|
-| 1 | **Run stage 1 and check feasibility** | full rebuild required (the power fix changes `Power_DB`) |
+| 1 | **Run stage 1 and check feasibility** | full rebuild required (the power fix changes `Power_DB`). Guard rails are now in place (6A.1), so a run can no longer take the machine down silently. Environment rebuilt and verified on the new host 2026-09-27 |
+| 1b | **Scan our own model's value range** | once built, compare against the EU baseline of 7.5e13 (6A.2). This is the evidence-based replacement for the lost flooring fix |
+| 1c | **Restore temporal resolution** | `number_of_timesteps` is at 4 for feasibility testing; restore to 24 before any reportable result (6A.5) |
 | 2 | Wind turbine class review | `SP199` → `SP277` (×17); different specific power means different capacity factors |
 | 3 | `oil-boiler` ×17 removed | consequence of userconfig status flips; confirm intended |
 | 4 | ~190 `FOM cost not found` warnings | unreviewed |
@@ -450,5 +553,10 @@ Those two would make a tight standalone PR independent of the migration.
   `Run_Dispatch`.
 - **Keep `network.CO2.interconnection_out_model: False`** — otherwise CO₂ leaks to uncapped
   foreign sinks.
+- **Solver options must be changed in `tools/spineopt-plugin/run_spineopt.jl`**, not only in
+  `scenario_run.py`. While the wrapper passes a solver, the database options are inert (6A.3).
+  Change both and keep them in sync.
+- **Commit and push before starting a long run.** Two days of work were lost with the previous
+  host. A `git bundle` is an adequate stopgap if the remote rejects the push.
 - Comparing against the colleague's solved databases under `EU_case\…\.spinetoolbox\items\` has
   been by far the most productive diagnostic technique. Use it first.

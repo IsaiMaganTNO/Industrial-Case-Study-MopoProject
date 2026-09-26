@@ -456,9 +456,30 @@ def manage_output():
 
 def solver_options(config):
 
+    # NOTE: these options are only applied when SpineOpt builds the solver itself,
+    # i.e. when `run_spineopt` is called WITHOUT mip_solver/lp_solver. Our plugin
+    # wrapper (tools/spineopt-plugin/run_spineopt.jl) does pass a solver, and
+    # SpineOpt then returns it untouched:
+    #     _solver(f::Function, given_solver) = given_solver
+    #     "If given solver is not `nothing`, just return it."
+    # so everything below is INERT for IC1 runs made through that wrapper.
+    # Keep the two in sync anyway: if the wrapper is ever reverted to the stock
+    # plugin file, these values take over silently.
+    #
+    # time_limit: kept equal to SOLVER_TIME_LIMIT in the wrapper (4 h). The EU
+    # baseline of 3600.01 s was not enough for IC1 to converge.
+    # The HiGHS numerical options mirror the wrapper and stand in for Gurobi's
+    # NumericFocus=2, which has no HiGHS equivalent.
     with DatabaseMapping(url_spineopt) as sopt_db:
         map_options = {"type":"map","index_type":"str","index_name":"x","data":
-                       {"HiGHS.jl" :{"type":"map","index_type":"str","index_name":"x","data":{"presolve":"on","time_limit":3600.01}},
+                       {"HiGHS.jl" :{"type":"map","index_type":"str","index_name":"x","data":{
+                            "presolve":"on",
+                            "time_limit":14400.0,
+                            "simplex_scale_strategy":4.0,
+                            "primal_feasibility_tolerance":1e-9,
+                            "dual_feasibility_tolerance":1e-9,
+                            "mip_feasibility_tolerance":1e-7,
+                            "mip_rel_gap":1e-3}},
                         "Gurobi.jl":{"type":"map","index_type":"str","index_name":"x","data":{"Method":2.0,"NumericFocus":2.0,"Crossover":0.0}}}}
         
         add_parameter_value(sopt_db,"model","solver_mip_options","Base",("capacity_planning",),map_options)
