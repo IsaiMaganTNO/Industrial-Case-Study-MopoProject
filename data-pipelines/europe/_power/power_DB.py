@@ -1871,13 +1871,26 @@ if __name__ == "__main__":
             "y2030": "costs_2030",
             "y2040": "costs_2040",
             "y2050": "costs_2050",
-        },
-        "ppm": "powerplants",  # "powerplants.csv",
+        },        "ppm": "powerplants",  # "powerplants.csv",
         "ass": "assumptions",  # "assumptions.xlsx",
         "cnf": "config",  # config.json
         "tmp": "template",  # power_template_DB.json
         "spd": "http",  # spine db
     }
+    # The Spine DB argument is located by fuzzy-matching the literal "http",
+    # which assumes a server URL. With a local file-backed store Spine Toolbox
+    # passes "sqlite:///...", which scores 15 against "http" while
+    # "powerplants.csv" scores 28 - so the matcher silently hands the importer a
+    # CSV path as its database and the run dies in make_url(). Identify the URL
+    # by its scheme first and only fall back to fuzzy matching if none is found.
+    _db_url = next(
+        (
+            a
+            for a in sys.argv[1:]
+            if "://" in a and a.split("://", 1)[0].lower() not in ("file",)
+        ),
+        None,
+    )
     for key, value in inputfiles.items():
         if type(value) == dict:
             for k, v in value.items():
@@ -1887,7 +1900,9 @@ if __name__ == "__main__":
                     inputfiles[key][k] = None
                 print(f"Using {inputfiles[key][k]} as {v}")
         else:
-            if extractOne(value, sys.argv[1:]):
+            if key == "spd" and _db_url is not None:
+                inputfiles[key] = _db_url
+            elif extractOne(value, sys.argv[1:]):
                 inputfiles[key] = extractOne(value, sys.argv[1:])[0]
             else:
                 inputfiles[key] = None
