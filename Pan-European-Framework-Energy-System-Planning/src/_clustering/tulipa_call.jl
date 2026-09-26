@@ -7,8 +7,20 @@ using CSV
 
 println("WARNING: Check whether there are extreme periods from the loop with the operational assessments")
 
+# --- Temporal resolution -----------------------------------------------------
+# EU reference case: 5 representatives x 24 timesteps (5 representative days).
+# IC1 is reduced further for FEASIBILITY TESTING ONLY. The question right now is
+# whether the model can solve at all, not whether the answer is defensible.
+#
+# number_of_timesteps is the period DURATION in hours. Below 24 the periods are
+# no longer whole days, which degrades intra-day storage cycling and anything
+# depending on a diurnal profile (solar above all). A 4-hour period cannot
+# represent a day/night cycle.
+#
+# RESTORE to number_of_timesteps = 24 (and ideally >= 5 representatives)
+# before any result is reported, compared against the EU case, or published.
 number_of_representatives = 2
-number_of_timesteps = 24
+number_of_timesteps = 4   # was 24 (a full day). Feasibility-testing setting.
 
 function get_data(input_folder,year)
   dir = joinpath(input_folder, "profiles")
