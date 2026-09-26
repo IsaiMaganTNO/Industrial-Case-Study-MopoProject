@@ -4,7 +4,15 @@ scenarios:
   baseline_blended_representative_periods: ["Base","wy2009","medium_bio","current","GA","GA_flex0","high_CO2",flex_buildings,flex_buildings_wy2009_current,flex_industry] 
 emission_factor: 1.0 #percentage of carbon budget considered in the model based on the included countries
 # balance_penalty on the atmosphere node. Set to null once the model solves without it.
+# NOTE: this only prices the node *balance* slack. It does NOT rescue a zero carbon
+# budget, because that budget is a variable upper bound - use co2_budget_floor below.
 co2_overshoot_penalty: 10000
+# Minimum headroom on the atmosphere storage_investment_count_max_cumulative cap.
+# The 2050 cap is otherwise exactly 0, which makes the atmosphere node_state upper
+# bound a hard zero and the model infeasible before any penalty can apply. With a
+# floor the solve returns a quantified CO2 overshoot instead of no result at all.
+# Set to null to enforce the true net-zero target.
+co2_budget_floor: 1.0
 resolution: "1h"
 future_inflation: 0.03
 default_technology_discount_rate: 0.05

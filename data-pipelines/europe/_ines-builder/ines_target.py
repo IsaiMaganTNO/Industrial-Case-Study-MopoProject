@@ -46,8 +46,16 @@ def add_or_update_parameter_value(db_map : DatabaseMapping, class_name : str,par
     db_map.add_or_update_parameter_value(entity_class_name=class_name,entity_byname=elements,parameter_definition_name=parameter,alternative_name=alternative,value=db_value,type=value_type)
 
 def add_alternative(db_map : DatabaseMapping,name_alternative : str) -> None:
+    # Idempotent on purpose. Spine creates every new SQLite data store with a
+    # default "Base" alternative already present, so a strict add fails
+    # immediately on a freshly created INES_DB with
+    #     RuntimeError: there's already a alternative with {'name': 'Base'}
+    # An alternative that already exists is exactly the desired end state, so
+    # treat that case as success and let any other error surface.
     _, error = db_map.add_alternative_item(name=name_alternative)
     if error is not None:
+        if "already" in str(error):
+            return
         raise RuntimeError(error)
 
 def define_polygons(config : dict, region_data : dict, on_level : str, off_level : str) -> dict:
