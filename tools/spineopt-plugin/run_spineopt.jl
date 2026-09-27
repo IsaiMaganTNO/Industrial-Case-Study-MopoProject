@@ -1,6 +1,5 @@
 # =============================================================================
-# SpineO# --- Solver -------------------------------------------------------------------
-# IMPORTANT: passing mip_solver/lp_solver here means SpineOpt uses THIS solver andrun wrapper - IC1 / eu-case-migration, LOCAL TESTING CONFIGURATION
+# SpineOpt run wrapper - IC1 / eu-case-migration, LOCAL TESTING CONFIGURATION
 # Do NOT upstream this file as-is.
 #
 # Purpose: run stage 1 (investment planning) without rendering the machine
@@ -23,7 +22,7 @@ const JuMP  = SpineOpt.JuMP
 const HiGHS = SpineOpt.HiGHS
 
 # --- Tunables ----------------------------------------------------------------
-const RAM_ABORT_FRACTION = 0.80    # abort if total system RAM use exceeds this
+const RAM_ABORT_FRACTION = 0.70    # abort if total system RAM use exceeds this
 const DISK_ABORT_FREE_GB = 20.0    # abort if free space on the output drive drops below
 const WATCHDOG_PERIOD_S  = 10      # how often to check
 const SOLVER_TIME_LIMIT  = 4 * 3600.0   # 4 hours, per operator request
@@ -49,8 +48,33 @@ ts() = Dates.format(now(), "HH:MM:SS")
 # Runs on a separate thread. Julia cannot reliably cap its own heap, so instead
 # we observe and exit cleanly while the OS is still responsive. exit() here is
 # deliberate: a controlled abort we can diagnose beats an unreachable machine.
+#
+# THREADING REQUIREMENT - this wrapper MUST be launched with more than one
+# thread, e.g.  julia --threads=4 --project=jenv run_spineopt.jl ...
+#
+# `@async` only creates a task on the *current* thread. With the default
+# nthreads()==1 that task is cooperative: it runs only when the main task
+# yields, so during a long compute-bound model build it can be starved for
+# many minutes - measured silent for >10 min during an IC1 build smoke test.
+# A starved watchdog cannot abort anything, which is precisely the scenario
+# that left the previous host unreachable.
+#
+# `Threads.@spawn` on a multithreaded runtime puts the watchdog on its own
+# thread, where it keeps sampling regardless of what the build is doing.
+# The check below refuses to run single-threaded rather than provide a
+# guard that only appears to work.
 function start_watchdog(outdir::AbstractString)
-    @async begin
+    if Threads.nthreads() < 2
+        error("""
+              run_spineopt wrapper started with nthreads() == $(Threads.nthreads()).
+              The RAM/disk watchdog cannot run reliably on a single thread: it would
+              only be scheduled when the model build yields, which during a long
+              build may be never.
+              Relaunch with at least 2 threads, e.g.
+                  julia --threads=4 --project=jenv <this script> <args>
+              """)
+    end
+    Threads.@spawn begin
         peak = 0.0
         while true
             sleep(WATCHDOG_PERIOD_S)
