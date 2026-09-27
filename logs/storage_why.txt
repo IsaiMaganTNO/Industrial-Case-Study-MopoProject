@@ -1,0 +1,29 @@
+storages with NEW investment > 0 : 47
+   CO2-storage-NSNL012                       21.00
+   CO2-storage-NSNL031                        6.20
+   car-DR_NLC1                                0.02
+   car-DR_BEC2                                0.02
+   car-DR_NLC4                                0.02
+   car-DR_NLC8                                0.01
+   car-DR_BEC8                                0.01
+   car-DR_NLC6                                0.01
+   car-DR_BEC5                                0.01
+   car-DR_BEC3                                0.01
+
+=== which storage entities carry storage_investment_cost ===
+entities with a storage_investment_cost: 51
+   battery-storage-iron-air_BEC1      62.80353406269011
+   battery-storage-iron-air_BEC2      62.80353406269011
+   battery-storage-iron-air_BEC3      62.80353406269011
+   battery-storage-iron-air_BEC4      62.80353406269011
+   battery-storage-iron-air_BEC5      62.80353406269011
+   battery-storage-iron-air_BEC6      62.80353406269011
+   battery-storage-iron-air_BEC7      62.80353406269011
+   battery-storage-iron-air_BEC8      62.80353406269011
+   battery-storage-iron-air_NLC1      62.80353406269011
+   battery-storage-iron-air_NLC2      62.80353406269011
+   battery-storage-iron-air_NLC3      62.80353406269011
+   battery-storage-iron-air_NLC4      62.80353406269011
+
+of those, how many actually got NEW investment?  0
+storages that got new investment but have NO cost:  47

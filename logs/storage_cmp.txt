@@ -1,0 +1,26 @@
+=== IC1 ===
+  storage_investment_cost                           51 values  (51 non-zero, 0 zero)
+  storage_investment_count_max_cumulative          173 values  (173 non-zero, 0 zero)
+  storage_investment_count_initial_cumulative       86 values  (78 non-zero, 8 zero)
+  storage_investment_count_fix_new                  52 values  (0 non-zero, 52 zero)
+  storage_state_max                                939 values  (939 non-zero, 0 zero)
+  storage_state_min_fraction                     ABSENT
+  storage_active                                   483 values  (483 non-zero, 0 zero)
+  storage_investment_lifetime                    ABSENT
+  storage_investment_variable_type               ABSENT
+  storage_investment_econ_lifetime               ABSENT
+  storage_fix_state                              ABSENT
+
+=== EU  ===
+  storage_investment_cost                            6 values  (6 non-zero, 0 zero)
+  storage_investment_count_max_cumulative           29 values  (29 non-zero, 0 zero)
+  storage_investment_count_initial_cumulative       15 values  (15 non-zero, 0 zero)
+  storage_investment_count_fix_new                  11 values  (0 non-zero, 11 zero)
+  storage_state_max                                143 values  (143 non-zero, 0 zero)
+  storage_state_min_fraction                         2 values  (2 non-zero, 0 zero)
+  storage_active                                   105 values  (105 non-zero, 0 zero)
+  storage_investment_lifetime                    ABSENT
+  storage_investment_variable_type               ABSENT
+  storage_investment_econ_lifetime               ABSENT
+  storage_fix_state                              ABSENT
+

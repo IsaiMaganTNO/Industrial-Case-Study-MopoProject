@@ -1,0 +1,19 @@
+============================================================
+IC1
+  representative blocks: 3
+    representative_period_2030_1       2030-01-12 -> 2030-01-13  = 24 h / 1h steps = 24 ts
+    representative_period_2040_1       2041-01-12 -> 2041-01-13  = 24 h / 1h steps = 24 ts
+    representative_period_2050_1       2050-01-12 -> 2050-01-13  = 24 h / 1h steps = 24 ts
+  storage_state_min_fraction entries: 0
+
+============================================================
+EU 
+  representative blocks: 30
+    representative_period_2030_1       2030-07-01 -> 2030-07-02  = 24 h / 1h steps = 24 ts
+    representative_period_2030_10      2030-06-25 -> 2030-06-26  = 24 h / 1h steps = 24 ts
+    representative_period_2030_2       2030-01-11 -> 2030-01-12  = 24 h / 1h steps = 24 ts
+    representative_period_2030_3       2030-05-27 -> 2030-05-28  = 24 h / 1h steps = 24 ts
+  storage_state_min_fraction entries: 2
+     reservoir_ES                             0.471
+     reservoir_FR                             0.118
+

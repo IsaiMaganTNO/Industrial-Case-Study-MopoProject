@@ -1,0 +1,11 @@
+102 availability_factor
+34 fom_cost
+34 investment_count_max_cumulative
+34 capacity_per_unit
+17 investment_count_total_max_cumulative
+17 investment_count_fix_new
+17 investment_count_initial_cumulative
+17 lifetime_economic
+17 lifetime_technical
+17 unit_investment_cost
+17 lifetime_constraint_sense

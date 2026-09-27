@@ -168,6 +168,93 @@ but in the opposite direction (excluded rather than free).
 `storage_state_min_fraction` - present in EU (2 values), absent in IC1 - is now
 the leading lead rather than a deferred curiosity.
 
+### What changed with the representative day
+
+Total investment nearly halved (244.9 -> 134.4 units) and the mix shifted:
+
+| category | 9 ts | 75 ts | change |
+|---|---|---|---|
+| **renewables** | 13.0 % | **35.8 %** | **+22.8** |
+| bioenergy | 34.6 % | 27.2 % | -7.4 |
+| CO2 removal (DAC) | 22.3 % | 26.3 % | +4.0 |
+| industry: clean process route | 3.1 % | 5.6 % | +2.5 |
+| industry: CCS-equipped | 8.0 % | 1.3 % | -6.7 |
+| e-fuels / green chemicals | 4.0 % | 0.9 % | -3.1 |
+| unabated fossil | 4.7 % | 2.2 % | -2.5 |
+| hydrogen production | 9.0 % | **0.00** | -9.0 |
+| heat pumps | 1.2 % | 0.00 | -1.2 |
+
+Renewables becoming the largest category is the expected, correct consequence
+of restoring a diurnal profile: solar can finally be valued on a real day
+instead of two arbitrary hours. Reformer hydrogen and heat pumps collapse to
+zero as the model substitutes toward direct renewable supply.
+
+### Storage: the real cause (my "uninvestable" theory was WRONG)
+
+Storage is not structurally blocked. It is working: **129 non-zero** storage
+investment entries and **251 nodes** with storage state activity. IC1 has MORE
+storage data than EU (51 `storage_investment_cost` values vs EU's 6).
+
+The true finding is a **perfectly disjoint split**:
+
+| storage type | priced? | built? |
+|---|---|---|
+| `battery-storage`, `battery-storage-iron-air`, `salt-cavern` (x17 each) | **yes** | **0 of 51** |
+| `biomass-stock`, `CH4-geo-formation`, `CO2-storage-*`, `car/bus/truck-DR`, `atmosphere` | **no** | **all 47** |
+
+Of 47 storages given new investment, **zero** have a cost; of 51 priced
+storages, **zero** were built. So `objective_storage_investment_costs = 0.00`
+is arithmetically correct - everything built is free. Most of the free items
+are legitimate (geological CO2 storage, the `atmosphere` budget node,
+demand-response, biomass stockpiles are reservoirs, not built assets).
+
+**The EU comparison is decisive.** EU builds **1,506.7 units of
+battery-storage**; IC1 builds **0** - with *identical* cost parameters
+(battery 217, iron-air 15.7, salt-cavern 1.372 in both) and structurally
+identical wiring (node / unit / node__to_unit / unit__to_node all present).
+
+The difference is the representative periods:
+
+| | IC1 | EU |
+|---|---|---|
+| representative periods per year | **1** | **10** |
+| representative blocks total | 3 | 30 |
+| period length | 24 h | 24 h |
+
+And IC1's single day is **Jan 12**, a poor winter day:
+
+```
+solar BEC1, Jan 12: max 0.29, mean 0.051   <- IC1's only day
+solar BEC1, Jul 01: max 0.77, mean 0.251
+annual mean 0.135
+```
+
+IC1 sizes its entire 2030-2050 investment programme on a day with **38 % of
+annual-mean** solar and a peak of 0.29. A battery cannot pay for itself
+arbitraging a day that barely has a solar peak to arbitrage, and there is no
+second day with different weather to hedge against. EU's 10 days span summer
+and winter (Jul 1, Jan 11, May 27, Jun 25, ...), so its batteries see days
+worth cycling for.
+
+**This is a sampling problem, not a data problem.** One representative day is
+too few, and clustering picked an unrepresentative one.
+
+### Recommended next step
+
+Raise `number_of_representatives` from 1 to **5-10** (EU uses 10), keeping
+`number_of_timesteps = 24`. That is the parameter that actually controls
+whether storage can earn its keep.
+
+Cost warning, based on measured scaling: 75 timesteps took 67.4 min (build
+31.9 + solve 31.2). Ten representatives would be ~720 timesteps, roughly 10x
+again, and the solve scales worse than linearly (490,725 simplex iterations at
+75 ts). **Do not jump straight to 10.** Try 3 representatives first (~216 ts)
+to measure the real curve before committing to a long run.
+
+`storage_state_min_fraction` is a red herring: EU has exactly 2 entries, both
+on hydro `reservoir_ES`/`reservoir_FR`, neither on batteries. IC1 has no hydro
+reservoirs, so its absence is correct and unrelated.
+
 ## Raising the time resolution
 
 ### Where the knob is

@@ -1,0 +1,4 @@
+solar availability_factor entries: 102
+entity: solar-PV-existing_BEC1 | alt: wy1995 | type: time_series
+python type: TimeSeriesFixedResolution
+n points: 8760 first: 2018-01-01T00:00:00 last: 2018-12-31T23:00:00

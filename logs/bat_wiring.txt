@@ -1,0 +1,18 @@
+============================================================
+IC1
+  node                                 17   e.g. battery-storage_BEC1
+  node__temporal_block                 51   e.g. battery-storage_BEC1__representative_period_
+  node__to_unit                        34   e.g. battery-storage_BEC1__battery-storage_BEC1__
+  unit                                 17   e.g. battery-storage_BEC1__elec_BEC1
+  unit__to_node                        34   e.g. battery-storage_BEC1__elec_BEC1__battery-sto
+  unit_flow__unit_flow                 34   e.g. battery-storage_BEC1__elec_BEC1__battery-sto
+
+============================================================
+EU 
+  node                                  2   e.g. battery-storage_ES
+  node__temporal_block                 60   e.g. battery-storage_ES__representative_period_20
+  node__to_unit                         4   e.g. battery-storage_ES__battery-storage_ES__elec
+  unit                                  2   e.g. battery-storage_ES__elec_ES
+  unit__to_node                         4   e.g. battery-storage_ES__elec_ES__battery-storage
+  unit_flow__unit_flow                  4   e.g. battery-storage_ES__elec_ES__battery-storage
+

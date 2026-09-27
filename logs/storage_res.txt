@@ -1,0 +1,32 @@
+=== storages_invested / _available (non-zero) ===
+  storages_invested_available    CH4-geo-formation_NLC7         48010.00
+  storages_invested_available    CH4-geo-formation_NLC5         48010.00
+  storages_invested_available    CH4-geo-formation_NLC1         48010.00
+  storages_invested_available    CH4-geo-formation_NLC3         48010.00
+  storages_invested_available    CH4-geo-formation_NLC8         48010.00
+  storages_invested_available    CH4-geo-formation_NLC6         48010.00
+  storages_invested_available    CH4-geo-formation_NLC9         48010.00
+  storages_invested_available    CH4-geo-formation_NLC2         48010.00
+  storages_invested_available    CH4-geo-formation_NLC4         48010.00
+  storages_invested_available    biomass-stock_BEC6             15440.61
+  storages_invested_available    biomass-stock_BEC2              8293.43
+  storages_invested_available    biomass-stock_BEC3              8211.12
+  storages_invested_available    biomass-stock_NLC3              7412.93
+  storages_invested_available    biomass-stock_NLC8              5838.94
+  storages_invested_available    biomass-stock_BEC8              5758.55
+  (non-zero entries: 129 of 278)
+
+=== node_state activity (top 12) ===
+  CO2-storage-NSNL012                     525000.00
+  CO2-storage-NSNL031                     206743.65
+  fossil-CH4                               59057.01
+  CH4-geo-formation_NLC9                   28806.00
+  CH4-geo-formation_NLC7                   28806.00
+  CH4-geo-formation_NLC3                   28806.00
+  CH4-geo-formation_NLC2                   28806.00
+  CH4-geo-formation_NLC5                   28806.00
+  CH4-geo-formation_NLC1                   28806.00
+  CH4-geo-formation_NLC8                   28806.00
+  CH4-geo-formation_NLC6                   28806.00
+  CH4-geo-formation_NLC4                   28806.00
+  (nodes with storage activity: 251)

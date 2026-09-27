@@ -1,0 +1,10 @@
+EU: storage types with NEW investment
+   battery-storage                           1506.73
+   car-DR                                     370.19
+   van-DR                                      61.91
+   truck-DR                                    41.90
+   CO2-storage                                  7.50
+   CO2-storage-WMES06                           6.00
+   bus-DR                                       4.20
+   battery-storage-iron-air                     0.00
+   salt-cavern                                  0.00

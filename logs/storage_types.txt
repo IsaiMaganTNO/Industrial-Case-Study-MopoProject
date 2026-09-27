@@ -1,0 +1,14 @@
+storage types WITH investment cost:
+   battery-storage-iron-air               x17
+   battery-storage                        x17
+   salt-cavern                            x17
+
+storage types WITH an investment CAP but NO cost:
+   biomass-stock                          x51
+   CH4-geo-formation                      x17
+   bus-DR                                 x17
+   car-DR                                 x17
+   truck-DR                               x17
+   CO2-storage-NSNL012                    x1
+   CO2-storage-NSNL031                    x1
+   atmosphere                             x1
