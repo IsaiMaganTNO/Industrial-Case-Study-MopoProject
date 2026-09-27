@@ -4,3 +4,6 @@ data/*/
 
 # Local A/B result snapshots — kept out of PRs; see _baselines/*/README.md
 _baselines/
+
+# Excel backups created by tools/fill_ccs_technology_data.py
+*.xlsx.bak
