@@ -143,17 +143,23 @@ automatically - no second place to edit.
 
 ### What has to be re-run
 
-**Only the last four steps** - the clustering chain and scenario setup. The
-importers, `ines_builder` (the 27 min one) and the merge are all upstream of
-clustering and are unaffected by temporal resolution:
+**From `merge_spineopt` onwards** - five steps. The importers and
+`ines_builder` (the 27 min one) are upstream of clustering and are unaffected
+by temporal resolution:
 
 ```
-python tools/run_pipeline.py --from clustering_input
+python tools/run_pipeline.py --from merge_spineopt
 ```
 
-That is `clustering_input` -> `run_clustering` -> `clustering_output` ->
-`scenario_setup`, which took **~7 min** total in the last run (0.5 + 1.1 + 0.3
-+ 5.0). Then rebuild the tiny model and solve.
+That is `merge_spineopt` -> `clustering_input` -> `run_clustering` ->
+`clustering_output` -> `scenario_setup`, about **8 min** total. Then rebuild
+the tiny model and solve.
+
+**Do NOT start from `clustering_input`.** `scenario_setup` writes entities
+(e.g. `heatpump-ratio_BEC1`) into `Final_SpineOpt_Model`, and the only step
+that purges that database is `merge_spineopt`. Skipping it leaves the previous
+run's entities in place and `scenario_setup` dies on a duplicate entity. This
+was tried and it failed exactly that way.
 
 **Important:** `tools/make_tiny_model.py` coarsens the `operations_y*` blocks
 from 1 h to 8760 h and truncates the `representative_blocks_by_period` maps to
