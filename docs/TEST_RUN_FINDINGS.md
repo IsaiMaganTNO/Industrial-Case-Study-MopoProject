@@ -125,6 +125,49 @@ zero is a structural consequence of the temporal setup, not an economic result.
 
 This is the next thing to fix.
 
+## Run C (24 h resolution) - hypothesis NOT supported
+
+Run C raised the clustering to `number_of_representatives = 1`,
+`number_of_timesteps = 24`: one full representative day, restoring the diurnal
+cycle. 72 representative + 3 operational = **75 timesteps** (was 9).
+
+| | Run B (9 ts) | Run C (75 ts) | EU |
+|---|---|---|---|
+| termination | OPTIMAL | **OPTIMAL** | - |
+| objective | 2,701,430 | 2,381,233 | - |
+| fixed O&M | 77.0 % | **84.3 %** | 38.1 % |
+| unit investment | 13.1 % | **8.5 %** | 53.8 % |
+| **storage investment** | 0.00 | **0.00** | 3.3 % |
+| build | 11 min | 31.9 min | - |
+| solve | 5.6 s | **31.2 min** (490,725 iter) | - |
+| total | 13.1 min | **67.4 min** | - |
+
+**The hypothesis was wrong.** Restoring a full diurnal cycle did NOT wake up
+storage - it is still *exactly* 0.00 - and the cost shares moved AWAY from the
+EU benchmark rather than toward it.
+
+Storage being exactly zero across two very different temporal setups indicates
+a **structural** cause (storage cannot be invested in at all), not an economic
+one (storage is unattractive). Do not spend more runtime on resolution until
+that is resolved.
+
+**Cost estimate was also wrong.** I predicted ~30-45 min; it took 67.4 min. The
+claim that "the solve is not the constraint" held only at 9 timesteps: at 75 it
+became 31.2 min, co-equal with the build. Model size pre-presolve: 893,361 rows
+/ 1,069,205 columns. The build bottleneck is `constraint_unit_flow_capacity`
+(169.8 s, 72 GB allocations).
+
+### Next step: investigate storage as a data problem
+
+Check, for IC1 storage entities, whether they are investable at all:
+`storage_investment_cost`, `storage_investment_count_max_cumulative` (is it 0?),
+and the `storage_investment_*` family. A missing cost or a zero cap reproduces
+exactly this signature - the same failure mode as the NaN CCS row in Issue 1,
+but in the opposite direction (excluded rather than free).
+
+`storage_state_min_fraction` - present in EU (2 values), absent in IC1 - is now
+the leading lead rather than a deferred curiosity.
+
 ## Raising the time resolution
 
 ### Where the knob is
