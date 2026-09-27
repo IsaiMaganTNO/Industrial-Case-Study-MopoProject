@@ -11,8 +11,13 @@ param(
     [string] $Threads = "4"
 )
 New-Item -ItemType Directory -Force (Split-Path $LogPath) | Out-Null
+New-Item -ItemType Directory -Force (Split-Path $Out) | Out-Null
 $inUrl  = "sqlite:///" + ((Resolve-Path $Db).Path  -replace '\\','/')
-$outUrl = "sqlite:///" + ((Resolve-Path $Out).Path -replace '\\','/')
+# The results DB may not exist yet (SpineOpt creates it). Resolve-Path fails on
+# a missing file, which silently produced an empty url_out, so build the
+# absolute path without requiring the file to be there.
+$outFull = [System.IO.Path]::GetFullPath((Join-Path (Get-Location) $Out))
+$outUrl = "sqlite:///" + ($outFull -replace '\\','/')
 Write-Host "in : $inUrl"
 Write-Host "out: $outUrl"
 & julia --project=jenv -t $Threads $Script $inUrl $outUrl 2>&1 | Tee-Object -FilePath $LogPath
