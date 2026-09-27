@@ -39,6 +39,28 @@ def add_or_update_parameter_value(db_map : DatabaseMapping, class_name : str,par
     db_value, value_type = api.to_database(value)
     db_map.add_or_update_parameter_value(entity_class_name=class_name,entity_byname=elements,parameter_definition_name=parameter,alternative_name=alternative,value=db_value,type=value_type)
 
+def _scaled_value(target_parameter : dict, factor : float):
+    """Multiply a stored parameter value by `factor`, preserving its Spine type.
+
+    The stored JSON of a time_series holds only {"data": {...}} - the "type" lives
+    in a separate database column. Round-tripping json.loads(value) straight back
+    through api.to_database() therefore raises KeyError: 'type'. Re-attach the type
+    so the value can be written back unchanged in form, only scaled in magnitude.
+
+    Handles float and time_series; anything else is returned untouched rather than
+    silently dropped, which is what the original if/elif did when it fell through
+    (leaving parameter_value bound to the *previous* iteration's value).
+    """
+    ptype = target_parameter["type"]
+    if ptype == "float":
+        return target_parameter["parsed_value"] * factor
+    if ptype == "time_series":
+        raw = json.loads(target_parameter["value"])
+        raw["data"] = {k: v * factor for k, v in raw["data"].items()}
+        raw.setdefault("type", "time_series")
+        return raw
+    return target_parameter["parsed_value"]
+
 def add_entity_group(db_map : DatabaseMapping, class_name : str, group : str, member : str) -> None:
     _, error = db_map.add_entity_group_item(group_name = group, member_name = member, entity_class_name=class_name)
     if error is not None:
@@ -154,8 +176,7 @@ def update_parameters(config):
         for parameter_map in sopt_db.get_parameter_value_items(parameter_definition_name = "resolution"):
             if "planning" not in parameter_map["entity_byname"][0]:
                 add_or_update_parameter_value(sopt_db, parameter_map["entity_class_name"], "resolution", parameter_map["alternative_name"], parameter_map["entity_byname"], parameter_value)
-        
-          # IC1 fix: the EU case has a single node named exactly "CO2-storage", but IC1
+            # IC1 fix: the EU case has a single node named exactly "CO2-storage", but IC1
         # names sequestration sites per reservoir - "CO2-storage-NSNL012" and
         # "CO2-storage-NSNL031" (each with low_CO2/medium_CO2/high_CO2 series). An exact
         # entity_byname match therefore selected nothing and emission_factor was never
@@ -170,13 +191,7 @@ def update_parameters(config):
             ]
             for target_parameter in target_parameters:
                 entity_byname = target_parameter["entity_byname"]
-
-                if target_parameter["type"] == "float":
-                    parameter_value = target_parameter["parsed_value"]*config["emission_factor"]
-                elif target_parameter["type"] == "time_series":
-                    parameter_value = json.loads(target_parameter["value"])
-                    parameter_value["data"] = {k:v*config["emission_factor"] for k,v in parameter_value["data"].items()}
-
+                parameter_value = _scaled_value(target_parameter, config["emission_factor"])
                 add_or_update_parameter_value(sopt_db, "node", co2_parameter, target_parameter["alternative_name"], entity_byname, parameter_value)
 
         # The atmosphere carbon budget enters SpineOpt as a *variable bound*:
@@ -192,13 +207,7 @@ def update_parameters(config):
         for atm_parameter in ["storage_investment_count_initial_cumulative","storage_investment_count_max_cumulative"]:
             target_parameters = sopt_db.get_parameter_value_items(entity_class_name = "node", entity_byname = ("atmosphere", ), parameter_definition_name = atm_parameter)
             for target_parameter in target_parameters:
-                
-                if target_parameter["type"] == "float":
-                    parameter_value = target_parameter["parsed_value"]*config["emission_factor"]
-                elif target_parameter["type"] == "time_series":
-                    parameter_value = json.loads(target_parameter["value"])
-                    parameter_value["data"] = {k:v*config["emission_factor"] for k,v in parameter_value["data"].items()}
-
+                parameter_value = _scaled_value(target_parameter, config["emission_factor"])
                 add_or_update_parameter_value(sopt_db, "node", atm_parameter, target_parameter["alternative_name"], ("atmosphere", ), parameter_value)
 
         # Secondary, cheaper relief: prices the node balance slack. Kept because it does
