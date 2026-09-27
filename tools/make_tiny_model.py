@@ -26,7 +26,7 @@ Writes to a COPY. The original DB is never modified.
 """
 import shutil, sys
 from pathlib import Path
-from spinedb_api import DatabaseMapping, to_database
+from spinedb_api import DatabaseMapping, to_database, from_database
 
 SRC = Path(".spinetoolbox/items/final_spineopt_model/Final_SpineOpt_Model.sqlite")
 DST = Path("checkpoints/Final_SpineOpt_Model.tiny.sqlite")
@@ -79,5 +79,33 @@ with DatabaseMapping(f"sqlite:///{DST.as_posix()}") as db:
 
     db.commit_session("Tiny test model: coarsen operations blocks to one timestep per year")
 
-print("\nTiny model written. Operational timesteps: 3 (was 26,280)")
-print("Representative timesteps: 6 (unchanged)")
+# Report the ACTUAL timestep counts, derived from the block spans. These used to
+# be hardcoded ("6 (unchanged)"), which silently reported the old number after
+# the clustering resolution changed and made it look like nothing had happened.
+with DatabaseMapping(f"sqlite:///{DST.as_posix()}") as db:
+    ops = reps = 0
+    spans = {}
+    for v in db.get_parameter_value_items():
+        if v["entity_class_name"] != "temporal_block":
+            continue
+        if v["parameter_definition_name"] in ("resolution", "block_start", "block_end"):
+            spans.setdefault(v["entity_name"], {})[v["parameter_definition_name"]] = \
+                from_database(v["value"], v["type"])
+    for name, d in spans.items():
+        start, end, res = d.get("block_start"), d.get("block_end"), d.get("resolution")
+        if start is None or end is None or not hasattr(res, "value"):
+            continue
+        # Spine DateTime/Duration wrap the stdlib objects in `.value`.
+        # Duration may hold a relativedelta (e.g. "365D"), which has no
+        # total_seconds(), so derive the step length by applying it to the start.
+        hours = (end.value - start.value).total_seconds() / 3600.0
+        step = ((start.value + res.value) - start.value).total_seconds() / 3600.0
+        n = int(round(hours / step)) if step else 0
+        if name.startswith("operations_"):
+            ops += n
+        elif name.startswith("representative_"):
+            reps += n
+
+print(f"\nTiny model written. Operational timesteps: {ops} (full-resolution: 26,280)")
+print(f"Representative timesteps: {reps}")
+print(f"Total: {ops + reps}")

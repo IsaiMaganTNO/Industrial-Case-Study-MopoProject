@@ -1,0 +1,8 @@
+temporal blocks: 8
+  operations_y2030           res=365D         start=2030-01-01T00:00:00    end=2031-01-01T00:00:00
+  operations_y2040           res=365D         start=2041-01-01T00:00:00    end=2042-01-01T00:00:00
+  operations_y2050           res=365D         start=2050-01-01T00:00:00    end=2051-01-01T00:00:00
+  planning                   res=<spinedb_api.parameter_value.Array objec start=                       end=
+  representative_period_2030_1 res=1h           start=2030-01-12T00:00:00    end=2030-01-13T00:00:00
+  representative_period_2040_1 res=1h           start=2041-01-12T00:00:00    end=2041-01-13T00:00:00
+  representative_period_2050_1 res=1h           start=2050-01-12T00:00:00    end=2050-01-13T00:00:00

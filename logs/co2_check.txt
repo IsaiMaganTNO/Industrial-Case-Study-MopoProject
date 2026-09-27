@@ -1,0 +1,6 @@
+=== CO2 / CCS related entities carrying flow ===
+  DAC            total |flow|         270.71
+  injection      total |flow|         238.09
+  atmosphere     total |flow|         119.05
+  +CC            total |flow|         117.42
+  other CO2      total |flow|           6.98

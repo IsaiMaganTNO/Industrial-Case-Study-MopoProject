@@ -1,0 +1,26 @@
+Running 5 tool(s): merge_spineopt, clustering_input, run_clustering, clustering_output, scenario_setup
+
+[1/5] merge_spineopt
+  purged Final_SpineOpt_Model (19 of 19 item types held data)
+  SpineOpt_target -> Final_SpineOpt_Model
+     imported 46290 items, 0 errors
+  merger done in 1.1 min
+
+[2/5] clustering_input
+  RAM 48.1/143.5 GB used | disk 94.9 GB free
+  exit=0 in 0.4 min | RAM 48.2/143.5 GB | disk 94.9 GB free
+
+[3/5] run_clustering
+  RAM 48.2/143.5 GB used | disk 94.9 GB free
+  exit=0 in 0.7 min | RAM 47.5/143.5 GB | disk 92.6 GB free
+
+[4/5] clustering_output
+  RAM 47.5/143.5 GB used | disk 92.6 GB free
+  exit=0 in 0.2 min | RAM 47.6/143.5 GB | disk 91.7 GB free
+
+[5/5] scenario_setup
+  RAM 47.6/143.5 GB used | disk 91.7 GB free
+  exit=0 in 4.4 min | RAM 43.6/143.5 GB | disk 81.4 GB free
+
+--- all steps done in 7.5 min ---
+Final_SpineOpt_Model         (20867, 28011) -> (22043, 29082)    

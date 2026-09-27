@@ -1,0 +1,62 @@
+Running 8 tool(s): ines_builder, template_1, ines_to_spinetop, merge_spineopt, clustering_input, run_clustering, clustering_output, scenario_setup
+
+[1/8] ines_builder
+  RAM 34.4/143.5 GB used | disk 74.3 GB free
+  exit=0 in 27.2 min | RAM 48.8/143.5 GB | disk 95.1 GB free
+
+[2/8] template_1
+  RAM 48.8/143.5 GB used | disk 95.1 GB free
+  exit=0 in 1.2 min | RAM 48.7/143.5 GB | disk 95.1 GB free
+
+[3/8] ines_to_spinetop
+  RAM 48.7/143.5 GB used | disk 95.1 GB free
+  exit=0 in 6.5 min | RAM 48.7/143.5 GB | disk 95.1 GB free
+
+[4/8] merge_spineopt
+  SpineOpt_target -> Final_SpineOpt_Model
+     imported 2386 items, 0 errors
+  merger done in 3.9 min
+
+[5/8] clustering_input
+  RAM 49.3/143.5 GB used | disk 95.1 GB free
+  exit=0 in 0.5 min | RAM 49.3/143.5 GB | disk 95.1 GB free
+
+[6/8] run_clustering
+  RAM 49.3/143.5 GB used | disk 95.1 GB free
+  exit=0 in 1.3 min | RAM 49.3/143.5 GB | disk 95.1 GB free
+
+[7/8] clustering_output
+  RAM 49.4/143.5 GB used | disk 95.1 GB free
+  exit=0 in 0.4 min | RAM 49.3/143.5 GB | disk 95.1 GB free
+
+[8/8] scenario_setup
+  RAM 49.3/143.5 GB used | disk 95.1 GB free
+  exit=1 in 1.4 min | RAM 49.4/143.5 GB | disk 95.1 GB free
+  FAILED - see C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\run_logs\20_scenario_setup.log
+    | FOM cost not found for  battery-storage_NLC1
+    | FOM cost not found for  battery-storage_NLC2
+    | FOM cost not found for  battery-storage_NLC3
+    | FOM cost not found for  battery-storage_NLC4
+    | FOM cost not found for  battery-storage_NLC5
+    | FOM cost not found for  battery-storage_NLC6
+    | FOM cost not found for  battery-storage_NLC7
+    | FOM cost not found for  battery-storage_NLC8
+    | FOM cost not found for  battery-storage_NLC9
+    | Heat pump constraints
+    | Traceback (most recent call last):
+    |   File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\Pan-European-Framework-Energy-System-Planning\src\_planning-input-processsing\scenario_run.py", line 740, in <module>
+    |     main()
+    |     ~~~~^^
+    |   File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\Pan-European-Framework-Energy-System-Planning\src\_planning-input-processsing\scenario_run.py", line 698, in main
+    |     air_ground_heatpump(config)
+    |     ~~~~~~~~~~~~~~~~~~~^^^^^^^^
+    |   File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\Pan-European-Framework-Energy-System-Planning\src\_planning-input-processsing\scenario_run.py", line 453, in air_ground_heatpump
+    |     add_entity(sopt_db,"user_constraint",("heatpump-ratio"+"_"+polygon_name,))
+    |     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\Pan-European-Framework-Energy-System-Planning\src\_planning-input-processsing\scenario_run.py", line 72, in add_entity
+    |     raise RuntimeError(error)
+    | RuntimeError: there's already a entity with {'entity_class_name': 'user_constraint', 'name': 'heatpump-ratio_BEC1'}
+    |   exit=1 in 1.4 min | RAM 49.4/143.5 GB | disk 95.1 GB free
+    |   FAILED - see C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\run_logs\20_scenario_setup.log
+
+STOPPED at scenario_setup. Databases left as-is for inspection.

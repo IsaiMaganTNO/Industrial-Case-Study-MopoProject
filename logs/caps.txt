@@ -1,0 +1,8 @@
+params matching constraint/limit/max/budget/emission:
+  investment_count_max_cumulative                1892
+  investment_count_total_max_cumulative          49
+  storage_investment_count_max_cumulative        173
+
+user_constraint entities: 23
+  sample: ['EU-mix-2018_BEC6_emissions', 'EU-mix-2018_BEC7_emissions', 'EU-mix-2018_NLC5_emissions', 'EU-mix-2018_NLC6_emissions', 'WPI-BOF-MEA_BEC4_emissions', 'WPI-BOF-MEA_NLC5_emissions', 'heatpump-ratio_BEC1', 'heatpump-ratio_BEC2']
+  co2-ish: []

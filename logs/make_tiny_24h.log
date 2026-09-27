@@ -1,0 +1,11 @@
+copied -> checkpoints\Final_SpineOpt_Model.tiny.sqlite
+  operations_y2030: resolution 1h -> 8760h
+  operations_y2040: resolution 1h -> 8760h
+  operations_y2050: resolution 1h -> 8760h
+  operations_y2030 [wy2009]: map 365 -> 1 entry, coefficient sum 1.0
+  operations_y2040 [wy2009]: map 365 -> 1 entry, coefficient sum 1.0
+  operations_y2050 [wy2009]: map 365 -> 1 entry, coefficient sum 1.0
+
+Tiny model written. Operational timesteps: 3 (full-resolution: 26,280)
+Representative timesteps: 72
+Total: 75

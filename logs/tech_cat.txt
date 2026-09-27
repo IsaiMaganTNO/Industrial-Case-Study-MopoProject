@@ -1,0 +1,13 @@
+category                               2030     2040     2050     TOTAL   share
+bioenergy                              0.00     3.49    81.36     84.86   34.6%
+CO2 removal (DAC)                      0.00     0.00    54.65     54.65   22.3%
+renewables                             0.00     0.00    31.94     31.94   13.0%
+hydrogen production                    2.24    19.76     0.00     22.00    9.0%
+industry: CCS-equipped process         0.00     0.00    19.57     19.57    8.0%
+unabated fossil                        7.36     4.08     0.00     11.43    4.7%
+e-fuels / green chemicals              0.00     0.00     9.85      9.85    4.0%
+industry: clean process route          0.35     0.21     6.97      7.53    3.1%
+electrification (heat pumps)           0.00     1.01     1.88      2.90    1.2%
+electrolysis                           0.00     0.00     0.15      0.15    0.1%
+other                                  0.01     0.01     0.03      0.04    0.0%
+TOTAL                                                            244.92

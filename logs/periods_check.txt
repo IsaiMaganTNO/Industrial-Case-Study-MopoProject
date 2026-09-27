@@ -1,0 +1,6 @@
+=== investment activity per period (results) ===
+  2030  units invested       9.96
+  2040  units invested      28.56
+  2050  units invested     206.40
+
+=== CO2 budget / cap parameters (model) ===

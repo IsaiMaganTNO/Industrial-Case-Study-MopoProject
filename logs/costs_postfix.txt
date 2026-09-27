@@ -1,0 +1,11 @@
+term                                                  value    share
+total_costs                                      2701433.11  100.00%
+objective_fixed_om_costs                         2081071.44   77.04%
+objective_unit_investment_costs                   353529.97   13.09%
+objective_taxes                                   207160.91    7.67%
+objective_variable_om_costs                        36513.57    1.35%
+objective_connection_flow_costs                    23149.79    0.86%
+objective_connection_investment_costs                  7.43    0.00%
+objective_storage_investment_costs                     0.00    0.00%
+objective_objective_penalties                          0.00    0.00%
+objective_fuel_costs                                   0.00    0.00%

@@ -1,0 +1,65 @@
+Running 16 tool(s): gas_import, heat_importer, hydro_importer, industry_importer, power_importer, rdemand_importer, transmission_importer, transport_importer, ines_builder, template_1, ines_to_spinetop, merge_spineopt, clustering_input, run_clustering, clustering_output, scenario_setup
+
+[1/16] gas_import
+  RAM 45.9/143.5 GB used | disk 93.3 GB free
+  exit=0 in 0.1 min | RAM 45.9/143.5 GB | disk 92.8 GB free
+
+[2/16] heat_importer
+  RAM 45.9/143.5 GB used | disk 92.8 GB free
+  exit=0 in 0.2 min | RAM 46.0/143.5 GB | disk 91.9 GB free
+
+[3/16] hydro_importer
+  RAM 46.0/143.5 GB used | disk 91.9 GB free
+  exit=0 in 1.0 min | RAM 46.9/143.5 GB | disk 90.2 GB free
+
+[4/16] industry_importer
+  RAM 46.9/143.5 GB used | disk 90.2 GB free
+  exit=0 in 0.2 min | RAM 47.1/143.5 GB | disk 89.9 GB free
+
+[5/16] power_importer
+  RAM 47.1/143.5 GB used | disk 89.9 GB free
+  exit=0 in 0.6 min | RAM 47.5/143.5 GB | disk 88.8 GB free
+
+[6/16] rdemand_importer
+  RAM 47.5/143.5 GB used | disk 88.8 GB free
+  exit=0 in 1.5 min | RAM 46.4/143.5 GB | disk 84.1 GB free
+
+[7/16] transmission_importer
+  RAM 46.4/143.5 GB used | disk 84.1 GB free
+  exit=0 in 0.1 min | RAM 46.2/143.5 GB | disk 84.0 GB free
+
+[8/16] transport_importer
+  RAM 46.2/143.5 GB used | disk 84.0 GB free
+  exit=0 in 1.7 min | RAM 43.0/143.5 GB | disk 81.6 GB free
+
+[9/16] ines_builder
+  RAM 43.0/143.5 GB used | disk 81.6 GB free
+  exit=1 in 0.1 min | RAM 42.8/143.5 GB | disk 81.5 GB free
+  FAILED - see C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\run_logs\13_ines_builder.log
+    | Traceback (most recent call last):
+    |   File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\data-pipelines\europe\_ines-builder\ines_target.py", line 1867, in <module>
+    |     main()
+    |     ~~~~^^
+    |   File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\data-pipelines\europe\_ines-builder\ines_target.py", line 1700, in main
+    |     with DatabaseMapping(url_db_out) as db_map:
+    |          ~~~~~~~~~~~~~~~^^^^^^^^^^^^
+    |   File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\.venv\Lib\site-packages\spinedb_api\db_mapping.py", line 195, in __init__
+    |     self._original_engine = self.create_engine(
+    |                             ~~~~~~~~~~~~~~~~~~^
+    |         self.sa_url, create=create, upgrade=upgrade, backup_url=backup_url, sqlite_timeout=sqlite_timeout
+    |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |     )
+    |     ^
+    |   File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\.venv\Lib\site-packages\spinedb_api\db_mapping.py", line 385, in create_engine
+    |     raise SpineDBAPIError(
+    |     ...<2 lines>...
+    |     )
+    | spinedb_api.exception.SpineDBAPIError: Unable to determine db revision. Please check that
+    | 
+    | 	sqlite:///C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\.spinetoolbox\items\ines_db\INES_DB.sqlite
+    | 
+    | is the URL of a valid Spine db.
+    |   exit=1 in 0.1 min | RAM 42.8/143.5 GB | disk 81.5 GB free
+    |   FAILED - see C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\run_logs\13_ines_builder.log
+
+STOPPED at ines_builder. Databases left as-is for inspection.
