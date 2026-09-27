@@ -232,11 +232,13 @@ def run_merger(proj, name, index):
     from spinedb_api import DatabaseMapping, import_data
 
     sources, targets = [], []
+    purge_opts = {}
     for c in proj["project"]["connections"]:
         if c["to"][0] == name:
             sources.append(c["from"][0])
         elif c["from"][0] == name:
             targets.append(c["to"][0])
+            purge_opts[c["to"][0]] = c.get("options", {})
     sources = [s for s in sources if proj["items"].get(s, {}).get("type") == "Data Store"]
     targets = [t for t in targets if proj["items"].get(t, {}).get("type") == "Data Store"]
 
@@ -261,6 +263,26 @@ def run_merger(proj, name, index):
     t0 = time.time()
     for tgt in targets:
         tgt_url = "sqlite:///" + str(db_path(proj, tgt))
+        opts = purge_opts.get(tgt, {})
+        if opts.get("purge_before_writing"):
+            # Spine Toolbox purges the target before a Merger writes into it.
+            # Without this the previous run's entities survive and downstream
+            # steps (scenario_setup) die on duplicate entity names.
+            items = [k for k, v in (opts.get("purge_settings") or {}).items() if v]
+            try:
+                with DatabaseMapping(tgt_url, create=True) as tdb:
+                    purged = 0
+                    for item_type in items:
+                        try:
+                            if tdb.purge_items(item_type):
+                                purged += 1
+                        except Exception:
+                            pass
+                    tdb.commit_session("purge before merge")
+                log("  purged %s (%d of %d item types held data)" % (tgt, purged, len(items)))
+            except Exception as exc:
+                log("  FAILED to purge %s: %s" % (tgt, exc))
+                return False
         for src in sources:
             src_url = "sqlite:///" + str(db_path(proj, src))
             log("  %s -> %s" % (src, tgt))
