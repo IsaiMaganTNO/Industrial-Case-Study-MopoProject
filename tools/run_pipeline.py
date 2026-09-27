@@ -79,6 +79,10 @@ STAGE1_ORDER = [
     # INES -> SpineOpt
     "template_1",
     "ines_to_spinetop",
+    # Copy SpineOpt_target -> Final_SpineOpt_Model. This is a Merger, not a Tool,
+    # so it is invisible to a Tool-only runner; without it Final_SpineOpt_Model
+    # stays empty and the whole clustering chain silently operates on nothing.
+    "merge_spineopt",
     # temporal structure, then scenario configuration, both on Final_SpineOpt_Model
     "clustering_input",
     "run_clustering",
@@ -216,7 +220,75 @@ def db_stats():
     return out
 
 
+def run_merger(proj, name, index):
+    """Execute a Merger item: copy every upstream Data Store into each downstream one.
+
+    Spine Toolbox implements this natively; a Tool-only runner skips it entirely.
+    merge_spineopt (SpineOpt_target -> Final_SpineOpt_Model) is the step that
+    creates the model the clustering chain and the solve actually read, so
+    omitting it leaves Final_SpineOpt_Model empty and everything downstream
+    silently works on nothing.
+    """
+    from spinedb_api import DatabaseMapping, import_data
+
+    sources, targets = [], []
+    for c in proj["project"]["connections"]:
+        if c["to"][0] == name:
+            sources.append(c["from"][0])
+        elif c["from"][0] == name:
+            targets.append(c["to"][0])
+    sources = [s for s in sources if proj["items"].get(s, {}).get("type") == "Data Store"]
+    targets = [t for t in targets if proj["items"].get(t, {}).get("type") == "Data Store"]
+
+    LOGDIR.mkdir(exist_ok=True)
+    logfile = LOGDIR / ("%02d_%s.log" % (index, name))
+
+    def log(msg):
+        print(msg)
+        with open(logfile, "a", encoding="utf-8") as fh:
+            fh.write(msg + "\n")
+
+    with open(logfile, "w", encoding="utf-8") as fh:
+        fh.write("# %s (Merger)\n# %s\n" % (name, datetime.now().isoformat()))
+        fh.write("# %s -> %s\n\n" % (", ".join(sources), ", ".join(targets)))
+
+    if not sources or not targets:
+        log("  !! merger %s has no Data Store source or target" % name)
+        return False
+    if not guard(log):
+        return False
+
+    t0 = time.time()
+    for tgt in targets:
+        tgt_url = "sqlite:///" + str(db_path(proj, tgt))
+        for src in sources:
+            src_url = "sqlite:///" + str(db_path(proj, src))
+            log("  %s -> %s" % (src, tgt))
+            try:
+                with DatabaseMapping(src_url) as sdb:
+                    data = export_all(sdb)
+                with DatabaseMapping(tgt_url, create=True) as tdb:
+                    count, errors = import_data(tdb, **data)
+                    for e in list(errors)[:10]:
+                        log("     ! %s" % e)
+                    tdb.commit_session("merge from %s" % src)
+                    log("     imported %d items, %d errors" % (count, len(errors)))
+            except Exception as exc:
+                log("  FAILED: %s" % exc)
+                return False
+    log("  merger done in %.1f min" % ((time.time() - t0) / 60))
+    return True
+
+
+def export_all(db):
+    """Export a Spine DB into the dict form import_data() accepts."""
+    from spinedb_api import export_data
+    return export_data(db)
+
+
 def run_tool(proj, name, index):
+    if proj["items"][name]["type"] == "Merger":
+        return run_merger(proj, name, index)
     spec, spec_path = spec_for(proj, name)
     if spec is None:
         print("  !! no specification for " + name)
