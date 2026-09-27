@@ -35,6 +35,7 @@ JULIA = Path(os.environ.get(
     "JULIA_EXE",
     r"C:\Users\maganih\.julia\juliaup\julia-1.12.6+0.x64.w64.mingw32\bin\julia.exe"))
 JENV = ROOT / "jenv"
+PLUGIN_DIR = Path.home() / ".spinetoolbox" / "plugins" / "SpineOpt"
 
 # Never run automatically.
 #   Run_Model_Planning / Run_Dispatch  - solves, launched explicitly
@@ -116,11 +117,28 @@ def tool_order(proj):
 
 
 def spec_for(proj, tool_name):
+    """Find a tool specification by name.
+
+    Specifications come from two places: the project file, and installed
+    Toolbox plugins. template_1 uses "Load template", which ships with the
+    SpineOpt plugin rather than the project, so searching only the project
+    silently reports "no specification" for it.
+    """
     spec_name = proj["items"][tool_name].get("specification")
     for entry in proj["project"]["specifications"]["Tool"]:
         p = ROOT / entry["path"]
         with open(p, encoding="utf-8") as fh:
             spec = json.load(fh)
+        if spec.get("name") == spec_name:
+            return spec, p
+    for p in sorted(PLUGIN_DIR.rglob("*.json")):
+        if p.name == "plugin.json":
+            continue
+        try:
+            with open(p, encoding="utf-8") as fh:
+                spec = json.load(fh)
+        except (OSError, ValueError):
+            continue
         if spec.get("name") == spec_name:
             return spec, p
     return None, None

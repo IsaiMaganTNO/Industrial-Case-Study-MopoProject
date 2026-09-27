@@ -4,15 +4,19 @@ scenarios:
   baseline_blended_representative_periods: ["Base","wy2009","medium_bio","current","GA","GA_flex0","high_CO2",flex_buildings,flex_buildings_wy2009_current,flex_industry] 
 emission_factor: 1.0 #percentage of carbon budget considered in the model based on the included countries
 # balance_penalty on the atmosphere node. Set to null once the model solves without it.
-# NOTE: this only prices the node *balance* slack. It does NOT rescue a zero carbon
-# budget, because that budget is a variable upper bound - use co2_budget_floor below.
+#
+# The 2050/2060 atmosphere caps are exactly 0.0, which makes the atmosphere node_state
+# upper bound a hard zero. That looks like a guaranteed infeasibility, but it is NOT:
+# the EU reference case has the identical structure (2030=520, 2041=116, 2050=0, 2060=0)
+# and it solved with NO balance_penalty at all. Net zero is reached through the CCS
+# chain - atmosphere -> CO2-injection-* -> CO2-storage-* - not by relaxing the budget.
+# IC1 has that chain intact and better provisioned than EU: 6 injection routes (EU: 2)
+# and 27.2 units of 2050 sequestration capacity (EU: 4.5) against a 165.4 budget (EU: 520).
+#
+# So do NOT floor the carbon budget to force feasibility. Doing so would hide a broken
+# CCS chain behind a fake "overshoot" number. If the model does turn out infeasible,
+# diagnose the CCS chain first; only then consider slack, and report it explicitly.
 co2_overshoot_penalty: 10000
-# Minimum headroom on the atmosphere storage_investment_count_max_cumulative cap.
-# The 2050 cap is otherwise exactly 0, which makes the atmosphere node_state upper
-# bound a hard zero and the model infeasible before any penalty can apply. With a
-# floor the solve returns a quantified CO2 overshoot instead of no result at all.
-# Set to null to enforce the true net-zero target.
-co2_budget_floor: 1.0
 resolution: "1h"
 future_inflation: 0.03
 default_technology_discount_rate: 0.05

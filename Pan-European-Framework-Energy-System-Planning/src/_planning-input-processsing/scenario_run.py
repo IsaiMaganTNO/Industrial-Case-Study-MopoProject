@@ -155,31 +155,40 @@ def update_parameters(config):
             if "planning" not in parameter_map["entity_byname"][0]:
                 add_or_update_parameter_value(sopt_db, parameter_map["entity_class_name"], "resolution", parameter_map["alternative_name"], parameter_map["entity_byname"], parameter_value)
         
-        
+          # IC1 fix: the EU case has a single node named exactly "CO2-storage", but IC1
+        # names sequestration sites per reservoir - "CO2-storage-NSNL012" and
+        # "CO2-storage-NSNL031" (each with low_CO2/medium_CO2/high_CO2 series). An exact
+        # entity_byname match therefore selected nothing and emission_factor was never
+        # applied to the sequestration caps, while it WAS applied to the atmosphere
+        # budget. That asymmetry would silently under-provision CCS whenever
+        # emission_factor != 1.0. Match by prefix so every site is scaled.
         for co2_parameter in ["storage_investment_count_fix_cumulative"]:
-            target_parameters = sopt_db.get_parameter_value_items(entity_class_name = "node", entity_byname = ("CO2-storage", ), parameter_definition_name = co2_parameter)
+            target_parameters = [
+                p for p in sopt_db.get_parameter_value_items(
+                    entity_class_name="node", parameter_definition_name=co2_parameter)
+                if str(p["entity_byname"][0]).startswith("CO2-storage")
+            ]
             for target_parameter in target_parameters:
-                
+                entity_byname = target_parameter["entity_byname"]
+
                 if target_parameter["type"] == "float":
                     parameter_value = target_parameter["parsed_value"]*config["emission_factor"]
                 elif target_parameter["type"] == "time_series":
                     parameter_value = json.loads(target_parameter["value"])
                     parameter_value["data"] = {k:v*config["emission_factor"] for k,v in parameter_value["data"].items()}
 
-                add_or_update_parameter_value(sopt_db, "node", co2_parameter, target_parameter["alternative_name"], ("CO2-storage", ), parameter_value)        # The atmosphere carbon budget enters SpineOpt as a *variable bound*, not as a
-        # balance constraint: variable_node_state.jl:169 sets
-        #     node_state_ub = node_state_capacity * (existing + storage_investment_count_max_cumulative)
-        # With a 2050 cap of exactly 0 the atmosphere node_state upper bound is a hard
-        # zero, which the solver enforces directly. `balance_penalty` cannot relax it -
-        # that parameter only prices node_slack_pos/neg on the node *balance*
-        # (objective_penalties.jl:168). So an unreachable net-zero target is reported as
-        # INFEASIBLE, not as an expensive solution, no matter how the penalty is set.
-        #
-        # co2_budget_floor makes the model feasible by construction: it lifts any
-        # zero/near-zero cap to a small positive headroom. The solve then returns a
-        # quantified overshoot - a presentable result - instead of nothing at all.
-        budget_floor = config.get("co2_budget_floor")
+                add_or_update_parameter_value(sopt_db, "node", co2_parameter, target_parameter["alternative_name"], entity_byname, parameter_value)
 
+        # The atmosphere carbon budget enters SpineOpt as a *variable bound*:
+        # variable_node_state.jl:169 sets
+        #     node_state_ub = node_state_capacity * (existing + storage_investment_count_max_cumulative)
+        # so with a 2050 cap of 0 the bound is a hard zero that balance_penalty cannot
+        # relax (that only prices node_slack_pos/neg on the node balance).
+        #
+        # This is deliberate, not a bug: the EU reference case has the same trajectory
+        # (2030=520, 2041=116, 2050=0, 2060=0) and solved with no balance_penalty at all.
+        # Net zero is met through the CCS chain, so the cap is left untouched here.
+        # Do not floor it to force feasibility - that would hide a broken CCS chain.
         for atm_parameter in ["storage_investment_count_initial_cumulative","storage_investment_count_max_cumulative"]:
             target_parameters = sopt_db.get_parameter_value_items(entity_class_name = "node", entity_byname = ("atmosphere", ), parameter_definition_name = atm_parameter)
             for target_parameter in target_parameters:
@@ -189,22 +198,6 @@ def update_parameters(config):
                 elif target_parameter["type"] == "time_series":
                     parameter_value = json.loads(target_parameter["value"])
                     parameter_value["data"] = {k:v*config["emission_factor"] for k,v in parameter_value["data"].items()}
-
-                # Apply the floor only to the cap, never to the initial stock.
-                if budget_floor and atm_parameter == "storage_investment_count_max_cumulative":
-                    floor_ = float(budget_floor)
-                    if isinstance(parameter_value, dict) and parameter_value.get("type") == "time_series":
-                        raised = {}
-                        for k, v in parameter_value["data"].items():
-                            if v is not None and v < floor_:
-                                print("  co2_budget_floor: atmosphere cap %s raised %s -> %s" % (k, v, floor_))
-                                raised[k] = floor_
-                            else:
-                                raised[k] = v
-                        parameter_value["data"] = raised
-                    elif isinstance(parameter_value, float) and parameter_value < floor_:
-                        print("  co2_budget_floor: atmosphere cap raised %s -> %s" % (parameter_value, floor_))
-                        parameter_value = floor_
 
                 add_or_update_parameter_value(sopt_db, "node", atm_parameter, target_parameter["alternative_name"], ("atmosphere", ), parameter_value)
 
