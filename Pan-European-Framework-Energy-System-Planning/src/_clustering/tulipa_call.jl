@@ -15,12 +15,17 @@ println("WARNING: Check whether there are extreme periods from the loop with the
 # number_of_timesteps is the period DURATION in hours. Below 24 the periods are
 # no longer whole days, which degrades intra-day storage cycling and anything
 # depending on a diurnal profile (solar above all). A 4-hour period cannot
-# represent a day/night cycle.
+# represent a day/night cycle; a 1-hour period is a SINGLE timestep, so there is
+# no intra-period dynamics whatsoever and storage is degenerate by construction.
+#
+# This was only tunable after clustering_output.py stopped hardcoding 24 for the
+# block boundaries and the representative_blocks_by_period map; it now derives
+# the duration from the weights file instead.
 #
 # RESTORE to number_of_timesteps = 24 (and ideally >= 5 representatives)
 # before any result is reported, compared against the EU case, or published.
 number_of_representatives = 2
-number_of_timesteps = 4   # was 24 (a full day). Feasibility-testing setting.
+number_of_timesteps = 1   # was 24 (a full day). Smallest possible feasibility test.
 
 function get_data(input_folder,year)
   dir = joinpath(input_folder, "profiles")

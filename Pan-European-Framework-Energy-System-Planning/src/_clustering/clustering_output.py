@@ -45,8 +45,29 @@ def remove_previous_representatives():
     except:
         print("commit representative period removal error")  
 
+def period_duration_hours():
+    """Hours per clustering period, read from the clustering output itself.
+
+    tulipa_call.jl splits the year with `period_duration = number_of_timesteps`,
+    which the EU case leaves at 24 (whole days). This script used to hardcode 24
+    in three places (block_start, block_end and the representative_blocks_by_period
+    map). Any other value then silently produced wrong block boundaries, or an
+    IndexError once 24*(period-1) ran past the 8760-hour index.
+
+    Deriving it keeps the two files consistent: the weights file has one row per
+    period, so duration = 8760 / number_of_periods.
+    """
+    alt = pd.read_csv("results/representative_periods.csv").columns[0]
+    n_periods = pd.read_csv(f"results/weights_{alt}.csv")["period"].nunique()
+    hours = int(round(8760 / n_periods))
+    print(f"clustering period duration = {hours}h ({n_periods} periods)")
+    return hours
+
+
 def ouput_data():
-    
+
+    period_hours = period_duration_hours()
+
     rp_days = pd.read_csv("results/representative_periods.csv")
     rp_days.index = range(1,rp_days.shape[0]+1)
 
@@ -79,12 +100,12 @@ def ouput_data():
                 time_index = pd.date_range(start=f"{(year if year != '2040' else '2041')}-01-01 00:00:00",end=f"{(year if year != '2040' else '2041')}-12-31 23:00:00",freq="1h")
 
                 year_start = pd.Timestamp(f"{(year if year != '2040' else '2041')}-01-01 00:00:00")
-                block_start = (year_start + pd.Timedelta(f"{int(24*3600*(float(rp_days.at[rp_day,alternative])-1))}s")).isoformat()
+                block_start = (year_start + pd.Timedelta(f"{int(period_hours*3600*(float(rp_days.at[rp_day,alternative])-1))}s")).isoformat()
                 add_or_update_parameter_value(sopt_db,"temporal_block","block_start",alternative_name,entity_name,{"type":"date_time","data":block_start})
-                block_end   = (year_start + pd.Timedelta(f"{int(24*3600*float(rp_days.at[rp_day,alternative]))}s")).isoformat()
+                block_end   = (year_start + pd.Timedelta(f"{int(period_hours*3600*float(rp_days.at[rp_day,alternative]))}s")).isoformat()
                 add_or_update_parameter_value(sopt_db,"temporal_block","block_end",alternative_name,entity_name,{"type":"date_time","data":block_end})
 
-            map_rp = {"type":"map","index_type":"date_time","index_name":"t","data":[((time_index[24*(i-1)]).isoformat(),{"type":"array","data":[weights.at[i,j]*(year == year_i) for year_i in ["2030","2040","2050"] for j in weights.columns],"value_type": "float",}) for i in weights.index]}
+            map_rp = {"type":"map","index_type":"date_time","index_name":"t","data":[((time_index[period_hours*(i-1)]).isoformat(),{"type":"array","data":[weights.at[i,j]*(year == year_i) for year_i in ["2030","2040","2050"] for j in weights.columns],"value_type": "float",}) for i in weights.index]}
             #print(map_rp)
             add_or_update_parameter_value(sopt_db,"temporal_block","representative_blocks_by_period",alternative_name,(f"operations_y{year}",),map_rp)
     try:
