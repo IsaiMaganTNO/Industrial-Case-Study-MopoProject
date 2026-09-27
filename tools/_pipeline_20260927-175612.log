@@ -1,0 +1,6 @@
+Running 16 tool(s): gas_import, heat_importer, hydro_importer, industry_importer, power_importer, rdemand_importer, transmission_importer, transport_importer, ines_builder, template_1, ines_to_spinetop, merge_spineopt, clustering_input, run_clustering, clustering_output, scenario_setup
+
+[1/16] gas_import
+ABORT: only 6.0 GB free disk (limit 20.0).
+
+STOPPED at gas_import. Databases left as-is for inspection.

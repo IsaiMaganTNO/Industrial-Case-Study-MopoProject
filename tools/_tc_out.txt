@@ -1,0 +1,34 @@
+cols:
+  [0] technologie
+  [1] commodity
+  [2] capex 2030 (M€/MW)
+  [3] capex 2040 (M€/MW)
+  [4] capex 2050 (M€/MW)
+  [5] fom 2030 (€/MW/y)
+  [6] fom 2040 (€/MW/y)
+  [7] fom 2050 (€/MW/y)
+  [8] vom 2030 (€/MWh)
+  [9] vom 2040 (€/MWh)
+  [10] vom 2050 (€/MWh)
+  [11] lifetime
+  [12] Currency
+  [13] Metadata
+  [14] Description
+  [15] Source
+
+5 partially-blank rows:
+
+  PEM
+    missing: ['vom 2030 (€/MWh)', 'vom 2040 (€/MWh)', 'vom 2050 (€/MWh)']
+
+  AEC
+    missing: ['vom 2030 (€/MWh)', 'vom 2040 (€/MWh)', 'vom 2050 (€/MWh)']
+
+  SOEC
+    missing: ['vom 2030 (€/MWh)', 'vom 2040 (€/MWh)', 'vom 2050 (€/MWh)']
+
+  methanation
+    missing: ['vom 2030 (€/MWh)', 'vom 2040 (€/MWh)', 'vom 2050 (€/MWh)']
+
+  DAC
+    missing: ['vom 2030 (€/MWh)', 'vom 2040 (€/MWh)', 'vom 2050 (€/MWh)']

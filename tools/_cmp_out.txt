@@ -1,0 +1,37 @@
+=== IC1 : 23115 entities, 30083 values
+=== EU : 5451 entities, 7118 values
+
+--- ENTITY CLASSES present in EU but MISSING/EMPTY in IC1 ---
+
+--- PARAMETERS present in EU but MISSING in IC1 ---
+  storage_state_min_fraction                    EU=      2  IC1=0
+
+--- PARAMETERS in IC1 but not EU ---
+  balance_penalty                               IC1=      1  EU=0
+
+--- COVERAGE RATIO (values per entity), shared params, biggest gaps ---
+  representative_block_index                    IC1=      6 EU=     30  rel-coverage=0.05
+  block_end                                     IC1=      9 EU=     33  rel-coverage=0.06
+  block_start                                   IC1=      9 EU=     33  rel-coverage=0.06
+  weight                                        IC1=      9 EU=     33  rel-coverage=0.06
+  resolution                                    IC1=     10 EU=     34  rel-coverage=0.07
+  discount_rate                                 IC1=      1 EU=      1  rel-coverage=0.24
+  has_free_start                                IC1=      3 EU=      3  rel-coverage=0.24
+  model_end                                     IC1=      1 EU=      1  rel-coverage=0.24
+  model_start                                   IC1=      1 EU=      1  rel-coverage=0.24
+  representative_blocks_by_period               IC1=      3 EU=      3  rel-coverage=0.24
+  solver_mip                                    IC1=      1 EU=      1  rel-coverage=0.24
+  solver_mip_options                            IC1=      1 EU=      1  rel-coverage=0.24
+  tax_out_unit_flow                             IC1=      6 EU=      6  rel-coverage=0.24
+  cyclic_condition                              IC1=   2457 EU=   2160  rel-coverage=0.27
+  coefficient_for_unit_flow                     IC1=     18 EU=     12  rel-coverage=0.35
+  investment_count_total_max_cumulative         IC1=     49 EU=     17  rel-coverage=0.68
+  connection_type                               IC1=      6 EU=      2  rel-coverage=0.71
+  storage_longterm_active                       IC1=    126 EU=     36  rel-coverage=0.83
+  unit_investment_cost                          IC1=   1102 EU=    249  rel-coverage=1.04
+  storage_active                                IC1=    483 EU=    105  rel-coverage=1.08
+  flow_ratio_equality_coefficient               IC1=   3838 EU=    826  rel-coverage=1.10
+  lifetime_constraint_sense                     IC1=   1239 EU=    265  rel-coverage=1.10
+  storage_investment_count_fix_new              IC1=     52 EU=     11  rel-coverage=1.11
+  availability_factor                           IC1=    414 EU=     87  rel-coverage=1.12
+  lifetime_economic                             IC1=   1414 EU=    290  rel-coverage=1.15

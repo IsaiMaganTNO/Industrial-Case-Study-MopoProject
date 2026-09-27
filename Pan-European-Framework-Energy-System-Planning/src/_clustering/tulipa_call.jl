@@ -24,8 +24,15 @@ println("WARNING: Check whether there are extreme periods from the loop with the
 #
 # RESTORE to number_of_timesteps = 24 (and ideally >= 5 representatives)
 # before any result is reported, compared against the EU case, or published.
-number_of_representatives = 2
-number_of_timesteps = 1   # was 24 (a full day). Smallest possible feasibility test.
+#
+# 2026-09-27: raised to ONE REPRESENTATIVE DAY (1 x 24 h). Going 1 h -> 24 h is
+# what changes the physics: it restores the diurnal cycle, without which storage
+# is degenerate by construction (a 1-hour period is a single timestep, so there
+# is no intra-period dynamics to arbitrage and storage investment was pinned at
+# exactly 0.00). Adding representatives instead would only add a second weather
+# pattern at double the cost. Still below the EU case's 5 x 24 h.
+number_of_representatives = 1
+number_of_timesteps = 24   # one full day, restoring the diurnal cycle.
 
 function get_data(input_folder,year)
   dir = joinpath(input_folder, "profiles")

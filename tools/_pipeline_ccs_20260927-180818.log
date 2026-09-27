@@ -1,0 +1,11 @@
+Running 16 tool(s): gas_import, heat_importer, hydro_importer, industry_importer, power_importer, rdemand_importer, transmission_importer, transport_importer, ines_builder, template_1, ines_to_spinetop, merge_spineopt, clustering_input, run_clustering, clustering_output, scenario_setup
+
+Traceback (most recent call last):
+  File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\tools\run_pipeline.py", line 395, in <module>
+    sys.exit(main())
+             ~~~~^^
+  File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\tools\run_pipeline.py", line 377, in main
+    before = db_stats()
+  File "C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\tools\run_pipeline.py", line 205, in db_stats
+    from spinedb_api import DatabaseMapping
+ModuleNotFoundError: No module named 'spinedb_api'

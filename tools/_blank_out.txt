@@ -1,0 +1,7 @@
+sheets: ['CH4_Production', 'CH4_Storage', 'CH4_Network', 'H2_Production', 'H2_Storage', 'H2_Network', 'Technology_Costs', 'Technology_Conversion', 'Storage_Costs']
+  (CH4_Production: 9 row(s) partially blank)
+  (CH4_Network: 91 row(s) partially blank)
+  (H2_Production: 4 row(s) partially blank)
+  (H2_Network: 25 row(s) partially blank)
+  (Technology_Costs: 5 row(s) partially blank)
+  (Storage_Costs: 3 row(s) partially blank)

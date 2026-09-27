@@ -1,0 +1,64 @@
+
+> tools\run_pipeline.py:63:STAGE1_ORDER = [
+  tools\run_pipeline.py:64:    # sector importers - independent of each other
+  tools\run_pipeline.py:65:    "VRE_importer",
+  tools\run_pipeline.py:66:    "biomass_importer",
+  tools\run_pipeline.py:67:    "cargo_import",
+  tools\run_pipeline.py:68:    "commodity_importer",
+  tools\run_pipeline.py:69:    "gas_import",
+  tools\run_pipeline.py:70:    "heat_importer",
+  tools\run_pipeline.py:71:    "hydro_importer",
+  tools\run_pipeline.py:72:    "industry_importer",
+  tools\run_pipeline.py:73:    "power_importer",
+  tools\run_pipeline.py:74:    "rdemand_importer",
+  tools\run_pipeline.py:75:    "transmission_importer",
+  tools\run_pipeline.py:76:    "transport_importer",
+  tools\run_pipeline.py:77:    # merge every sector database into INES_DB
+  tools\run_pipeline.py:78:    "ines_builder",
+  tools\run_pipeline.py:79:    # INES -> SpineOpt
+  tools\run_pipeline.py:80:    "template_1",
+  tools\run_pipeline.py:81:    "ines_to_spinetop",
+  tools\run_pipeline.py:82:    # Copy SpineOpt_target -> Final_SpineOpt_Model. This is a Merger, not a Tool,
+  tools\run_pipeline.py:83:    # so it is invisible to a Tool-only runner; without it Final_SpineOpt_Model
+  tools\run_pipeline.py:84:    # stays empty and the whole clustering chain silently operates on nothing.
+  tools\run_pipeline.py:85:    "merge_spineopt",
+  tools\run_pipeline.py:86:    # temporal structure, then scenario configuration, both on Final_SpineOpt_Model
+  tools\run_pipeline.py:87:    "clustering_input",
+  tools\run_pipeline.py:88:    "run_clustering",
+  tools\run_pipeline.py:89:    "clustering_output",
+  tools\run_pipeline.py:90:    "scenario_setup",
+  tools\run_pipeline.py:91:]
+  tools\run_pipeline.py:92:
+  tools\run_pipeline.py:93:MIN_FREE_DISK_GB = 20.0
+> tools\run_pipeline.py:357:    order = [t for t in STAGE1_ORDER if t in proj["items"]]
+  tools\run_pipeline.py:358:    order += [t for t in topo if t not in order]
+  tools\run_pipeline.py:359:
+  tools\run_pipeline.py:360:    if a.stats:
+  tools\run_pipeline.py:361:        for k, v in db_stats().items():
+  tools\run_pipeline.py:362:            print("  %-24s %s" % (k, v))
+  tools\run_pipeline.py:363:        return 0
+  tools\run_pipeline.py:364:    if a.list:
+  tools\run_pipeline.py:365:        for i, t in enumerate(order, 1):
+  tools\run_pipeline.py:366:            print("  %2d. %s" % (i, t))
+  tools\run_pipeline.py:367:        return 0
+  tools\run_pipeline.py:368:
+  tools\run_pipeline.py:369:    todo = [a.only] if a.only else list(order)
+  tools\run_pipeline.py:370:    if not a.only:
+  tools\run_pipeline.py:371:        if a.start:
+  tools\run_pipeline.py:372:            todo = todo[todo.index(a.start):]
+  tools\run_pipeline.py:373:        if a.until:
+  tools\run_pipeline.py:374:            todo = todo[: todo.index(a.until) + 1]
+  tools\run_pipeline.py:375:
+  tools\run_pipeline.py:376:    print("Running %d tool(s): %s\n" % (len(todo), ", ".join(todo)))
+  tools\run_pipeline.py:377:    before = db_stats()
+  tools\run_pipeline.py:378:    t_all = time.time()
+  tools\run_pipeline.py:379:    for i, name in enumerate(todo, 1):
+  tools\run_pipeline.py:380:        idx = order.index(name) + 1 if name in order else i
+  tools\run_pipeline.py:381:        print("[%d/%d] %s" % (i, len(todo), name))
+  tools\run_pipeline.py:382:        if not run_tool(proj, name, idx):
+  tools\run_pipeline.py:383:            print("\nSTOPPED at %s. Databases left as-is for inspection." % name)
+  tools\run_pipeline.py:384:            return 1
+  tools\run_pipeline.py:385:        print()
+  tools\run_pipeline.py:386:    after = db_stats()
+  tools\run_pipeline.py:387:    print("--- all steps done in %.1f min ---" % ((time.time() - t_all) / 60))
+
