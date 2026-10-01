@@ -1,0 +1,9 @@
+Does the skip-set rule (byname[1]=='atmosphere') wrongly catch CO2-injection units?
+
+CO2-injection-NSNL012_NLC1__CO2-storage-NSNL012__atmosphere__CO2-injection-NSNL012_NLC1
+   flattened = ('CO2-injection-NSNL012_NLC1', 'CO2-storage-NSNL012', 'atmosphere', 'CO2-injection-NSNL012_NLC1')
+   byname[1] = 'CO2-storage-NSNL012'  -> caught by skip rule? False
+
+CO2-injection-NSNL012_NLC5__CO2-storage-NSNL012__atmosphere__CO2-injection-NSNL012_NLC5
+   flattened = ('CO2-injection-NSNL012_NLC5', 'CO2-storage-NSNL012', 'atmosphere', 'CO2-injection-NSNL012_NLC5')
+   byname[1] = 'CO2-storage-NSNL012'  -> caught by skip rule? False

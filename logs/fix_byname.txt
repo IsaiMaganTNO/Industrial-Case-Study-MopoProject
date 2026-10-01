@@ -1,0 +1,14 @@
+Verify byname ordering assumed by the skip logic in process_emissions()
+Assumption: byname = (unit, to_node, from_node, unit); emission rows have byname[1]=='atmosphere'
+
+(H2)DRI-EAF_BEC4__atmosphere__coal__(H2)DRI-EAF_BEC4
+   flattened byname = ('(H2)DRI-EAF_BEC4', 'atmosphere', 'coal', '(H2)DRI-EAF_BEC4')
+   byname[1] == 'atmosphere' ? True
+
+(H2)DRI-EAF_NLC5__atmosphere__coal__(H2)DRI-EAF_NLC5
+   flattened byname = ('(H2)DRI-EAF_NLC5', 'atmosphere', 'coal', '(H2)DRI-EAF_NLC5')
+   byname[1] == 'atmosphere' ? True
+
+(NG)DRI-EAF-MEA_BEC4__atmosphere__coal__(NG)DRI-EAF-MEA_BEC4
+   flattened byname = ('(NG)DRI-EAF-MEA_BEC4', 'atmosphere', 'coal', '(NG)DRI-EAF-MEA_BEC4')
+   byname[1] == 'atmosphere' ? True

@@ -342,6 +342,34 @@ def add_tech_parameters(target_db,industry,node,sheets):
         map_param = {"type": "map", "index_type": "str", "index_name": "period", "data": value_param}
         add_parameter_value(target_db, entity_name, "CO2_captured", "Base", entity_byname, np.array(list(value_param.values())).mean().round(3))
 
+    # co2_emitted (process-route specific, NET of capture)
+    #
+    # Mirrors the co2_captured block above: same sheet layout, same (Industry,
+    # to_node) key, same units, written on the *output* commodity with no
+    # conversion. See docs/VERIFICATION_co2_pipeline.md.
+    #
+    # Two deliberate differences from the capture block:
+    #   1. guard is "row exists and value != 0", NOT "> 0.0". CEM2-(BMW)MEA and
+    #      CEM2-(BMW)CaL carry legitimate NEGATIVE values (BECCS) which a
+    #      "> 0.0" guard would silently discard.
+    #   2. a route may appear in the emission sheet but not in the capture sheet
+    #      (120 emission rows vs 80 capture rows), so a missing row is normal
+    #      and must not raise.
+    df = sheets["ind_process_routes_co2_emission"]
+    rows = df[(df.Industry==industry) & (df.to_node==node)]
+    if not rows.empty:
+        value_param = {f"y{year}": rows[year].tolist()[0] for year in planning_years}
+        mean_value = float(np.array(list(value_param.values())).mean().round(3))
+        if mean_value != 0.0:
+            entity_name = "technology__to_commodity"
+            entity_byname = (industry,"atmosphere")
+            add_entity(target_db, entity_name, entity_byname)
+            entity_name = "technology__to_commodity__to_commodity"
+            entity_byname = (industry,node,"atmosphere")
+            add_entity(target_db, entity_name, entity_byname)
+            add_parameter_value(target_db, entity_name, "CO2_emitted", "Base", entity_byname, mean_value)
+
+
 def conversion_sectors(target_db,sheet,com_sheet,nodes):
 
     for i in list(set(sheet.from_node.unique().tolist() + sheet.to_node.unique().tolist())):

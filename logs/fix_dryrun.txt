@@ -1,0 +1,7 @@
+Dry-run of the new industry_DB.py emission block (no DB writes)
+routes written     : 94
+  of which negative: 2
+skipped (value==0) : 26
+total rows         : 120
+
+NOTE: year columns are typed str
