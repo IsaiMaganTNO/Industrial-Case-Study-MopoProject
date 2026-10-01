@@ -340,34 +340,29 @@ def add_tech_parameters(target_db,industry,node,sheets):
         entity_byname = (industry,node,"CO2")
         add_entity(target_db, entity_name, entity_byname)
         map_param = {"type": "map", "index_type": "str", "index_name": "period", "data": value_param}
-        add_parameter_value(target_db, entity_name, "CO2_captured", "Base", entity_byname, np.array(list(value_param.values())).mean().round(3))
-
-    # co2_emitted (process-route specific, NET of capture)
+        add_parameter_value(target_db, entity_name, "CO2_captured", "Base", entity_byname, np.array(list(value_param.values())).mean().round(3))    # co2_emitted (process-route specific, NET of capture)
     #
-    # Mirrors the co2_captured block above: same sheet layout, same (Industry,
-    # to_node) key, same units, written on the *output* commodity with no
-    # conversion. See docs/VERIFICATION_co2_pipeline.md.
+    # Written as a TECHNOLOGY-level parameter, deliberately NOT keyed on an
+    # "atmosphere" commodity. `atmosphere` is a *node* created later by
+    # ines_target.py::add_policy_constraints(), and it carries the CO2 budget
+    # (storages_existing). Creating it here as a commodity would pre-empt that
+    # node and leave it without node_type="storage" -> a CO2 cap that silently
+    # does not bind. See docs/WHY_NOT_atmosphere_commodity.md.
     #
-    # Two deliberate differences from the capture block:
-    #   1. guard is "row exists and value != 0", NOT "> 0.0". CEM2-(BMW)MEA and
-    #      CEM2-(BMW)CaL carry legitimate NEGATIVE values (BECCS) which a
-    #      "> 0.0" guard would silently discard.
-    #   2. a route may appear in the emission sheet but not in the capture sheet
-    #      (120 emission rows vs 80 capture rows), so a missing row is normal
-    #      and must not raise.
+    # ines_to_spineopt.py::process_emissions() consumes this value; it already
+    # has the atmosphere node available at that point.
+    #
+    # Guard is "row exists and value != 0", NOT "> 0.0": CEM2-(BMW)MEA and
+    # CEM2-(BMW)CaL carry legitimate NEGATIVE values (BECCS) which a "> 0.0"
+    # guard would silently discard. A route present in the emission sheet but
+    # absent from the capture sheet is normal (120 vs 80 rows) and must not raise.
     df = sheets["ind_process_routes_co2_emission"]
     rows = df[(df.Industry==industry) & (df.to_node==node)]
     if not rows.empty:
         value_param = {f"y{year}": rows[year].tolist()[0] for year in planning_years}
         mean_value = float(np.array(list(value_param.values())).mean().round(3))
         if mean_value != 0.0:
-            entity_name = "technology__to_commodity"
-            entity_byname = (industry,"atmosphere")
-            add_entity(target_db, entity_name, entity_byname)
-            entity_name = "technology__to_commodity__to_commodity"
-            entity_byname = (industry,node,"atmosphere")
-            add_entity(target_db, entity_name, entity_byname)
-            add_parameter_value(target_db, entity_name, "CO2_emitted", "Base", entity_byname, mean_value)
+            add_parameter_value(target_db, "technology", "co2_emission", "Base", (industry,), mean_value)
 
 
 def conversion_sectors(target_db,sheet,com_sheet,nodes):

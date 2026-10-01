@@ -1,0 +1,4 @@
+sheet names: ['ind_process_routes_sec', 'ind_process_route_life', 'ind_process_routes_co2_capture', 'ind_process_routes_co2_emission', 'ind_process_routes_capex', 'ind_process_routes_fom']
+
+capture block OK: {'y2030': 0.017, 'y2040': 0.017, 'y2050': 0.017}
+emission block OK: {'y2030': 0.002, 'y2040': 0.002, 'y2050': 0.002} mean=0.002

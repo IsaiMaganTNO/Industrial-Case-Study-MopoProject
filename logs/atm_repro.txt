@@ -1,0 +1,3 @@
+add technology__to_commodity                   ('REF-SMR-MEA', 'atmosphere') -> err="non-existent elements in byname ('REF-SMR-MEA', 'atmosphere') for class technology__to_commodity"
+add technology__to_commodity__to_commodity     ('REF-SMR-MEA', 'HC', 'atmosphere') -> err="non-existent elements in byname ('REF-SMR-MEA', 'HC', 'atmosphere') for class technology__to_commodity__to_commodity"
+add (control, CO2 variant)                   -> err="there's already a entity with {'entity_class_name': 'technology__to_commodity__to_commodity', 'entity_byname': ('REF-SMR-MEA', 'HC', 'CO2')}"

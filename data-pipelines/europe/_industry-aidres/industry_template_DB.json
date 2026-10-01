@@ -153,13 +153,6 @@
             null,
             null,
             null
-        ],
-        [
-            "technology__to_commodity__to_commodity",
-            "CO2_emitted",
-            null,
-            null,
-            null
         ]
     ]
 }

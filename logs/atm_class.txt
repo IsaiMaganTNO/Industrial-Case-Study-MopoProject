@@ -1,0 +1,10 @@
+INES_DB  atmosphere   -> classes ['node']
+INES_DB  CO2          -> classes []
+INES_DB  HC           -> classes []
+
+industry  atmosphere   -> classes []
+industry  CO2          -> classes ['commodity']
+industry  HC           -> classes ['commodity']
+
+industry_db entity classes present:
+  ['commodity', 'commodity__region', 'commodity__to_technology', 'commodity__to_technology__to_commodity', 'region', 'technology', 'technology__region', 'technology__to_commodity', 'technology__to_commodity__to_commodity']

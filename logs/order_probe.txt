@@ -1,0 +1,14 @@
+Order of operations in ines_target.py:
+  line 1416   def add_policy_constraints
+  line 1697   sysconfig
+  line 1416   add_policy_constraints(
+  line 1856   add_policy_constraints(
+  line 722    industrial_sector
+  line 1774   industrial_sector
+  line 1778   industrial_sector
+  line 1779   industrial_sector
+  line 1780   industrial_sector
+  line 1781   industrial_sector
+  line 1785   industrial_sector
+  line 1786   industrial_sector
+  line 1787   industrial_sector

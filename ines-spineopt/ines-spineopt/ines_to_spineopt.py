@@ -180,32 +180,49 @@ def process_emissions(source_db, target_db):
     co2_params = source_db.get_parameter_value_items(entity_class_name="node",parameter_definition_name="co2_content",alternative_name="Base")
     co2_value  = {co2_param["entity_name"]:co2_param["parsed_value"] for co2_param in co2_params if co2_param["entity_name"] != "CO2"}
 
-    # Units that already carry a process-route emission ratio to `atmosphere`
-    # (written upstream from ind_process_routes_co2_emission and mapped through
-    # sysconfig.yaml as CO2_emitted -> equality_ratio).
+    # Process-route emission factors, written upstream by
+    # industry_DB.py::add_tech_parameters() from ind_process_routes_co2_emission
+    # and carried to the unit level by sysconfig.yaml (technology -> unit).
     #
-    # These MUST NOT also receive the fuel-content based ratio below, or they
-    # would be charged twice. The fuel-based path remains the fallback for units
-    # with no route data (power plants, boilers, terminals, gas extraction).
+    # These are NET of capture and are expressed per unit of the technology's
+    # OUTPUT commodity, unlike co2_content which is per unit of INPUT fuel.
+    # Where a route factor exists it REPLACES the fuel-based value entirely;
+    # applying both would charge the unit twice.
     #
-    # See docs/VERIFICATION_co2_pipeline.md.
-    route_based_units = set()
-    for flow_flow in target_db.get_entity_items(entity_class_name="unit_flow__unit_flow"):
-        byname = flow_flow["entity_byname"]
-        # byname is (unit, to_node, from_node, unit); emission ratios are the
-        # ones whose *output* node is atmosphere.
-        if len(byname) == 4 and byname[1] == "atmosphere":
-            route_based_units.add(byname[0])
+    # The fuel-based path remains the fallback for units with no route data
+    # (power plants, boilers, terminals, gas extraction).
+    #
+    # See docs/VERIFICATION_co2_pipeline.md and docs/WHY_NOT_atmosphere_commodity.md.
+    route_params = source_db.get_parameter_value_items(entity_class_name="unit",parameter_definition_name="co2_emission",alternative_name="Base")
+    route_value = {p["entity_name"]: p["parsed_value"] for p in route_params}
 
-    if route_based_units:
-        print(f"process_emissions: {len(route_based_units)} unit(s) have route-based "
-              f"emission ratios; skipping fuel-based fallback for them")
+    # The output node carrying the product. A unit may also emit to CO2_<region>
+    # (the capture flow); the emission factor is keyed on the product output,
+    # so CO2 and atmosphere targets are excluded here.
+    product_node = {}
+    for u2n in target_db.get_entity_items(entity_class_name="unit__to_node"):
+        unit_name, to_node = u2n["entity_byname"]
+        if unit_name not in route_value:
+            continue
+        if to_node == "atmosphere" or to_node == "CO2" or to_node.startswith("CO2_"):
+            continue
+        product_node.setdefault(unit_name, to_node)
+
+    route_applied = 0
 
     for unit_entity in target_db.get_entity_items(entity_class_name="unit"):
         unit__from_nodes = [from_node for from_node in co2_value if target_db.get_entity_item(entity_class_name = "node__to_unit",entity_byname = (from_node,unit_entity["name"]))]       
         unit_name = unit_entity["name"]
-        if unit_name in route_based_units:
+
+        # Route-based emissions take precedence over the fuel-based fallback.
+        if unit_name in route_value and unit_name in product_node:
+            out_node = product_node[unit_name]
+            add_entity(target_db,"unit__to_node",(unit_name,"atmosphere"))
+            add_entity(target_db,"unit_flow__unit_flow",(unit_name,"atmosphere",unit_name,out_node))
+            add_parameter_value(target_db,"unit_flow__unit_flow","flow_ratio_equality_coefficient","Base",(unit_name,"atmosphere",unit_name,out_node),route_value[unit_name])
+            route_applied += 1
             continue
+
         if len(unit__from_nodes) > 1:
             add_entity(target_db,"unit__to_node",(unit_name,"atmosphere"))
             add_entity(target_db,"user_constraint",(unit_name+"_emissions",))
@@ -218,6 +235,10 @@ def process_emissions(source_db, target_db):
             add_entity(target_db,"unit__to_node",(unit_name,"atmosphere"))
             add_entity(target_db,"unit_flow__unit_flow",(unit_name,"atmosphere",unit__from_nodes[0],unit_name))
             add_parameter_value(target_db,"unit_flow__unit_flow","flow_ratio_equality_coefficient","Base",(unit_name,"atmosphere",unit__from_nodes[0],unit_name),co2_value[unit__from_nodes[0]])
+
+    print(f"process_emissions: {route_applied} unit(s) got route-based emission factors "
+          f"({len(route_value)} technologies carried co2_emission); "
+          f"remaining units used the fuel-content fallback")
 
     try:
         target_db.commit_session("Added process capacities")

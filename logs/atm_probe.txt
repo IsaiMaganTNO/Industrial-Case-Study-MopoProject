@@ -1,0 +1,10 @@
+industry_db: 21 commodities
+   atmosphere   present? False
+   CO2          present? True
+   HC           present? True
+   crude        present? True
+INES_DB: 0 commodities
+   atmosphere   present? False
+   CO2          present? False
+   HC           present? False
+   crude        present? False

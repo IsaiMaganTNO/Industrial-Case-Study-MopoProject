@@ -1,0 +1,8 @@
+commodities in industry_db: 21
+  'atmosphere' present? False
+  'CO2' present?        True
+  sample: ['CH4', 'CO2', 'H2', 'HC', 'MeOH', 'bio', 'cement', 'chemical-PE', 'chemical-PEA', 'chemical-chlorine', 'chemical-olefins', 'coal', 'crude', 'elec', 'fertiliser-ammonia-NH3', 'glass-container', 'glass-fibre', 'glass-float', 'steel-primary', 'steel-secondary']
+
+entity classes: ['commodity', 'commodity__region', 'commodity__to_technology', 'commodity__to_technology__to_commodity', 'region', 'technology', 'technology__region', 'technology__to_commodity', 'technology__to_commodity__to_commodity']
+
+parameter definitions: ['CO2_captured', 'CO2_emitted', 'capacity', 'co2_emission', 'conversion_rate', 'demand', 'fixed_cost', 'investment_cost', 'investment_method', 'lifetime', 'units_existing']

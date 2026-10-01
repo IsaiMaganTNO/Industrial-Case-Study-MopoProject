@@ -1,0 +1,6 @@
+industry_db : 0 CO2_emitted rows
+   negative (BECCS): 0  []
+   (CO2_captured rows for reference: 43)
+other_industry : 0 CO2_emitted rows
+   negative (BECCS): 0  []
+   (CO2_captured rows for reference: 0)

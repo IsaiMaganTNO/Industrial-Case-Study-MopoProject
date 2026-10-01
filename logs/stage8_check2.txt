@@ -1,0 +1,10 @@
+industry_db : 66 co2_emission rows
+   negative (BECCS): 2 -> [('CEM2-(BMW)MEA', -0.308), ('CEM2-(BMW)CaL', -0.188)]
+   REF-SMR        -> [('REF-SMR', 0.019)]
+   REF-SMR-MEA    -> [('REF-SMR-MEA', 0.002)]
+   REF(H2)        -> [('REF(H2)', 0.016)]
+other_industry : 0 co2_emission rows
+   negative (BECCS): 0 -> []
+   REF-SMR        -> ABSENT
+   REF-SMR-MEA    -> ABSENT
+   REF(H2)        -> ABSENT
