@@ -1,0 +1,6 @@
+['unit', 'availability', None, None, '[p.u.] Fraction of the unit available for operation. Time series (or constant or array of periods).']
+['unit', 'availability_forecasts', None, None, '[p.u.] Availability forecasts either through forecast time series (1st dimension forecast name, 2nd dimension time series) or updating forecasts (1st dimension forecast name, 2nd dimension analysis time, 3rd time series).']
+['unit', 'constraint_online_coefficient', None, None, '[p.u.] Multiplier between constraints and the online status of the unit. Map of constraints and respective coefficients.']
+
+co2_content (node) definition shape:
+['node', 'co2_content', None, None, '[ton of CO2/MWh] Implicit CO2 content released when fuel used. Constant or array of periods.']

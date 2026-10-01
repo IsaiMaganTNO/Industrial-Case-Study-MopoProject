@@ -1,0 +1,4 @@
+sample unit: ['SCPC-existing_BEC4']
+  write co2_emission           -> err="no parameter_definition matching {'entity_class_name': 'unit', 'name': 'co2_emission'}"
+  write fixed_co2_emissions    -> err=None
+  write lifetime               -> err=None

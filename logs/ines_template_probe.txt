@@ -1,0 +1,8 @@
+top-level keys: ['entity_classes', 'parameter_value_lists', 'parameter_definitions', 'parameter_types', 'superclass_subclasses']
+parameter_definitions: 257
+
+unit-class parameters defined in INES template (32):
+  ['availability', 'availability_forecasts', 'constraint_online_coefficient', 'constraint_unit_count_coefficient', 'conversion_method', 'cooling_time_to_tiers', 'efficiency', 'efficiency_forecasts', 'fixed_co2_emissions', 'interest_rate', 'investment_co2_emissions', 'investment_method', 'investment_uses_integer', 'lifetime', 'min_downtime', 'min_uptime', 'online_cost', 'retirement_method', 'shutdown_cost', 'startup_co2_emission', 'startup_co2_emission_tiers', 'startup_cost', 'startup_cost_tiers', 'startup_method', 'units_existing', 'units_fix_cumulative', 'units_invest_fix_period', 'units_invest_max_period', 'units_invest_min_period', 'units_max_cumulative', 'units_min_cumulative', 'units_retire_period']
+
+co2_emission defined on unit? False
+any co2* params: [('link', 'fixed_co2_emissions'), ('link', 'investment_co2_emissions'), ('node', 'co2_content'), ('node', 'storage_fixed_co2_emissions'), ('node', 'storage_investment_co2_emissions'), ('set', 'co2_max_cumulative'), ('set', 'co2_max_period'), ('set', 'co2_price'), ('set', 'co2_price_forecasts'), ('unit', 'fixed_co2_emissions'), ('unit', 'investment_co2_emissions'), ('unit', 'startup_co2_emission'), ('unit', 'startup_co2_emission_tiers')]
