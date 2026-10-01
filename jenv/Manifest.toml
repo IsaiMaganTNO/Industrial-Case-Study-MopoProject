@@ -2,7 +2,7 @@
 
 julia_version = "1.12.6"
 manifest_format = "2.0"
-project_hash = "5efa160bda49f528bee54e5400ee3040591cc275"
+project_hash = "3a51e155fb11396be57deb5ad7c49c626cb0230d"
 
 [[deps.AbstractTrees]]
 git-tree-sha1 = "2d9c9a55f9c93e8887ad391fbae72f8ef55e1177"
@@ -355,6 +355,18 @@ version = "1.1.0"
 git-tree-sha1 = "246c628cec062230b7d183aab88841fa94fcabe9"
 uuid = "c27321d9-0574-5035-807b-f59d2c89b15c"
 version = "1.5.0"
+
+[[deps.Gurobi]]
+deps = ["Gurobi_jll", "Libdl", "MathOptInterface", "PrecompileTools"]
+git-tree-sha1 = "e782c2eefd482d08daa344caf9a4660b69eb0de8"
+uuid = "2e9cd046-0924-5485-92f1-d5272153d98b"
+version = "1.9.3"
+
+[[deps.Gurobi_jll]]
+deps = ["Artifacts", "JLLWrappers", "Libdl"]
+git-tree-sha1 = "e501476eeb5db84ef187dfd460dcbc401c08aa91"
+uuid = "c018c7e6-a5b0-4aea-8f80-9c1ef9991411"
+version = "13.0.3"
 
 [[deps.HTTP]]
 deps = ["Base64", "CodecZlib", "ConcurrentUtilities", "Dates", "ExceptionUnwrapping", "Logging", "LoggingExtras", "MbedTLS", "NetworkOptions", "OpenSSL", "PrecompileTools", "Random", "SimpleBufferStream", "Sockets", "URIs", "UUIDs"]

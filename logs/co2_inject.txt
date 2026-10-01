@@ -1,0 +1,13 @@
+=== CO2-injection units with an atmosphere ratio ===
+  CO2-injection-NSNL012_NLC1__CO2-storage-NSNL012__atmosphere__CO2-injection-NSNL012_NLC1  = b'1.0'
+  CO2-injection-NSNL012_NLC5__CO2-storage-NSNL012__atmosphere__CO2-injection-NSNL012_NLC5  = b'1.0'
+  CO2-injection-NSNL012_NLC6__CO2-storage-NSNL012__atmosphere__CO2-injection-NSNL012_NLC6  = b'1.0'
+  CO2-injection-NSNL031_NLC1__CO2-storage-NSNL031__atmosphere__CO2-injection-NSNL031_NLC1  = b'1.0'
+  CO2-injection-NSNL031_NLC5__CO2-storage-NSNL031__atmosphere__CO2-injection-NSNL031_NLC5  = b'1.0'
+  CO2-injection-NSNL031_NLC6__CO2-storage-NSNL031__atmosphere__CO2-injection-NSNL031_NLC6  = b'1.0'
+
+=== nodes carrying co2_content in the INES source ===
+  coal                                          b'0.35'
+  waste                                         b'0.3'
+  crude                                         b'0.26'
+  fossil-CH4                                    b'0.2'

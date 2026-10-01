@@ -1,0 +1,24 @@
+,value
+results DB,C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\.spinetoolbox\items\investment_results\Investment_Results.sqlite
+total_costs,2381233.271420669
+SpineInterface_git_hash,N/A
+SpineInterface_version,0.18.0
+SpineOpt_git_hash,N/A
+SpineOpt_version,1.0.0
+build_time / capacity_planning,"31 minutes, 50 seconds, 798 milliseconds"
+elapsed_time,"1 hour, 6 minutes, 59 seconds, 784 milliseconds"
+solve_time / capacity_planning,"31 minutes, 13 seconds, 992 milliseconds"
+termination_status / capacity_planning,OPTIMAL
+model DB,C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\checkpoints\Final_SpineOpt_Model.tiny.sqlite
+discount_rate,0.05
+model_end,2060-01-01 00:00:00
+model_start,2030-01-01 00:00:00
+solver_mip,HiGHS.jl
+temporal: operational blocks,"operations_y2030, operations_y2040, operations_y2050"
+temporal: representative periods,3 total  (1 per milestone year)
+   representative_period_2030_1,2030-01-12 00:00:00 -> 2030-01-13 00:00:00  @ 1h  (24 h)
+   representative_period_2040_1,2041-01-12 00:00:00 -> 2041-01-13 00:00:00  @ 1h  (24 h)
+   representative_period_2050_1,2050-01-12 00:00:00 -> 2050-01-13 00:00:00  @ 1h  (24 h)
+CO2 cap 2030,165.4
+CO2 cap 2040,36.8
+CO2 cap 2050,0.0

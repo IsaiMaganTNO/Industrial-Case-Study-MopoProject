@@ -12,6 +12,19 @@ param(
 )
 New-Item -ItemType Directory -Force (Split-Path $LogPath) | Out-Null
 New-Item -ItemType Directory -Force (Split-Path $Out) | Out-Null
+# Gurobi licence. Must be present in the ENVIRONMENT before julia starts -
+# it cannot be set from inside Julia, because the native Gurobi library reads
+# the real process environment and Julia's ENV dict does not write through.
+# Missing this cost several failed runs: the variable had been set in one
+# interactive shell and never persisted, so launched runs died minutes in with
+# "Gurobi Error 10009: No Gurobi license found". Harmless for HiGHS runs.
+if (-not $env:GRB_LICENSE_FILE) {
+    $defaultLic = "C:\gurobi1203\gurobi.lic"
+    if (Test-Path $defaultLic) {
+        $env:GRB_LICENSE_FILE = $defaultLic
+        Write-Host "GRB_LICENSE_FILE was unset; using $defaultLic"
+    }
+}
 $inUrl  = "sqlite:///" + ((Resolve-Path $Db).Path  -replace '\\','/')
 # The results DB may not exist yet (SpineOpt creates it). Resolve-Path fails on
 # a missing file, which silently produced an empty url_out, so build the

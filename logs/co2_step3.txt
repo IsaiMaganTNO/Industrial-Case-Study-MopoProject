@@ -1,0 +1,50 @@
+paired rows: 80
+unit mismatches (case-insensitive): 0
+
+=== is emission already NET of capture? ===
+Check: does emitted+captured equal the unabated sibling of same sector/to_node?
+routes WITH capture (43):
+           Industry                to_node  2030_e  2030_c   sum
+     CEM2-(Coal)CaL                 cement   0.086   0.438 0.524
+ CEM2-(Coal)Oxy-CaL                 cement   0.083   0.533 0.616
+      CEM2-(Afm)MEA                 cement   0.129   0.516 0.645
+      CEM2-(Afm)CaL                 cement   0.088   0.448 0.536
+  CEM2-(Afm)Oxy-CaL                 cement   0.075   0.457 0.532
+      CEM2-(BMW)MEA                 cement  -0.308   0.650 0.342
+      CEM2-(BMW)CaL                 cement  -0.188   0.530 0.342
+  CEM2-(BMW)Oxy-MEA                 cement   0.020   0.706 0.726
+  CEM2-(BMW)Oxy-CaL                 cement   0.014   0.665 0.679
+      LC3-(Coal)CaL                 cement   0.065   0.334 0.399
+        LC3-(NG)MEA                 cement   0.082   0.329 0.411
+        LC3-(NG)CaL                 cement   0.057   0.291 0.348
+    LC3-(NG)Oxy-CaL                 cement   0.066   0.442 0.508
+       LC3-(Afm)MEA                 cement   0.098   0.391 0.489
+       LC3-(Afm)CaL                 cement   0.067   0.344 0.411
+   LC3-(Afm)Oxy-MEA                 cement   0.068   0.367 0.435
+   LC3-(Afm)Oxy-CaL                 cement   0.056   0.352 0.408
+   LC3-(BMW)Oxy-MEA                 cement   0.010   0.545 0.555
+   LC3-(BMW)Oxy-CaL                 cement   0.004   0.532 0.536
+         (NG)PE-MEA            chemical-PE   0.002   0.015 0.017
+        (NG)PEA-MEA           chemical-PEA   0.049   0.443 0.492
+          (LN)O-MEA       chemical-olefins   0.111   1.002 1.113
+        (MeOH)O-MEA       chemical-olefins   0.015   0.132 0.147
+  ((COEL)MeOH)O-MEA       chemical-olefins   0.059   0.528 0.587
+        (NG)NH3-DEA fertiliser-ammonia-NH3   0.322   1.420 1.742
+    (NG)NH3-MEA-DEA fertiliser-ammonia-NH3   0.040   1.779 1.819
+    (NG)NH3-MVR-DEA fertiliser-ammonia-NH3   0.202   1.420 1.622
+(NG)NH3-MVR-MEA-DEA fertiliser-ammonia-NH3   0.020   1.602 1.622
+        (NG)-CC_gco        glass-container   0.011   0.097 0.108
+        (H2)-CC_gco        glass-container   0.002   0.021 0.023
+        (EL)-CC_gco        glass-container   0.002   0.021 0.023
+        (NG)-CC_gfi            glass-fibre   0.020   0.183 0.203
+        (H2)-CC_gfi            glass-fibre   0.007   0.066 0.073
+        (EL)-CC_gfi            glass-fibre   0.007   0.066 0.073
+        (NG)-CC_gfl            glass-float   0.016   0.140 0.156
+        (H2)-CC_gfl            glass-float   0.006   0.052 0.058
+        (EL)-CC_gfl            glass-float   0.006   0.052 0.058
+        REF-SMR-MEA                     HC   0.002   0.017 0.019
+       (COEL)FT-MEA                     HC   0.005   0.045 0.050
+     (COEL)MeOH-MEA                   MeOH   0.003   0.029 0.032
+         BF-BOF-MEA          steel-primary   0.790   1.369 2.159
+        WPI-BOF-MEA          steel-primary   0.781   1.333 2.114
+    (NG)DRI-EAF-MEA          steel-primary   0.065   0.586 0.651

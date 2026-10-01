@@ -1,0 +1,11 @@
+=== dimensions of unit_flow__unit_flow ===
+  pos0 unit_flow
+  pos1 unit_flow
+
+entity: CO2-injection-NSNL012_NLC1__CO2-storage-NSNL012__CO2_NLC1__CO2-injection-NSNL012_NLC1
+  pos0 -> CO2-injection-NSNL012_NLC1__CO2-storage-NSNL012
+  pos1 -> CO2_NLC1__CO2-injection-NSNL012_NLC1
+
+entity: REF-SMR-MEA_NLC1__CO2_NLC1__REF-SMR-MEA_NLC1__HC_NLC1
+  pos0 -> REF-SMR-MEA_NLC1__CO2_NLC1
+  pos1 -> REF-SMR-MEA_NLC1__HC_NLC1

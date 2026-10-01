@@ -1,0 +1,43 @@
+=== all cement CEM2 routes (emission sheet) ===
+          Industry to_node   unit   2030
+       CEM2-(Coal)  cement tco2_t  0.524
+    CEM2-(Coal)CaL  cement tco2_t  0.086
+CEM2-(Coal)Oxy-CaL  cement tco2_t  0.083
+        CEM2-(Afm)  cement tco2_t  0.535
+     CEM2-(Afm)MEA  cement tco2_t  0.129
+     CEM2-(Afm)CaL  cement tco2_t  0.088
+ CEM2-(Afm)Oxy-CaL  cement tco2_t  0.075
+        CEM2-(BMW)  cement tco2_t  0.342
+     CEM2-(BMW)MEA  cement tco2_t -0.308
+     CEM2-(BMW)CaL  cement tco2_t -0.188
+ CEM2-(BMW)Oxy-MEA  cement tco2_t  0.020
+ CEM2-(BMW)Oxy-CaL  cement tco2_t  0.014
+
+=== CEM2: emitted + captured = gross? ===
+          Industry  2030_e  2030_c  gross
+       CEM2-(Coal)   0.524   0.000  0.524
+    CEM2-(Coal)CaL   0.086   0.438  0.524
+CEM2-(Coal)Oxy-CaL   0.083   0.533  0.616
+        CEM2-(Afm)   0.535   0.000  0.535
+     CEM2-(Afm)MEA   0.129   0.516  0.645
+     CEM2-(Afm)CaL   0.088   0.448  0.536
+ CEM2-(Afm)Oxy-CaL   0.075   0.457  0.532
+        CEM2-(BMW)   0.342   0.000  0.342
+     CEM2-(BMW)MEA  -0.308   0.650  0.342
+     CEM2-(BMW)CaL  -0.188   0.530  0.342
+ CEM2-(BMW)Oxy-MEA   0.020   0.706  0.726
+ CEM2-(BMW)Oxy-CaL   0.014   0.665  0.679
+
+=== ammonia: emitted + captured = gross? ===
+           Industry  2030_e  2030_c  gross
+        (NG)NH3-DEA   0.322   1.420  1.742
+    (NG)NH3-MEA-DEA   0.040   1.779  1.819
+    (NG)NH3-MVR-DEA   0.202   1.420  1.622
+(NG)NH3-MVR-MEA-DEA   0.020   1.602  1.622
+            (NG)NH3   1.742   0.000  1.742
+
+=== refinery: emitted + captured = gross? ===
+   Industry  2030_e  2030_c  gross
+    REF(H2)   0.016   0.000  0.016
+REF-SMR-MEA   0.002   0.017  0.019
+    REF-SMR   0.019   0.000  0.019

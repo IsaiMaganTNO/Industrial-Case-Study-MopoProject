@@ -7,3 +7,6 @@ _baselines/
 
 # Excel backups created by tools/fill_ccs_technology_data.py
 *.xlsx.bak
+
+# Local backups of VS Code Copilot Chat sessions (large, machine-specific)
+chat-backup/

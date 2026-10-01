@@ -9,10 +9,20 @@ operational timesteps - even though the 6 representative blocks are only
 
 What this does
 --------------
-Coarsens ONLY the `operations_y*` resolution from `1h` to `8760h`, so each
-operational block becomes a SINGLE timestep covering its year, and truncates
-`representative_blocks_by_period` from 8760 entries to the 1 entry that
-remains meaningful.
+Coarsens ONLY the `operations_y*` resolution from `1h` to one timestep per
+year (default `365D`), so each operational block becomes a SINGLE timestep
+covering its year, and truncates `representative_blocks_by_period` from its
+per-period entries (8760 hourly or 365 daily) to the 1 entry that remains
+meaningful.
+
+Why this matters beyond build time
+----------------------------------
+`1h` operations resolution also breaks the long-term storage budget: the
+`node_state_longterm` trajectory applies its per-period delta once per
+`t_after`, so a 1h block applies it ~8760 times per milestone instead of once,
+shrinking any `*_cumulative` budget by that factor. All of the 3rep/2rep/
+summer baselines ran at `365D`; a build that skips this step is NOT comparable
+to them.
 
 Why coarsen rather than shorten the span
 ----------------------------------------
@@ -24,27 +34,46 @@ entity, alternative and the total weight (8760 h/yr) untouched.
 
 Writes to a COPY. The original DB is never modified.
 """
-import shutil, sys
+import argparse, shutil, sys
 from pathlib import Path
 from spinedb_api import DatabaseMapping, to_database, from_database
 
-SRC = Path(".spinetoolbox/items/final_spineopt_model/Final_SpineOpt_Model.sqlite")
-DST = Path("checkpoints/Final_SpineOpt_Model.tiny.sqlite")
+_ap = argparse.ArgumentParser(description=__doc__)
+_ap.add_argument("--in", dest="src",
+                 default=".spinetoolbox/items/final_spineopt_model/Final_SpineOpt_Model.sqlite",
+                 help="source SpineOpt DB (never modified)")
+_ap.add_argument("--out", dest="dst",
+                 default="checkpoints/Final_SpineOpt_Model.tiny.sqlite",
+                 help="destination DB (overwritten)")
+_ap.add_argument("--resolution", default="365D",
+                 help="coarse resolution for operations_* blocks (default 365D, "
+                      "matching the 3rep/2rep/summer baselines)")
+_args = _ap.parse_args()
+
+SRC = Path(_args.src)
+DST = Path(_args.dst)
+RES = _args.resolution
 
 DST.parent.mkdir(parents=True, exist_ok=True)
 shutil.copy2(SRC, DST)
 print(f"copied -> {DST}")
 
 with DatabaseMapping(f"sqlite:///{DST.as_posix()}") as db:
-    # 1. coarsen operations block resolution: 1h -> 8760h (one timestep per year)
+    # 1. coarsen operations block resolution: 1h -> RES (one timestep per year)
+    n_res = 0
     for pv in list(db.get_parameter_value_items(entity_class_name="temporal_block",
                                                 parameter_definition_name="resolution")):
         name = pv["entity_byname"][0]
         if not name.startswith("operations"):
             continue
-        val, typ = to_database({"type": "duration", "data": "8760h"})
+        old = from_database(pv["value"], pv["type"])
+        val, typ = to_database({"type": "duration", "data": RES})
         db.update_item("parameter_value", id=pv["id"], value=val, type=typ)
-        print(f"  {name}: resolution 1h -> 8760h")
+        n_res += 1
+        print(f"  {name}: resolution {old} -> {RES}")
+    if n_res == 0:
+        sys.exit("ERROR: no operations_* 'resolution' parameter values found - "
+                 "wrong source DB?")
 
     # 2. Collapse the period->representative weight map to a single entry.
     #
@@ -52,17 +81,27 @@ with DatabaseMapping(f"sqlite:///{DST.as_posix()}") as db:
     #    SpineOpt enforces this in temporal_structure.jl
     #    (_blocks_and_mapping_by_represented_interval):
     #        "sum of coefficients for <interval> from '<block>' must be 1"
-    #    so each entry must sum to 1.0. The original 8760 hourly entries each
-    #    already sum to 1; collapsing to one entry therefore means AVERAGING
-    #    the per-representative shares over the year, not summing them.
-    #    (Summing gives 8760 and SpineOpt rejects it outright - which is how
+    #    so each entry must sum to 1.0. The original per-period entries (8760
+    #    hourly, or 365 daily, depending on the clustering output) each already
+    #    sum to 1; collapsing to one entry therefore means AVERAGING the
+    #    per-representative shares over the year, not summing them.
+    #    (Summing gives N and SpineOpt rejects it outright - which is how
     #    this was caught.)
+    #
+    #    Verified on the 5-rep build: averaging the 365 daily rows reproduces
+    #    weight/365 for every representative day to 6 d.p.
     for pv in list(db.get_parameter_value_items(
             entity_class_name="temporal_block",
             parameter_definition_name="representative_blocks_by_period")):
         m = pv["parsed_value"]
         idx = list(m.indexes)
         n_rep = len(m.values[0].values)
+        # guard: every source row must already sum to 1.0, else averaging is
+        # not a meaning-preserving collapse.
+        for row in m.values:
+            if abs(sum(row.values) - 1.0) > 1e-9:
+                sys.exit(f"ERROR: {pv['entity_byname'][0]} has a row summing to "
+                         f"{sum(row.values)!r}, expected 1.0 - refusing to collapse.")
         totals = [0.0] * n_rep
         for v in m.values:
             for i, w in enumerate(v.values):
@@ -106,6 +145,9 @@ with DatabaseMapping(f"sqlite:///{DST.as_posix()}") as db:
         elif name.startswith("representative_"):
             reps += n
 
-print(f"\nTiny model written. Operational timesteps: {ops} (full-resolution: 26,280)")
+print(f"\nTiny model written -> {DST}")
+print(f"Operational timesteps: {ops} (full-resolution: 26,280)")
+if ops != 3:
+    print(f"  WARNING: expected 3 operational timesteps (one per milestone), got {ops}")
 print(f"Representative timesteps: {reps}")
 print(f"Total: {ops + reps}")

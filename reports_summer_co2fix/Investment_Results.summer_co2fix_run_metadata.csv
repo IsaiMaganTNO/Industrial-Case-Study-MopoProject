@@ -1,0 +1,25 @@
+,value
+results DB,C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\checkpoints\Investment_Results.summer_co2fix.sqlite
+total_costs,2618964.8127450207
+SpineInterface_git_hash,N/A
+SpineInterface_version,0.18.0
+SpineOpt_git_hash,N/A
+SpineOpt_version,1.0.0
+build_time / capacity_planning,"29 minutes, 6 seconds, 690 milliseconds"
+elapsed_time,"34 minutes, 25 seconds, 122 milliseconds"
+solve_time / capacity_planning,"1 minute, 35 seconds, 155 milliseconds"
+termination_status / capacity_planning,OPTIMAL
+model DB,C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\checkpoints\Final_SpineOpt_Model.tiny.summer.co2fix.sqlite
+discount_rate,0.05
+model_end,2060-01-01 00:00:00
+model_start,2030-01-01 00:00:00
+solver_mip,HiGHS.jl
+temporal: operational blocks,"operations_y2030, operations_y2040, operations_y2050"
+temporal: representative periods,3 total  (1 per milestone year)
+   representative_period_2030_1,2030-08-19 00:00:00 -> 2030-08-20 00:00:00  @ 1h  (24 h)  x365.00 days
+   representative_period_2040_1,2041-08-19 00:00:00 -> 2041-08-20 00:00:00  @ 1h  (24 h)  x365.00 days
+   representative_period_2050_1,2050-08-19 00:00:00 -> 2050-08-20 00:00:00  @ 1h  (24 h)  x365.00 days
+CO2 cap 2030,165.4
+CO2 cap 2040,36.8
+CO2 cap 2050,0.0
+flow weighting,representative-period weights applied to all flows (3 modelled days -> annual totals)

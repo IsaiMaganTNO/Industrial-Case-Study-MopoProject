@@ -1,0 +1,25 @@
+=== units present in each sheet ===
+emission units: ['tCO2_t', 'tco2_mwh', 'tco2_t', 'tco2_t_bricks_eq', 'tco2_t_ethylene_eq', 'tco2_t_lead_eq', 'tco2_t_paper_eq']
+capture  units: ['tCO2_t', 'tco2_mwh', 'tco2_t']
+
+=== refinery routes: emission ===
+ sector_id    Industry to_node     emission     unit  2025  2030  2040  2050
+refineries     REF(H2)      HC co2_emission tco2_mwh 0.016 0.016 0.016 0.016
+refineries REF-SMR-MEA      HC co2_emission tco2_mwh 0.002 0.002 0.002 0.002
+refineries     REF-SMR      HC co2_emission tco2_mwh 0.019 0.019 0.019 0.019
+
+=== refinery routes: capture ===
+ sector_id    Industry to_node    emission     unit  2025  2030  2040  2050
+refineries     REF(H2)      HC co2_capture tco2_mwh 0.000 0.000 0.000 0.000
+refineries REF-SMR-MEA      HC co2_capture tco2_mwh 0.017 0.017 0.017 0.017
+refineries     REF-SMR      HC co2_capture tco2_mwh 0.000 0.000 0.000 0.000
+
+=== negative (BECCS) emission rows ===
+count=2
+sector_id      Industry to_node     emission   unit   2025   2030   2040   2050
+   cement CEM2-(BMW)MEA  cement co2_emission tco2_t -0.308 -0.308 -0.308 -0.308
+   cement CEM2-(BMW)CaL  cement co2_emission tco2_t -0.188 -0.188 -0.188 -0.188
+
+=== rows a '> 0.0' guard would drop ===
+emission 2030 == 0: 26
+emission 2030 <  0: 2

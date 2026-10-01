@@ -1,0 +1,2 @@
+entity: ['id', 'class_id', 'name', 'description', 'commit_id']
+entity_class: ['id', 'name', 'description', 'display_order', 'display_icon', 'hidden', 'active_by_default']

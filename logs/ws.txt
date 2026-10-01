@@ -1,0 +1,21 @@
+ALL non-zero wind/solar investments (24h run):
+   wind-on-SP277-HH100_NLC3                           8.37
+   wind-on-SP277-HH100_BEC6                           6.10
+   wind-on-SP277-HH100_NLC2                           5.77
+   wind-on-SP277-HH100_BEC3                           5.39
+   wind-on-SP277-HH100_NLC1                           4.62
+   wind-on-SP277-HH100_NLC8                           3.75
+   wind-on-SP277-HH100_BEC8                           2.69
+   wind-on-SP277-HH100_BEC5                           1.89
+   wind-on-SP277-HH100_NLC4                           1.73
+   wind-on-SP277-HH100_BEC7                           1.62
+   wind-on-SP277-HH100_NLC6                           1.44
+   wind-on-SP277-HH100_BEC2                           1.35
+   wind-on-SP277-HH100_NLC7                           1.16
+   wind-on-SP277-HH100_BEC4                           0.81
+   wind-on-SP277-HH100_NLC9                           0.58
+   wind-on-SP277-HH100_BEC1                           0.54
+   wind-on-SP277-HH100_NLC5                           0.29
+
+wind total : 48.09
+solar total: 0.00

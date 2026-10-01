@@ -1,0 +1,710 @@
+tech,region,category,vintage,cc,year,units
+other-chemicals-production-reference,BEC4,industry: reference process,new,False,2030,999.9955583732093
+other-chemicals-production-reference,BEC4,industry: reference process,new,False,2050,0.004441626790708142
+ceramics-and-other-non-metalic-minerals-production-reference,BEC1,industry: reference process,new,False,2030,999.7244721030834
+ceramics-and-other-non-metalic-minerals-production-reference,BEC1,industry: reference process,new,False,2050,0.2755278969166284
+wood-and-wood-products_production-reference,BEC5,industry: reference process,new,False,2030,999.9902954405233
+wood-and-wood-products_production-reference,BEC5,industry: reference process,new,False,2050,0.00970455947674509
+transport-equipment-production-alternative,NLC1,industry: clean process route,new,False,2030,0.010625372916223322
+food-beverages-tobacco-production-alternative,BEC5,industry: clean process route,new,False,2030,0.06880370709934179
+food-beverages-tobacco-production-alternative,BEC5,industry: clean process route,new,False,2050,0.0017641976179318397
+food-beverages-tobacco-production-reference,NLC4,industry: reference process,new,False,2030,999.9116041309162
+food-beverages-tobacco-production-reference,NLC4,industry: reference process,new,False,2050,0.08839586908379715
+elec_BEC8__car-DR,BEC8,demand response,new,False,2030,0.0004
+elec_BEC8__car-DR,BEC8,demand response,new,False,2040,0.00025000000000000006
+elec_BEC8__car-DR,BEC8,demand response,new,False,2050,0.00165
+food-beverages-tobacco-production-reference,BEC2,industry: reference process,new,False,2030,999.7179666895062
+food-beverages-tobacco-production-reference,BEC2,industry: reference process,new,False,2050,0.28203331049382996
+machinery-equipment-production-alternative,BEC3,industry: clean process route,new,False,2030,0.011769750754155673
+pulp-production-alternative,NLC4,industry: clean process route,new,False,2030,0.00032221405003422023
+transport-equipment-production-reference,BEC2,industry: reference process,new,False,2030,999.9905815992885
+transport-equipment-production-reference,BEC2,industry: reference process,new,False,2050,0.009418400711524555
+elec_NLC3__car-DR,NLC3,demand response,new,False,2030,0.0002
+elec_NLC3__car-DR,NLC3,demand response,new,False,2040,0.00010000000000000002
+elec_NLC3__car-DR,NLC3,demand response,new,False,2050,0.0007
+other-chemicals-production-reference,BEC6,industry: reference process,new,False,2030,1000.0
+elec_NLC7__car-DR,NLC7,demand response,new,False,2030,0.0001
+elec_NLC7__car-DR,NLC7,demand response,new,False,2040,5.000000000000001e-05
+elec_NLC7__car-DR,NLC7,demand response,new,False,2050,0.00025
+machinery-equipment-production-alternative,NLC3,industry: clean process route,new,False,2030,0.08031287426200638
+food-beverages-tobacco-production-alternative,NLC3,industry: clean process route,new,False,2030,0.12760043317992503
+food-beverages-tobacco-production-alternative,NLC3,industry: clean process route,new,False,2050,0.0041161430058040405
+other-chemicals-production-reference,BEC1,industry: reference process,new,False,2030,999.9435241200517
+other-chemicals-production-reference,BEC1,industry: reference process,new,False,2050,0.05647587994826608
+printing-and-media-production-reference,NLC3,industry: reference process,new,False,2030,999.9915373951633
+printing-and-media-production-reference,NLC3,industry: reference process,new,False,2050,0.008462604836722676
+wood-and-wood-products_production-alternative,NLC9,industry: clean process route,new,False,2030,0.004025806238806894
+pharmaceuticals-production-alternative,NLC9,industry: clean process route,new,False,2030,0.0015487871513154494
+leather-and-textile-production-alternative,BEC4,industry: clean process route,new,False,2030,0.008620053818439362
+other-industrial-sectors_production-alternative,NLC8,industry: clean process route,new,False,2030,0.08700673603849085
+paper-production-alternative,BEC2,industry: clean process route,new,False,2030,0.08233303527854485
+food-beverages-tobacco-production-reference,BEC1,industry: reference process,new,False,2030,999.9312040218209
+food-beverages-tobacco-production-reference,BEC1,industry: reference process,new,False,2050,0.06879597817908234
+transport-equipment-production-alternative,BEC6,industry: clean process route,new,False,2030,0.005297850400242432
+elec_BEC8__bus-DR,BEC8,demand response,new,False,2050,0.0001
+pulp-production-alternative,NLC1,industry: clean process route,new,False,2030,0.0005858437273349469
+ceramics-and-other-non-metalic-minerals-production-alternative,BEC1,industry: clean process route,new,False,2030,0.2755278969165833
+bio-boiler,BEC3,bioenergy,new,False,2050,0.13377432920000001
+transport-equipment-production-reference,NLC1,industry: reference process,new,False,2030,999.9897173810488
+transport-equipment-production-reference,NLC1,industry: reference process,new,False,2050,0.010282618951237055
+Diaphragm,BEC3,electrolysis,new,False,2050,0.013665753424657534
+bio-boiler,NLC4,bioenergy,new,False,2050,0.396920744875
+(BM)FT,NLC4,e-fuels / green chemicals,new,False,2030,8.039033059360731
+(BM)FT,NLC4,e-fuels / green chemicals,new,False,2040,12.058549589041094
+ceramics-and-other-non-metalic-minerals-production-alternative,BEC7,industry: clean process route,new,False,2030,0.23283459004734577
+paper-production-alternative,NLC3,industry: clean process route,new,False,2030,0.13353708462188524
+wood-and-wood-products_production-alternative,NLC8,industry: clean process route,new,False,2030,0.00738064477114597
+printing-and-media-production-alternative,NLC3,industry: clean process route,new,False,2030,0.008462604836718639
+other-chemicals-production-alternative,NLC5,industry: clean process route,new,False,2030,0.0005317345940018686
+machinery-equipment-production-reference,NLC3,industry: reference process,new,False,2030,999.9222778636174
+machinery-equipment-production-reference,NLC3,industry: reference process,new,False,2050,0.07772213638259018
+bio-diges-up+CC,NLC4,industry: CCS-equipped,new,True,2030,20.865459219715817
+bio-diges-up+CC,NLC4,industry: CCS-equipped,new,True,2040,14.929296935066548
+other-non-ferrous-metals-production-alternative,NLC8,industry: clean process route,new,False,2030,0.07606088280060874
+other-non-ferrous-metals-production-alternative,NLC8,industry: clean process route,new,False,2050,0.0019502790461694564
+transport-equipment-production-alternative,BEC2,industry: clean process route,new,False,2030,0.0094184007115421
+leather-and-textile-production-reference,NLC2,industry: reference process,new,False,2030,1000.0
+other-chemicals-production-reference,NLC2,industry: reference process,new,False,2030,1000.0
+((BM+H2)MeOH)O,NLC5,e-fuels / green chemicals,new,False,2030,0.004177246164383561
+solar-PV-no-tracking,BEC3,solar PV,new,False,2050,4.120755706501775
+food-beverages-tobacco-production-alternative,BEC1,industry: clean process route,new,False,2030,0.07154781730622448
+food-beverages-tobacco-production-alternative,BEC1,industry: clean process route,new,False,2050,0.0018345594181083252
+printing-and-media-production-reference,NLC5,industry: reference process,new,False,2030,1000.0
+leather-and-textile-production-reference,NLC4,industry: reference process,new,False,2030,999.9953456721404
+machinery-equipment-production-reference,BEC7,industry: reference process,new,False,2030,999.9808741550245
+machinery-equipment-production-reference,BEC7,industry: reference process,new,False,2050,0.019125844975519612
+DAC,NLC5,CO2 removal (DAC),new,False,2040,11.95716464605076
+DAC,NLC5,CO2 removal (DAC),new,False,2050,34.59032424373221
+printing-and-media-production-alternative,BEC4,industry: clean process route,new,False,2030,0.006202831345404475
+printing-and-media-production-alternative,BEC4,industry: clean process route,new,False,2050,6.969473421803395e-06
+bio-boiler,BEC4,bioenergy,new,False,2050,0.05785272172
+wood-and-wood-products_production-reference,NLC1,industry: reference process,new,False,2030,999.9932903229353
+wood-and-wood-products_production-reference,NLC1,industry: reference process,new,False,2050,0.006709677064691277
+pulp-production-reference,NLC5,industry: reference process,new,False,2030,1000.0
+other-chemicals-production-alternative,NLC8,industry: clean process route,new,False,2030,1.9600537956888243e-05
+other-chemicals-production-reference,NLC1,industry: reference process,new,False,2030,1000.0
+other-chemicals-production-alternative,BEC6,industry: clean process route,new,False,2030,0.002107317954331783
+((BM)MeOH)O,BEC1,e-fuels / green chemicals,new,False,2030,0.19790349856479078
+food-beverages-tobacco-production-reference,NLC5,industry: reference process,new,False,2030,999.8940548465638
+food-beverages-tobacco-production-reference,NLC5,industry: reference process,new,False,2050,0.1059451534362097
+pharmaceuticals-production-alternative,BEC2,industry: clean process route,new,False,2030,0.0032958922239351256
+machinery-equipment-production-reference,BEC1,industry: reference process,new,False,2030,999.9485073404505
+machinery-equipment-production-reference,BEC1,industry: reference process,new,False,2050,0.051492659549467135
+ceramics-and-other-non-metalic-minerals-production-reference,BEC7,industry: reference process,new,False,2030,999.7671654099527
+ceramics-and-other-non-metalic-minerals-production-reference,BEC7,industry: reference process,new,False,2050,0.2328345900473323
+other-industrial-sectors_production-reference,BEC6,industry: reference process,new,False,2030,999.9766660914904
+other-industrial-sectors_production-reference,BEC6,industry: reference process,new,False,2050,0.023333908509584944
+other-chemicals-production-alternative,BEC7,industry: clean process route,new,False,2030,0.007298965057704166
+bio-boiler,NLC9,bioenergy,new,False,2050,0.06600108137499999
+transport-equipment-production-reference,NLC4,industry: reference process,new,False,2030,999.9943445595768
+transport-equipment-production-reference,NLC4,industry: reference process,new,False,2050,0.005655440423197433
+machinery-equipment-production-alternative,BEC5,industry: clean process route,new,False,2030,0.045607784172353116
+REF(H2),BEC2,hydrogen production,new,False,2050,6.341157933046604
+printing-and-media-production-reference,NLC9,industry: reference process,new,False,2030,999.9966149580653
+printing-and-media-production-reference,NLC9,industry: reference process,new,False,2050,0.003385041934734545
+leather-and-textile-production-reference,BEC4,industry: reference process,new,False,2030,999.991711486713
+leather-and-textile-production-reference,BEC4,industry: reference process,new,False,2050,0.008288513286970556
+printing-and-media-production-alternative,BEC7,industry: clean process route,new,False,2030,0.0073306188627507395
+printing-and-media-production-alternative,BEC7,industry: clean process route,new,False,2050,8.23665040758717e-06
+pharmaceuticals-production-reference,NLC5,industry: reference process,new,False,2030,1000.0
+leather-and-textile-production-alternative,NLC9,industry: clean process route,new,False,2030,0.005246696859922949
+other-chemicals-production-reference,NLC3,industry: reference process,new,False,2030,1000.0
+bioST,BEC2,bioenergy,new,False,2030,2.4953885703875596
+bioST,BEC2,bioenergy,new,False,2040,1.4975468130247656
+bioST,BEC2,bioenergy,new,False,2050,0.2494467306693544
+leather-and-textile-production-reference,BEC5,industry: reference process,new,False,2030,999.9766414625549
+leather-and-textile-production-reference,BEC5,industry: reference process,new,False,2050,0.02335853744511951
+leather-and-textile-production-alternative,NLC6,industry: clean process route,new,False,2030,0.01311674214980738
+CEM2-(BMW)MEA,NLC6,industry: CCS-equipped,new,True,2030,0.0684931506849315
+machinery-equipment-production-reference,BEC2,industry: reference process,new,False,2030,999.9764604984916
+machinery-equipment-production-reference,BEC2,industry: reference process,new,False,2050,0.02353950150836681
+printing-and-media-production-alternative,BEC8,industry: clean process route,new,False,2030,0.009586193897443255
+printing-and-media-production-alternative,BEC8,industry: clean process route,new,False,2050,1.0771004379147783e-05
+bio-boiler,NLC7,bioenergy,new,False,2050,0.0367002645
+REF(H2),BEC6,hydrogen production,new,False,2050,0.6539257838204557
+machinery-equipment-production-reference,BEC6,industry: reference process,new,False,2030,999.9831752551996
+machinery-equipment-production-reference,BEC6,industry: reference process,new,False,2050,0.016824744800373992
+printing-and-media-production-reference,BEC6,industry: reference process,new,False,2030,999.9945512295176
+printing-and-media-production-reference,BEC6,industry: reference process,new,False,2050,0.005448770482416876
+((BM+H2)MeOH)O,BEC1,e-fuels / green chemicals,new,False,2030,0.2511079169603236
+wood-and-wood-products_production-reference,NLC2,industry: reference process,new,False,2030,1000.0
+ceramics-and-other-non-metalic-minerals-production-alternative,NLC9,industry: clean process route,new,False,2030,0.06624359746057076
+elec_NLC6__car-DR,NLC6,demand response,new,False,2030,0.0005
+elec_NLC6__car-DR,NLC6,demand response,new,False,2040,0.00025
+elec_NLC6__car-DR,NLC6,demand response,new,False,2050,0.00155
+transport-equipment-production-reference,NLC8,industry: reference process,new,False,2030,999.9886891191537
+transport-equipment-production-reference,NLC8,industry: reference process,new,False,2050,0.01131088084628118
+other-non-ferrous-metals-production-alternative,BEC1,industry: clean process route,new,False,2030,0.13606978440581113
+other-non-ferrous-metals-production-alternative,BEC1,industry: clean process route,new,False,2050,0.003488968830918232
+printing-and-media-production-reference,BEC1,industry: reference process,new,False,2030,999.9800419624739
+printing-and-media-production-reference,BEC1,industry: reference process,new,False,2050,0.01995803752606662
+bio-boiler,NLC1,bioenergy,new,False,2050,0.09362163037500001
+elec_NLC5__bus-DR,NLC5,demand response,new,False,2040,5e-05
+elec_NLC5__bus-DR,NLC5,demand response,new,False,2050,5e-05
+food-beverages-tobacco-production-reference,NLC2,industry: reference process,new,False,2030,999.8902562562382
+food-beverages-tobacco-production-reference,NLC2,industry: reference process,new,False,2050,0.10974374376178275
+printing-and-media-production-alternative,NLC4,industry: clean process route,new,False,2030,0.0031029551067968324
+food-beverages-tobacco-production-reference,NLC8,industry: reference process,new,False,2030,999.8301512596084
+food-beverages-tobacco-production-reference,NLC8,industry: reference process,new,False,2050,0.16984874039155784
+other-chemicals-production-reference,NLC5,industry: reference process,new,False,2030,1000.0
+printing-and-media-production-alternative,NLC5,industry: clean process route,new,False,2030,0.0019746077952343503
+leather-and-textile-production-alternative,BEC6,industry: clean process route,new,False,2030,0.007520431527702332
+printing-and-media-production-reference,BEC5,industry: reference process,new,False,2030,999.9823228810484
+printing-and-media-production-reference,BEC5,industry: reference process,new,False,2050,0.017677118951610282
+other-chemicals-production-alternative,NLC9,industry: clean process route,new,False,2030,0.029203897530951598
+elec_NLC8__truck-DR,NLC8,demand response,new,False,2030,0.0002
+elec_NLC8__truck-DR,NLC8,demand response,new,False,2040,0.00010000000000000002
+elec_NLC8__truck-DR,NLC8,demand response,new,False,2050,0.00019999999999999998
+other-industrial-sectors_production-alternative,NLC4,industry: clean process route,new,False,2030,0.04350336801924549
+other-industrial-sectors_production-reference,NLC1,industry: reference process,new,False,2030,999.9209029672377
+other-industrial-sectors_production-reference,NLC1,industry: reference process,new,False,2050,0.07909703276231994
+other-chemicals-production-alternative,NLC2,industry: clean process route,new,False,2030,0.0002670873304860057
+leather-and-textile-production-alternative,BEC8,industry: clean process route,new,False,2030,0.013321901355769893
+solar-PV-no-tracking,BEC2,solar PV,new,False,2050,2.193190846121497
+ceramics-and-other-non-metalic-minerals-production-reference,NLC9,industry: reference process,new,False,2030,999.9337564025394
+ceramics-and-other-non-metalic-minerals-production-reference,NLC9,industry: reference process,new,False,2050,0.06624359746058417
+wood-and-wood-products_production-alternative,BEC6,industry: clean process route,new,False,2030,0.03997736466705369
+wood-and-wood-products_production-alternative,BEC6,industry: clean process route,new,False,2050,2.126455567396518e-05
+pharmaceuticals-production-reference,NLC3,industry: reference process,new,False,2030,999.9962529343113
+pharmaceuticals-production-reference,NLC3,industry: reference process,new,False,2050,0.003747065688685325
+transport-equipment-production-alternative,BEC7,industry: clean process route,new,False,2030,0.007652450578127956
+wood-and-wood-products_production-reference,NLC3,industry: reference process,new,False,2030,999.989935484403
+wood-and-wood-products_production-reference,NLC3,industry: reference process,new,False,2050,0.010064515597036916
+other-chemicals-production-alternative,BEC3,industry: clean process route,new,False,2030,0.005729636698647922
+machinery-equipment-production-reference,NLC1,industry: reference process,new,False,2030,999.9481852424116
+machinery-equipment-production-reference,NLC1,industry: reference process,new,False,2050,0.05181475758843135
+ceramics-and-other-non-metalic-minerals-production-alternative,BEC8,industry: clean process route,new,False,2030,0.39584035216471436
+transport-equipment-production-reference,NLC5,industry: reference process,new,False,2030,999.9964010833671
+transport-equipment-production-reference,NLC5,industry: reference process,new,False,2050,0.00359891663288181
+food-beverages-tobacco-production-reference,NLC1,industry: reference process,new,False,2030,999.7407873081104
+food-beverages-tobacco-production-reference,NLC1,industry: reference process,new,False,2050,0.2592126918896156
+machinery-equipment-production-reference,NLC8,industry: reference process,new,False,2030,999.9430037666527
+machinery-equipment-production-reference,NLC8,industry: reference process,new,False,2050,0.056996233347263114
+printing-and-media-production-alternative,BEC2,industry: clean process route,new,False,2030,0.009022300138770136
+printing-and-media-production-alternative,BEC2,industry: clean process route,new,False,2050,1.0137415886259799e-05
+machinery-equipment-production-reference,NLC4,industry: reference process,new,False,2030,999.9715018833264
+machinery-equipment-production-reference,NLC4,industry: reference process,new,False,2050,0.028498116673631557
+food-beverages-tobacco-production-alternative,NLC5,industry: clean process route,new,False,2030,0.10947665855069444
+food-beverages-tobacco-production-alternative,NLC5,industry: clean process route,new,False,2050,0.0035315051145385357
+bioST,NLC6,bioenergy,new,False,2030,1.439282433029359
+bioST,NLC6,bioenergy,new,False,2040,0.49418352206929284
+machinery-equipment-production-alternative,NLC7,industry: clean process route,new,False,2030,0.026770958087335473
+pulp-production-reference,NLC9,industry: reference process,new,False,2030,1000.0
+aluminium-primary-production-reference,NLC1,industry: reference process,new,False,2030,999.9999982424281
+aluminium-primary-production-reference,NLC1,industry: reference process,new,False,2050,1.757571908456157e-06
+machinery-equipment-production-reference,NLC9,industry: reference process,new,False,2030,999.968911145447
+machinery-equipment-production-reference,NLC9,industry: reference process,new,False,2050,0.031088854552990597
+wood-and-wood-products_production-reference,NLC9,industry: reference process,new,False,2030,999.9959741937612
+REF(H2),BEC3,hydrogen production,new,False,2050,1.2769508840567185
+leather-and-textile-production-reference,NLC5,industry: reference process,new,False,2030,1000.0
+pharmaceuticals-production-alternative,BEC5,industry: clean process route,new,False,2030,0.015551804377053616
+transport-equipment-production-alternative,NLC3,industry: clean process route,new,False,2030,0.01593805937433497
+transport-equipment-production-reference,BEC3,industry: reference process,new,False,2030,999.9952907996442
+transport-equipment-production-reference,BEC3,industry: reference process,new,False,2050,0.004709200355819121
+other-industrial-sectors_production-alternative,BEC7,industry: clean process route,new,False,2030,0.02736774336854684
+printing-and-media-production-reference,BEC4,industry: reference process,new,False,2030,999.9937274739203
+printing-and-media-production-reference,BEC4,industry: reference process,new,False,2050,0.00627252607966966
+wood-and-wood-products_production-reference,NLC6,industry: reference process,new,False,2030,999.989935484403
+wood-and-wood-products_production-reference,NLC6,industry: reference process,new,False,2050,0.010064515597036916
+pharmaceuticals-production-reference,NLC2,industry: reference process,new,False,2030,1000.0
+elec_NLC1__car-DR,NLC1,demand response,new,False,2030,0.0008
+elec_NLC1__car-DR,NLC1,demand response,new,False,2040,0.00045
+elec_NLC1__car-DR,NLC1,demand response,new,False,2050,0.0030499999999999998
+machinery-equipment-production-alternative,BEC1,industry: clean process route,new,False,2030,0.051492659549431094
+other-industrial-sectors_production-alternative,NLC1,industry: clean process route,new,False,2030,0.07909703276226444
+gas-boiler,BEC6,unabated fossil,new,False,2050,0.0009925655055555566
+leather-and-textile-production-reference,NLC8,industry: reference process,new,False,2030,999.9906913442808
+leather-and-textile-production-reference,NLC8,industry: reference process,new,False,2050,0.00930865571922368
+ceramics-and-other-non-metalic-minerals-production-reference,NLC8,industry: reference process,new,False,2030,999.8960134414011
+ceramics-and-other-non-metalic-minerals-production-reference,NLC8,industry: reference process,new,False,2050,0.1039865585988764
+machinery-equipment-production-alternative,BEC2,industry: clean process route,new,False,2030,0.023539501508311345
+food-beverages-tobacco-production-reference,BEC3,industry: reference process,new,False,2030,999.9877131636774
+food-beverages-tobacco-production-reference,BEC3,industry: reference process,new,False,2050,0.012286836322573436
+gas-boiler,NLC4,unabated fossil,new,False,2050,0.019971208625000028
+ceramics-and-other-non-metalic-minerals-production-reference,BEC8,industry: reference process,new,False,2030,999.6041596478353
+ceramics-and-other-non-metalic-minerals-production-reference,BEC8,industry: reference process,new,False,2050,0.39584035216466873
+machinery-equipment-production-alternative,NLC9,industry: clean process route,new,False,2030,0.032125149704802645
+food-beverages-tobacco-production-alternative,NLC1,industry: clean process route,new,False,2030,0.2678531149525544
+food-beverages-tobacco-production-alternative,NLC1,industry: clean process route,new,False,2050,0.008640423062985625
+transport-equipment-production-reference,BEC5,industry: reference process,new,False,2030,999.9817518486213
+transport-equipment-production-reference,BEC5,industry: reference process,new,False,2050,0.018248151378656985
+other-industrial-sectors_production-alternative,NLC9,industry: clean process route,new,False,2030,0.04745821965735868
+bio-boiler,NLC3,bioenergy,new,False,2050,0.34874169025
+bio-boiler,NLC2,bioenergy,new,False,2050,0.1346852515
+CEM2-(BMW)MEA,NLC5,industry: CCS-equipped,new,True,2030,0.11347031963470318
+printing-and-media-production-reference,NLC8,industry: reference process,new,False,2030,999.9937940897864
+printing-and-media-production-reference,NLC8,industry: reference process,new,False,2050,0.0062059102135663124
+elec_BEC3__bus-DR,BEC3,demand response,new,False,2040,5e-05
+elec_BEC3__bus-DR,BEC3,demand response,new,False,2050,0.00015000000000000001
+other-industrial-sectors_production-reference,BEC8,industry: reference process,new,False,2030,999.964211412518
+other-industrial-sectors_production-reference,BEC8,industry: reference process,new,False,2050,0.03578858748198854
+other-non-ferrous-metals-production-reference,NLC8,industry: reference process,new,False,2030,999.9268645357687
+other-non-ferrous-metals-production-reference,NLC8,industry: reference process,new,False,2050,0.07313546423131356
+elec_BEC5__truck-DR,BEC5,demand response,new,False,2030,0.0002
+elec_BEC5__truck-DR,BEC5,demand response,new,False,2040,4.9999999999999996e-05
+elec_BEC5__truck-DR,BEC5,demand response,new,False,2050,0.00025
+leather-and-textile-production-reference,BEC3,industry: reference process,new,False,2030,999.9939719903367
+gas-boiler,NLC5,unabated fossil,new,False,2050,0.008209687625000024
+leather-and-textile-production-alternative,BEC7,industry: clean process route,new,False,2030,0.010187336330882878
+other-chemicals-production-alternative,NLC4,industry: clean process route,new,False,2030,0.0007104834999491153
+leather-and-textile-production-alternative,NLC7,industry: clean process route,new,False,2030,0.004372247383269115
+REF(H2),BEC5,hydrogen production,new,False,2050,0.011059236609704993
+gas-boiler,NLC6,unabated fossil,new,False,2050,0.010566403874999977
+machinery-equipment-production-alternative,BEC8,industry: clean process route,new,False,2030,0.025010720352580788
+wood-and-wood-products_production-alternative,NLC4,industry: clean process route,new,False,2030,0.003690322385572995
+other-industrial-sectors_production-reference,NLC5,industry: reference process,new,False,2030,999.9723160385332
+other-industrial-sectors_production-reference,NLC5,industry: reference process,new,False,2050,0.027683961466777873
+transport-equipment-production-reference,NLC9,industry: reference process,new,False,2030,999.9938304286293
+transport-equipment-production-reference,NLC9,industry: reference process,new,False,2050,0.0061695713707194955
+other-industrial-sectors_production-alternative,NLC3,industry: clean process route,new,False,2030,0.11864554914339687
+other-chemicals-production-reference,BEC7,industry: reference process,new,False,2030,999.9927010349423
+other-chemicals-production-reference,BEC7,industry: reference process,new,False,2050,0.0072989650576573695
+elec_BEC3__car-DR,BEC3,demand response,new,False,2030,0.0004
+elec_BEC3__car-DR,BEC3,demand response,new,False,2040,0.00020000000000000004
+elec_BEC3__car-DR,BEC3,demand response,new,False,2050,0.0013
+transport-equipment-production-reference,BEC6,industry: reference process,new,False,2030,999.9947021495998
+transport-equipment-production-reference,BEC6,industry: reference process,new,False,2050,0.005297850400211246
+transport-equipment-production-alternative,NLC4,industry: clean process route,new,False,2030,0.0058439551039228205
+elec_BEC4__car-DR,BEC4,demand response,new,False,2030,0.0002
+elec_BEC4__car-DR,BEC4,demand response,new,False,2040,0.00010000000000000002
+elec_BEC4__car-DR,BEC4,demand response,new,False,2050,0.0006000000000000001
+Diaphragm,BEC1,electrolysis,new,False,2050,0.03926940639269406
+other-chemicals-production-reference,NLC9,industry: reference process,new,False,2030,999.9707961024691
+other-chemicals-production-reference,NLC9,industry: reference process,new,False,2050,0.029203897530919676
+elec_NLC1__bus-DR,NLC1,demand response,new,False,2040,5e-05
+bioST,NLC5,bioenergy,new,False,2040,2.3337877533212086
+bioST,NLC5,bioenergy,new,False,2050,11.618139360445662
+elec_BEC2__bus-DR,BEC2,demand response,new,False,2030,0.0001
+elec_BEC2__bus-DR,BEC2,demand response,new,False,2050,0.0001
+paper-production-alternative,NLC5,industry: clean process route,new,False,2030,0.022030899131279952
+elec_BEC5__bus-DR,BEC5,demand response,new,False,2050,0.0001
+machinery-equipment-production-reference,NLC7,industry: reference process,new,False,2030,999.9740926212058
+machinery-equipment-production-reference,NLC7,industry: reference process,new,False,2050,0.02590737879415883
+other-chemicals-production-alternative,BEC4,industry: clean process route,new,False,2030,0.004441626790691587
+transport-equipment-production-reference,NLC6,industry: reference process,new,False,2030,999.9845760715732
+transport-equipment-production-reference,NLC6,industry: reference process,new,False,2050,0.015423928426798739
+other-chemicals-production-reference,BEC8,industry: reference process,new,False,2030,1000.0
+elec_NLC3__truck-DR,NLC3,demand response,new,False,2030,0.0001
+elec_NLC3__truck-DR,NLC3,demand response,new,False,2040,5.000000000000001e-05
+elec_NLC3__truck-DR,NLC3,demand response,new,False,2050,4.9999999999999996e-05
+gas-boiler,BEC7,unabated fossil,new,False,2050,0.0007969389888888949
+food-beverages-tobacco-production-alternative,BEC3,industry: clean process route,new,False,2030,0.012778309775418877
+food-beverages-tobacco-production-alternative,BEC3,industry: clean process route,new,False,2050,0.00032764896860048263
+other-chemicals-production-alternative,NLC3,industry: clean process route,new,False,2030,0.00022435015752041553
+elec_BEC8__truck-DR,BEC8,demand response,new,False,2030,0.0002
+elec_BEC8__truck-DR,BEC8,demand response,new,False,2040,0.00010000000000000002
+elec_BEC8__truck-DR,BEC8,demand response,new,False,2050,0.0002999999999999999
+paper-production-alternative,NLC1,industry: clean process route,new,False,2030,0.050234355962459114
+elec_NLC2__truck-DR,NLC2,demand response,new,False,2030,0.0001
+elec_NLC2__truck-DR,NLC2,demand response,new,False,2040,5.000000000000001e-05
+elec_NLC2__truck-DR,NLC2,demand response,new,False,2050,0.00014999999999999996
+food-beverages-tobacco-production-alternative,NLC6,industry: clean process route,new,False,2030,0.27554484881992275
+food-beverages-tobacco-production-alternative,NLC6,industry: clean process route,new,False,2050,0.004444271755160045
+pulp-production-reference,NLC4,industry: reference process,new,False,2030,1000.0
+solar-PV-no-tracking,BEC6,solar PV,new,False,2050,10.533832724643162
+other-industrial-sectors_production-reference,NLC9,industry: reference process,new,False,2030,999.9525417803426
+other-industrial-sectors_production-reference,NLC9,industry: reference process,new,False,2050,0.0474582196574147
+pharmaceuticals-production-alternative,NLC1,industry: clean process route,new,False,2030,0.0025813119188590823
+elec_NLC4__bus-DR,NLC4,demand response,new,False,2030,0.0001
+air-heatpump-cool,NLC3,electrification (heat pumps),new,False,2050,0.24542363120000013
+((BM+H2)MeOH)O,NLC6,e-fuels / green chemicals,new,False,2030,0.2478240498173516
+paper-production-reference,NLC3,industry: reference process,new,False,2030,999.8676659521765
+paper-production-reference,NLC3,industry: reference process,new,False,2050,0.13233404782351954
+other-chemicals-production-reference,BEC3,industry: reference process,new,False,2030,999.9942703633013
+other-chemicals-production-reference,BEC3,industry: reference process,new,False,2050,0.005729636698674767
+pulp-production-reference,NLC8,industry: reference process,new,False,2030,1000.0
+food-beverages-tobacco-production-alternative,NLC2,industry: clean process route,new,False,2030,0.11340186855390082
+food-beverages-tobacco-production-alternative,NLC2,industry: clean process route,new,False,2050,0.003658124792061318
+leather-and-textile-production-alternative,NLC1,industry: clean process route,new,False,2030,0.008744494766538234
+pulp-production-reference,BEC6,industry: reference process,new,False,2030,999.9412126434471
+pulp-production-reference,BEC6,industry: reference process,new,False,2050,0.05878735655289802
+leather-and-textile-production-reference,BEC2,industry: reference process,new,False,2030,999.9879439806735
+leather-and-textile-production-reference,BEC2,industry: reference process,new,False,2050,0.01205601932645095
+gas-boiler,NLC3,unabated fossil,new,False,2050,0.0191842251
+wood-and-wood-products_production-alternative,BEC8,industry: clean process route,new,False,2030,0.11493492341777897
+wood-and-wood-products_production-alternative,BEC8,industry: clean process route,new,False,2050,6.113559756265596e-05
+pulp-production-reference,NLC7,industry: reference process,new,False,2030,1000.0
+bio-boiler,BEC1,bioenergy,new,False,2050,0.11486605428
+gas-boiler,NLC9,unabated fossil,new,False,2050,0.0037474135750000005
+pharmaceuticals-production-alternative,NLC6,industry: clean process route,new,False,2030,0.0038719678782886224
+transport-equipment-production-alternative,NLC5,industry: clean process route,new,False,2030,0.0037188805206781594
+printing-and-media-production-reference,BEC8,industry: reference process,new,False,2030,999.9903060960588
+printing-and-media-production-reference,BEC8,industry: reference process,new,False,2050,0.009693903941183635
+other-industrial-sectors_production-alternative,BEC8,industry: clean process route,new,False,2030,0.035788587481945924
+other-industrial-sectors_production-reference,NLC4,industry: reference process,new,False,2030,999.9564966319807
+other-industrial-sectors_production-reference,NLC4,industry: reference process,new,False,2050,0.043503368019287336
+pharmaceuticals-production-reference,NLC4,industry: reference process,new,False,2030,1000.0
+elec_BEC7__truck-DR,BEC7,demand response,new,False,2030,0.0001
+elec_BEC7__truck-DR,BEC7,demand response,new,False,2050,0.0001
+machinery-equipment-production-reference,BEC8,industry: reference process,new,False,2030,999.9749892796474
+machinery-equipment-production-reference,BEC8,industry: reference process,new,False,2050,0.025010720352611315
+pharmaceuticals-production-alternative,NLC3,industry: clean process route,new,False,2030,0.0038719678782886224
+machinery-equipment-production-alternative,NLC2,industry: clean process route,new,False,2030,0.018739670661134862
+food-beverages-tobacco-production-alternative,BEC8,industry: clean process route,new,False,2030,0.1778543638996301
+food-beverages-tobacco-production-alternative,BEC8,industry: clean process route,new,False,2050,0.004560368305118717
+transport-equipment-production-alternative,BEC1,industry: clean process route,new,False,2030,0.02142686161875828
+printing-and-media-production-alternative,NLC7,industry: clean process route,new,False,2030,0.0028208682789062074
+other-chemicals-production-reference,NLC7,industry: reference process,new,False,2030,999.9517908688509
+other-chemicals-production-reference,NLC7,industry: reference process,new,False,2050,0.04820913114906489
+pharmaceuticals-production-alternative,NLC2,industry: clean process route,new,False,2030,0.0009034591716006774
+pharmaceuticals-production-reference,BEC3,industry: reference process,new,False,2030,999.979147522285
+pharmaceuticals-production-reference,BEC3,industry: reference process,new,False,2050,0.02085247771503873
+wood-and-wood-products_production-reference,BEC6,industry: reference process,new,False,2030,999.9595973442194
+wood-and-wood-products_production-reference,BEC6,industry: reference process,new,False,2050,0.04040265578055369
+pulp-production-alternative,NLC2,industry: clean process route,new,False,2030,0.00020504530456723138
+paper-production-reference,BEC2,industry: reference process,new,False,2030,999.9176669647214
+paper-production-reference,BEC2,industry: reference process,new,False,2050,0.08233303527856606
+leather-and-textile-production-alternative,NLC2,industry: clean process route,new,False,2030,0.003060573168288389
+pharmaceuticals-production-reference,BEC2,industry: reference process,new,False,2030,999.996704107776
+pharmaceuticals-production-reference,BEC2,industry: reference process,new,False,2050,0.0032958922239458843
+((BM+H2)MeOH)O,NLC4,e-fuels / green chemicals,new,False,2030,0.0041772461643835605
+pharmaceuticals-production-reference,BEC5,industry: reference process,new,False,2030,999.9850463419451
+pharmaceuticals-production-reference,BEC5,industry: reference process,new,False,2050,0.01495365805487836
+wood-and-wood-products_production-alternative,NLC1,industry: clean process route,new,False,2030,0.0067096770646781585
+elec_BEC2__truck-DR,BEC2,demand response,new,False,2030,0.0003
+elec_BEC2__truck-DR,BEC2,demand response,new,False,2040,0.00015000000000000001
+elec_BEC2__truck-DR,BEC2,demand response,new,False,2050,0.00055
+transport-equipment-production-alternative,NLC7,industry: clean process route,new,False,2030,0.005312686458111659
+gas-boiler,NLC2,unabated fossil,new,False,2050,0.007684653200000016
+ceramics-and-other-non-metalic-minerals-production-alternative,NLC1,industry: clean process route,new,False,2030,0.005886232962168082
+solar-PV-no-tracking,BEC7,solar PV,new,False,2050,1.2603716023923057
+ceramics-and-other-non-metalic-minerals-production-reference,NLC1,industry: reference process,new,False,2030,999.9941137670378
+machinery-equipment-production-reference,BEC3,industry: reference process,new,False,2030,999.9882302492458
+machinery-equipment-production-reference,BEC3,industry: reference process,new,False,2050,0.011769750754183406
+pharmaceuticals-production-reference,NLC9,industry: reference process,new,False,2030,1000.0
+leather-and-textile-production-alternative,NLC3,industry: clean process route,new,False,2030,0.013116742149807374
+wood-and-wood-products_production-alternative,NLC7,industry: clean process route,new,False,2030,0.003354838532339075
+leather-and-textile-production-reference,BEC1,industry: reference process,new,False,2030,999.9736274577233
+leather-and-textile-production-reference,BEC1,industry: reference process,new,False,2050,0.026372542276703825
+REF(H2),NLC2,hydrogen production,new,False,2050,0.8482332000000001
+elec_NLC2__car-DR,NLC2,demand response,new,False,2030,0.0003
+elec_NLC2__car-DR,NLC2,demand response,new,False,2040,0.00015000000000000001
+elec_NLC2__car-DR,NLC2,demand response,new,False,2050,0.0010500000000000002
+other-non-ferrous-metals-production-reference,BEC1,industry: reference process,new,False,2030,999.8691636688405
+other-non-ferrous-metals-production-reference,BEC1,industry: reference process,new,False,2050,0.1308363311594576
+air-heatpump-cool,NLC5,electrification (heat pumps),new,False,2050,0.08363050833333334
+paper-production-reference,NLC5,industry: reference process,new,False,2030,999.9781675774375
+paper-production-reference,NLC5,industry: reference process,new,False,2050,0.021832422562511056
+leather-and-textile-production-alternative,NLC5,industry: clean process route,new,False,2030,0.003060573168288384
+machinery-equipment-production-alternative,NLC4,industry: clean process route,new,False,2030,0.02944805389606907
+machinery-equipment-production-alternative,NLC6,industry: clean process route,new,False,2030,0.08031287426200644
+gas-boiler,NLC7,unabated fossil,new,False,2050,0.0021391087500000038
+printing-and-media-production-alternative,NLC2,industry: clean process route,new,False,2030,0.0019746077952343503
+machinery-equipment-production-alternative,NLC8,industry: clean process route,new,False,2030,0.05889610779213798
+gas-boiler,BEC3,unabated fossil,new,False,2050,0.00022711529999996927
+leather-and-textile-production-reference,NLC9,industry: reference process,new,False,2030,999.9949225514259
+leather-and-textile-production-reference,NLC9,industry: reference process,new,False,2050,0.005077448574070331
+other-industrial-sectors_production-alternative,BEC4,industry: clean process route,new,False,2030,0.023157321311847362
+leather-and-textile-production-alternative,BEC3,industry: clean process route,new,False,2030,0.006269130049774065
+other-industrial-sectors_production-reference,NLC6,industry: reference process,new,False,2030,999.8813544508566
+other-industrial-sectors_production-reference,NLC6,industry: reference process,new,False,2050,0.11864554914336622
+other-industrial-sectors_production-alternative,NLC6,industry: clean process route,new,False,2030,0.11864554914339692
+wood-and-wood-products_production-alternative,NLC5,industry: clean process route,new,False,2030,0.002348386972637354
+printing-and-media-production-reference,NLC4,industry: reference process,new,False,2030,999.9968970448932
+printing-and-media-production-reference,NLC4,industry: reference process,new,False,2050,0.0031029551067831562
+printing-and-media-production-reference,BEC3,industry: reference process,new,False,2030,999.9954381628512
+printing-and-media-production-reference,BEC3,industry: reference process,new,False,2050,0.004561837148798986
+ceramics-and-other-non-metalic-minerals-production-alternative,NLC4,industry: clean process route,new,False,2030,0.01942264795946725
+printing-and-media-production-reference,NLC6,industry: reference process,new,False,2030,999.9915373951633
+printing-and-media-production-reference,NLC6,industry: reference process,new,False,2050,0.008462604836722676
+leather-and-textile-production-reference,NLC3,industry: reference process,new,False,2030,999.9873063785647
+leather-and-textile-production-reference,NLC3,industry: reference process,new,False,2050,0.012693621435346358
+food-beverages-tobacco-production-alternative,NLC8,industry: clean process route,new,False,2030,0.1755103650712438
+food-beverages-tobacco-production-alternative,NLC8,industry: clean process route,new,False,2050,0.002830812339858768
+((BM+H2)MeOH)O,BEC7,e-fuels / green chemicals,new,False,2030,0.004177246164383561
+((BM+H2)MeOH)O,NLC9,e-fuels / green chemicals,new,False,2030,0.1414429223744292
+elec_BEC6__bus-DR,BEC6,demand response,new,False,2050,0.0001
+Diaphragm,NLC1,electrolysis,new,False,2050,0.009503196347031962
+transport-equipment-production-reference,NLC2,industry: reference process,new,False,2030,999.9964010833671
+other-industrial-sectors_production-reference,BEC3,industry: reference process,new,False,2030,999.9831583117732
+other-industrial-sectors_production-reference,BEC3,industry: reference process,new,False,2050,0.016841688226804763
+pharmaceuticals-production-alternative,NLC8,industry: clean process route,new,False,2030,0.002839443110744989
+wood-and-wood-products_production-alternative,NLC2,industry: clean process route,new,False,2030,0.0023483869726373605
+paper-production-reference,BEC5,industry: reference process,new,False,2030,999.9644220944506
+paper-production-reference,BEC5,industry: reference process,new,False,2050,0.035577905549416755
+wood-and-wood-products_production-reference,BEC8,industry: reference process,new,False,2030,999.8838423646309
+wood-and-wood-products_production-reference,BEC8,industry: reference process,new,False,2050,0.11615763536906343
+leather-and-textile-production-reference,NLC7,industry: reference process,new,False,2030,999.9957687928548
+leather-and-textile-production-reference,NLC7,industry: reference process,new,False,2050,0.004231207145153348
+other-chemicals-production-alternative,BEC8,industry: clean process route,new,False,2030,0.0007562327766194018
+other-chemicals-production-reference,NLC4,industry: reference process,new,False,2030,1000.0
+pharmaceuticals-production-reference,NLC8,industry: reference process,new,False,2030,1000.0
+other-industrial-sectors_production-alternative,NLC2,industry: clean process route,new,False,2030,0.02768396146679262
+leather-and-textile-production-reference,BEC8,industry: reference process,new,False,2030,999.9871904794657
+leather-and-textile-production-reference,BEC8,industry: reference process,new,False,2050,0.01280952053434703
+machinery-equipment-production-reference,NLC2,industry: reference process,new,False,2030,999.981864834844
+machinery-equipment-production-reference,NLC2,industry: reference process,new,False,2050,0.018135165155968025
+printing-and-media-production-alternative,BEC5,industry: clean process route,new,False,2030,0.017480706518867146
+printing-and-media-production-alternative,BEC5,industry: clean process route,new,False,2050,1.9641243279626408e-05
+ceramics-and-other-non-metalic-minerals-production-alternative,NLC3,industry: clean process route,new,False,2030,0.2455111913294138
+printing-and-media-production-alternative,NLC1,industry: clean process route,new,False,2030,0.005641736557812415
+transport-equipment-production-alternative,BEC5,industry: clean process route,new,False,2030,0.018248151378612822
+transport-equipment-production-reference,NLC7,industry: reference process,new,False,2030,999.9948586905244
+leather-and-textile-production-reference,NLC1,industry: reference process,new,False,2030,999.9915375857098
+leather-and-textile-production-reference,NLC1,industry: reference process,new,False,2050,0.00846241429019301
+gas-boiler,BEC8,unabated fossil,new,False,2050,0.00022320378000000723
+machinery-equipment-production-alternative,BEC6,industry: clean process route,new,False,2030,0.016824744800331963
+printing-and-media-production-reference,NLC2,industry: reference process,new,False,2030,1000.0
+food-beverages-tobacco-production-alternative,BEC7,industry: clean process route,new,False,2030,0.2352417687306298
+food-beverages-tobacco-production-alternative,BEC7,industry: clean process route,new,False,2050,0.006031840223862328
+bio-boiler,NLC6,bioenergy,new,False,2050,0.20458789712500003
+food-beverages-tobacco-production-alternative,NLC4,industry: clean process route,new,False,2030,0.09134239805324501
+food-beverages-tobacco-production-alternative,NLC4,industry: clean process route,new,False,2050,0.0029465289694595165
+paper-production-alternative,NLC8,industry: clean process route,new,False,2030,0.0876868314157555
+printing-and-media-production-alternative,NLC8,industry: clean process route,new,False,2030,0.006205910213593665
+air-heatpump-cool,NLC4,electrification (heat pumps),new,False,2040,0.2429255118
+air-heatpump-cool,NLC4,electrification (heat pumps),new,False,2050,0.4737196618
+bio-boiler,NLC8,bioenergy,new,False,2050,0.24822136125
+other-industrial-sectors_production-reference,BEC1,industry: reference process,new,False,2030,999.9263176140078
+other-industrial-sectors_production-reference,BEC1,industry: reference process,new,False,2050,0.07368238599224242
+transport-equipment-production-alternative,BEC4,industry: clean process route,new,False,2030,0.006475150489185194
+food-beverages-tobacco-production-reference,BEC5,industry: reference process,new,False,2030,999.9338425893276
+food-beverages-tobacco-production-reference,BEC5,industry: reference process,new,False,2050,0.06615741067241743
+machinery-equipment-production-reference,BEC4,industry: reference process,new,False,2030,999.9838165927131
+machinery-equipment-production-reference,BEC4,industry: reference process,new,False,2050,0.016183407286916918
+bio-boiler,BEC2,bioenergy,new,False,2050,0.28884277728
+elec_BEC6__truck-DR,BEC6,demand response,new,False,2030,0.0001
+elec_BEC6__truck-DR,BEC6,demand response,new,False,2040,9.999999999999998e-05
+elec_BEC6__truck-DR,BEC6,demand response,new,False,2050,0.00030000000000000003
+gas-boiler,NLC8,unabated fossil,new,False,2050,0.01371191314999999
+other-industrial-sectors_production-reference,BEC7,industry: reference process,new,False,2030,999.9726322566314
+other-industrial-sectors_production-reference,BEC7,industry: reference process,new,False,2050,0.02736774336858616
+Diaphragm,NLC6,electrolysis,new,False,2050,0.05701917808219177
+bio-boiler,BEC5,bioenergy,new,False,2050,0.1114935108
+transport-equipment-production-reference,BEC7,industry: reference process,new,False,2030,999.9923475494219
+transport-equipment-production-reference,BEC7,industry: reference process,new,False,2050,0.007652450578120806
+bio-boiler,BEC7,bioenergy,new,False,2050,0.06797180811111111
+printing-and-media-production-alternative,BEC1,industry: clean process route,new,False,2030,0.019736281553559623
+printing-and-media-production-alternative,BEC1,industry: clean process route,new,False,2050,2.2175597251192225e-05
+REF(H2),NLC9,hydrogen production,new,False,2050,0.43197562192945316
+ceramics-and-other-non-metalic-minerals-production-alternative,BEC5,industry: clean process route,new,False,2030,0.5538114646038648
+paper-production-alternative,BEC4,industry: clean process route,new,False,2030,0.06587357914759691
+printing-and-media-production-reference,NLC7,industry: reference process,new,False,2030,1000.0
+paper-production-reference,NLC9,industry: reference process,new,False,2030,999.9550003756862
+paper-production-reference,NLC9,industry: reference process,new,False,2050,0.04499962431384574
+leather-and-textile-production-alternative,NLC4,industry: clean process route,new,False,2030,0.00480947212159604
+other-non-ferrous-metals-production-reference,BEC5,industry: reference process,new,False,2030,999.9013018143397
+other-non-ferrous-metals-production-reference,BEC5,industry: reference process,new,False,2050,0.09869818566028243
+transport-equipment-production-reference,BEC8,industry: reference process,new,False,2030,999.989992949244
+transport-equipment-production-reference,BEC8,industry: reference process,new,False,2050,0.010007050756030367
+leather-and-textile-production-reference,BEC7,industry: reference process,new,False,2030,999.9902044842972
+leather-and-textile-production-reference,BEC7,industry: reference process,new,False,2050,0.009795515702762714
+food-beverages-tobacco-production-alternative,BEC4,industry: clean process route,new,False,2030,0.11168610411316383
+food-beverages-tobacco-production-alternative,BEC4,industry: clean process route,new,False,2050,0.002863746259311878
+pharmaceuticals-production-alternative,NLC4,industry: clean process route,new,False,2030,0.0014197215553724942
+food-beverages-tobacco-production-reference,NLC7,industry: reference process,new,False,2030,999.8396703984282
+food-beverages-tobacco-production-reference,NLC7,industry: reference process,new,False,2050,0.16032960157178877
+Diaphragm,BEC5,electrolysis,new,False,2050,0.03141552511415524
+elec_NLC5__truck-DR,NLC5,demand response,new,False,2030,0.0001
+elec_NLC5__truck-DR,NLC5,demand response,new,False,2040,5.000000000000001e-05
+elec_NLC5__truck-DR,NLC5,demand response,new,False,2050,4.9999999999999996e-05
+REF(H2),BEC4,hydrogen production,new,False,2050,1.0188276106238179
+((BM)MeOH)O,NLC7,e-fuels / green chemicals,new,False,2030,0.174615850896914
+elec_BEC1__truck-DR,BEC1,demand response,new,False,2030,0.0001
+elec_BEC1__truck-DR,BEC1,demand response,new,False,2040,9.999999999999998e-05
+elec_BEC1__truck-DR,BEC1,demand response,new,False,2050,0.00020000000000000004
+other-chemicals-production-reference,BEC5,industry: reference process,new,False,2030,999.9910312217808
+other-chemicals-production-reference,BEC5,industry: reference process,new,False,2050,0.008968778219241358
+other-industrial-sectors_production-alternative,BEC5,industry: clean process route,new,False,2030,0.06526154187884248
+wood-and-wood-products_production-alternative,NLC6,industry: clean process route,new,False,2030,0.010064515597017248
+food-beverages-tobacco-production-reference,NLC6,industry: reference process,new,False,2030,999.7333436946903
+food-beverages-tobacco-production-reference,NLC6,industry: reference process,new,False,2050,0.26665630530965245
+machinery-equipment-production-reference,NLC6,industry: reference process,new,False,2030,999.9222778636174
+machinery-equipment-production-reference,NLC6,industry: reference process,new,False,2050,0.07772213638259018
+paper-production-reference,BEC4,industry: reference process,new,False,2030,999.9341264208524
+paper-production-reference,BEC4,industry: reference process,new,False,2050,0.06587357914759195
+leather-and-textile-production-alternative,BEC5,industry: clean process route,new,False,2030,0.024292878942874553
+other-chemicals-production-alternative,NLC6,industry: clean process route,new,False,2030,0.04361674910646084
+food-beverages-tobacco-production-alternative,NLC7,industry: clean process route,new,False,2030,0.16567392162420594
+food-beverages-tobacco-production-alternative,NLC7,industry: clean process route,new,False,2050,0.0026721600261968848
+transport-equipment-production-alternative,NLC8,industry: clean process route,new,False,2030,0.011687910207845653
+other-industrial-sectors_production-alternative,BEC6,industry: clean process route,new,False,2030,0.023333908509633097
+pharmaceuticals-production-reference,NLC7,industry: reference process,new,False,2030,1000.0
+elec_BEC3__truck-DR,BEC3,demand response,new,False,2030,0.0002
+elec_BEC3__truck-DR,BEC3,demand response,new,False,2040,4.9999999999999996e-05
+elec_BEC3__truck-DR,BEC3,demand response,new,False,2050,0.00025
+printing-and-media-production-alternative,NLC6,industry: clean process route,new,False,2030,0.008462604836718639
+pharmaceuticals-production-alternative,NLC5,industry: clean process route,new,False,2030,0.0009034591716006786
+elec_NLC9__car-DR,NLC9,demand response,new,False,2030,0.0001
+elec_NLC9__car-DR,NLC9,demand response,new,False,2040,9.999999999999998e-05
+elec_NLC9__car-DR,NLC9,demand response,new,False,2050,0.0005
+wood-and-wood-products_production-reference,NLC8,industry: reference process,new,False,2030,999.9926193552288
+wood-and-wood-products_production-reference,NLC8,industry: reference process,new,False,2050,0.007380644771160405
+wood-and-wood-products_production-reference,NLC5,industry: reference process,new,False,2030,1000.0
+food-beverages-tobacco-production-reference,BEC6,industry: reference process,new,False,2030,999.8376697736205
+food-beverages-tobacco-production-reference,BEC6,industry: reference process,new,False,2050,0.16233022637948125
+other-chemicals-production-reference,NLC6,industry: reference process,new,False,2030,999.9563832508935
+other-chemicals-production-reference,NLC6,industry: reference process,new,False,2050,0.043616749106490715
+leather-and-textile-production-alternative,NLC8,industry: clean process route,new,False,2030,0.009618944243192054
+other-industrial-sectors_production-alternative,BEC1,industry: clean process route,new,False,2030,0.07368238599224161
+pulp-production-reference,NLC1,industry: reference process,new,False,2030,1000.0
+other-non-ferrous-metals-production-alternative,BEC5,industry: clean process route,new,False,2030,0.10264611308666331
+other-non-ferrous-metals-production-alternative,BEC5,industry: clean process route,new,False,2040,0.0009869818566025368
+other-non-ferrous-metals-production-alternative,BEC5,industry: clean process route,new,False,2050,0.001644969761004228
+((BM+H2)MeOH)O,NLC7,e-fuels / green chemicals,new,False,2030,0.23442726284737808
+printing-and-media-production-alternative,BEC3,industry: clean process route,new,False,2030,0.004511150069385058
+printing-and-media-production-alternative,BEC3,industry: clean process route,new,False,2050,5.068707943129899e-06
+pulp-production-reference,NLC2,industry: reference process,new,False,2030,1000.0
+ceramics-and-other-non-metalic-minerals-production-reference,NLC4,industry: reference process,new,False,2030,999.9805773520405
+ceramics-and-other-non-metalic-minerals-production-reference,NLC4,industry: reference process,new,False,2050,0.019422647959459027
+ceramics-and-other-non-metalic-minerals-production-reference,BEC5,industry: reference process,new,False,2030,999.4461885353961
+ceramics-and-other-non-metalic-minerals-production-reference,BEC5,industry: reference process,new,False,2050,0.5538114646038821
+pharmaceuticals-production-alternative,BEC3,industry: clean process route,new,False,2030,0.02085247771506107
+elec_BEC1__car-DR,BEC1,demand response,new,False,2030,0.0004
+elec_BEC1__car-DR,BEC1,demand response,new,False,2040,0.00020000000000000004
+elec_BEC1__car-DR,BEC1,demand response,new,False,2050,0.0010999999999999998
+elec_BEC7__car-DR,BEC7,demand response,new,False,2030,0.0001
+elec_BEC7__car-DR,BEC7,demand response,new,False,2040,9.999999999999998e-05
+elec_BEC7__car-DR,BEC7,demand response,new,False,2050,0.0005
+transport-equipment-production-reference,BEC1,industry: reference process,new,False,2030,999.9793972484435
+transport-equipment-production-reference,BEC1,industry: reference process,new,False,2050,0.02060275155645286
+printing-and-media-production-reference,BEC2,industry: reference process,new,False,2030,999.9908763257024
+printing-and-media-production-reference,BEC2,industry: reference process,new,False,2050,0.009123674297597972
+pharmaceuticals-production-alternative,NLC7,industry: clean process route,new,False,2030,0.0012906559594295418
+pulp-production-alternative,NLC5,industry: clean process route,new,False,2030,0.0002050453045672313
+leather-and-textile-production-alternative,BEC2,industry: clean process route,new,False,2030,0.01253826009954814
+other-industrial-sectors_production-alternative,BEC3,industry: clean process route,new,False,2030,0.016841688226798084
+other-industrial-sectors_production-alternative,NLC5,industry: clean process route,new,False,2030,0.027683961466792546
+other-industrial-sectors_production-reference,NLC2,industry: reference process,new,False,2030,999.9723160385332
+other-industrial-sectors_production-reference,NLC2,industry: reference process,new,False,2050,0.027683961466777873
+leather-and-textile-production-alternative,BEC1,industry: clean process route,new,False,2030,0.02742744396776154
+machinery-equipment-production-reference,NLC5,industry: reference process,new,False,2030,999.981864834844
+machinery-equipment-production-reference,NLC5,industry: reference process,new,False,2050,0.018135165155968025
+printing-and-media-production-alternative,BEC6,industry: clean process route,new,False,2030,0.005388228588160773
+printing-and-media-production-alternative,BEC6,industry: clean process route,new,False,2050,6.054189424901241e-06
+food-beverages-tobacco-production-reference,BEC4,industry: reference process,new,False,2030,999.8926095152758
+food-beverages-tobacco-production-reference,BEC4,industry: reference process,new,False,2050,0.10739048472419199
+pharmaceuticals-production-reference,NLC1,industry: reference process,new,False,2030,1000.0
+paper-production-reference,NLC8,industry: reference process,new,False,2030,999.9131031400384
+paper-production-reference,NLC8,industry: reference process,new,False,2050,0.08689685996159824
+transport-equipment-production-alternative,NLC6,industry: clean process route,new,False,2030,0.015938059374334956
+printing-and-media-production-reference,BEC7,industry: reference process,new,False,2030,999.9925870146332
+printing-and-media-production-reference,BEC7,industry: reference process,new,False,2050,0.007412985366840985
+bio-diges-up+CC,NLC5,industry: CCS-equipped,new,True,2040,5.433879014867197
+machinery-equipment-production-alternative,NLC1,industry: clean process route,new,False,2030,0.053541916174670946
+printing-and-media-production-alternative,NLC9,industry: clean process route,new,False,2030,0.003385041934687454
+other-industrial-sectors_production-reference,BEC5,industry: reference process,new,False,2030,999.9347384581212
+other-industrial-sectors_production-reference,BEC5,industry: reference process,new,False,2050,0.06526154187884003
+paper-production-alternative,BEC5,industry: clean process route,new,False,2030,0.03557790554946724
+elec_NLC6__truck-DR,NLC6,demand response,new,False,2030,0.0002
+elec_NLC6__truck-DR,NLC6,demand response,new,False,2040,4.9999999999999996e-05
+elec_NLC6__truck-DR,NLC6,demand response,new,False,2050,4.999999999999997e-05
+transport-equipment-production-alternative,BEC8,industry: clean process route,new,False,2030,0.010007050756013481
+paper-production-reference,NLC1,industry: reference process,new,False,2030,999.9502182058029
+paper-production-reference,NLC1,industry: reference process,new,False,2050,0.04978179419708795
+other-industrial-sectors_production-reference,BEC4,industry: reference process,new,False,2030,999.9768426786882
+other-industrial-sectors_production-reference,BEC4,industry: reference process,new,False,2050,0.023157321311828127
+wood-and-wood-products_production-reference,NLC7,industry: reference process,new,False,2030,999.9966451614677
+bioST,NLC4,bioenergy,new,False,2030,7.794243045488789
+bioST,NLC4,bioenergy,new,False,2040,1.4267509502155828
+bioST,NLC4,bioenergy,new,False,2050,8.437238821539529
+other-chemicals-production-alternative,BEC5,industry: clean process route,new,False,2030,0.008968778219185281
+other-industrial-sectors_production-alternative,BEC2,industry: clean process route,new,False,2030,0.03368337645359617
+wood-and-wood-products_production-alternative,BEC5,industry: clean process route,new,False,2030,0.009602406219047227
+wood-and-wood-products_production-alternative,BEC5,industry: clean process route,new,False,2050,5.107662882471858e-06
+other-industrial-sectors_production-reference,NLC7,industry: reference process,new,False,2030,999.9604514836188
+other-industrial-sectors_production-reference,NLC7,industry: reference process,new,False,2050,0.03954851638115997
+paper-production-alternative,BEC6,industry: clean process route,new,False,2030,0.010229932135120023
+transport-equipment-production-alternative,NLC2,industry: clean process route,new,False,2030,0.0037188805206781624
+ceramics-and-other-non-metalic-minerals-production-reference,NLC3,industry: reference process,new,False,2030,999.7544888086705
+ceramics-and-other-non-metalic-minerals-production-reference,NLC3,industry: reference process,new,False,2050,0.24551119132945587
+elec_BEC4__truck-DR,BEC4,demand response,new,False,2030,0.0001
+elec_BEC4__truck-DR,BEC4,demand response,new,False,2050,0.0001
+machinery-equipment-production-alternative,NLC5,industry: clean process route,new,False,2030,0.018739670661134862
+elec_NLC7__truck-DR,NLC7,demand response,new,False,2040,5e-05
+elec_NLC7__truck-DR,NLC7,demand response,new,False,2050,5e-05
+paper-production-alternative,NLC9,industry: clean process route,new,False,2030,0.04540871180759857
+other-chemicals-production-reference,NLC8,industry: reference process,new,False,2030,999.9999803994621
+other-chemicals-production-reference,NLC8,industry: reference process,new,False,2050,1.9600537939368223e-05
+ceramics-and-other-non-metalic-minerals-production-alternative,NLC8,industry: clean process route,new,False,2030,0.10398655859888159
+other-industrial-sectors_production-reference,NLC3,industry: reference process,new,False,2030,999.8813544508566
+other-industrial-sectors_production-reference,NLC3,industry: reference process,new,False,2050,0.11864554914336622
+elec_NLC4__car-DR,NLC4,demand response,new,False,2030,0.0008
+elec_NLC4__car-DR,NLC4,demand response,new,False,2040,0.0005000000000000001
+elec_NLC4__car-DR,NLC4,demand response,new,False,2050,0.0027999999999999995
+bio-boiler,BEC8,bioenergy,new,False,2050,0.12194701912000001
+other-industrial-sectors_production-reference,NLC8,industry: reference process,new,False,2030,999.9129932639615
+other-industrial-sectors_production-reference,NLC8,industry: reference process,new,False,2050,0.08700673603846099
+wood-and-wood-products_production-alternative,NLC3,industry: clean process route,new,False,2030,0.010064515597017244
+food-beverages-tobacco-production-reference,NLC3,industry: reference process,new,False,2030,999.8765157098259
+food-beverages-tobacco-production-reference,NLC3,industry: reference process,new,False,2050,0.1234842901741331
+food-beverages-tobacco-production-alternative,BEC6,industry: clean process route,new,False,2030,0.16882343543466807
+food-beverages-tobacco-production-alternative,BEC6,industry: clean process route,new,False,2050,0.00432880603678637
+food-beverages-tobacco-production-reference,BEC7,industry: reference process,new,False,2030,999.7738059916052
+food-beverages-tobacco-production-reference,BEC7,industry: reference process,new,False,2050,0.2261940083948275
+other-chemicals-production-alternative,NLC1,industry: clean process route,new,False,2030,0.001392222210967988
+pulp-production-reference,NLC3,industry: reference process,new,False,2030,1000.0
+elec_NLC5__car-DR,NLC5,demand response,new,False,2030,0.0004
+elec_NLC5__car-DR,NLC5,demand response,new,False,2040,0.00020000000000000004
+elec_NLC5__car-DR,NLC5,demand response,new,False,2050,0.0010999999999999998
+pharmaceuticals-production-reference,NLC6,industry: reference process,new,False,2030,999.9962529343113
+pharmaceuticals-production-reference,NLC6,industry: reference process,new,False,2050,0.003747065688685325
+wood-and-wood-products_production-reference,NLC4,industry: reference process,new,False,2030,999.9963096776145
+other-chemicals-production-reference,BEC2,industry: reference process,new,False,2030,999.996136697014
+other-chemicals-production-reference,BEC2,industry: reference process,new,False,2050,0.0038633029860193346
+solar-PV-no-tracking,NLC1,solar PV,new,False,2050,11.850474992380615
+machinery-equipment-production-alternative,BEC7,industry: clean process route,new,False,2030,0.01912584497550299
+elec_NLC9__truck-DR,NLC9,demand response,new,False,2040,5e-05
+elec_NLC9__truck-DR,NLC9,demand response,new,False,2050,5e-05
+elec_NLC4__truck-DR,NLC4,demand response,new,False,2030,0.0003
+elec_NLC4__truck-DR,NLC4,demand response,new,False,2040,0.00015000000000000001
+elec_NLC4__truck-DR,NLC4,demand response,new,False,2050,0.00014999999999999996
+gas-boiler,NLC1,unabated fossil,new,False,2050,0.005317815475000001
+elec_BEC6__car-DR,BEC6,demand response,new,False,2030,0.0003
+elec_BEC6__car-DR,BEC6,demand response,new,False,2040,0.00020000000000000004
+elec_BEC6__car-DR,BEC6,demand response,new,False,2050,0.0013000000000000002
+machinery-equipment-production-reference,BEC5,industry: reference process,new,False,2030,999.9543922158276
+machinery-equipment-production-reference,BEC5,industry: reference process,new,False,2050,0.04560778417237543
+bioST,BEC1,bioenergy,new,False,2030,4.1799098364793545
+bioST,BEC1,bioenergy,new,False,2040,0.4233090336423624
+bioST,BEC1,bioenergy,new,False,2050,10.27096777922965
+bio-boiler,NLC5,bioenergy,new,False,2050,0.19364387362499996
+pulp-production-alternative,NLC3,industry: clean process route,new,False,2030,0.000878765591002419
+elec_NLC2__bus-DR,NLC2,demand response,new,False,2040,5e-05
+elec_NLC2__bus-DR,NLC2,demand response,new,False,2050,5e-05
+leather-and-textile-production-reference,BEC6,industry: reference process,new,False,2030,999.9927688158388
+leather-and-textile-production-reference,BEC6,industry: reference process,new,False,2050,0.007231184161241799
+REF(H2),NLC1,hydrogen production,new,False,2050,0.0038989421576260765
+food-beverages-tobacco-production-reference,BEC8,industry: reference process,new,False,2030,999.828986188558
+food-beverages-tobacco-production-reference,BEC8,industry: reference process,new,False,2050,0.17101381144198058
+bioST,NLC3,bioenergy,new,False,2050,0.9980497497676266
+transport-equipment-production-reference,BEC4,industry: reference process,new,False,2030,999.9935248495108
+transport-equipment-production-reference,BEC4,industry: reference process,new,False,2050,0.0064751504892228695
+pulp-production-reference,NLC6,industry: reference process,new,False,2030,1000.0
+leather-and-textile-production-reference,NLC6,industry: reference process,new,False,2030,999.9873063785647
+leather-and-textile-production-reference,NLC6,industry: reference process,new,False,2050,0.012693621435346358
+bio-boiler,BEC6,bioenergy,new,False,2050,0.12903055844444444
+other-industrial-sectors_production-alternative,NLC7,industry: clean process route,new,False,2030,0.03954851638113219
+paper-production-reference,BEC6,industry: reference process,new,False,2030,999.9897700678649
+paper-production-reference,BEC6,industry: reference process,new,False,2050,0.010229932135075614
+printing-and-media-production-reference,NLC1,industry: reference process,new,False,2030,999.9943582634422
+printing-and-media-production-reference,NLC1,industry: reference process,new,False,2050,0.005641736557777222
+elec_BEC5__car-DR,BEC5,demand response,new,False,2030,0.0004
+elec_BEC5__car-DR,BEC5,demand response,new,False,2040,0.00025000000000000006
+elec_BEC5__car-DR,BEC5,demand response,new,False,2050,0.0014500000000000003
+solar-PV-no-tracking,NLC9,solar PV,new,False,2050,2.0755
+machinery-equipment-production-alternative,BEC4,industry: clean process route,new,False,2030,0.016183407286963974
+elec_NLC8__car-DR,NLC8,demand response,new,False,2030,0.0005
+elec_NLC8__car-DR,NLC8,demand response,new,False,2040,0.00030000000000000003
+elec_NLC8__car-DR,NLC8,demand response,new,False,2050,0.0021
+elec_BEC2__car-DR,BEC2,demand response,new,False,2030,0.0009000000000000001
+elec_BEC2__car-DR,BEC2,demand response,new,False,2040,0.00055
+elec_BEC2__car-DR,BEC2,demand response,new,False,2050,0.0026499999999999996
+transport-equipment-production-alternative,BEC3,industry: clean process route,new,False,2030,0.00470920035577105
+(NG)NH3-MVR-DEA,NLC9,industry: CCS-equipped,new,True,2030,0.12299543378995431
+other-chemicals-production-alternative,NLC7,industry: clean process route,new,False,2030,0.048209131149101137
+other-chemicals-production-alternative,BEC1,industry: clean process route,new,False,2030,0.05647587994829867
+food-beverages-tobacco-production-alternative,BEC2,industry: clean process route,new,False,2030,0.29331464291355425
+food-beverages-tobacco-production-alternative,BEC2,industry: clean process route,new,False,2050,0.00752088827983477
+other-chemicals-production-alternative,BEC2,industry: clean process route,new,False,2030,0.003863302986014082
+transport-equipment-production-alternative,NLC9,industry: clean process route,new,False,2030,0.006375223749733996
+transport-equipment-production-reference,NLC3,industry: reference process,new,False,2030,999.9845760715732
+transport-equipment-production-reference,NLC3,industry: reference process,new,False,2050,0.015423928426798739
+elec_NLC1__truck-DR,NLC1,demand response,new,False,2030,0.0003
+elec_NLC1__truck-DR,NLC1,demand response,new,False,2040,0.00020000000000000004
+elec_NLC1__truck-DR,NLC1,demand response,new,False,2050,0.00019999999999999998
+other-industrial-sectors_production-reference,BEC2,industry: reference process,new,False,2030,999.9663166235464
+other-industrial-sectors_production-reference,BEC2,industry: reference process,new,False,2050,0.033683376453609526
+aluminium-primary-production-reference,NLC7,industry: reference process,new,False,2030,999.9946707073435
+elec_BEC1__bus-DR,BEC1,demand response,new,False,2040,5e-05
+elec_BEC1__bus-DR,BEC1,demand response,new,False,2050,5e-05

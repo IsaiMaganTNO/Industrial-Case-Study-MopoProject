@@ -72,9 +72,50 @@ def ouput_data():
     rp_days.index = range(1,rp_days.shape[0]+1)
 
     add_entity(sopt_db,"temporal_block",("all_rps",))
-    add_entity(sopt_db,"model__default_temporal_block",("capacity_planning","all_rps"))
+    add_entity(sopt_db,"model__default_temporal_block",("capacity_planning","all_rps"))    # Number of representative periods, and the day-of-year each one refers to.
+    #
+    # Both are read from files that must AGREE:
+    #   results/weights_<wy>.csv                  - one column per rep period
+    #   results/representative_periods.csv        - one row per rep period
+    #
+    # representative_periods.csv is written by the UNSEEDED branch of
+    # tulipa_call.jl only. When clustering is seeded from
+    # results/initial_representative_periods_<wy>.csv it would otherwise go
+    # stale, so tools/make_cluster_seed.py rewrites it alongside the seed.
+    #
+    # Two bugs came from trusting a stale copy of that file, and both are worth
+    # remembering because the second was silent:
+    #
+    #   LENGTH - a 3-medoid file left behind by an earlier run made total_rps 3
+    #     while the weights had 2 columns. representative_block_index is
+    #     year_index*total_rps + rp_day, so it produced 1,2, 4,5, 7,8 - gaps at
+    #     3 and 6 - and SpineOpt failed the build with
+    #     "there's no representative temporal block(s) with indexes Any[3, 6]".
+    #
+    #   CONTENTS - block_start read row `rp_day` of the same stale
+    #     [12, 49, 231], so pinning days (12, 231) silently stamped the blocks
+    #     onto 12 Jan and 18 FEB. The run solved to OPTIMAL as a two-WINTER-day
+    #     model while every check we had - weights summing to 365, convex
+    #     coefficients, contiguous block indexes - still passed.
+    #
+    # Hence the hard failure below rather than a warning: a mismatch here
+    # silently invalidates the whole run.
+    total_rps = (
+        pd.read_csv(f"results/weights_{rp_days.columns[0]}.csv")["rep_period"].nunique()
+    )
+    if total_rps != rp_days.shape[0]:
+        raise RuntimeError(
+            f"representative_periods.csv lists {rp_days.shape[0]} day(s) "
+            f"{[int(x) for x in rp_days[rp_days.columns[0]]]} but the weights "
+            f"define {total_rps} representative period(s). These must agree, or "
+            f"block_start will silently point at the wrong days. If clustering "
+            f"was seeded, regenerate with tools/make_cluster_seed.py."
+        )
+    rp_day_of_year = {
+        int(i): int(rp_days.at[i, rp_days.columns[0]]) for i in rp_days.index
+    }
+    print(f"representative days (day-of-year): {rp_day_of_year}")
 
-    total_rps = rp_days.shape[0]
     for year in ["2030","2040","2050"]:
         for alternative in rp_days.columns:
             weights = pd.read_csv(f"results/weights_{alternative}.csv").pivot(index='period', columns='rep_period', values='weight').fillna(0.0)
@@ -100,9 +141,10 @@ def ouput_data():
                 time_index = pd.date_range(start=f"{(year if year != '2040' else '2041')}-01-01 00:00:00",end=f"{(year if year != '2040' else '2041')}-12-31 23:00:00",freq="1h")
 
                 year_start = pd.Timestamp(f"{(year if year != '2040' else '2041')}-01-01 00:00:00")
-                block_start = (year_start + pd.Timedelta(f"{int(period_hours*3600*(float(rp_days.at[rp_day,alternative])-1))}s")).isoformat()
+                _doy = rp_day_of_year[int(rp_day)]
+                block_start = (year_start + pd.Timedelta(f"{int(period_hours*3600*(_doy-1))}s")).isoformat()
                 add_or_update_parameter_value(sopt_db,"temporal_block","block_start",alternative_name,entity_name,{"type":"date_time","data":block_start})
-                block_end   = (year_start + pd.Timedelta(f"{int(period_hours*3600*float(rp_days.at[rp_day,alternative]))}s")).isoformat()
+                block_end   = (year_start + pd.Timedelta(f"{int(period_hours*3600*_doy)}s")).isoformat()
                 add_or_update_parameter_value(sopt_db,"temporal_block","block_end",alternative_name,entity_name,{"type":"date_time","data":block_end})
 
             map_rp = {"type":"map","index_type":"date_time","index_name":"t","data":[((time_index[period_hours*(i-1)]).isoformat(),{"type":"array","data":[weights.at[i,j]*(year == year_i) for year_i in ["2030","2040","2050"] for j in weights.columns],"value_type": "float",}) for i in weights.index]}

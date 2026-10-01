@@ -1,0 +1,21 @@
+=== distinct (fuel, coeff) over 330 atmosphere ratios ===
+  fuel=coal         coeff=0.35     units=209
+  fuel=crude        coeff=0.26     units=51
+  fuel=waste        coeff=0.3      units=38
+  fuel=fossil-CH4   coeff=0.2      units=26
+  fuel=CO2-injection-NSNL012_NLC1 coeff=1.0      units=1
+  fuel=CO2-injection-NSNL012_NLC5 coeff=1.0      units=1
+  fuel=CO2-injection-NSNL012_NLC6 coeff=1.0      units=1
+  fuel=CO2-injection-NSNL031_NLC1 coeff=1.0      units=1
+  fuel=CO2-injection-NSNL031_NLC5 coeff=1.0      units=1
+  fuel=CO2-injection-NSNL031_NLC6 coeff=1.0      units=1
+
+total units: 1690
+routes matching a unit base name: 108 / 120
+matched examples: ['((BM)MeOH)O', '((BM+H2)MeOH)O', '((COEL)MeOH)O-MEA', '(BM)FT', '(BM)MeOH', '(BM)NH3', '(COEL)FT-MEA', '(COEL)MeOH-MEA', '(EL)-CC_gco', '(EL)-CC_gfi', '(EL)-CC_gfl', '(EL)PE']
+unmatched: 12 -> ['alumina-production-alternative', 'alumina-production-reference', 'aluminium-secondary-production-alternative', 'aluminium-secondary-production-reference', 'steel-electric-arc-finishing-alternative', 'steel-electric-arc-finishing-reference', 'steel-electric-arc-rolling-alternative', 'steel-electric-arc-rolling-reference', 'steel-integrated-steelworks-finishing-alternative', 'steel-integrated-steelworks-finishing-reference', 'steel-integrated-steelworks-rolling-alternative', 'steel-integrated-steelworks-rolling-reference']
+
+distinct emitting unit base names: 45
+  of these, HAVE route emission data : 34
+  of these, have NO route data (fuel fallback stays): 11
+  no-route examples: ['CO2-injection-NSNL012_NLC1_', 'CO2-injection-NSNL012_NLC5_', 'CO2-injection-NSNL012_NLC6_', 'CO2-injection-NSNL031_NLC1_', 'CO2-injection-NSNL031_NLC5_', 'CO2-injection-NSNL031_NLC6_', 'LNG-terminal', 'SCPC-existing', 'coal-boiler-existing', 'gas-extraction', 'wasteST-existing']

@@ -1,0 +1,15 @@
+total atmosphere flow_ratio_equality_coefficient rows: 330
+
+=== refinery units (first 12) ===
+REF(H2)_BEC1__atmosphere__crude__REF(H2)_BEC1                          0.26
+REF(H2)_BEC2__atmosphere__crude__REF(H2)_BEC2                          0.26
+REF(H2)_BEC3__atmosphere__crude__REF(H2)_BEC3                          0.26
+REF(H2)_BEC4__atmosphere__crude__REF(H2)_BEC4                          0.26
+REF(H2)_BEC5__atmosphere__crude__REF(H2)_BEC5                          0.26
+REF(H2)_BEC6__atmosphere__crude__REF(H2)_BEC6                          0.26
+REF(H2)_BEC7__atmosphere__crude__REF(H2)_BEC7                          0.26
+REF(H2)_BEC8__atmosphere__crude__REF(H2)_BEC8                          0.26
+REF(H2)_NLC1__atmosphere__crude__REF(H2)_NLC1                          0.26
+REF(H2)_NLC2__atmosphere__crude__REF(H2)_NLC2                          0.26
+REF(H2)_NLC3__atmosphere__crude__REF(H2)_NLC3                          0.26
+REF(H2)_NLC4__atmosphere__crude__REF(H2)_NLC4                          0.26

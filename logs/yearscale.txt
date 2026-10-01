@@ -1,0 +1,12 @@
+=== operational block duration (this is what scales a day to a year) ===
+  operations_y2030               span=   8760 h  step=   8760 h  -> 1 timestep(s)
+  operations_y2040               span=   8760 h  step=   8760 h  -> 1 timestep(s)
+  operations_y2050               span=   8760 h  step=   8760 h  -> 1 timestep(s)
+  representative_period_2030_1   span=     24 h  step=      1 h  -> 24 timestep(s)
+  representative_period_2040_1   span=     24 h  step=      1 h  -> 24 timestep(s)
+  representative_period_2050_1   span=     24 h  step=      1 h  -> 24 timestep(s)
+
+=== atmosphere: budget vs realised state (24h run) ===
+  storage_investment_count_max_cumulative    2030-01-01=165.4, 2041-01-01=36.8, 2050-01-01=0, 2060-01-01=0
+  storage_state_max                          1000.0
+  realised node_state_longterm: 2030-01-01=1.654e+05, 2040-01-02=35788, 2041-01-01=36800, 2049-01-01=0, 2050-01-01=0

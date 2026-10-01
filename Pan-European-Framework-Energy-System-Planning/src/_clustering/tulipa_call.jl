@@ -31,7 +31,93 @@ println("WARNING: Check whether there are extreme periods from the loop with the
 # is no intra-period dynamics to arbitrage and storage investment was pinned at
 # exactly 0.00). Adding representatives instead would only add a second weather
 # pattern at double the cost. Still below the EU case's 5 x 24 h.
-number_of_representatives = 1
+#
+# 2026-09-28: raised to THREE REPRESENTATIVE DAYS (3 x 24 h).
+#
+# One representative day was not enough, and the reason is specific: the single
+# medoid landed on 12 JANUARY, which is midwinter and not representative of the
+# year at all. Measured against the wy2009 profiles:
+#
+#     technology        annual mean    12 Jan
+#     solar-PV  BEC1       0.1346      0.0512
+#     solar-PV  NLC5       0.1429      0.0433
+#     wind-on   BEC1       0.3045      0.9255
+#     wind-on   NLC5       0.4290      0.9493
+#
+# Solar was shown at ~1/3 of its annual average and wind at 2-3x its annual
+# average, and that single day was then weighted x365. The model consequently
+# built +32.8 units of onshore wind and ZERO solar PV, and zero batteries (a
+# near-constant 0.95 wind day offers nothing to arbitrage). Those are artefacts
+# of the sample, not results.
+#
+# Three medoids should span a wider set of weather patterns and bring the
+# blended day closer to an annual average. Cost is ~3x the operational
+# timesteps (75 -> ~219 in the tiny model), which is affordable because the
+# operations_y* blocks stay coarsened at 365D - this does NOT reintroduce the
+# 8760-hour build.
+#
+# Still below the EU case's 5 x 24 h.
+# 2026-09-28 (later): reduced to TWO representative days, but PINNED rather than
+# clustered, via results/initial_representative_periods_wy2009.csv.
+#
+# The 3-representative run (medoids 12, 49, 231) produced a 3,043,463-column LP
+# that hit the 6 h time limit with primal: NO_SOLUTION and an EMPTY results DB.
+# Extrapolating from atmfix (893,361 cols, 675,067 iterations, optimal in 38
+# min), 3 reps needs an estimated 9-25 h. Two reps is ~2x atmfix rather than
+# ~3.4x, which should land in the 1.5-3 h range we have direct evidence for.
+#
+# Dropping to 2 by re-clustering would NOT guarantee a summer day - k=2 could
+# easily return two winter/shoulder medoids and reproduce exactly the bug we are
+# trying to fix. So the days are pinned instead: 12 (midwinter, the original
+# medoid) and 231 (19 Aug, the summer day that k=3 found). The seed file is
+# consumed by the `isfile(initial_path)` branch below, which also DERIVES the
+# representative count from the file, so number_of_representatives is overridden
+# when that file is present.
+#
+# The pinned pair BRACKETS the annual mean on every weather-driven profile,
+# which a single midwinter day structurally cannot:
+#
+#     profile         annual    12 Jan    19 Aug
+#     solar           0.1433    0.0624    0.2776
+#     wind            0.3969    0.9778    0.2045
+#     cool            0.0917    0.0000    0.4309
+#     DHW_or_space    0.3469    0.5169    0.2439
+#
+# Note that cooling demand is EXACTLY ZERO on 12 January, so the 1-rep model had
+# no cooling load anywhere in the horizon.
+#
+# To go back to unpinned clustering, delete
+# results/initial_representative_periods_wy2009.csv and set the count below.
+# Regenerate the seed with tools/make_cluster_seed.py.
+#
+# Still below the EU case's 5 x 24 h.
+
+# 2026-09-29: SUMMER-ONLY RUN. One representative day, PINNED to day 231
+# (19 August), via results/initial_representative_periods_wy2009.csv.
+#
+# This is a deliberate CONTRAST to the original 1-rep run, which used 12 January
+# and biased the model hard towards wind. A single summer day biases the other
+# way. Neither is a defensible standalone result; the PAIR is what is
+# informative, because it brackets the annual mean:
+#
+#     profile         annual    12 Jan    19 Aug
+#     solar           0.1433    0.0624    0.2776
+#     wind            0.3969    0.9778    0.2045
+#     cool            0.0917    0.0000    0.4309
+#     DHW_or_space    0.3469    0.5169    0.2439
+#
+# Note cooling demand is EXACTLY ZERO on 12 January, so the winter run had no
+# cooling load anywhere in the horizon.
+#
+# The previous "2 representative day" run (12 Jan + 19 Aug) was INVALID: a stale
+# results/representative_periods.csv made clustering_output.py stamp the blocks
+# onto 12 Jan and 18 FEB, so it silently solved as a two-WINTER-day model. See
+# the comment in clustering_output.py. That is now a hard error.
+#
+# number_of_representatives is OVERRIDDEN by the seed file whenever it exists;
+# the value below only applies on the unseeded path.
+
+number_of_representatives = 1   # overridden by the seed file when it exists.
 number_of_timesteps = 24   # one full day, restoring the diurnal cycle.
 
 function get_data(input_folder,year)

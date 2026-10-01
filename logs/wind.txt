@@ -1,0 +1,143 @@
+=== 1. wind/solar UNIT entities in the model ===
+   solar-PV-existing                            x17
+   solar-PV-no-tracking                         x17
+   wind-off-FB-SP370-HH155_NSBE01               x1
+   wind-off-FB-SP370-HH155_NSNL011              x1
+   wind-off-FB-SP370-HH155_NSNL012              x1
+   wind-off-FB-SP370-HH155_NSNL031              x1
+   wind-off-FB-SP370-HH155_NSNL032              x1
+   wind-off-FB-SP370-HH155_NSNL033              x1
+   wind-off-FB-existing_NSBE01                  x1
+   wind-off-FB-existing_NSNL011                 x1
+   wind-off-FB-existing_NSNL031                 x1
+   wind-off-FO-SP370-HH155_NSBE01               x1
+   wind-off-FO-SP370-HH155_NSNL011              x1
+   wind-off-FO-SP370-HH155_NSNL012              x1
+   wind-off-FO-SP370-HH155_NSNL031              x1
+   wind-off-FO-SP370-HH155_NSNL032              x1
+   wind-off-FO-SP370-HH155_NSNL033              x1
+   wind-on-SP277-HH100                          x17
+   wind-on-existing                             x15
+
+=== 2. cost / cap parameters per family ===
+   solar-PV-existing                        capex=       - fom=0.001323 cap/unit=       - max=   1.259 init=   2.653
+   solar-PV-existing_BEC1__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_BEC2__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_BEC3__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_BEC4__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_BEC5__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_BEC6__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_BEC7__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_BEC8__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_NLC1__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_NLC2__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_NLC3__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_NLC4__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_NLC5__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_NLC6__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_NLC7__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_NLC8__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-existing_NLC9__elec             capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking                     capex=   487.7 fom=0.001031 cap/unit=       - max=    1000 init=       -
+   solar-PV-no-tracking_BEC1__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_BEC2__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_BEC3__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_BEC4__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_BEC5__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_BEC6__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_BEC7__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_BEC8__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_NLC1__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_NLC2__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_NLC3__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_NLC4__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_NLC5__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_NLC6__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_NLC7__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_NLC8__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   solar-PV-no-tracking_NLC9__elec          capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FB-SP370-HH155_NSBE01           capex=    3293 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FB-SP370-HH155_NSBE01__elec     capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FB-SP370-HH155_NSNL011          capex=    3293 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FB-SP370-HH155_NSNL011__elec    capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FB-SP370-HH155_NSNL012          capex=    3293 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FB-SP370-HH155_NSNL012__elec    capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FB-SP370-HH155_NSNL031          capex=    3293 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FB-SP370-HH155_NSNL031__elec    capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FB-SP370-HH155_NSNL032          capex=    3293 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FB-SP370-HH155_NSNL032__elec    capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FB-SP370-HH155_NSNL033          capex=    3293 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FB-SP370-HH155_NSNL033__elec    capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FB-existing_NSBE01              capex=       - fom=0.004735 cap/unit=       - max=   0.975 init=     2.3
+   wind-off-FB-existing_NSBE01__elec        capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FB-existing_NSNL011             capex=       - fom=0.004735 cap/unit=       - max=   1.599 init=   3.323
+   wind-off-FB-existing_NSNL011__elec       capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FB-existing_NSNL031             capex=       - fom=0.004735 cap/unit=       - max=  0.9512 init=   1.977
+   wind-off-FB-existing_NSNL031__elec       capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FO-SP370-HH155_NSBE01           capex=    5517 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FO-SP370-HH155_NSBE01__elec     capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FO-SP370-HH155_NSNL011          capex=    5517 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FO-SP370-HH155_NSNL011__elec    capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FO-SP370-HH155_NSNL012          capex=    5517 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FO-SP370-HH155_NSNL012__elec    capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FO-SP370-HH155_NSNL031          capex=    5517 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FO-SP370-HH155_NSNL031__elec    capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FO-SP370-HH155_NSNL032          capex=    5517 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FO-SP370-HH155_NSNL032__elec    capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-off-FO-SP370-HH155_NSNL033          capex=    5517 fom=  0.0039 cap/unit=       - max=    1000 init=       -
+   wind-off-FO-SP370-HH155_NSNL033__elec    capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100                      capex=    1550 fom=0.002173 cap/unit=       - max=    1000 init=       -
+   wind-on-SP277-HH100_BEC1__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_BEC2__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_BEC3__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_BEC4__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_BEC5__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_BEC6__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_BEC7__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_BEC8__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_NLC1__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_NLC2__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_NLC3__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_NLC4__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_NLC5__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_NLC6__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_NLC7__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_NLC8__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-SP277-HH100_NLC9__elec           capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing                         capex=       - fom=0.002321 cap/unit=       - max=  0.2626 init=  0.6226
+   wind-on-existing_BEC1__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_BEC2__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_BEC3__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_BEC4__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_BEC5__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_BEC7__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_BEC8__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_NLC1__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_NLC2__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_NLC3__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_NLC4__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_NLC5__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_NLC6__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_NLC7__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+   wind-on-existing_NLC8__elec              capex=       - fom=       - cap/unit=       1 max=       - init=       -
+
+=== 3. what was actually built (24h run) ===
+   wind-on-SP277-HH100                               48.09
+   solar-PV-existing                                  0.00
+   wind-off-FO-SP370-HH155_NSBE01                     0.00
+   wind-on-existing                                   0.00
+   solar-PV-no-tracking                               0.00
+   wind-off-FB-SP370-HH155_NSNL033                    0.00
+   wind-off-FB-SP370-HH155_NSNL032                    0.00
+   wind-off-FB-SP370-HH155_NSNL031                    0.00
+   wind-off-FO-SP370-HH155_NSNL031                    0.00
+   wind-off-FO-SP370-HH155_NSNL011                    0.00
+   wind-off-FB-SP370-HH155_NSBE01                     0.00
+   wind-off-FB-SP370-HH155_NSNL012                    0.00
+   wind-off-FO-SP370-HH155_NSNL012                    0.00
+   wind-off-FB-SP370-HH155_NSNL011                    0.00
+   wind-off-FO-SP370-HH155_NSNL033                    0.00
+   wind-off-FB-existing_NSNL011                       0.00
+   wind-off-FO-SP370-HH155_NSNL032                    0.00
+   wind-off-FB-existing_NSBE01                        0.00
+   wind-off-FB-existing_NSNL031                       0.00
