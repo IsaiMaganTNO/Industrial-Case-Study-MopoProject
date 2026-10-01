@@ -37,7 +37,7 @@ using Printf
 const JuMP = SpineOpt.JuMP
 using Gurobi
 
-const TIME_LIMIT = 172800.0  # 48 hours - same ceiling as the HiGHS script.
+const TIME_LIMIT = parse(Float64, get(ENV, "SPINEOPT_TIME_LIMIT", "172800.0"))  # 48 h default; override via env for short structural tests.
 
 # NumericFocus: 0 = default (speed), 1-3 = progressively more care with
 # numerics at the cost of time. The EU case used 2. We start at 0 so the FIRST
