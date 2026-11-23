@@ -1,0 +1,28 @@
+# Industrial-case model patches, applied by tools/apply_ic_patches.py in this order.
+# Placeholders: {src} input DB, {dst} output DB, {work} work folder, {root} repository root.
+# "inplace: true" means the script edits {dst} itself (the tool copies {src} -> {dst} first).
+# Remove a step or set "enabled: false" to skip it. "--from STEP" starts at a later step.
+
+case: mr_ccslow_ccu_cap16_dac0     # mixed resolution, pessimistic CCS (final baseline)
+
+steps:
+  # --- standard patches (docs/STANDARD_model_patches.md) ---------------------------------
+  - {id: route_emissions,   script: tools/patch_route_emissions.py,    args: ["{src}", "{dst}"]}
+  - {id: co2_cap_div365,    script: tools/patch_co2_cap_div365.py,     args: ["{src}", "{dst}"]}
+  - {id: biomass_cap_div365, script: tools/patch_biomass_cap_div365.py, args: ["{src}", "{dst}"]}
+  - {id: retire_screen,     script: tools/screen_retirement.py,        args: ["{src}", "--csv", "{work}/retire_screen.csv"], output: none}
+  - {id: retire_industry,   script: tools/patch_retire_industry.py,    args: ["{dst}", "--screen", "{work}/retire_screen.csv"], inplace: true}
+  - {id: hc_co2,            script: tools/patch_hc_co2.py,             args: ["{src}", "{dst}"]}
+  - {id: co2_bidirectional, script: tools/patch_co2_bidirectional.py,  args: ["{src}", "{dst}"]}
+  - {id: gas_availability,  script: tools/patch_gas_availability.py,   args: ["{src}", "{dst}"]}
+  - {id: onshore_vre_potential, script: tools/patch_onshore_vre_potential.py, args: ["{src}", "{dst}"]}
+  - {id: co2_storage_div365, script: tools/patch_co2_storage_div365.py, args: ["{src}", "{dst}"]}
+  # --- case settings (mr_fix) ---------------------------------------------------------------
+  - {id: nodac_lng,         script: tools/patch_nodac_lng.py,          args: ["{src}", "{dst}"]}
+  - {id: nuclear_country_caps, script: tools/patch_nuclear_country_caps.py, args: ["{src}", "{dst}"]}
+  - {id: restamp_2041,      script: tools/patch_restamp_2041.py,       args: ["{src}", "{dst}"]}
+  # --- pessimistic CCS and final fixes ----------------------------------------------------
+  - {id: ccs_pessimistic,   script: tools/make_ccs_pessimistic.py,     args: ["{src}", "{dst}", "{root}/verification/CO2_data_IC1_low_cost.xlsx", "{root}/verification/CO2_data_IC1_high_cost.xlsx"]}
+  - {id: dac_existing0,     script: tools/patch_dac_existing0.py,      args: ["{src}", "{dst}"]}
+  - {id: ccu_co2,           script: tools/patch_ccu_co2.py,            args: ["{src}", "{dst}"]}
+  - {id: nl_storage_cap,    script: tools/patch_co2cap_set.py,         args: ["{src}", "{dst}", "13.5"]}
