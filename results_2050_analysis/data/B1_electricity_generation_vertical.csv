@@ -1,0 +1,151 @@
+run,label,country,year,item,twh
+MR,Mixed resolution,NL,2050,Offshore wind,206.91044078114354
+MR,Mixed resolution,NL,2050,Onshore wind,27.062260216160897
+MR,Mixed resolution,NL,2050,Solar PV,41.61766334750685
+MR,Mixed resolution,NL,2050,Nuclear,16.06173014500774
+MR,Mixed resolution,NL,2050,Gas power,0.0
+MR,Mixed resolution,NL,2050,Gas power + CCS,0.0
+MR,Mixed resolution,NL,2050,Hydrogen turbines,0.0
+MR,Mixed resolution,NL,2050,Biomass power,0.0
+MR,Mixed resolution,NL,2050,Biomass power + CCS,0.0
+MR,Mixed resolution,NL,2050,Coal power,0.0
+MR,Mixed resolution,NL,2050,Oil power,0.0
+MR,Mixed resolution,NL,2050,Waste incineration,0.0
+MR,Mixed resolution,NL,2050,Hydro (run-of-river),0.10469122668739204
+MR,Mixed resolution,NL,2050,Battery discharge,16.4677208214028
+MR,Mixed resolution,NL,2050,Other,0.0
+NATCAP,National CO2 caps,NL,2050,Offshore wind,206.83994998836224
+NATCAP,National CO2 caps,NL,2050,Onshore wind,27.062260216160897
+NATCAP,National CO2 caps,NL,2050,Solar PV,41.61766334750685
+NATCAP,National CO2 caps,NL,2050,Nuclear,21.442806986262504
+NATCAP,National CO2 caps,NL,2050,Gas power,0.0
+NATCAP,National CO2 caps,NL,2050,Gas power + CCS,0.0
+NATCAP,National CO2 caps,NL,2050,Hydrogen turbines,0.0
+NATCAP,National CO2 caps,NL,2050,Biomass power,0.0
+NATCAP,National CO2 caps,NL,2050,Biomass power + CCS,0.0
+NATCAP,National CO2 caps,NL,2050,Coal power,0.0
+NATCAP,National CO2 caps,NL,2050,Oil power,0.0
+NATCAP,National CO2 caps,NL,2050,Waste incineration,0.0
+NATCAP,National CO2 caps,NL,2050,Hydro (run-of-river),0.10469122668739204
+NATCAP,National CO2 caps,NL,2050,Battery discharge,20.856672786262692
+NATCAP,National CO2 caps,NL,2050,Other,0.0
+RP10,10 repr. days,NL,2050,Offshore wind,273.87037628532283
+RP10,10 repr. days,NL,2050,Onshore wind,20.56944454541214
+RP10,10 repr. days,NL,2050,Solar PV,46.15730881683379
+RP10,10 repr. days,NL,2050,Nuclear,42.45283028555391
+RP10,10 repr. days,NL,2050,Gas power,6.929240001522863
+RP10,10 repr. days,NL,2050,Gas power + CCS,0.0
+RP10,10 repr. days,NL,2050,Hydrogen turbines,0.17050857452646562
+RP10,10 repr. days,NL,2050,Biomass power,0.0
+RP10,10 repr. days,NL,2050,Biomass power + CCS,0.0
+RP10,10 repr. days,NL,2050,Coal power,0.0
+RP10,10 repr. days,NL,2050,Oil power,0.0
+RP10,10 repr. days,NL,2050,Waste incineration,0.0
+RP10,10 repr. days,NL,2050,Hydro (run-of-river),0.08511851688569715
+RP10,10 repr. days,NL,2050,Battery discharge,55.93700673425641
+RP10,10 repr. days,NL,2050,Other,0.0
+CCSOPT,Optimistic CCS,NL,2050,Offshore wind,147.52938618126856
+CCSOPT,Optimistic CCS,NL,2050,Onshore wind,27.062260216160897
+CCSOPT,Optimistic CCS,NL,2050,Solar PV,41.61766334750685
+CCSOPT,Optimistic CCS,NL,2050,Nuclear,0.0
+CCSOPT,Optimistic CCS,NL,2050,Gas power,0.41902674876854085
+CCSOPT,Optimistic CCS,NL,2050,Gas power + CCS,10.858813278035706
+CCSOPT,Optimistic CCS,NL,2050,Hydrogen turbines,0.0
+CCSOPT,Optimistic CCS,NL,2050,Biomass power,0.0
+CCSOPT,Optimistic CCS,NL,2050,Biomass power + CCS,0.0
+CCSOPT,Optimistic CCS,NL,2050,Coal power,0.0
+CCSOPT,Optimistic CCS,NL,2050,Oil power,0.0
+CCSOPT,Optimistic CCS,NL,2050,Waste incineration,0.0
+CCSOPT,Optimistic CCS,NL,2050,Hydro (run-of-river),0.10469122668739204
+CCSOPT,Optimistic CCS,NL,2050,Battery discharge,4.950815818266634
+CCSOPT,Optimistic CCS,NL,2050,Other,0.0
+FRLU,With FR + LU,NL,2050,Offshore wind,186.87640276770802
+FRLU,With FR + LU,NL,2050,Onshore wind,26.970266691599747
+FRLU,With FR + LU,NL,2050,Solar PV,40.73759202472664
+FRLU,With FR + LU,NL,2050,Nuclear,0.0
+FRLU,With FR + LU,NL,2050,Gas power,0.0
+FRLU,With FR + LU,NL,2050,Gas power + CCS,0.0
+FRLU,With FR + LU,NL,2050,Hydrogen turbines,0.0
+FRLU,With FR + LU,NL,2050,Biomass power,0.0
+FRLU,With FR + LU,NL,2050,Biomass power + CCS,0.0
+FRLU,With FR + LU,NL,2050,Coal power,0.0
+FRLU,With FR + LU,NL,2050,Oil power,0.0
+FRLU,With FR + LU,NL,2050,Waste incineration,0.0
+FRLU,With FR + LU,NL,2050,Hydro (run-of-river),0.10034992469487686
+FRLU,With FR + LU,NL,2050,Battery discharge,11.475899950914664
+FRLU,With FR + LU,NL,2050,Other,0.0
+MR,Mixed resolution,BE,2050,Offshore wind,38.607426773593865
+MR,Mixed resolution,BE,2050,Onshore wind,9.903543776073025
+MR,Mixed resolution,BE,2050,Solar PV,11.51620442593826
+MR,Mixed resolution,BE,2050,Nuclear,52.56
+MR,Mixed resolution,BE,2050,Gas power,0.0
+MR,Mixed resolution,BE,2050,Gas power + CCS,0.0
+MR,Mixed resolution,BE,2050,Hydrogen turbines,0.0
+MR,Mixed resolution,BE,2050,Biomass power,16.214339755039667
+MR,Mixed resolution,BE,2050,Biomass power + CCS,0.0
+MR,Mixed resolution,BE,2050,Coal power,0.0
+MR,Mixed resolution,BE,2050,Oil power,0.0
+MR,Mixed resolution,BE,2050,Waste incineration,0.0
+MR,Mixed resolution,BE,2050,Hydro (run-of-river),0.19426542341089884
+MR,Mixed resolution,BE,2050,Battery discharge,1.3272155710195872
+MR,Mixed resolution,BE,2050,Other,0.0
+NATCAP,National CO2 caps,BE,2050,Offshore wind,40.74787081353996
+NATCAP,National CO2 caps,BE,2050,Onshore wind,9.903543776073025
+NATCAP,National CO2 caps,BE,2050,Solar PV,11.51620442593826
+NATCAP,National CO2 caps,BE,2050,Nuclear,52.5600000000001
+NATCAP,National CO2 caps,BE,2050,Gas power,0.0
+NATCAP,National CO2 caps,BE,2050,Gas power + CCS,2.458952372957896
+NATCAP,National CO2 caps,BE,2050,Hydrogen turbines,0.0
+NATCAP,National CO2 caps,BE,2050,Biomass power,0.0
+NATCAP,National CO2 caps,BE,2050,Biomass power + CCS,0.0
+NATCAP,National CO2 caps,BE,2050,Coal power,0.0
+NATCAP,National CO2 caps,BE,2050,Oil power,0.0
+NATCAP,National CO2 caps,BE,2050,Waste incineration,0.0
+NATCAP,National CO2 caps,BE,2050,Hydro (run-of-river),0.19426542341089884
+NATCAP,National CO2 caps,BE,2050,Battery discharge,2.1099282978703338
+NATCAP,National CO2 caps,BE,2050,Other,1.4210854715202004e-14
+RP10,10 repr. days,BE,2050,Offshore wind,36.9734068327912
+RP10,10 repr. days,BE,2050,Onshore wind,8.848759514613645
+RP10,10 repr. days,BE,2050,Solar PV,19.766245317669537
+RP10,10 repr. days,BE,2050,Nuclear,52.48562360271861
+RP10,10 repr. days,BE,2050,Gas power,0.0
+RP10,10 repr. days,BE,2050,Gas power + CCS,0.0
+RP10,10 repr. days,BE,2050,Hydrogen turbines,6.06635901789084
+RP10,10 repr. days,BE,2050,Biomass power,11.802269936194591
+RP10,10 repr. days,BE,2050,Biomass power + CCS,0.0
+RP10,10 repr. days,BE,2050,Coal power,0.0
+RP10,10 repr. days,BE,2050,Oil power,0.0
+RP10,10 repr. days,BE,2050,Waste incineration,0.0
+RP10,10 repr. days,BE,2050,Hydro (run-of-river),0.1579927974498903
+RP10,10 repr. days,BE,2050,Battery discharge,3.864758549010948
+RP10,10 repr. days,BE,2050,Other,0.0
+CCSOPT,Optimistic CCS,BE,2050,Offshore wind,21.1480252136824
+CCSOPT,Optimistic CCS,BE,2050,Onshore wind,9.903543776073025
+CCSOPT,Optimistic CCS,BE,2050,Solar PV,11.51620442593826
+CCSOPT,Optimistic CCS,BE,2050,Nuclear,0.0
+CCSOPT,Optimistic CCS,BE,2050,Gas power,0.0
+CCSOPT,Optimistic CCS,BE,2050,Gas power + CCS,88.3869923425017
+CCSOPT,Optimistic CCS,BE,2050,Hydrogen turbines,0.0
+CCSOPT,Optimistic CCS,BE,2050,Biomass power,0.0
+CCSOPT,Optimistic CCS,BE,2050,Biomass power + CCS,0.0
+CCSOPT,Optimistic CCS,BE,2050,Coal power,0.0
+CCSOPT,Optimistic CCS,BE,2050,Oil power,0.0
+CCSOPT,Optimistic CCS,BE,2050,Waste incineration,0.0
+CCSOPT,Optimistic CCS,BE,2050,Hydro (run-of-river),0.19426542341089884
+CCSOPT,Optimistic CCS,BE,2050,Battery discharge,0.0
+CCSOPT,Optimistic CCS,BE,2050,Other,0.0
+FRLU,With FR + LU,BE,2050,Offshore wind,31.258636093813408
+FRLU,With FR + LU,BE,2050,Onshore wind,10.561420217983665
+FRLU,With FR + LU,BE,2050,Solar PV,10.995624040543944
+FRLU,With FR + LU,BE,2050,Nuclear,26.318853884283996
+FRLU,With FR + LU,BE,2050,Gas power,0.9394410680219477
+FRLU,With FR + LU,BE,2050,Gas power + CCS,0.0
+FRLU,With FR + LU,BE,2050,Hydrogen turbines,1.3176529766906322
+FRLU,With FR + LU,BE,2050,Biomass power,47.27637569110871
+FRLU,With FR + LU,BE,2050,Biomass power + CCS,0.0
+FRLU,With FR + LU,BE,2050,Coal power,0.0
+FRLU,With FR + LU,BE,2050,Oil power,0.0
+FRLU,With FR + LU,BE,2050,Waste incineration,0.0
+FRLU,With FR + LU,BE,2050,Hydro (run-of-river),0.18620266545084585
+FRLU,With FR + LU,BE,2050,Battery discharge,2.2244568293435774
+FRLU,With FR + LU,BE,2050,Other,0.0

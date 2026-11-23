@@ -1,0 +1,71 @@
+run,label,country,year,item,twh
+MR,Mixed resolution,NL,2050,Industry,15.297782701855583
+MR,Mixed resolution,NL,2050,Refineries,0.0
+MR,Mixed resolution,NL,2050,Electrolysis,0.0
+MR,Mixed resolution,NL,2050,"Building heat (HP, e-heating)",0.0
+MR,Mixed resolution,NL,2050,Storage charging,0.0
+MR,Mixed resolution,NL,2050,Power generation (H2 turbines),0.0
+MR,Mixed resolution,NL,2050,Net pipeline export,34.97239168246785
+NATCAP,National CO2 caps,NL,2050,Industry,6.819296975986256
+NATCAP,National CO2 caps,NL,2050,Refineries,0.0
+NATCAP,National CO2 caps,NL,2050,Electrolysis,0.0
+NATCAP,National CO2 caps,NL,2050,"Building heat (HP, e-heating)",0.0
+NATCAP,National CO2 caps,NL,2050,Storage charging,0.0
+NATCAP,National CO2 caps,NL,2050,Power generation (H2 turbines),0.0
+NATCAP,National CO2 caps,NL,2050,Net pipeline export,40.8133854534003
+RP10,10 repr. days,NL,2050,Industry,15.369789542057344
+RP10,10 repr. days,NL,2050,Refineries,0.0
+RP10,10 repr. days,NL,2050,Electrolysis,0.0
+RP10,10 repr. days,NL,2050,"Building heat (HP, e-heating)",0.0
+RP10,10 repr. days,NL,2050,Storage charging,0.0
+RP10,10 repr. days,NL,2050,Power generation (H2 turbines),0.30447959736868846
+RP10,10 repr. days,NL,2050,Net pipeline export,52.393142102427454
+CCSOPT,Optimistic CCS,NL,2050,Industry,0.020360669273438815
+CCSOPT,Optimistic CCS,NL,2050,Refineries,0.0
+CCSOPT,Optimistic CCS,NL,2050,Electrolysis,0.0
+CCSOPT,Optimistic CCS,NL,2050,"Building heat (HP, e-heating)",0.0
+CCSOPT,Optimistic CCS,NL,2050,Storage charging,0.0
+CCSOPT,Optimistic CCS,NL,2050,Power generation (H2 turbines),0.0
+CCSOPT,Optimistic CCS,NL,2050,Net pipeline export,31.075394013195005
+FRLU,With FR + LU,NL,2050,Industry,21.355928790796685
+FRLU,With FR + LU,NL,2050,Refineries,0.0
+FRLU,With FR + LU,NL,2050,Electrolysis,0.0
+FRLU,With FR + LU,NL,2050,"Building heat (HP, e-heating)",0.0
+FRLU,With FR + LU,NL,2050,Storage charging,0.0
+FRLU,With FR + LU,NL,2050,Power generation (H2 turbines),0.0
+FRLU,With FR + LU,NL,2050,Net pipeline export,17.38292889301275
+MR,Mixed resolution,BE,2050,Industry,21.456393125710257
+MR,Mixed resolution,BE,2050,Refineries,0.0
+MR,Mixed resolution,BE,2050,Electrolysis,0.0
+MR,Mixed resolution,BE,2050,"Building heat (HP, e-heating)",0.0
+MR,Mixed resolution,BE,2050,Storage charging,0.0
+MR,Mixed resolution,BE,2050,Power generation (H2 turbines),0.0
+MR,Mixed resolution,BE,2050,Net pipeline export,0.0
+NATCAP,National CO2 caps,BE,2050,Industry,22.133364098156893
+NATCAP,National CO2 caps,BE,2050,Refineries,0.0
+NATCAP,National CO2 caps,BE,2050,Electrolysis,0.0
+NATCAP,National CO2 caps,BE,2050,"Building heat (HP, e-heating)",0.0
+NATCAP,National CO2 caps,BE,2050,Storage charging,0.0
+NATCAP,National CO2 caps,BE,2050,Power generation (H2 turbines),0.0
+NATCAP,National CO2 caps,BE,2050,Net pipeline export,0.0
+RP10,10 repr. days,BE,2050,Industry,21.57441583975409
+RP10,10 repr. days,BE,2050,Refineries,0.0
+RP10,10 repr. days,BE,2050,Electrolysis,0.0
+RP10,10 repr. days,BE,2050,"Building heat (HP, e-heating)",0.0
+RP10,10 repr. days,BE,2050,Storage charging,0.0
+RP10,10 repr. days,BE,2050,Power generation (H2 turbines),10.832783960519347
+RP10,10 repr. days,BE,2050,Net pipeline export,0.0
+CCSOPT,Optimistic CCS,BE,2050,Industry,0.030748511319440695
+CCSOPT,Optimistic CCS,BE,2050,Refineries,0.0
+CCSOPT,Optimistic CCS,BE,2050,Electrolysis,0.0
+CCSOPT,Optimistic CCS,BE,2050,"Building heat (HP, e-heating)",0.0
+CCSOPT,Optimistic CCS,BE,2050,Storage charging,0.0
+CCSOPT,Optimistic CCS,BE,2050,Power generation (H2 turbines),0.0
+CCSOPT,Optimistic CCS,BE,2050,Net pipeline export,19.9660991071007
+FRLU,With FR + LU,BE,2050,Industry,43.48315389512301
+FRLU,With FR + LU,BE,2050,Refineries,0.0
+FRLU,With FR + LU,BE,2050,Electrolysis,0.0
+FRLU,With FR + LU,BE,2050,"Building heat (HP, e-heating)",0.0
+FRLU,With FR + LU,BE,2050,Storage charging,0.0
+FRLU,With FR + LU,BE,2050,Power generation (H2 turbines),2.352951744090415
+FRLU,With FR + LU,BE,2050,Net pipeline export,0.0

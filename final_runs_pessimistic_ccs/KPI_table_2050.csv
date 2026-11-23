@@ -1,0 +1,36 @@
+Group,Unit,Item,"NL+BE (IC1), isolation","NL+BE (NUTS-0), isolation","NL+BE (IC1), interconnected"
+Total system costs,Meuro,-,3941.0,3774.8,
+Electricity,TWh,Nuclear,96.4,52.6,68.6
+Electricity,TWh,Wind offshore,423.3,412.9,245.5
+Electricity,TWh,Wind onshore,37.3,37.3,37.0
+Electricity,TWh,Solar PV,54.1,53.6,53.1
+Electricity,TWh,Battery discharge,12.6,9.9,17.8
+Electricity,TWh,Biomass,0.0,0.0,16.2
+Electricity,TWh,Hydrogen turbines,13.0,13.7,0.0
+Electricity,TWh,Hydro,0.3,0.3,0.3
+Electricity,TWh,Total production,637.0,580.2,438.5
+Hydrogen,TWh,SMR (NG),0.0,0.0,0.0
+Hydrogen,TWh,Electrolysers,129.8,72.9,27.8
+Hydrogen,TWh,Import (liquid),42.5,42.5,42.5
+CH4,TWh,Methanation,0.0,0.0,0.0
+CH4,TWh,Bio-methane,25.9,25.9,0.0
+CH4,TWh,LNG landed,46.4,46.9,487.9
+CH4,TWh,Net pipeline import,-0.0,-0.0,-315.5
+CH4,TWh,Gas used in NL+BE,72.3,72.8,172.5
+Building heat,TWh,Heat pumps,121.7,120.1,35.8
+Building heat,TWh,Gas boilers,0.0,0.0,6.2
+Building heat,TWh,Biomass boilers,0.0,0.0,87.0
+Building heat,TWh,Electric heating,0.2,1.8,1.4
+Building heat,TWh,Hydrogen boilers,0.0,0.0,0.0
+CO2 captured,Mton,Total captured,31.9,27.6,50.7
+CO2 captured,Mton,CCU (methanol),15.9,11.6,0.0
+CO2 captured,Mton,CCS NL site,16.0,16.0,16.0
+CO2 captured,Mton,CO2 exported,0.0,0.0,34.7
+Steel route,% of output,MOE,71.2,100.0,0.0
+Steel route,% of output,H2 DRI-EAF,14.4,0.0,0.0
+Steel route,% of output,NG DRI-EAF+CCS,14.4,0.0,100.0
+Ammonia route,% of output,Green hydrogen,100.0,100.0,0.0
+Ammonia route,% of output,Biomass gasification,0.0,0.0,0.0
+Ammonia route,% of output,Gas SMR + CCS,0.0,0.0,100.0
+Emissions,Mton,Net emissions,-0.0,-0.0,89.7
+Emissions,Mton,Gross emissions (net + captured),31.9,27.6,140.5

@@ -1406,7 +1406,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/VRE/VRE_costs_EUR2025/VRE_costs.csv"
+                    "path": "data/VRE_NWEU/VRE_costs_EUR2025/VRE_costs.csv"
                 },
                 {
                     "type": "path",
@@ -1424,17 +1424,17 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/VRE/VRE_greenfield_installation_potentials"
+                    "path": "data/VRE_NWEU/VRE_greenfield_installation_potentials"
                 },
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/VRE/VRE_installed_capacities_2020_and_2025"
+                    "path": "data/VRE_NWEU/VRE_installed_capacities_2020_and_2025"
                 },
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/VRE/VRE_time_series"
+                    "path": "data/VRE_NWEU/VRE_time_series"
                 }
             ],
             "db_references": []
@@ -1470,19 +1470,19 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/VRE/VRE_costs_EUR2025/VRE_costs.csv"
+                    "arg": "<project>/data/VRE_NWEU/VRE_costs_EUR2025/VRE_costs.csv"
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/VRE/VRE_time_series"
+                    "arg": "<project>/data/VRE_NWEU/VRE_time_series"
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/VRE/VRE_installed_capacities_2020_and_2025"
+                    "arg": "<project>/data/VRE_NWEU/VRE_installed_capacities_2020_and_2025"
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/VRE/VRE_greenfield_installation_potentials"
+                    "arg": "<project>/data/VRE_NWEU/VRE_greenfield_installation_potentials"
                 },
                 {
                     "type": "resource",
@@ -1505,7 +1505,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Biomass/db_biomass_ener_mopo.csv"
+                    "path": "data/Biomass/db_biomass_ener_mopo_mixedres.csv"
                 },
                 {
                     "type": "path",
@@ -1531,7 +1531,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/Biomass/db_biomass_ener_mopo.csv"
+                    "arg": "<project>/data/Biomass/db_biomass_ener_mopo_mixedres.csv"
                 },
                 {
                     "type": "resource",
@@ -1871,7 +1871,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "geodata/IC1.geojson"
+                    "path": "geodata/IC1_NWEU_FRLU.geojson"
                 },
                 {
                     "type": "path",
@@ -1940,7 +1940,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/geodata/IC1.geojson"
+                    "arg": "<project>/geodata/IC1_NWEU_FRLU.geojson"
                 },
                 {
                     "type": "resource",
@@ -2006,7 +2006,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/Rdemand/other_electricity_demand_IC1.csv"
+                    "arg": "<project>/data/Rdemand/other_electricity_demand_IC1_NWEU_FRLU.csv"
                 },
                 {
                     "type": "resource",
@@ -2029,7 +2029,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Rdemand/other_electricity_demand_IC1.csv"
+                    "path": "data/Rdemand/other_electricity_demand_IC1_NWEU_FRLU.csv"
                 },
                 {
                     "type": "path",
@@ -2366,7 +2366,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Gas/Gas_Sectors_Dataset_IC1_placeholder.xlsx"
+                    "path": "data/Gas/Gas_Sectors_Dataset.xlsx"
                 },
                 {
                     "type": "path",
@@ -2392,7 +2392,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/Gas/Gas_Sectors_Dataset_IC1_placeholder.xlsx"
+                    "arg": "<project>/data/Gas/Gas_Sectors_Dataset.xlsx"
                 },
                 {
                     "type": "resource",

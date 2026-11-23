@@ -1,0 +1,125 @@
+obj components: {'fixed_om_costs': 3853262.0, 'unit_investment_costs': 2652028.0, 'taxes': 474869.0, 'variable_om_costs': 122812.0, 'connection_flow_costs': 44148.0, 'storage_investment_costs': 40744.0, 'connection_investment_costs': 2223.0, 'penalties': 0.0, 'fuel_costs': 0.0}
+penalties: 0.0
+filter rc 0  | xb rc 0 OPT 45144 94392 
+
+== KPI 2030
+                                          PESS (baseline)        OPT      diff
+objective                                       7606649.1  7190084.4 -416564.7
+offshore wind NL+BE TWh                              33.9       33.9       0.0
+electrolysis H2 NL+BE TWh                             0.0        0.0       0.0
+heat NL+BE: bioenergy                                30.3       29.3      -1.0
+heat NL+BE: boilers (other fuels)                    23.1       23.3       0.2
+heat NL+BE: electrification (heat pumps)              1.2        2.1       0.8
+heat NL+BE: unabated fossil                         119.9      120.1       0.3
+CO2 captured BE                                       0.1        0.0      -0.1
+CO2 captured NL                                       2.5        0.9      -1.6
+CO2 captured UK                                       4.7        4.7       0.0
+CO2 stored NL                                         2.5        0.9      -1.6
+CO2 stored NO                                         0.1        0.0      -0.1
+CO2 stored UK                                         4.7        4.7       0.0
+net emis BE                                         103.5      103.7       0.2
+net emis DE                                         220.7      245.6      25.0
+net emis DK                                           7.3        7.5       0.1
+net emis NL                                         135.8      139.0       3.2
+net emis NO                                         172.7      184.6      12.0
+net emis UK                                         150.2      151.2       1.0
+elec net export NL+BE TWh                            26.7        1.3     -25.3
+H2 net export NL+BE TWh                              30.6       30.6       0.0
+CH4 net export NL+BE TWh                            111.4      122.6      11.2
+
+== KPI 2040
+                                          PESS (baseline)        OPT      diff
+objective                                       7606649.1  7190084.4 -416564.7
+offshore wind NL+BE TWh                             154.3      136.5     -17.8
+electrolysis H2 NL+BE TWh                             0.0        0.0       0.0
+heat NL+BE: bioenergy                                26.3       30.6       4.3
+heat NL+BE: boilers (other fuels)                     5.2        1.6      -3.5
+heat NL+BE: electrification (heat pumps)             16.2        3.5     -12.7
+heat NL+BE: other                                     1.7        1.7       0.0
+heat NL+BE: unabated fossil                         101.1      113.0      11.9
+CO2 captured BE                                      14.7       47.7      33.0
+CO2 captured DE                                      52.3      112.4      60.1
+CO2 captured DK                                       2.4        4.0       1.6
+CO2 captured NL                                      22.8       23.1       0.3
+CO2 captured NO                                       1.8        3.3       1.5
+CO2 captured UK                                      17.4      105.8      88.4
+CO2 stored DK                                        11.0       36.5      25.5
+CO2 stored NL                                        10.5       27.2      16.7
+CO2 stored NO                                        39.9       68.7      28.8
+CO2 stored UK                                        50.0      164.0     114.0
+net emis BE                                          66.4       68.0       1.7
+net emis DE                                          73.0       97.0      24.1
+net emis DK                                          -6.9      -29.8     -22.9
+net emis NL                                          69.2       59.9      -9.3
+net emis NO                                          24.0       97.0      73.0
+net emis UK                                          29.1      -37.5     -66.6
+CO2 BE->NL                                            3.4        6.9       3.5
+CO2 BE->UK                                           14.3       43.6      29.3
+CO2 DE->DK                                            8.6       32.5      23.9
+CO2 DE->NO                                           38.1       65.4      27.3
+CO2 DE->UK                                            5.6       14.6       9.0
+CO2 NL->BE                                            3.0        2.8      -0.2
+CO2 NL->UK                                           12.7        0.0     -12.7
+elec net export NL+BE TWh                            17.8       39.4      21.6
+H2 net export NL+BE TWh                              56.0       47.4      -8.6
+CH4 net export NL+BE TWh                            217.5       38.5    -179.0
+
+== KPI 2050
+                                          PESS (baseline)        OPT      diff
+objective                                       7606649.1  7190084.4 -416564.7
+offshore wind NL+BE TWh                             245.5      168.7     -76.8
+electrolysis H2 NL+BE TWh                            27.8        8.6     -19.2
+heat NL+BE: bioenergy                                87.0        4.7     -82.2
+heat NL+BE: electrification (heat pumps)             35.8       22.6     -13.2
+heat NL+BE: other                                     1.4        0.0      -1.4
+heat NL+BE: unabated fossil                           6.2      102.1      95.9
+CO2 captured BE                                      16.3       54.5      38.2
+CO2 captured DE                                      55.3      142.5      87.2
+CO2 captured DK                                      11.0       17.0       6.0
+CO2 captured NL                                      34.4       41.8       7.4
+CO2 captured NO                                       4.4        5.7       1.3
+CO2 captured UK                                      14.0       94.9      80.9
+CO2 stored DK                                        11.0       36.5      25.5
+CO2 stored NL                                        16.0       27.2      11.2
+CO2 stored NO                                        55.9       68.7      12.8
+CO2 stored UK                                        52.5      164.0     111.5
+net emis BE                                          52.2       52.8       0.6
+net emis DE                                          10.3      -11.7     -21.9
+net emis DK                                          -9.7      -31.4     -21.7
+net emis NL                                          37.5       41.1       3.6
+net emis NO                                         -53.5       14.3      67.8
+net emis UK                                         -36.8      -65.1     -28.2
+CO2 BE->NL                                            3.4        3.7       0.3
+CO2 BE->UK                                           15.9       53.7      37.8
+CO2 DE->NO                                           51.5       63.0      11.5
+CO2 DE->UK                                            3.8        0.0      -3.8
+CO2 NL->BE                                            3.0        2.9      -0.1
+CO2 NL->UK                                           18.8       15.4      -3.4
+elec net export NL+BE TWh                            40.9       20.1     -20.8
+H2 net export NL+BE TWh                              33.5       51.0      17.5
+CH4 net export NL+BE TWh                            315.5       59.6    -255.8
+CO2 stored DE                                         0.0       60.0      60.0
+CO2 DE->DK                                            0.0       19.5      19.5
+
+== CO2 use 2050 by country: injection vs CCU (Mt)
+PESS (baseline) {('DK', 'inject'): 11.0, ('NL', 'inject'): 16.0, ('NO', 'inject'): 55.9, ('UK', 'inject'): 52.5}
+OPT {('DE', 'inject'): 60.0, ('DK', 'inject'): 36.5, ('NL', 'inject'): 27.2, ('NO', 'inject'): 68.7, ('UK', 'inject'): 164.0}
+
+== Industry route shares NL+BE (%), rows changing >=5pp
+                                            PESS (baseline)    OPT
+year sector            tech                                       
+2040 ammonia           (NG)NH3-MVR-DEA                  0.0  100.0
+                       (NG)NH3-MVR-MEA-DEA            100.0    0.0
+     cement            CEM2-(BMW)Oxy-MEA               78.3  100.0
+                       LC3-(Afm)Oxy-MEA                21.7    0.0
+     steel (primary)   (NG)DRI-EAF-MEA                 78.5   50.0
+                       BF-BOF                          21.5   50.0
+2050 ammonia           (NG)NH3-MVR-DEA                  0.0  100.0
+                       (NG)NH3-MVR-MEA-DEA            100.0    0.0
+     cement            CEM2-(BMW)Oxy-MEA               78.3  100.0
+                       LC3-(Afm)Oxy-MEA                21.7    0.0
+     glass (container) (EL)-CC_gco                     37.9    0.0
+                       (NG)-CC_gco                     57.5  100.0
+     glass (fibre)     (H2)-CC_gfi                     32.6    0.0
+                       (NG)-CC_gfi                     32.6   65.1
+DONE

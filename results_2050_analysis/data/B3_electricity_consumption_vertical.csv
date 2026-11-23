@@ -1,0 +1,81 @@
+run,label,country,year,item,twh
+MR,Mixed resolution,NL,2050,"Fixed demand (buildings, transport, other)",96.39758810503646
+MR,Mixed resolution,NL,2050,Industry,77.25753593202121
+MR,Mixed resolution,NL,2050,Refineries,5.230190271999254
+MR,Mixed resolution,NL,2050,Electrolysis,44.58606115463688
+MR,Mixed resolution,NL,2050,"Building heat (HP, e-heating)",8.858447968274715
+MR,Mixed resolution,NL,2050,Battery charging,17.50209461303306
+MR,Mixed resolution,NL,2050,Power generation (H2 turbines),0.0
+MR,Mixed resolution,NL,2050,Net export,37.24721302962698
+NATCAP,National CO2 caps,NL,2050,"Fixed demand (buildings, transport, other)",96.39758810503646
+NATCAP,National CO2 caps,NL,2050,Industry,76.58252173849372
+NATCAP,National CO2 caps,NL,2050,Refineries,6.853391285159491
+NATCAP,National CO2 caps,NL,2050,Electrolysis,40.35252671653596
+NATCAP,National CO2 caps,NL,2050,"Building heat (HP, e-heating)",8.41571320382671
+NATCAP,National CO2 caps,NL,2050,Battery charging,22.16672631125804
+NATCAP,National CO2 caps,NL,2050,Power generation (H2 turbines),0.0
+NATCAP,National CO2 caps,NL,2050,Net export,36.65878707730352
+RP10,10 repr. days,NL,2050,"Fixed demand (buildings, transport, other)",92.225492333365
+RP10,10 repr. days,NL,2050,Industry,72.65903151628233
+RP10,10 repr. days,NL,2050,Refineries,0.0
+RP10,10 repr. days,NL,2050,Electrolysis,73.15282609804329
+RP10,10 repr. days,NL,2050,"Building heat (HP, e-heating)",35.84685524068508
+RP10,10 repr. days,NL,2050,Battery charging,119.91224364398471
+RP10,10 repr. days,NL,2050,Power generation (H2 turbines),0.0
+RP10,10 repr. days,NL,2050,Net export,31.966655951997396
+CCSOPT,Optimistic CCS,NL,2050,"Fixed demand (buildings, transport, other)",96.39758810503646
+CCSOPT,Optimistic CCS,NL,2050,Industry,72.85094060348783
+CCSOPT,Optimistic CCS,NL,2050,Refineries,4.599941678489312
+CCSOPT,Optimistic CCS,NL,2050,Electrolysis,13.808501440583848
+CCSOPT,Optimistic CCS,NL,2050,"Building heat (HP, e-heating)",4.443945077027824
+CCSOPT,Optimistic CCS,NL,2050,Battery charging,5.261787456973785
+CCSOPT,Optimistic CCS,NL,2050,Power generation (H2 turbines),0.0
+CCSOPT,Optimistic CCS,NL,2050,Net export,19.970748398745382
+FRLU,With FR + LU,NL,2050,"Fixed demand (buildings, transport, other)",96.64214218968371
+FRLU,With FR + LU,NL,2050,Industry,83.3211056378392
+FRLU,With FR + LU,NL,2050,Refineries,4.725394335415479
+FRLU,With FR + LU,NL,2050,Electrolysis,26.07668698051331
+FRLU,With FR + LU,NL,2050,"Building heat (HP, e-heating)",9.034981333752611
+FRLU,With FR + LU,NL,2050,Battery charging,12.196726486252164
+FRLU,With FR + LU,NL,2050,Power generation (H2 turbines),0.0
+FRLU,With FR + LU,NL,2050,Net export,33.6206682561435
+MR,Mixed resolution,BE,2050,"Fixed demand (buildings, transport, other)",64.49794403948654
+MR,Mixed resolution,BE,2050,Industry,71.424330647794
+MR,Mixed resolution,BE,2050,Refineries,0.0
+MR,Mixed resolution,BE,2050,Electrolysis,0.0
+MR,Mixed resolution,BE,2050,"Building heat (HP, e-heating)",2.7748225803459055
+MR,Mixed resolution,BE,2050,Battery charging,1.410580902348376
+MR,Mixed resolution,BE,2050,Power generation (H2 turbines),0.0
+MR,Mixed resolution,BE,2050,Net export,3.699541535936757
+NATCAP,National CO2 caps,BE,2050,"Fixed demand (buildings, transport, other)",64.49794403948654
+NATCAP,National CO2 caps,BE,2050,Industry,71.48220399134155
+NATCAP,National CO2 caps,BE,2050,Refineries,0.6704301355286191
+NATCAP,National CO2 caps,BE,2050,Electrolysis,0.30564528251713746
+NATCAP,National CO2 caps,BE,2050,"Building heat (HP, e-heating)",2.805231747414447
+NATCAP,National CO2 caps,BE,2050,Battery charging,2.242457538389132
+NATCAP,National CO2 caps,BE,2050,Power generation (H2 turbines),0.0
+NATCAP,National CO2 caps,BE,2050,Net export,0.32249100629699684
+RP10,10 repr. days,BE,2050,"Fixed demand (buildings, transport, other)",63.15046085074824
+RP10,10 repr. days,BE,2050,Industry,71.27194272118945
+RP10,10 repr. days,BE,2050,Refineries,0.0
+RP10,10 repr. days,BE,2050,Electrolysis,0.0
+RP10,10 repr. days,BE,2050,"Building heat (HP, e-heating)",14.077861916419952
+RP10,10 repr. days,BE,2050,Battery charging,5.039016030360657
+RP10,10 repr. days,BE,2050,Power generation (H2 turbines),0.0
+RP10,10 repr. days,BE,2050,Net export,0.0
+CCSOPT,Optimistic CCS,BE,2050,"Fixed demand (buildings, transport, other)",64.49794403948654
+CCSOPT,Optimistic CCS,BE,2050,Industry,72.01030225343135
+CCSOPT,Optimistic CCS,BE,2050,Refineries,0.0
+CCSOPT,Optimistic CCS,BE,2050,Electrolysis,0.0
+CCSOPT,Optimistic CCS,BE,2050,"Building heat (HP, e-heating)",2.0554166131376137
+CCSOPT,Optimistic CCS,BE,2050,Battery charging,0.0
+CCSOPT,Optimistic CCS,BE,2050,Power generation (H2 turbines),0.0
+CCSOPT,Optimistic CCS,BE,2050,Net export,0.1334208494565065
+FRLU,With FR + LU,BE,2050,"Fixed demand (buildings, transport, other)",64.44338603304635
+FRLU,With FR + LU,BE,2050,Industry,70.96125891813995
+FRLU,With FR + LU,BE,2050,Refineries,0.0
+FRLU,With FR + LU,BE,2050,Electrolysis,0.0
+FRLU,With FR + LU,BE,2050,"Building heat (HP, e-heating)",2.651496061561717
+FRLU,With FR + LU,BE,2050,Battery charging,2.364179859011136
+FRLU,With FR + LU,BE,2050,Power generation (H2 turbines),0.0
+FRLU,With FR + LU,BE,2050,Net export,0.0

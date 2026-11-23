@@ -161,3 +161,40 @@ Two distinct, compounding pipeline defects:
 
 Both must be fixed together. Fixing only (1) would double-charge, because the
 fuel-based ratio from (2) would remain in place.
+
+## S7. Full CO2 accounting verification (2026-10-06)
+
+Exhaustive check of the patched 3-day DB against **both** source sheets.
+
+| check | result |
+|---|---|
+| `ind_process_routes_co2_capture`, 43 non-zero 2050 rows | **43/43 present and value-exact** |
+| `ind_process_routes_co2_emission`, 92 non-zero 2050 rows | **85/85 exact** for families that exist |
+| families in sheet but **absent from model** | 7 (see below) |
+| 2050 techs producing with zero CO2 | 3, all legitimately zero (elec/bio only) |
+| double-booked (fuel AND route key) | **0** |
+| 2050 mass balance | +157,462.0 / -157,462.0 = **NET -0.0** |
+
+### The 7 "missing" families are NOT a defect
+
+`alumina-production-{reference,alternative}`,
+`aluminium-secondary-production-reference`, and the four
+`steel-{electric-arc,integrated-steelworks}-{finishing,rolling}-reference`
+rows carry non-zero factors in the sheet but have **zero entities** in the
+model. They were never instantiated for NL+BE, so there is nothing to book.
+Catalogue breadth, not a modelling error.
+
+### Capture is represented, and my patch correctly left it alone
+
+`patch_route_emissions.py` only ever touched `atmosphere` flows. The capture
+sheet is realised **separately** as a `CO2` **output node** per unit, and all 43
+coefficients already matched source. Had the patch also written capture rows it
+would have double-counted.
+
+### Methodological warning for future audits
+
+A naive `LIKE '<family>_%'` match produced **6 false mismatches** - it caught
+`-MEA` variants (e.g. `(LN)O` matching `(LN)O-MEA` = 0.111 instead of the true
+`(LN)O` = 0.967, `BF-BOF` matching `BF-BOF-MEA` = 0.79 instead of 2.002). The
+underlying data was correct in every case. **Suffix-bearing variants must be
+excluded explicitly** before concluding a mismatch exists.

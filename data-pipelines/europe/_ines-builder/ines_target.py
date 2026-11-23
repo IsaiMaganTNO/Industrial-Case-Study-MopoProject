@@ -80,7 +80,7 @@ def define_polygons(config : dict, region_data : dict, on_level : str, off_level
         #"IT",  # Italy
         #"LV",  # Latvia
         #"LT",  # Lithuania
-        #"LU",  # Luxembourg
+        "LU",  # Luxembourg (FR+LU sensitivity 2026-10-28)
         #"MT",  # Malta
         "NL",  # Netherlands
         #"PL",  # Poland

@@ -1,0 +1,16 @@
+import geopandas as gpd, pandas as pd, collections
+geo = gpd.read_file(r"geodata/IC1_NWEU.geojson")
+pp = pd.read_csv(r"data/Energy_Conversion/powerplants.csv", low_memory=False)
+pp = pp.dropna(subset=["lat","lon"])
+pts = gpd.GeoDataFrame(pp, geometry=gpd.points_from_xy(pp.lon, pp.lat), crs="EPSG:4326")
+j = gpd.sjoin(pts, geo[["id","geometry"]], how="inner", predicate="within")
+print("plants with coords:", len(pts), "| assigned to a region:", len(j))
+agg = j.groupby("id").agg(n=("id","size"), cap_MW=("Capacity","sum")).sort_values("cap_MW", ascending=False)
+print(agg.to_string())
+print()
+print("TOTAL assigned capacity GW: %.1f" % (agg.cap_MW.sum()/1000))
+nw = agg.loc[[i for i in ["DE","DK","NO","UK"] if i in agg.index]]
+print("new-country capacity GW: %.1f" % (nw.cap_MW.sum()/1000))
+print()
+print("top fueltypes in new countries:")
+print(j[j.id.isin(["DE","DK","NO","UK"])].groupby(["id","Fueltype"]).Capacity.sum().div(1000).round(1).to_string())

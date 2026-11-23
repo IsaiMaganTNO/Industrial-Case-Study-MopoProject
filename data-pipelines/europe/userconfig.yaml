@@ -81,9 +81,29 @@ timeline:
       start : "2009-01-01T00:00:00"
 
 global_constraints:
+  # Source: verification/global_constraints_industry_case_study.xlsx, sheet
+  # "userconfig.yaml". Budget = 1990 UNFCCC emissions x reduction factor
+  # (0.45 / 0.10 / 0.00 for 2030 / 2040 / 2050). https://di.unfccc.int/
+  #
+  #        1990 Mt   2030 Mt   2040 Mt
+  #   NL    221.78     99.801    22.178
+  #   BE    145.84     65.628    14.584
+  #   NO     50.71     22.820     5.071
+  #   DE   1251.00    562.950   125.100
+  #   DK     71.82     32.319     7.182
+  #   UK    806.30    362.835    80.630
+  #
+  # The BE+NL-only values were 165400000 / 36800000 / 0.0; restore those if the
+  # country list is narrowed back to BE+NL.
+  # The 2050 zero is INTENTIONAL - see the long comment in scenario_config.yml.
+  # Net zero is reached via the CCS chain, not by relaxing the budget. Do not
+  # floor it to force feasibility.
+  # FR+LU sensitivity (2026-10-28, global_constraints_industry_case_study_FR_LU.xlsx):
+  #   FR 540.83 -> 243.374 / 54.083 ; LU 12.72 -> 5.725 / 1.272
+  # 6-country values (restore without FR/LU): 1146352500 / 254745000 / 0.0
   co2_annual_budget:
-    "2030": 165400000 # BE 65.6 + NL 99.8 Mt CO2eq
-    "2040": 36800000  # BE 14.6 + NL 22.2 Mt CO2eq
+    "2030": 1389726310 # NL+BE+NO+DE+DK+UK+FR+LU, ton CO2eq
+    "2040": 308828100  # ton CO2eq
     "2050": 0.0
   co2_sequestration_cost: 65 # €/ton CO2
   co2_transport_cost: 40 # €/ton CO2
@@ -93,9 +113,22 @@ global_constraints:
 # Use country code to model a specific country  and define Europe as country, then, the remaining countries are modeled following requirements
 # IC1 industrial case: BE and NL only. Previously written as the scalar "-NL -BE",
 # which YAML parsed as a string and which only selected BE/NL by substring accident.
+# Mixed-resolution run: BE and NL at IC1 cluster detail (17 regions) plus
+# DE/DK/NO/UK each as a single country-level region (added to the IC1 sheet of
+# region_transformation.xlsx, reusing PECD1 geometry). FR and LU are
+# deliberately excluded for now; define_polygons only emits polygons for
+# countries listed here, so FR self-excludes despite appearing in its list.
+# NOTE: every code MUST be quoted. Unquoted NO is parsed by YAML 1.1 as the
+# boolean false, which silently drops Norway from the model.
 countries : 
-  - BE
-  - NL
+  - "BE"
+  - "NL"
+  - "DE"
+  - "DK"
+  - "NO"
+  - "UK"
+  - "FR"   # FR+LU sensitivity (2026-10-28); remove both for the 6-country baseline
+  - "LU"
 
 # Sectors optimized
 commodity: 

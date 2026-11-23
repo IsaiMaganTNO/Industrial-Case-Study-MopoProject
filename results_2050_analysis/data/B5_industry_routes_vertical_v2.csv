@@ -1,0 +1,391 @@
+run,sector,year,route_type,share_pct,output_kt
+MR,steel (primary),2050,"Fossil, no capture",0.0,0.0
+MR,steel (primary),2050,Fossil + carbon capture,99.99999999999999,12347.000001999999
+MR,steel (primary),2050,Electricity,0.0,0.0
+MR,steel (primary),2050,Hydrogen,0.0,0.0
+MR,steel (primary),2050,Methanol from captured CO2,0.0,0.0
+MR,steel (primary),2050,Biomass / scrap / other low-carbon,0.0,0.0
+MR,steel (secondary),2050,"Fossil, no capture",0.0,0.0
+MR,steel (secondary),2050,Fossil + carbon capture,0.0,0.0
+MR,steel (secondary),2050,Electricity,0.0,0.0
+MR,steel (secondary),2050,Hydrogen,0.0,0.0
+MR,steel (secondary),2050,Methanol from captured CO2,0.0,0.0
+MR,steel (secondary),2050,Biomass / scrap / other low-carbon,100.0,2690.0000184
+MR,olefins,2050,"Fossil, no capture",0.0,0.0
+MR,olefins,2050,Fossil + carbon capture,99.99999999999999,11036.314382
+MR,olefins,2050,Electricity,0.0,0.0
+MR,olefins,2050,Hydrogen,0.0,0.0
+MR,olefins,2050,Methanol from captured CO2,0.0,0.0
+MR,olefins,2050,Biomass / scrap / other low-carbon,0.0,0.0
+MR,ammonia,2050,"Fossil, no capture",0.0,0.0
+MR,ammonia,2050,Fossil + carbon capture,100.0,3910.4399999999996
+MR,ammonia,2050,Electricity,0.0,0.0
+MR,ammonia,2050,Hydrogen,0.0,0.0
+MR,ammonia,2050,Methanol from captured CO2,0.0,0.0
+MR,ammonia,2050,Biomass / scrap / other low-carbon,0.0,0.0
+MR,cement,2050,"Fossil, no capture",0.0,0.0
+MR,cement,2050,Fossil + carbon capture,21.697996801606866,1547.5086999999999
+MR,cement,2050,Electricity,0.0,0.0
+MR,cement,2050,Hydrogen,0.0,0.0
+MR,cement,2050,Methanol from captured CO2,0.0,0.0
+MR,cement,2050,Biomass / scrap / other low-carbon,78.30200319839314,5584.526179299999
+MR,glass (container),2050,"Fossil, no capture",0.0,0.0
+MR,glass (container),2050,Fossil + carbon capture,57.45471659058532,780.195172125
+MR,glass (container),2050,Electricity,37.94376558710123,515.2500000000001
+MR,glass (container),2050,Hydrogen,4.601517822313452,62.485418125
+MR,glass (container),2050,Methanol from captured CO2,0.0,0.0
+MR,glass (container),2050,Biomass / scrap / other low-carbon,0.0,0.0
+MR,glass (float),2050,"Fossil, no capture",0.0,0.0
+MR,glass (float),2050,Fossil + carbon capture,100.00000000000003,925.5073674
+MR,glass (float),2050,Electricity,0.0,0.0
+MR,glass (float),2050,Hydrogen,0.0,0.0
+MR,glass (float),2050,Methanol from captured CO2,0.0,0.0
+MR,glass (float),2050,Biomass / scrap / other low-carbon,0.0,0.0
+MR,glass (fibre),2050,"Fossil, no capture",0.0,0.0
+MR,glass (fibre),2050,Fossil + carbon capture,32.55091903561621,74.4326691
+MR,glass (fibre),2050,Electricity,34.898161928767564,79.8
+MR,glass (fibre),2050,Hydrogen,32.55091903561622,74.4326691
+MR,glass (fibre),2050,Methanol from captured CO2,0.0,0.0
+MR,glass (fibre),2050,Biomass / scrap / other low-carbon,0.0,0.0
+MR,chlorine,2050,"Fossil, no capture",0.0,0.0
+MR,chlorine,2050,Fossil + carbon capture,0.0,0.0
+MR,chlorine,2050,Electricity,100.00000000000003,1321.6480000000001
+MR,chlorine,2050,Hydrogen,0.0,0.0
+MR,chlorine,2050,Methanol from captured CO2,0.0,0.0
+MR,chlorine,2050,Biomass / scrap / other low-carbon,0.0,0.0
+MR,aluminium,2050,"Fossil, no capture",0.0,0.0
+MR,aluminium,2050,Fossil + carbon capture,0.0,0.0
+MR,aluminium,2050,Electricity,0.0,0.0
+MR,aluminium,2050,Hydrogen,0.0,0.0
+MR,aluminium,2050,Methanol from captured CO2,0.0,0.0
+MR,aluminium,2050,Biomass / scrap / other low-carbon,99.99999999999999,46.69999999999996
+MR,paper,2050,"Fossil, no capture",0.0,0.0
+MR,paper,2050,Fossil + carbon capture,0.0,0.0
+MR,paper,2050,Electricity,0.0,0.0
+MR,paper,2050,Hydrogen,0.0,0.0
+MR,paper,2050,Methanol from captured CO2,0.0,0.0
+MR,paper,2050,Biomass / scrap / other low-carbon,100.0,4641.566600489982
+MR,pulp,2050,"Fossil, no capture",0.0,0.0
+MR,pulp,2050,Fossil + carbon capture,0.0,0.0
+MR,pulp,2050,Electricity,0.0,0.0
+MR,pulp,2050,Hydrogen,0.0,0.0
+MR,pulp,2050,Methanol from captured CO2,0.0,0.0
+MR,pulp,2050,Biomass / scrap / other low-carbon,100.00000000000003,551.9772434029179
+MR,refinery,2050,"Fossil, no capture",0.0,0.0
+MR,refinery,2050,Fossil + carbon capture,100.0,831511.3400132578
+MR,refinery,2050,Electricity,0.0,0.0
+MR,refinery,2050,Hydrogen,0.0,0.0
+MR,refinery,2050,Methanol from captured CO2,0.0,0.0
+MR,refinery,2050,Biomass / scrap / other low-carbon,0.0,0.0
+NATCAP,steel (primary),2050,"Fossil, no capture",0.0,0.0
+NATCAP,steel (primary),2050,Fossil + carbon capture,99.99999999999999,12347.000001999999
+NATCAP,steel (primary),2050,Electricity,0.0,0.0
+NATCAP,steel (primary),2050,Hydrogen,0.0,0.0
+NATCAP,steel (primary),2050,Methanol from captured CO2,0.0,0.0
+NATCAP,steel (primary),2050,Biomass / scrap / other low-carbon,0.0,0.0
+NATCAP,steel (secondary),2050,"Fossil, no capture",0.0,0.0
+NATCAP,steel (secondary),2050,Fossil + carbon capture,0.0,0.0
+NATCAP,steel (secondary),2050,Electricity,0.0,0.0
+NATCAP,steel (secondary),2050,Hydrogen,0.0,0.0
+NATCAP,steel (secondary),2050,Methanol from captured CO2,0.0,0.0
+NATCAP,steel (secondary),2050,Biomass / scrap / other low-carbon,100.0,2690.0000184
+NATCAP,olefins,2050,"Fossil, no capture",0.0,0.0
+NATCAP,olefins,2050,Fossil + carbon capture,99.99999999999999,11036.314382
+NATCAP,olefins,2050,Electricity,0.0,0.0
+NATCAP,olefins,2050,Hydrogen,0.0,0.0
+NATCAP,olefins,2050,Methanol from captured CO2,0.0,0.0
+NATCAP,olefins,2050,Biomass / scrap / other low-carbon,0.0,0.0
+NATCAP,ammonia,2050,"Fossil, no capture",0.0,0.0
+NATCAP,ammonia,2050,Fossil + carbon capture,100.0,3910.4399999999996
+NATCAP,ammonia,2050,Electricity,0.0,0.0
+NATCAP,ammonia,2050,Hydrogen,0.0,0.0
+NATCAP,ammonia,2050,Methanol from captured CO2,0.0,0.0
+NATCAP,ammonia,2050,Biomass / scrap / other low-carbon,0.0,0.0
+NATCAP,cement,2050,"Fossil, no capture",0.0,0.0
+NATCAP,cement,2050,Fossil + carbon capture,0.0,0.0
+NATCAP,cement,2050,Electricity,0.0,0.0
+NATCAP,cement,2050,Hydrogen,0.0,0.0
+NATCAP,cement,2050,Methanol from captured CO2,0.0,0.0
+NATCAP,cement,2050,Biomass / scrap / other low-carbon,100.0,7132.034879299999
+NATCAP,glass (container),2050,"Fossil, no capture",0.0,0.0
+NATCAP,glass (container),2050,Fossil + carbon capture,49.999999999999986,678.9652951249998
+NATCAP,glass (container),2050,Electricity,37.94376558710122,515.2499999999999
+NATCAP,glass (container),2050,Hydrogen,12.05623441289878,163.71529512500004
+NATCAP,glass (container),2050,Methanol from captured CO2,0.0,0.0
+NATCAP,glass (container),2050,Biomass / scrap / other low-carbon,0.0,0.0
+NATCAP,glass (float),2050,"Fossil, no capture",0.0,0.0
+NATCAP,glass (float),2050,Fossil + carbon capture,49.99999999999999,462.7536836999999
+NATCAP,glass (float),2050,Electricity,0.0,0.0
+NATCAP,glass (float),2050,Hydrogen,50.000000000000014,462.7536837000001
+NATCAP,glass (float),2050,Methanol from captured CO2,0.0,0.0
+NATCAP,glass (float),2050,Biomass / scrap / other low-carbon,0.0,0.0
+NATCAP,glass (fibre),2050,"Fossil, no capture",0.0,0.0
+NATCAP,glass (fibre),2050,Fossil + carbon capture,0.0,0.0
+NATCAP,glass (fibre),2050,Electricity,34.89816192876757,79.8
+NATCAP,glass (fibre),2050,Hydrogen,65.10183807123244,148.86533819999997
+NATCAP,glass (fibre),2050,Methanol from captured CO2,0.0,0.0
+NATCAP,glass (fibre),2050,Biomass / scrap / other low-carbon,0.0,0.0
+NATCAP,chlorine,2050,"Fossil, no capture",0.0,0.0
+NATCAP,chlorine,2050,Fossil + carbon capture,0.0,0.0
+NATCAP,chlorine,2050,Electricity,100.00000000000003,1321.6480000000001
+NATCAP,chlorine,2050,Hydrogen,0.0,0.0
+NATCAP,chlorine,2050,Methanol from captured CO2,0.0,0.0
+NATCAP,chlorine,2050,Biomass / scrap / other low-carbon,0.0,0.0
+NATCAP,aluminium,2050,"Fossil, no capture",0.0,0.0
+NATCAP,aluminium,2050,Fossil + carbon capture,0.0,0.0
+NATCAP,aluminium,2050,Electricity,0.0,0.0
+NATCAP,aluminium,2050,Hydrogen,0.0,0.0
+NATCAP,aluminium,2050,Methanol from captured CO2,0.0,0.0
+NATCAP,aluminium,2050,Biomass / scrap / other low-carbon,100.0,46.69999999999996
+NATCAP,paper,2050,"Fossil, no capture",0.0,0.0
+NATCAP,paper,2050,Fossil + carbon capture,0.0,0.0
+NATCAP,paper,2050,Electricity,0.0,0.0
+NATCAP,paper,2050,Hydrogen,0.0,0.0
+NATCAP,paper,2050,Methanol from captured CO2,0.0,0.0
+NATCAP,paper,2050,Biomass / scrap / other low-carbon,100.0,4641.566600489982
+NATCAP,pulp,2050,"Fossil, no capture",0.0,0.0
+NATCAP,pulp,2050,Fossil + carbon capture,0.0,0.0
+NATCAP,pulp,2050,Electricity,0.0,0.0
+NATCAP,pulp,2050,Hydrogen,0.0,0.0
+NATCAP,pulp,2050,Methanol from captured CO2,0.0,0.0
+NATCAP,pulp,2050,Biomass / scrap / other low-carbon,100.00000000000003,551.9772434029179
+NATCAP,refinery,2050,"Fossil, no capture",0.0,0.0
+NATCAP,refinery,2050,Fossil + carbon capture,100.0,1196159.7009252578
+NATCAP,refinery,2050,Electricity,0.0,0.0
+NATCAP,refinery,2050,Hydrogen,0.0,0.0
+NATCAP,refinery,2050,Methanol from captured CO2,0.0,0.0
+NATCAP,refinery,2050,Biomass / scrap / other low-carbon,0.0,0.0
+RP10,steel (primary),2050,"Fossil, no capture",0.0,0.0
+RP10,steel (primary),2050,Fossil + carbon capture,100.0,12347.000001999999
+RP10,steel (primary),2050,Electricity,0.0,0.0
+RP10,steel (primary),2050,Hydrogen,0.0,0.0
+RP10,steel (primary),2050,Methanol from captured CO2,0.0,0.0
+RP10,steel (primary),2050,Biomass / scrap / other low-carbon,0.0,0.0
+RP10,steel (secondary),2050,"Fossil, no capture",0.0,0.0
+RP10,steel (secondary),2050,Fossil + carbon capture,0.0,0.0
+RP10,steel (secondary),2050,Electricity,0.0,0.0
+RP10,steel (secondary),2050,Hydrogen,0.0,0.0
+RP10,steel (secondary),2050,Methanol from captured CO2,0.0,0.0
+RP10,steel (secondary),2050,Biomass / scrap / other low-carbon,100.0,2690.0000184
+RP10,olefins,2050,"Fossil, no capture",0.0,0.0
+RP10,olefins,2050,Fossil + carbon capture,99.99999993862316,11036.314375226253
+RP10,olefins,2050,Electricity,0.0,0.0
+RP10,olefins,2050,Hydrogen,0.0,0.0
+RP10,olefins,2050,Methanol from captured CO2,6.137683589293008e-08,6.7737405668679776e-06
+RP10,olefins,2050,Biomass / scrap / other low-carbon,0.0,0.0
+RP10,ammonia,2050,"Fossil, no capture",0.0,0.0
+RP10,ammonia,2050,Fossil + carbon capture,99.99999996632599,3910.4399999999996
+RP10,ammonia,2050,Electricity,0.0,0.0
+RP10,ammonia,2050,Hydrogen,3.3674010374834364e-08,1.3168019717450928e-06
+RP10,ammonia,2050,Methanol from captured CO2,0.0,0.0
+RP10,ammonia,2050,Biomass / scrap / other low-carbon,0.0,0.0
+RP10,cement,2050,"Fossil, no capture",0.0,0.0
+RP10,cement,2050,Fossil + carbon capture,100.00000000000003,7132.0348793
+RP10,cement,2050,Electricity,0.0,0.0
+RP10,cement,2050,Hydrogen,0.0,0.0
+RP10,cement,2050,Methanol from captured CO2,0.0,0.0
+RP10,cement,2050,Biomass / scrap / other low-carbon,0.0,0.0
+RP10,glass (container),2050,"Fossil, no capture",0.0,0.0
+RP10,glass (container),2050,Fossil + carbon capture,99.99999999999997,1357.9305902499996
+RP10,glass (container),2050,Electricity,0.0,0.0
+RP10,glass (container),2050,Hydrogen,0.0,0.0
+RP10,glass (container),2050,Methanol from captured CO2,0.0,0.0
+RP10,glass (container),2050,Biomass / scrap / other low-carbon,0.0,0.0
+RP10,glass (float),2050,"Fossil, no capture",0.0,0.0
+RP10,glass (float),2050,Fossil + carbon capture,100.0,925.5073673999998
+RP10,glass (float),2050,Electricity,0.0,0.0
+RP10,glass (float),2050,Hydrogen,0.0,0.0
+RP10,glass (float),2050,Methanol from captured CO2,0.0,0.0
+RP10,glass (float),2050,Biomass / scrap / other low-carbon,0.0,0.0
+RP10,glass (fibre),2050,"Fossil, no capture",0.0,0.0
+RP10,glass (fibre),2050,Fossil + carbon capture,32.5509190356162,74.4326691
+RP10,glass (fibre),2050,Electricity,34.89816192876755,79.8
+RP10,glass (fibre),2050,Hydrogen,32.550919035616246,74.43266910000011
+RP10,glass (fibre),2050,Methanol from captured CO2,0.0,0.0
+RP10,glass (fibre),2050,Biomass / scrap / other low-carbon,0.0,0.0
+RP10,chlorine,2050,"Fossil, no capture",0.0,0.0
+RP10,chlorine,2050,Fossil + carbon capture,0.0,0.0
+RP10,chlorine,2050,Electricity,100.0,1321.6479999999997
+RP10,chlorine,2050,Hydrogen,0.0,0.0
+RP10,chlorine,2050,Methanol from captured CO2,0.0,0.0
+RP10,chlorine,2050,Biomass / scrap / other low-carbon,0.0,0.0
+RP10,aluminium,2050,"Fossil, no capture",0.0,0.0
+RP10,aluminium,2050,Fossil + carbon capture,0.0,0.0
+RP10,aluminium,2050,Electricity,0.0,0.0
+RP10,aluminium,2050,Hydrogen,0.0,0.0
+RP10,aluminium,2050,Methanol from captured CO2,0.0,0.0
+RP10,aluminium,2050,Biomass / scrap / other low-carbon,100.00000000000003,46.69999999999996
+RP10,paper,2050,"Fossil, no capture",0.0,0.0
+RP10,paper,2050,Fossil + carbon capture,0.0,0.0
+RP10,paper,2050,Electricity,0.0,0.0
+RP10,paper,2050,Hydrogen,0.0,0.0
+RP10,paper,2050,Methanol from captured CO2,0.0,0.0
+RP10,paper,2050,Biomass / scrap / other low-carbon,100.0,4641.566600489982
+RP10,pulp,2050,"Fossil, no capture",0.0,0.0
+RP10,pulp,2050,Fossil + carbon capture,0.0,0.0
+RP10,pulp,2050,Electricity,0.0,0.0
+RP10,pulp,2050,Hydrogen,0.0,0.0
+RP10,pulp,2050,Methanol from captured CO2,0.0,0.0
+RP10,pulp,2050,Biomass / scrap / other low-carbon,100.0,551.9772434029169
+RP10,refinery,2050,"Fossil, no capture",0.0,0.0
+RP10,refinery,2050,Fossil + carbon capture,0.0,0.0
+RP10,refinery,2050,Electricity,0.0,0.0
+RP10,refinery,2050,Hydrogen,0.0,0.0
+RP10,refinery,2050,Methanol from captured CO2,0.0,0.0
+RP10,refinery,2050,Biomass / scrap / other low-carbon,0.0,0.0
+CCSOPT,steel (primary),2050,"Fossil, no capture",0.0,0.0
+CCSOPT,steel (primary),2050,Fossil + carbon capture,99.99999999999999,12347.000001999997
+CCSOPT,steel (primary),2050,Electricity,0.0,0.0
+CCSOPT,steel (primary),2050,Hydrogen,0.0,0.0
+CCSOPT,steel (primary),2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,steel (primary),2050,Biomass / scrap / other low-carbon,0.0,0.0
+CCSOPT,steel (secondary),2050,"Fossil, no capture",0.0,0.0
+CCSOPT,steel (secondary),2050,Fossil + carbon capture,0.0,0.0
+CCSOPT,steel (secondary),2050,Electricity,0.0,0.0
+CCSOPT,steel (secondary),2050,Hydrogen,0.0,0.0
+CCSOPT,steel (secondary),2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,steel (secondary),2050,Biomass / scrap / other low-carbon,100.0,2690.0000184
+CCSOPT,olefins,2050,"Fossil, no capture",0.0,0.0
+CCSOPT,olefins,2050,Fossil + carbon capture,100.0,11036.314381999997
+CCSOPT,olefins,2050,Electricity,0.0,0.0
+CCSOPT,olefins,2050,Hydrogen,0.0,0.0
+CCSOPT,olefins,2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,olefins,2050,Biomass / scrap / other low-carbon,0.0,0.0
+CCSOPT,ammonia,2050,"Fossil, no capture",0.0,0.0
+CCSOPT,ammonia,2050,Fossil + carbon capture,100.00000000000003,3910.44
+CCSOPT,ammonia,2050,Electricity,0.0,0.0
+CCSOPT,ammonia,2050,Hydrogen,0.0,0.0
+CCSOPT,ammonia,2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,ammonia,2050,Biomass / scrap / other low-carbon,0.0,0.0
+CCSOPT,cement,2050,"Fossil, no capture",0.0,0.0
+CCSOPT,cement,2050,Fossil + carbon capture,0.0,0.0
+CCSOPT,cement,2050,Electricity,0.0,0.0
+CCSOPT,cement,2050,Hydrogen,0.0,0.0
+CCSOPT,cement,2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,cement,2050,Biomass / scrap / other low-carbon,100.00000000000003,7132.034879299999
+CCSOPT,glass (container),2050,"Fossil, no capture",0.0,0.0
+CCSOPT,glass (container),2050,Fossil + carbon capture,99.99999999999997,1357.9305902499996
+CCSOPT,glass (container),2050,Electricity,0.0,0.0
+CCSOPT,glass (container),2050,Hydrogen,0.0,0.0
+CCSOPT,glass (container),2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,glass (container),2050,Biomass / scrap / other low-carbon,0.0,0.0
+CCSOPT,glass (float),2050,"Fossil, no capture",0.0,0.0
+CCSOPT,glass (float),2050,Fossil + carbon capture,100.00000000000003,925.5073674
+CCSOPT,glass (float),2050,Electricity,0.0,0.0
+CCSOPT,glass (float),2050,Hydrogen,0.0,0.0
+CCSOPT,glass (float),2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,glass (float),2050,Biomass / scrap / other low-carbon,0.0,0.0
+CCSOPT,glass (fibre),2050,"Fossil, no capture",0.0,0.0
+CCSOPT,glass (fibre),2050,Fossil + carbon capture,65.10183807123242,148.86533819999997
+CCSOPT,glass (fibre),2050,Electricity,34.89816192876757,79.8
+CCSOPT,glass (fibre),2050,Hydrogen,0.0,0.0
+CCSOPT,glass (fibre),2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,glass (fibre),2050,Biomass / scrap / other low-carbon,0.0,0.0
+CCSOPT,chlorine,2050,"Fossil, no capture",0.0,0.0
+CCSOPT,chlorine,2050,Fossil + carbon capture,0.0,0.0
+CCSOPT,chlorine,2050,Electricity,100.00000000000003,1321.6480000000001
+CCSOPT,chlorine,2050,Hydrogen,0.0,0.0
+CCSOPT,chlorine,2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,chlorine,2050,Biomass / scrap / other low-carbon,0.0,0.0
+CCSOPT,aluminium,2050,"Fossil, no capture",0.0,0.0
+CCSOPT,aluminium,2050,Fossil + carbon capture,0.0,0.0
+CCSOPT,aluminium,2050,Electricity,0.0,0.0
+CCSOPT,aluminium,2050,Hydrogen,0.0,0.0
+CCSOPT,aluminium,2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,aluminium,2050,Biomass / scrap / other low-carbon,100.0,46.69999999999996
+CCSOPT,paper,2050,"Fossil, no capture",0.0,0.0
+CCSOPT,paper,2050,Fossil + carbon capture,0.0,0.0
+CCSOPT,paper,2050,Electricity,0.0,0.0
+CCSOPT,paper,2050,Hydrogen,0.0,0.0
+CCSOPT,paper,2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,paper,2050,Biomass / scrap / other low-carbon,100.00000000000003,4641.566600489982
+CCSOPT,pulp,2050,"Fossil, no capture",0.0,0.0
+CCSOPT,pulp,2050,Fossil + carbon capture,0.0,0.0
+CCSOPT,pulp,2050,Electricity,0.0,0.0
+CCSOPT,pulp,2050,Hydrogen,0.0,0.0
+CCSOPT,pulp,2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,pulp,2050,Biomass / scrap / other low-carbon,100.0,551.9772434029179
+CCSOPT,refinery,2050,"Fossil, no capture",0.0,0.0
+CCSOPT,refinery,2050,Fossil + carbon capture,100.0,731312.5278712659
+CCSOPT,refinery,2050,Electricity,0.0,0.0
+CCSOPT,refinery,2050,Hydrogen,0.0,0.0
+CCSOPT,refinery,2050,Methanol from captured CO2,0.0,0.0
+CCSOPT,refinery,2050,Biomass / scrap / other low-carbon,0.0,0.0
+FRLU,steel (primary),2050,"Fossil, no capture",0.0,0.0
+FRLU,steel (primary),2050,Fossil + carbon capture,100.0,12347.000002
+FRLU,steel (primary),2050,Electricity,0.0,0.0
+FRLU,steel (primary),2050,Hydrogen,0.0,0.0
+FRLU,steel (primary),2050,Methanol from captured CO2,0.0,0.0
+FRLU,steel (primary),2050,Biomass / scrap / other low-carbon,0.0,0.0
+FRLU,steel (secondary),2050,"Fossil, no capture",0.0,0.0
+FRLU,steel (secondary),2050,Fossil + carbon capture,0.0,0.0
+FRLU,steel (secondary),2050,Electricity,0.0,0.0
+FRLU,steel (secondary),2050,Hydrogen,0.0,0.0
+FRLU,steel (secondary),2050,Methanol from captured CO2,0.0,0.0
+FRLU,steel (secondary),2050,Biomass / scrap / other low-carbon,100.0,2690.0000184
+FRLU,olefins,2050,"Fossil, no capture",0.0,0.0
+FRLU,olefins,2050,Fossil + carbon capture,99.99999999999999,11036.314381999997
+FRLU,olefins,2050,Electricity,0.0,0.0
+FRLU,olefins,2050,Hydrogen,0.0,0.0
+FRLU,olefins,2050,Methanol from captured CO2,0.0,0.0
+FRLU,olefins,2050,Biomass / scrap / other low-carbon,0.0,0.0
+FRLU,ammonia,2050,"Fossil, no capture",0.0,0.0
+FRLU,ammonia,2050,Fossil + carbon capture,11.605592637884273,453.8297367488818
+FRLU,ammonia,2050,Electricity,0.0,0.0
+FRLU,ammonia,2050,Hydrogen,0.0,0.0
+FRLU,ammonia,2050,Methanol from captured CO2,0.0,0.0
+FRLU,ammonia,2050,Biomass / scrap / other low-carbon,88.39440736211573,3456.610263251119
+FRLU,cement,2050,"Fossil, no capture",0.0,0.0
+FRLU,cement,2050,Fossil + carbon capture,100.0,7132.0348792999985
+FRLU,cement,2050,Electricity,0.0,0.0
+FRLU,cement,2050,Hydrogen,0.0,0.0
+FRLU,cement,2050,Methanol from captured CO2,0.0,0.0
+FRLU,cement,2050,Biomass / scrap / other low-carbon,0.0,0.0
+FRLU,glass (container),2050,"Fossil, no capture",0.0,0.0
+FRLU,glass (container),2050,Fossil + carbon capture,50.00000000000002,678.9652951250001
+FRLU,glass (container),2050,Electricity,6.62773198027969,89.99999999999999
+FRLU,glass (container),2050,Hydrogen,43.37226801972031,588.9652951249998
+FRLU,glass (container),2050,Methanol from captured CO2,0.0,0.0
+FRLU,glass (container),2050,Biomass / scrap / other low-carbon,0.0,0.0
+FRLU,glass (float),2050,"Fossil, no capture",0.0,0.0
+FRLU,glass (float),2050,Fossil + carbon capture,49.99999999999993,462.75368369999967
+FRLU,glass (float),2050,Electricity,0.0,0.0
+FRLU,glass (float),2050,Hydrogen,50.000000000000085,462.75368370000115
+FRLU,glass (float),2050,Methanol from captured CO2,0.0,0.0
+FRLU,glass (float),2050,Biomass / scrap / other low-carbon,0.0,0.0
+FRLU,glass (fibre),2050,"Fossil, no capture",0.0,0.0
+FRLU,glass (fibre),2050,Fossil + carbon capture,0.0,0.0
+FRLU,glass (fibre),2050,Electricity,34.89816192876757,79.79999999999995
+FRLU,glass (fibre),2050,Hydrogen,65.10183807123244,148.86533819999988
+FRLU,glass (fibre),2050,Methanol from captured CO2,0.0,0.0
+FRLU,glass (fibre),2050,Biomass / scrap / other low-carbon,0.0,0.0
+FRLU,chlorine,2050,"Fossil, no capture",0.0,0.0
+FRLU,chlorine,2050,Fossil + carbon capture,0.0,0.0
+FRLU,chlorine,2050,Electricity,99.99999999999997,1321.648
+FRLU,chlorine,2050,Hydrogen,0.0,0.0
+FRLU,chlorine,2050,Methanol from captured CO2,0.0,0.0
+FRLU,chlorine,2050,Biomass / scrap / other low-carbon,0.0,0.0
+FRLU,aluminium,2050,"Fossil, no capture",0.0,0.0
+FRLU,aluminium,2050,Fossil + carbon capture,0.0,0.0
+FRLU,aluminium,2050,Electricity,0.0,0.0
+FRLU,aluminium,2050,Hydrogen,0.0,0.0
+FRLU,aluminium,2050,Methanol from captured CO2,0.0,0.0
+FRLU,aluminium,2050,Biomass / scrap / other low-carbon,100.0,46.69987169725416
+FRLU,paper,2050,"Fossil, no capture",0.0,0.0
+FRLU,paper,2050,Fossil + carbon capture,0.0,0.0
+FRLU,paper,2050,Electricity,0.0,0.0
+FRLU,paper,2050,Hydrogen,0.0,0.0
+FRLU,paper,2050,Methanol from captured CO2,0.0,0.0
+FRLU,paper,2050,Biomass / scrap / other low-carbon,99.99999999999997,4641.566600489982
+FRLU,pulp,2050,"Fossil, no capture",0.0,0.0
+FRLU,pulp,2050,Fossil + carbon capture,0.0,0.0
+FRLU,pulp,2050,Electricity,0.0,0.0
+FRLU,pulp,2050,Hydrogen,0.0,0.0
+FRLU,pulp,2050,Methanol from captured CO2,0.0,0.0
+FRLU,pulp,2050,Biomass / scrap / other low-carbon,100.0,551.9772434029179
+FRLU,refinery,2050,"Fossil, no capture",0.0,0.0
+FRLU,refinery,2050,Fossil + carbon capture,100.0,751257.367627358
+FRLU,refinery,2050,Electricity,0.0,0.0
+FRLU,refinery,2050,Hydrogen,0.0,0.0
+FRLU,refinery,2050,Methanol from captured CO2,0.0,0.0
+FRLU,refinery,2050,Biomass / scrap / other low-carbon,0.0,0.0

@@ -63,10 +63,27 @@ technology_buildout:
 
 set_limited_commodity: True
 limited_commodity:
+  # Source: verification/global_constraints_industry_case_study.xlsx, sheet
+  # "scenario_config.yaml", block "limited_commodity".
+  # The Pan-EU figures (2500000 / 1000000 / 500000 GWh) are scaled by the
+  # six-country share of the Pan-EU CO2 budget:
+  #     1,146,352,500 / 2,600,000,000 = 0.44090480769
+  # giving the values below. NOTE this ratio is specific to the SIX-country
+  # mixed-resolution run (NL BE NO DE DK UK). A BE+NL-only run would use
+  # 165,400,000 / 2,600,000,000 = 0.0636 -> 159000 / 63600 / 31800 GWh.
+  #
+  # WARNING - currently INERT. limit_commodity() writes these under the
+  # alternative "limited_fossil-CH4", which is NOT in the
+  # baseline_blended_representative_periods scenario list above, so nothing is
+  # applied. Add it to that list to activate.
+  # HAZARD when activating: the value lands on node storage_state_max with
+  # storage_longterm_active=True. Long-term storage caps carry a verified 365x
+  # defect (docs/FINDING_biomass_cap_365x_CONFIRMED.md). Verify whether this
+  # budget needs /365 BEFORE trusting results.
   fossil-CH4:
-    2030: 2500000.0
-    2040: 1000000.0
-    2050: 500000.0 # GWh
+    2030: 1102262.0
+    2040: 440904.8
+    2050: 220452.4 # GWh
 
 include_ramping: False
 ramping:

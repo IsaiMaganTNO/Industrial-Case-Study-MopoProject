@@ -1,0 +1,16 @@
+import pandas as pd,glob,os
+print("== transport fleet.csv country codes")
+f=pd.read_csv(r"data\Transport\fleet.csv")
+print("  ",sorted(set(f["Country code"].astype(str)))[:40])
+print("== road dir region prefixes")
+ps=set(os.path.basename(p).split("_")[0] for p in glob.glob(r"data\Transport\road\*"))
+print("  ",sorted(ps))
+print("== non-road")
+ps=sorted(set(os.path.basename(p) for p in glob.glob(r"data\Transport\non-road\*")))
+print("  n",len(ps),ps[:8])
+print("\n== industry nuts0 sheet countries")
+d=pd.read_excel(r"data\Industry\technology_catalogue_ind_nuts0_nuts3.xlsx",sheet_name="ind_production_30_50_nuts0")
+print("  cols:",list(d.columns)[:8])
+for c in d.columns[:4]:
+    v=sorted(set(d[c].astype(str)))
+    if len(v)<60: print("   %s n=%d %s"%(c,len(v),v[:40]))

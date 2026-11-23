@@ -1,0 +1,136 @@
+run,year,carrier,side,item,twh
+IC1,2030,H2,supply,Electrolysis,0.0
+IC1,2030,H2,supply,LH2 import terminal,42.50089200000001
+IC1,2030,H2,supply,SMR (gas),0.0
+IC1,2030,H2,supply,Other H2 supply,0.0
+IC1,2030,H2,use,Net pipeline export,0.0
+IC1,2030,H2,use,Industry,0.05110918059287953
+IC1,2030,H2,use,Power generation (H2 turbines),42.44697730899929
+IC1,2030,H2,use,Refineries,0.0
+IC1,2030,elec,use,"Building heat (HP, e-heating)",2.2272608747407854
+IC1,2030,elec,use,Electrolysis,0.0
+IC1,2030,elec,use,Industry,88.43729019338708
+IC1,2030,elec,use,Refineries,2.023260477268449
+IC1,2030,elec,use,Storage charging,0.0
+IC1,2030,elec,use,"Fixed demand (buildings, transport, other)",161.50559657446885
+IC1,2030,elec,supply,Net import,1.6431300764452317e-14
+IC1,2040,H2,supply,Electrolysis,35.25202551355398
+IC1,2040,H2,supply,LH2 import terminal,42.50089200000001
+IC1,2040,H2,supply,SMR (gas),0.0
+IC1,2040,H2,supply,Other H2 supply,0.0
+IC1,2040,H2,use,Net pipeline export,9.458744898438453e-14
+IC1,2040,H2,use,Industry,71.3640803166748
+IC1,2040,H2,use,Power generation (H2 turbines),6.381992505416079
+IC1,2040,H2,use,Refineries,0.0
+IC1,2040,elec,use,"Building heat (HP, e-heating)",32.52139443372435
+IC1,2040,elec,use,Electrolysis,56.58431061565653
+IC1,2040,elec,use,Industry,189.57299441721923
+IC1,2040,elec,use,Refineries,4.259499430452432
+IC1,2040,elec,use,Storage charging,9.014954482738114
+IC1,2040,elec,use,"Fixed demand (buildings, transport, other)",161.50559657446885
+IC1,2040,elec,use,Net export,6.306066779870889e-14
+IC1,2050,H2,supply,Electrolysis,129.81053062854122
+IC1,2050,H2,supply,LH2 import terminal,42.500892
+IC1,2050,H2,supply,SMR (gas),0.0
+IC1,2050,H2,supply,Other H2 supply,-2.842170943040401e-14
+IC1,2050,H2,supply,Net pipeline import,1.4551915228366852e-13
+IC1,2050,H2,use,Industry,149.09400618671782
+IC1,2050,H2,use,Power generation (H2 turbines),23.206373181428376
+IC1,2050,H2,use,Refineries,0.0
+IC1,2050,elec,use,"Building heat (HP, e-heating)",32.007216516610754
+IC1,2050,elec,use,Electrolysis,208.36361256587688
+IC1,2050,elec,use,Industry,208.76538621417387
+IC1,2050,elec,use,Refineries,5.4457486372463295
+IC1,2050,elec,use,Storage charging,13.386020028282742
+IC1,2050,elec,use,"Fixed demand (buildings, transport, other)",161.50559657446885
+IC1,2050,elec,use,Net export,2.4868995751603507e-14
+CTRY,2030,H2,supply,Electrolysis,0.0
+CTRY,2030,H2,supply,LH2 import terminal,36.649550521389756
+CTRY,2030,H2,supply,SMR (gas),0.0
+CTRY,2030,H2,supply,Other H2 supply,0.0
+CTRY,2030,H2,use,Net pipeline export,0.0
+CTRY,2030,H2,use,Industry,0.051109180592879486
+CTRY,2030,H2,use,Power generation (H2 turbines),36.5956358303886
+CTRY,2030,H2,use,Refineries,0.0
+CTRY,2030,elec,use,"Building heat (HP, e-heating)",1.842256260802794
+CTRY,2030,elec,use,Electrolysis,0.0
+CTRY,2030,elec,use,Industry,89.39333011456324
+CTRY,2030,elec,use,Refineries,2.0240937257686817
+CTRY,2030,elec,use,Storage charging,1.2905933530577123
+CTRY,2030,elec,use,"Fixed demand (buildings, transport, other)",161.50559657446888
+CTRY,2030,elec,supply,Net import,1.687538997430238e-14
+CTRY,2040,H2,supply,Electrolysis,3.281309482920996
+CTRY,2040,H2,supply,LH2 import terminal,42.50089200000001
+CTRY,2040,H2,supply,SMR (gas),0.0
+CTRY,2040,H2,supply,Other H2 supply,-7.105427357601002e-15
+CTRY,2040,H2,use,Net pipeline export,0.0
+CTRY,2040,H2,use,Industry,42.13575347871428
+CTRY,2040,H2,use,Power generation (H2 turbines),3.639603312743474
+CTRY,2040,H2,use,Refineries,0.0
+CTRY,2040,elec,use,"Building heat (HP, e-heating)",31.475439183758155
+CTRY,2040,elec,use,Electrolysis,5.266949410788103
+CTRY,2040,elec,use,Industry,215.45744142078226
+CTRY,2040,elec,use,Refineries,3.9526650721999124
+CTRY,2040,elec,use,Storage charging,11.635129421437124
+CTRY,2040,elec,use,"Fixed demand (buildings, transport, other)",161.50559657446888
+CTRY,2040,elec,use,Net export,1.7763568394002505e-14
+CTRY,2050,H2,supply,Electrolysis,72.89047251651199
+CTRY,2050,H2,supply,LH2 import terminal,42.50089200000001
+CTRY,2050,H2,supply,SMR (gas),0.0
+CTRY,2050,H2,supply,Other H2 supply,0.0
+CTRY,2050,H2,supply,Net pipeline import,1.4551915228366852e-14
+CTRY,2050,H2,use,Industry,90.99656265323705
+CTRY,2050,H2,use,Power generation (H2 turbines),24.3837586028798
+CTRY,2050,H2,use,Refineries,0.0
+CTRY,2050,elec,use,"Building heat (HP, e-heating)",44.26933411158641
+CTRY,2050,elec,use,Electrolysis,116.99915331703355
+CTRY,2050,elec,use,Industry,233.78505569349753
+CTRY,2050,elec,use,Refineries,5.704053042067843
+CTRY,2050,elec,use,Storage charging,10.493239207547665
+CTRY,2050,elec,use,"Fixed demand (buildings, transport, other)",161.50559657446888
+CTRY,2050,elec,supply,Net import,0.0
+MR,2030,H2,supply,Electrolysis,0.0
+MR,2030,H2,supply,LH2 import terminal,17.062669294786996
+MR,2030,H2,supply,SMR (gas),13.54603037475538
+MR,2030,H2,supply,Other H2 supply,7.105427357601002e-15
+MR,2030,H2,use,Net pipeline export,30.55479948178833
+MR,2030,H2,use,Industry,0.0511091805928795
+MR,2030,H2,use,Power generation (H2 turbines),0.0
+MR,2030,H2,use,Refineries,0.0
+MR,2030,elec,use,"Building heat (HP, e-heating)",0.748449347406798
+MR,2030,elec,use,Electrolysis,0.0
+MR,2030,elec,use,Industry,83.57445867762316
+MR,2030,elec,use,Refineries,2.345052600732597
+MR,2030,elec,use,Storage charging,7.323664236381035
+MR,2030,elec,use,"Fixed demand (buildings, transport, other)",160.895532144523
+MR,2030,elec,use,Net export,26.663379935707056
+MR,2040,H2,supply,Electrolysis,0.0
+MR,2040,H2,supply,LH2 import terminal,42.50089199999999
+MR,2040,H2,supply,SMR (gas),13.546030374755384
+MR,2040,H2,supply,Other H2 supply,0.0
+MR,2040,H2,use,Net pipeline export,55.98900394514925
+MR,2040,H2,use,Industry,0.0511091805928795
+MR,2040,H2,use,Power generation (H2 turbines),0.0
+MR,2040,H2,use,Refineries,0.0
+MR,2040,elec,use,"Building heat (HP, e-heating)",5.67951043627346
+MR,2040,elec,use,Electrolysis,0.0
+MR,2040,elec,use,Industry,130.9124255229741
+MR,2040,elec,use,Refineries,1.7910422797595253
+MR,2040,elec,use,Storage charging,7.35253992967856
+MR,2040,elec,use,"Fixed demand (buildings, transport, other)",160.895532144523
+MR,2040,elec,use,Net export,17.751977587564465
+MR,2050,H2,supply,Electrolysis,27.777116099338787
+MR,2050,H2,supply,LH2 import terminal,42.50089199999999
+MR,2050,H2,supply,SMR (gas),0.0
+MR,2050,H2,supply,Other H2 supply,0.0
+MR,2050,H2,use,Net pipeline export,33.51284617517772
+MR,2050,H2,use,Industry,36.75417582756584
+MR,2050,H2,use,Power generation (H2 turbines),0.0
+MR,2050,H2,use,Refineries,0.0
+MR,2050,elec,use,"Building heat (HP, e-heating)",11.633270548620622
+MR,2050,elec,use,Electrolysis,44.58606115463688
+MR,2050,elec,use,Industry,148.68186657981522
+MR,2050,elec,use,Refineries,5.230190271999254
+MR,2050,elec,use,Storage charging,18.912675515381434
+MR,2050,elec,use,"Fixed demand (buildings, transport, other)",160.895532144523
+MR,2050,elec,use,Net export,40.94675456556374

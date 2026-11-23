@@ -1,0 +1,109 @@
+run,label,country,year,item,twh
+IC1,NL+BE regional clusters,NL,2030,Electrolysis,0.0
+IC1,NL+BE regional clusters,NL,2030,LH2 import terminal,22.500936000000003
+IC1,NL+BE regional clusters,NL,2030,Gas reforming,0.0
+IC1,NL+BE regional clusters,NL,2030,Gas reforming + CCS,0.0
+IC1,NL+BE regional clusters,NL,2030,Other H2 supply,0.0
+IC1,NL+BE regional clusters,NL,2030,Net pipeline import,13.325424548351195
+IC1,NL+BE regional clusters,NL,2040,Electrolysis,35.25202551355398
+IC1,NL+BE regional clusters,NL,2040,LH2 import terminal,22.500936000000003
+IC1,NL+BE regional clusters,NL,2040,Gas reforming,0.0
+IC1,NL+BE regional clusters,NL,2040,Gas reforming + CCS,0.0
+IC1,NL+BE regional clusters,NL,2040,Other H2 supply,0.0
+IC1,NL+BE regional clusters,NL,2040,Net pipeline import,0.0
+IC1,NL+BE regional clusters,NL,2050,Electrolysis,129.81053062854122
+IC1,NL+BE regional clusters,NL,2050,LH2 import terminal,22.500936
+IC1,NL+BE regional clusters,NL,2050,Gas reforming,0.0
+IC1,NL+BE regional clusters,NL,2050,Gas reforming + CCS,0.0
+IC1,NL+BE regional clusters,NL,2050,Other H2 supply,-2.842170943040401e-14
+IC1,NL+BE regional clusters,NL,2050,Net pipeline import,0.0
+CTRY,NL+BE country level,NL,2030,Electrolysis,0.0
+CTRY,NL+BE country level,NL,2030,LH2 import terminal,22.500936000000003
+CTRY,NL+BE country level,NL,2030,Gas reforming,0.0
+CTRY,NL+BE country level,NL,2030,Gas reforming + CCS,0.0
+CTRY,NL+BE country level,NL,2030,Other H2 supply,0.0
+CTRY,NL+BE country level,NL,2030,Net pipeline import,0.0
+CTRY,NL+BE country level,NL,2040,Electrolysis,3.281309482920996
+CTRY,NL+BE country level,NL,2040,LH2 import terminal,22.500936000000003
+CTRY,NL+BE country level,NL,2040,Gas reforming,0.0
+CTRY,NL+BE country level,NL,2040,Gas reforming + CCS,0.0
+CTRY,NL+BE country level,NL,2040,Other H2 supply,-3.552713678800501e-15
+CTRY,NL+BE country level,NL,2040,Net pipeline import,0.0
+CTRY,NL+BE country level,NL,2050,Electrolysis,72.89047251651199
+CTRY,NL+BE country level,NL,2050,LH2 import terminal,22.500936000000003
+CTRY,NL+BE country level,NL,2050,Gas reforming,0.0
+CTRY,NL+BE country level,NL,2050,Gas reforming + CCS,0.0
+CTRY,NL+BE country level,NL,2050,Other H2 supply,-1.4210854715202004e-14
+CTRY,NL+BE country level,NL,2050,Net pipeline import,0.0
+MR,Mixed resolution,NL,2030,Electrolysis,0.0
+MR,Mixed resolution,NL,2030,LH2 import terminal,17.062669294786996
+MR,Mixed resolution,NL,2030,Gas reforming,0.0
+MR,Mixed resolution,NL,2030,Gas reforming + CCS,13.269230769230766
+MR,Mixed resolution,NL,2030,Other H2 supply,0.0
+MR,Mixed resolution,NL,2030,Net pipeline import,0.0
+MR,Mixed resolution,NL,2040,Electrolysis,0.0
+MR,Mixed resolution,NL,2040,LH2 import terminal,22.500936000000003
+MR,Mixed resolution,NL,2040,Gas reforming,0.0
+MR,Mixed resolution,NL,2040,Gas reforming + CCS,13.26923076923077
+MR,Mixed resolution,NL,2040,Other H2 supply,0.0
+MR,Mixed resolution,NL,2040,Net pipeline import,0.0
+MR,Mixed resolution,NL,2050,Electrolysis,27.777116099338787
+MR,Mixed resolution,NL,2050,LH2 import terminal,22.500936000000003
+MR,Mixed resolution,NL,2050,Gas reforming,0.0
+MR,Mixed resolution,NL,2050,Gas reforming + CCS,0.0
+MR,Mixed resolution,NL,2050,Other H2 supply,-1.4210854715202004e-14
+MR,Mixed resolution,NL,2050,Net pipeline import,0.0
+IC1,NL+BE regional clusters,BE,2030,Electrolysis,0.0
+IC1,NL+BE regional clusters,BE,2030,LH2 import terminal,19.999956000000005
+IC1,NL+BE regional clusters,BE,2030,Gas reforming,0.0
+IC1,NL+BE regional clusters,BE,2030,Gas reforming + CCS,0.0
+IC1,NL+BE regional clusters,BE,2030,Other H2 supply,0.0
+IC1,NL+BE regional clusters,BE,2030,Net pipeline import,0.0
+IC1,NL+BE regional clusters,BE,2040,Electrolysis,0.0
+IC1,NL+BE regional clusters,BE,2040,LH2 import terminal,19.999956000000005
+IC1,NL+BE regional clusters,BE,2040,Gas reforming,0.0
+IC1,NL+BE regional clusters,BE,2040,Gas reforming + CCS,0.0
+IC1,NL+BE regional clusters,BE,2040,Other H2 supply,0.0
+IC1,NL+BE regional clusters,BE,2040,Net pipeline import,12.629917439303739
+IC1,NL+BE regional clusters,BE,2050,Electrolysis,0.0
+IC1,NL+BE regional clusters,BE,2050,LH2 import terminal,19.999956000000005
+IC1,NL+BE regional clusters,BE,2050,Gas reforming,0.0
+IC1,NL+BE regional clusters,BE,2050,Gas reforming + CCS,0.0
+IC1,NL+BE regional clusters,BE,2050,Other H2 supply,0.0
+IC1,NL+BE regional clusters,BE,2050,Net pipeline import,45.02423962301406
+CTRY,NL+BE country level,BE,2030,Electrolysis,0.0
+CTRY,NL+BE country level,BE,2030,LH2 import terminal,14.148614521389755
+CTRY,NL+BE country level,BE,2030,Gas reforming,0.0
+CTRY,NL+BE country level,BE,2030,Gas reforming + CCS,0.0
+CTRY,NL+BE country level,BE,2030,Other H2 supply,0.0
+CTRY,NL+BE country level,BE,2030,Net pipeline import,22.47816040159893
+CTRY,NL+BE country level,BE,2040,Electrolysis,0.0
+CTRY,NL+BE country level,BE,2040,LH2 import terminal,19.999956000000005
+CTRY,NL+BE country level,BE,2040,Gas reforming,0.0
+CTRY,NL+BE country level,BE,2040,Gas reforming + CCS,0.0
+CTRY,NL+BE country level,BE,2040,Other H2 supply,0.0
+CTRY,NL+BE country level,BE,2040,Net pipeline import,13.934505248842973
+CTRY,NL+BE country level,BE,2050,Electrolysis,0.0
+CTRY,NL+BE country level,BE,2050,LH2 import terminal,19.999956000000005
+CTRY,NL+BE country level,BE,2050,Gas reforming,0.0
+CTRY,NL+BE country level,BE,2050,Gas reforming + CCS,0.0
+CTRY,NL+BE country level,BE,2050,Other H2 supply,0.0
+CTRY,NL+BE country level,BE,2050,Net pipeline import,56.09835948522476
+MR,Mixed resolution,BE,2030,Electrolysis,0.0
+MR,Mixed resolution,BE,2030,LH2 import terminal,0.0
+MR,Mixed resolution,BE,2030,Gas reforming,0.0
+MR,Mixed resolution,BE,2030,Gas reforming + CCS,0.2767996055246192
+MR,Mixed resolution,BE,2030,Other H2 supply,0.0
+MR,Mixed resolution,BE,2030,Net pipeline import,0.0
+MR,Mixed resolution,BE,2040,Electrolysis,0.0
+MR,Mixed resolution,BE,2040,LH2 import terminal,19.999955999999997
+MR,Mixed resolution,BE,2040,Gas reforming,0.0
+MR,Mixed resolution,BE,2040,Gas reforming + CCS,0.2767996055246192
+MR,Mixed resolution,BE,2040,Other H2 supply,0.0
+MR,Mixed resolution,BE,2040,Net pipeline import,0.0
+MR,Mixed resolution,BE,2050,Electrolysis,0.0
+MR,Mixed resolution,BE,2050,LH2 import terminal,19.999955999999997
+MR,Mixed resolution,BE,2050,Gas reforming,0.0
+MR,Mixed resolution,BE,2050,Gas reforming + CCS,0.0
+MR,Mixed resolution,BE,2050,Other H2 supply,0.0
+MR,Mixed resolution,BE,2050,Net pipeline import,1.4595455072901313

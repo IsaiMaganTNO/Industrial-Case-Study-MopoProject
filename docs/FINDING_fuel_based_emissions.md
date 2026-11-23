@@ -216,6 +216,22 @@ to be fixed/understood before the result could be interpreted:
    `tools/patch_co2_caps.py` and `tools/patch_biomass_units.py` were both reacting to
    this symptom and are superseded.
 
+   > **CORRECTION (2026-10-04).** The final sentence above is **wrong and has caused
+   > a defect**. The cap patch is **NOT** superseded. Measured on both current DBs,
+   > `representative_blocks_by_period` holds **one entry per representative block**
+   > (3-day: 9, 7-day: 21), **not** 365 daily entries - in the 3-day DB that solved
+   > correctly *and* in a completely fresh pipeline build. The collapse is therefore
+   > still in force, and the `/365` division of the `atmosphere` cap is **still
+   > required on every new build**.
+   >
+   > The 3-day runs were correct only because they inherited the manual `co2rebuild`
+   > patch by descent. The 7-day rebuild started from `SpineOpt_target`, did not
+   > inherit it, and carried a budget **365x too loose**. Caught pre-solve; see
+   > `RUN_7day_hcco2.md` "ABORTED RUN + CO2 cap defect".
+   >
+   > Use `tools/patch_co2_cap_div365.py` on any DB built fresh from the pipeline.
+   > **Check `atmosphere` cap 2030 == 0.45315068, not 165.4, before every solve.**
+
 2. **Fuel-based emissions** (this document) - not yet fixed.
 
 Earlier runs produced apparently "implausible" results (unabated fossil replacing

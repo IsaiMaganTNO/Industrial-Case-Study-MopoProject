@@ -1,0 +1,205 @@
+[gurobi] licence file: C:\gurobi1203\gurobi.lic
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2574744
+WLS license 2574744 - registered to TNO
+[13:20:54] STAGE-1 SOLVE - IC1 tiny test model - GUROBI
+[13:20:54]   RAM in use  : 39.5 / 143.5 GB
+[13:20:55]   time limit  : 2880 min
+[13:20:55]   Method      : -1  (-1 = concurrent)
+[13:20:55]   NumericFocus: 0
+[13:20:55]   licence     : checked out ONCE at startup (shared Env)
+[13:20:55]   guard       : external (tools/watch_build.ps1)
+[13:20:55] 
+[13:20:55]   alternative: ic1_tiny__Run_Model_Planning@2026-10-21T13:20:55
+[13:20:55]   scenario filter: baseline_blended_representative_periods
+
+Running SpineOpt...
+[SpineOpt version 1.0.0 (git hash: N/A)]
+[SpineInterface version 0.18.0 (git hash: N/A)]
+Execution started at 2026-10-21T13:21:07.066
+Reading input data from sqlite:///C:/Users/maganih/Documents/github-repos/Industrial-Case-Study-MopoProject/runs/rp10_mr/Final_SpineOpt_Model.tiny.10day.mr_ccslow_ccu_cap16_dac0.sqlite...
+Initializing  data structure from db... 55.622009 seconds (141.27 M allocations: 5.589 GiB, 2.83% gc time, 65.47% compilation time)
+Preprocessing  data structure... 23.296694 seconds (35.53 M allocations: 1.722 GiB, 0.85% gc time, 95.87% compilation time)
+Checking  data structure...  1.517084 seconds (2.26 M allocations: 121.366 MiB, 2.71% gc time, 84.87% compilation time)
+Set parameter OutputFlag to value 1
+Set parameter LogToConsole to value 1
+Set parameter TimeLimit to value 172800
+Set parameter Threads to value 8
+Set parameter Method to value -1
+Set parameter NumericFocus to value 0
+Set parameter Presolve to value -1
+Set parameter FeasibilityTol to value 1e-06
+Set parameter OptimalityTol to value 1e-06
+Set parameter MIPGap to value 0.001
+Set parameter LogFile to value "run_logs/gurobi_solver.log"
+
+Build started at 2026-10-21T13:23:13.338
+Creating capacity_planning temporal structure... 28.150986 seconds (187.90 M allocations: 8.980 GiB, 10.44% gc time, 41.44% compilation time: 5% of which was recompilation)
+Creating capacity_planning stochastic structure...  5.928091 seconds (9.16 M allocations: 490.400 MiB, 99.28% compilation time: 4% of which was recompilation)
+Adding capacity_planning independent variables...
+- [variable_binary_gas_connection_flow]  5.233908 seconds (10.01 M allocations: 394.757 MiB, 2.06% gc time, 88.03% compilation time)
+- [variable_connection_flow]627.159437 seconds (2.66 G allocations: 277.963 GiB, 16.61% gc time, 2.50% compilation time: <1% of which was recompilation)
+- [variable_connection_intact_flow]526.178404 seconds (1.53 G allocations: 217.474 GiB, 15.69% gc time, 0.22% compilation time)
+- [variable_connections_decommissioned]  6.127241 seconds (20.56 M allocations: 1005.265 MiB, 5.65% gc time, 54.68% compilation time)
+- [variable_connections_invested]  8.130268 seconds (22.97 M allocations: 1.044 GiB, 3.23% gc time, 33.02% compilation time)
+- [variable_connections_invested_available]  8.449291 seconds (22.53 M allocations: 1.024 GiB, 3.44% gc time, 18.51% compilation time: <1% of which was recompilation)
+- [variable_min_capacity_margin_slack]  3.318325 seconds (8.60 M allocations: 317.508 MiB, 83.08% compilation time)
+- [variable_node_injection]206.902598 seconds (543.08 M allocations: 83.142 GiB, 15.53% gc time, 3.60% compilation time)
+- [variable_node_pressure]  1.479110 seconds (6.46 M allocations: 220.069 MiB, 11.73% gc time, 41.29% compilation time)
+- [variable_node_slack_neg]  1.911369 seconds (7.18 M allocations: 286.610 MiB, 64.18% compilation time)
+- [variable_node_slack_pos]  0.833710 seconds (6.04 M allocations: 230.801 MiB)
+- [variable_node_state]511.791310 seconds (2.98 G allocations: 173.700 GiB, 11.03% gc time, 1.98% compilation time)
+- [variable_node_state_longterm]254.776230 seconds (1.38 G allocations: 80.780 GiB, 10.63% gc time, 3.15% compilation time)
+- [variable_node_voltage_angle]  1.550459 seconds (6.48 M allocations: 220.924 MiB, 59.94% compilation time)
+- [variable_nonspin_units_shut_down]  2.307461 seconds (7.98 M allocations: 294.704 MiB, 73.51% compilation time: 2% of which was recompilation)
+- [variable_nonspin_units_started_up]  1.923218 seconds (6.86 M allocations: 240.718 MiB, 13.42% gc time, 46.35% compilation time)
+- [variable_storages_decommissioned]  3.575031 seconds (14.48 M allocations: 656.707 MiB, 54.40% compilation time)
+- [variable_storages_invested]  6.574956 seconds (17.03 M allocations: 739.844 MiB, 4.57% gc time, 12.92% compilation time)
+- [variable_storages_invested_available]  6.257070 seconds (16.77 M allocations: 727.128 MiB, 4.74% gc time, 6.04% compilation time)
+- [variable_unit_flow]2362.455534 seconds (22.57 G allocations: 1.100 TiB, 20.21% gc time, 0.47% compilation time: <1% of which was recompilation)
+- [variable_unit_flow_op]  2.233406 seconds (7.86 M allocations: 293.644 MiB, 56.99% compilation time)
+- [variable_unit_flow_op_active]  1.921604 seconds (7.28 M allocations: 264.328 MiB, 48.71% compilation time)
+- [variable_units_invested] 42.383061 seconds (83.59 M allocations: 5.230 GiB, 8.34% gc time, 8.40% compilation time)
+- [variable_units_invested_available] 39.328064 seconds (80.39 M allocations: 5.081 GiB, 6.30% gc time, 1.01% compilation time)
+- [variable_units_mothballed] 19.788926 seconds (71.91 M allocations: 4.708 GiB, 12.11% gc time, 2.98% compilation time)
+- [variable_units_on]2434.155981 seconds (8.23 G allocations: 617.072 GiB, 13.07% gc time, 0.39% compilation time)
+- [variable_units_out_of_service]  1.466526 seconds (6.66 M allocations: 230.222 MiB, 61.63% compilation time)
+- [variable_units_returned_to_service]  1.018272 seconds (5.91 M allocations: 193.250 MiB, 21.34% compilation time)
+- [variable_units_shut_down]  1.249367 seconds (6.23 M allocations: 208.886 MiB, 40.18% compilation time)
+- [variable_units_started_up]  0.781544 seconds (5.78 M allocations: 186.404 MiB)
+- [variable_units_taken_out_of_service]  0.801186 seconds (5.78 M allocations: 186.404 MiB)
+- [variable_user_constraint_slack_neg]  1.901079 seconds (7.55 M allocations: 272.178 MiB, 58.91% compilation time)
+- [variable_user_constraint_slack_pos]  0.723867 seconds (5.74 M allocations: 184.499 MiB)
+7104.128128 seconds (40.40 G allocations: 2.541 TiB, 15.60% gc time, 1.48% compilation time: <1% of which was recompilation)
+Adding capacity_planning dependent variables...
+- [variable_connection_flow]109.357785 seconds (1.35 G allocations: 67.487 GiB, 24.81% gc time, 2.41% compilation time)
+- [variable_unit_flow]714.679862 seconds (29.52 G allocations: 949.668 GiB, 23.46% gc time, 0.21% compilation time)
+824.426593 seconds (30.87 G allocations: 1017.178 GiB, 23.63% gc time, 0.55% compilation time)
+Adding capacity_planning expressions...
+- [expression_capacity_margin]  0.385661 seconds (1.54 M allocations: 74.128 MiB, 99.56% compilation time)
+  0.385930 seconds (1.54 M allocations: 74.131 MiB, 99.49% compilation time)
+Adding capacity_planning constraints...
+- [constraint_candidate_connection_flow_lb]  0.557291 seconds (991.29 k allocations: 48.128 MiB, 99.66% compilation time)
+- [constraint_candidate_connection_flow_ub]  0.118159 seconds (397.23 k allocations: 19.313 MiB, 98.67% compilation time)
+- [constraint_compression_ratio]  0.113806 seconds (349.61 k allocations: 17.197 MiB, 97.97% compilation time)
+- [constraint_connection_flow_capacity] 35.848216 seconds (217.49 M allocations: 12.788 GiB, 44.93% gc time, 59198 lock conflicts, 15.16% compilation time)
+- [constraint_connection_flow_gas_capacity]  0.090618 seconds (92.14 k allocations: 4.821 MiB, 97.09% compilation time)
+- [constraint_connection_flow_intact_flow]  0.338833 seconds (432.61 k allocations: 21.275 MiB, 99.51% compilation time)
+- [constraint_connection_flow_lodf]  0.489027 seconds (1.19 M allocations: 60.021 MiB, 99.91% compilation time: 12% of which was recompilation)
+- [constraint_connection_intact_flow_capacity]  0.317812 seconds (246.12 k allocations: 12.103 MiB, 99.38% compilation time)
+- [constraint_connection_intact_flow_ptdf]  0.247156 seconds (246.99 k allocations: 12.250 MiB, 99.47% compilation time)
+- [constraint_connection_lifetime] 47.667845 seconds (386.79 M allocations: 32.696 GiB, 46.11% gc time, 19 lock conflicts, 6.62% compilation time)
+- [constraint_connection_min_flow]  0.939653 seconds (1.20 M allocations: 59.086 MiB, 98.27% compilation time)
+- [constraint_connection_unitary_gas_flow]  0.004058 seconds (14.08 k allocations: 916.031 KiB)
+- [constraint_connections_invested_available] 13.750791 seconds (1.51 M allocations: 74.487 MiB, 92.84% gc time, 8.69% compilation time)
+- [constraint_connections_invested_transition] 15.009883 seconds (34.80 M allocations: 1.936 GiB, 66.73% gc time, 14 lock conflicts, 16.05% compilation time: <1% of which was recompilation)
+- [constraint_cyclic_node_state] 14.774578 seconds (15.78 M allocations: 941.624 MiB, 69.50% gc time, 9 lock conflicts, 22.57% compilation time)
+- [constraint_fix_node_pressure_point]  0.174810 seconds (587.43 k allocations: 28.734 MiB, 98.69% compilation time)
+ERROR: LoadError: KeyError: key (connection = AT_CH4_DE, node = CH4_AT, direction = from_node, stochastic_scenario = realization, t = 2030-07-01T00:00~(1 day)~>2030-07-02T00:00) not found
+Stacktrace:
+  [1] getindex
+    @ .\dict.jl:477 [inlined]
+  [2] getindex
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\util\misc.jl:429 [inlined]
+  [3] (::SpineOpt.var"#_build_constraint_ratio_out_in_connection_flow_highest_resolution##2#_build_constraint_ratio_out_in_connection_flow_highest_resolution##3"{JuMP.Model, SpineInterface.Object, SpineInterface.Object, SpineInterface.Parameter, Dict{@NamedTuple{connection::SpineInterface.Object, node::SpineInterface.Object, direction::SpineInterface.Object, stochastic_scenario::SpineInterface.Object, t::SpineInterface.TimeSlice}, Union{JuMP.GenericAffExpr{T, JuMP.VariableRef} where T<:Union{Number, SpineInterface.Call}, JuMP.VariableRef}}})(::@NamedTuple{connection::SpineInterface.Object, node::SpineInterface.Object, direction::SpineInterface.Object, stochastic_scenario::SpineInterface.Object, t::SpineInterface.TimeSlice, weight::Float64})
+    @ SpineOpt .\none:-1
+  [4] MappingRF
+    @ .\reduce.jl:92 [inlined]
+  [5] (::Base.MappingRF{SpineOpt.var"#_past_connection_input_flow_indices##0#_past_connection_input_flow_indices##1"{SpineInterface.TimeSlice}, Base.MappingRF{SpineOpt.var"#_build_constraint_ratio_out_in_connection_flow_highest_resolution##2#_build_constraint_ratio_out_in_connection_flow_highest_resolution##3"{JuMP.Model, SpineInterface.Object, SpineInterface.Object, SpineInterface.Parameter, Dict{@NamedTuple{connection::SpineInterface.Object, node::SpineInterface.Object, direction::SpineInterface.Object, stochastic_scenario::SpineInterface.Object, t::SpineInterface.TimeSlice}, Union{JuMP.GenericAffExpr{T, JuMP.VariableRef} where T<:Union{Number, SpineInterface.Call}, JuMP.VariableRef}}}, Base.BottomRF{typeof(Base.add_sum)}}})(acc::Int64, x::@NamedTuple{connection::SpineInterface.Object, node::SpineInterface.Object, direction::SpineInterface.Object, stochastic_scenario::SpineInterface.Object, t::SpineInterface.TimeSlice})
+    @ Base .\reduce.jl:92
+  [6] MappingRF (repeats 2 times)
+    @ .\reduce.jl:92 [inlined]
+  [7] afoldl
+    @ .\operators.jl:599 [inlined]
+  [8] _foldl_impl(op::Base.MappingRF{SpineOpt.var"#858#859"{SpineInterface.TimeSlice}, Base.MappingRF{SpineOpt.var"#1121#1122"{SpineInterface.Object, SpineInterface.Object}, Base.MappingRF{SpineOpt.var"#_past_connection_input_flow_indices##0#_past_connection_input_flow_indices##1"{SpineInterface.TimeSlice}, Base.MappingRF{SpineOpt.var"#_build_constraint_ratio_out_in_connection_flow_highest_resolution##2#_build_constraint_ratio_out_in_connection_flow_highest_resolution##3"{JuMP.Model, SpineInterface.Object, SpineInterface.Object, SpineInterface.Parameter, Dict{@NamedTuple{connection::SpineInterface.Object, node::SpineInterface.Object, direction::SpineInterface.Object, stochastic_scenario::SpineInterface.Object, t::SpineInterface.TimeSlice}, Union{JuMP.GenericAffExpr{T, JuMP.VariableRef} where T<:Union{Number, SpineInterface.Call}, JuMP.VariableRef}}}, Base.BottomRF{typeof(Base.add_sum)}}}}}, init::Int64, itr::Tuple{@NamedTuple{node::SpineInterface.Object, stochastic_scenario::SpineInterface.Object}})
+    @ Base .\reduce.jl:60
+  [9] FlatteningRF
+    @ .\reduce.jl:118 [inlined]
+ [10] MappingRF (repeats 2 times)
+    @ .\reduce.jl:92 [inlined]
+ [11] _foldl_impl(op::Base.MappingRF{SpineOpt.var"#718#719"{SpineInterface.Object}, Base.MappingRF{SpineOpt.var"#856#857"{Vector{SpineInterface.Object}, JuMP.Model}, Base.FlatteningRF{Base.MappingRF{SpineOpt.var"#1121#1122"{SpineInterface.Object, SpineInterface.Object}, Base.MappingRF{SpineOpt.var"#_past_connection_input_flow_indices##0#_past_connection_input_flow_indices##1"{SpineInterface.TimeSlice}, Base.MappingRF{SpineOpt.var"#_build_constraint_ratio_out_in_connection_flow_highest_resolution##2#_build_constraint_ratio_out_in_connection_flow_highest_resolution##3"{JuMP.Model, SpineInterface.Object, SpineInterface.Object, SpineInterface.Parameter, Dict{@NamedTuple{connection::SpineInterface.Object, node::SpineInterface.Object, direction::SpineInterface.Object, stochastic_scenario::SpineInterface.Object, t::SpineInterface.TimeSlice}, Union{JuMP.GenericAffExpr{T, JuMP.VariableRef} where T<:Union{Number, SpineInterface.Call}, JuMP.VariableRef}}}, Base.BottomRF{typeof(Base.add_sum)}}}}}}}, init::Int64, itr::Vector{SpineInterface.TimeSlice})
+    @ Base .\reduce.jl:50
+ [12] (::Base.FlatteningRF{Base.MappingRF{SpineOpt.var"#856#857"{Vector{SpineInterface.Object}, JuMP.Model}, Base.FlatteningRF{Base.MappingRF{SpineOpt.var"#1121#1122"{SpineInterface.Object, SpineInterface.Object}, Base.MappingRF{SpineOpt.var"#_past_connection_input_flow_indices##0#_past_connection_input_flow_indices##1"{SpineInterface.TimeSlice}, Base.MappingRF{SpineOpt.var"#_build_constraint_ratio_out_in_connection_flow_highest_resolution##2#_build_constraint_ratio_out_in_connection_flow_highest_resolution##3"{JuMP.Model, SpineInterface.Object, SpineInterface.Object, SpineInterface.Parameter, Dict{@NamedTuple{connection::SpineInterface.Object, node::SpineInterface.Object, direction::SpineInterface.Object, stochastic_scenario::SpineInterface.Object, t::SpineInterface.TimeSlice}, Union{JuMP.GenericAffExpr{T, JuMP.VariableRef} where T<:Union{Number, SpineInterface.Call}, JuMP.VariableRef}}}, Base.BottomRF{typeof(Base.add_sum)}}}}}}})(acc::Int64, x::Base.Generator{Vector{SpineInterface.TimeSlice}, SpineOpt.var"#718#719"{SpineInterface.Object}})
+    @ Base .\reduce.jl:118
+ [13] (::Base.MappingRF{SpineOpt.var"#716#717"{SpineInterface.Anything, Vector{SpineInterface.TimeSlice}, JuMP.Model}, Base.FlatteningRF{Base.MappingRF{SpineOpt.var"#856#857"{Vector{SpineInterface.Object}, JuMP.Model}, Base.FlatteningRF{Base.MappingRF{SpineOpt.var"#1121#1122"{SpineInterface.Object, SpineInterface.Object}, Base.MappingRF{SpineOpt.var"#_past_connection_input_flow_indices##0#_past_connection_input_flow_indices##1"{SpineInterface.TimeSlice}, Base.MappingRF{SpineOpt.var"#_build_constraint_ratio_out_in_connection_flow_highest_resolution##2#_build_constraint_ratio_out_in_connection_flow_highest_resolution##3"{JuMP.Model, SpineInterface.Object, SpineInterface.Object, SpineInterface.Parameter, Dict{@NamedTuple{connection::SpineInterface.Object, node::SpineInterface.Object, direction::SpineInterface.Object, stochastic_scenario::SpineInterface.Object, t::SpineInterface.TimeSlice}, Union{JuMP.GenericAffExpr{T, JuMP.VariableRef} where T<:Union{Number, SpineInterface.Call}, JuMP.VariableRef}}}, Base.BottomRF{typeof(Base.add_sum)}}}}}}}})(acc::Int64, x::SpineInterface.Object)
+    @ Base .\reduce.jl:92
+--- the above 3 lines are repeated 1 more time ---
+ [17] _foldl_impl(op::Base.MappingRF{SpineOpt.var"#1119#1120"{Vector{SpineInterface.Object}, Vector{SpineInterface.TimeSlice}, SpineInterface.Anything, JuMP.Model}, Base.FlatteningRF{Base.MappingRF{SpineOpt.var"#_past_connection_input_flow_indices##0#_past_connection_input_flow_indices##1"{SpineInterface.TimeSlice}, Base.MappingRF{SpineOpt.var"#_build_constraint_ratio_out_in_connection_flow_highest_resolution##2#_build_constraint_ratio_out_in_connection_flow_highest_resolution##3"{JuMP.Model, SpineInterface.Object, SpineInterface.Object, SpineInterface.Parameter, Dict{@NamedTuple{connection::SpineInterface.Object, node::SpineInterface.Object, direction::SpineInterface.Object, stochastic_scenario::SpineInterface.Object, t::SpineInterface.TimeSlice}, Union{JuMP.GenericAffExpr{T, JuMP.VariableRef} where T<:Union{Number, SpineInterface.Call}, JuMP.VariableRef}}}, Base.BottomRF{typeof(Base.add_sum)}}}}}, init::Int64, itr::Vector{Union{NamedTuple{K, V} where {K, V<:Tuple{SpineInterface.ObjectLike, Vararg{SpineInterface.ObjectLike}}}, SpineInterface.ObjectLike}})
+    @ Base .\reduce.jl:50
+ [18] foldl_impl
+    @ .\reduce.jl:40 [inlined]
+ [19] mapfoldl_impl
+    @ .\reduce.jl:36 [inlined]
+ [20] mapfoldl
+    @ .\reduce.jl:167 [inlined]
+ [21] mapreduce
+    @ .\reduce.jl:299 [inlined]
+ [22] sum
+    @ .\reduce.jl:524 [inlined]
+ [23] #sum#278
+    @ .\reduce.jl:553 [inlined]
+ [24] _build_constraint_ratio_out_in_connection_flow_highest_resolution(m::JuMP.Model, conn::SpineInterface.Object, ng_out::SpineInterface.Object, ng_in::SpineInterface.Object, s_path::Vector{SpineInterface.Object}, t::SpineInterface.TimeSlice, ratio_out_in::SpineInterface.Parameter, sense::Function)
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\constraints\constraint_ratio_out_in_connection_flow.jl:69
+ [25] (::SpineOpt.var"#add_constraint_ratio_out_in_connection_flow!##2#add_constraint_ratio_out_in_connection_flow!##3"{SpineInterface.Parameter, typeof(==)})(::JuMP.Model, ::SpineInterface.Object, ::Vararg{Any})
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\constraints\constraint_ratio_out_in_connection_flow.jl:53
+ [26] _add_constraint!(m::JuMP.Model, name::Symbol, indices::SpineOpt.var"#add_constraint_ratio_out_in_connection_flow!##0#add_constraint_ratio_out_in_connection_flow!##1"{SpineInterface.Parameter}, build_constraint::SpineOpt.var"#add_constraint_ratio_out_in_connection_flow!##2#add_constraint_ratio_out_in_connection_flow!##3"{SpineInterface.Parameter, typeof(==)})
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\constraints\constraint_common.jl:48
+ [27] add_constraint_ratio_out_in_connection_flow!(m::JuMP.Model, ratio_out_in::SpineInterface.Parameter, sense::Function)
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\constraints\constraint_ratio_out_in_connection_flow.jl:49
+ [28] add_constraint_fix_ratio_out_in_connection_flow!
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\constraints\constraint_ratio_out_in_connection_flow.jl:131 [inlined]
+ [29] #156
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\util\misc.jl:51 [inlined]
+ [30] macro expansion
+    @ .\timing.jl:697 [inlined]
+ [31] timemsg(msg::String, stats::Nothing, f::SpineOpt.var"#156#157"{JuMP.Model, typeof(SpineOpt.add_constraint_fix_ratio_out_in_connection_flow!)})
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\util\misc.jl:61
+ [32] macro expansion
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\util\misc.jl:43 [inlined]
+ [33] _add_constraints!(m::JuMP.Model; log_level::Int64)
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt_basic.jl:256
+ [34] _add_constraints!
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt_basic.jl:184 [inlined]
+ [35] #140
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\util\misc.jl:51 [inlined]
+ [36] macro expansion
+    @ .\timing.jl:697 [inlined]
+ [37] timemsg(msg::String, stats::Nothing, f::SpineOpt.var"#140#141"{Int64, JuMP.Model})
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\util\misc.jl:61
+ [38] macro expansion
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\util\misc.jl:43 [inlined]
+ [39] build_model!(m::JuMP.Model; log_level::Int64)
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt_basic.jl:88
+ [40] build_model!
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt_basic.jl:73 [inlined]
+ [41] do_run_spineopt!(m::JuMP.Model, url_out::String, ::Val{:basic_algorithm}; log_level::Int64, optimize::Bool, update_names::Bool, alternative::String, write_as_roll::Int64, resume_file_path::Nothing)
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt_basic.jl:32
+ [42] invokelatest
+    @ .\Base_compiler.jl:250 [inlined]
+ [43] run_spineopt!(m::JuMP.Model, url_out::String; log_level::Int64, optimize::Bool, update_names::Bool, alternative::String, write_as_roll::Int64, resume_file_path::Nothing)
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt.jl:382
+ [44] run_spineopt!
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt.jl:371 [inlined]
+ [45] _run_spineopt(f::SpineOpt.var"#47#48", url_in::String, url_out::String; upgrade::Bool, filters::Dict{String, String}, templates::Tuple{}, mip_solver::MathOptInterface.OptimizerWithAttributes, lp_solver::MathOptInterface.OptimizerWithAttributes, use_direct_model::Bool, use_model_names::Bool, add_bridges::Bool, log_level::Int64, alternative::String, kwargs::@Kwargs{optimize::Bool, update_names::Bool, write_as_roll::Int64, resume_file_path::Nothing})
+    @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt.jl:162
+ [46] _run_spineopt
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt.jl:126 [inlined]
+ [47] #51
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt.jl:104 [inlined]
+ [48] _log_to_file
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\util\misc.jl:260 [inlined]
+ [49] #run_spineopt#49
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt.jl:103 [inlined]
+ [50] run_spineopt
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt.jl:83 [inlined]
+ [51] #run_spineopt#45
+    @ C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt.jl:67 [inlined]
+ [52] top-level scope
+    @ C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\tools\solve_tiny_gurobi.jl:203
+ [53] include(mod::Module, _path::String)
+    @ Base .\Base.jl:306
+ [54] exec_options(opts::Base.JLOptions)
+    @ Base .\client.jl:317
+in expression starting at C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\tools\solve_tiny_gurobi.jl:203
+- [constraint_fix_ratio_out_in_connection_flow]

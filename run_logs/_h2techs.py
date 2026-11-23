@@ -1,0 +1,7 @@
+import sys; sys.path.insert(0,"tools")
+import make_report_2050 as R
+F=R.F
+for k in F.D:
+  for y in (2030,2040,2050):
+    s=F.sel(k,"supply",y); s=s[(s.carrier=="hydrogen")&(s.energy>0)&s.cn.isin(["NL","BE"])]
+    g=s.groupby("tech").energy.sum().div(1e3).round(1); g=g[g>0.1]; print(k,y,g.to_dict())

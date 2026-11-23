@@ -56,6 +56,9 @@ import sys
 import csv
 import json
 import random
+
+# FIX (2026-10-08): seed so any residual random branch is reproducible.
+random.seed(20261008)
 from pprint import pprint
 from copy import deepcopy
 from math import sqrt
@@ -1344,7 +1347,10 @@ def decay_capacity(unit, lifetime, milestoneyears):  # baseyear
                 capacity[milestoneyear] = 0.0
     elif unit["date_in"] and lifetime:
         for milestoneyear in milestoneyears:
-            if int(milestoneyear[1:]) < int(float(unit["DateIn"])) + int(
+            # FIX (2026-10-08): was unit["DateIn"] - a key absent from this
+            # dict (it is "date_in"). Latent KeyError, never reached while
+            # date_in was always None.
+            if int(milestoneyear[1:]) < int(float(unit["date_in"])) + int(
                 float(lifetime)
             ):
                 capacity[milestoneyear] = float(unit["capacity"])
@@ -1485,13 +1491,18 @@ def map_ppm_jaif(unit_ppm):
         cap_ppm = float(unit_ppm["Capacity"])
     except:
         cap_ppm = None
+    # FIX (2026-10-08): these previously read float("DateIn") /
+    # float("DateOut"), i.e. the literal column *name*, which always raised
+    # ValueError and forced both to None for every plant. That sent 100% of
+    # units down the random-retirement branch of decay_capacity().
+    # See docs/FINDING_random_retirement_dates.md
     try:
-        datein_ppm = float("DateIn")
-    except:
+        datein_ppm = float(unit_ppm["DateIn"])
+    except (KeyError, TypeError, ValueError):
         datein_ppm = None
     try:
-        dateout_ppm = float("DateOut")
-    except:
+        dateout_ppm = float(unit_ppm["DateOut"])
+    except (KeyError, TypeError, ValueError):
         dateout_ppm = None
 
     unit_jaif = {

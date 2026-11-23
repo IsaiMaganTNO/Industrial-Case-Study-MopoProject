@@ -1,0 +1,61 @@
+run,label,country,year,item,twh
+MR,Mixed resolution,NL,2050,Electrolysis,27.777116099338787
+MR,Mixed resolution,NL,2050,LH2 import terminal,22.500936000000003
+MR,Mixed resolution,NL,2050,Gas reforming,0.0
+MR,Mixed resolution,NL,2050,Gas reforming + CCS,0.0
+MR,Mixed resolution,NL,2050,Other H2 supply,-1.4210854715202004e-14
+MR,Mixed resolution,NL,2050,Net pipeline import,0.0
+NATCAP,National CO2 caps,NL,2050,Electrolysis,25.13962414440187
+NATCAP,National CO2 caps,NL,2050,LH2 import terminal,22.500936000000003
+NATCAP,National CO2 caps,NL,2050,Gas reforming,0.0
+NATCAP,National CO2 caps,NL,2050,Gas reforming + CCS,0.0
+NATCAP,National CO2 caps,NL,2050,Other H2 supply,-7.105427357601002e-15
+NATCAP,National CO2 caps,NL,2050,Net pipeline import,0.0
+RP10,10 repr. days,NL,2050,Electrolysis,45.574210659080926
+RP10,10 repr. days,NL,2050,LH2 import terminal,22.500934674502187
+RP10,10 repr. days,NL,2050,Gas reforming,0.0
+RP10,10 repr. days,NL,2050,Gas reforming + CCS,0.0
+RP10,10 repr. days,NL,2050,Other H2 supply,1.4210854715202004e-14
+RP10,10 repr. days,NL,2050,Net pipeline import,0.0
+CCSOPT,Optimistic CCS,NL,2050,Electrolysis,8.60269639748374
+CCSOPT,Optimistic CCS,NL,2050,LH2 import terminal,22.500936000000003
+CCSOPT,Optimistic CCS,NL,2050,Gas reforming,0.0
+CCSOPT,Optimistic CCS,NL,2050,Gas reforming + CCS,0.0
+CCSOPT,Optimistic CCS,NL,2050,Other H2 supply,-7.105427357601002e-15
+CCSOPT,Optimistic CCS,NL,2050,Net pipeline import,0.0
+FRLU,With FR + LU,NL,2050,Electrolysis,16.245775988859798
+FRLU,With FR + LU,NL,2050,LH2 import terminal,22.500936000000003
+FRLU,With FR + LU,NL,2050,Gas reforming,0.0
+FRLU,With FR + LU,NL,2050,Gas reforming + CCS,0.0
+FRLU,With FR + LU,NL,2050,Other H2 supply,-7.105427357601002e-15
+FRLU,With FR + LU,NL,2050,Net pipeline import,0.0
+MR,Mixed resolution,BE,2050,Electrolysis,0.0
+MR,Mixed resolution,BE,2050,LH2 import terminal,19.999955999999997
+MR,Mixed resolution,BE,2050,Gas reforming,0.0
+MR,Mixed resolution,BE,2050,Gas reforming + CCS,0.0
+MR,Mixed resolution,BE,2050,Other H2 supply,0.0
+MR,Mixed resolution,BE,2050,Net pipeline import,1.4595455072901313
+NATCAP,National CO2 caps,BE,2050,Electrolysis,0.19041701100817665
+NATCAP,National CO2 caps,BE,2050,LH2 import terminal,19.999955999999997
+NATCAP,National CO2 caps,BE,2050,Gas reforming,0.0
+NATCAP,National CO2 caps,BE,2050,Gas reforming + CCS,0.0
+NATCAP,National CO2 caps,BE,2050,Other H2 supply,-3.552713678800501e-15
+NATCAP,National CO2 caps,BE,2050,Net pipeline import,1.946099468728571
+RP10,10 repr. days,BE,2050,Electrolysis,0.0
+RP10,10 repr. days,BE,2050,LH2 import terminal,19.81392231804827
+RP10,10 repr. days,BE,2050,Gas reforming,0.0
+RP10,10 repr. days,BE,2050,Gas reforming + CCS,0.0
+RP10,10 repr. days,BE,2050,Other H2 supply,0.0
+RP10,10 repr. days,BE,2050,Net pipeline import,12.59632809248388
+CCSOPT,Optimistic CCS,BE,2050,Electrolysis,0.0
+CCSOPT,Optimistic CCS,BE,2050,LH2 import terminal,19.999955999999997
+CCSOPT,Optimistic CCS,BE,2050,Gas reforming,0.0
+CCSOPT,Optimistic CCS,BE,2050,Gas reforming + CCS,0.0
+CCSOPT,Optimistic CCS,BE,2050,Other H2 supply,0.0
+CCSOPT,Optimistic CCS,BE,2050,Net pipeline import,0.0
+FRLU,With FR + LU,BE,2050,Electrolysis,0.0
+FRLU,With FR + LU,BE,2050,LH2 import terminal,19.999956
+FRLU,With FR + LU,BE,2050,Gas reforming,0.0
+FRLU,With FR + LU,BE,2050,Gas reforming + CCS,0.0
+FRLU,With FR + LU,BE,2050,Other H2 supply,0.0
+FRLU,With FR + LU,BE,2050,Net pipeline import,25.839248707976715

@@ -1,0 +1,8 @@
+Group,Run,Solver,Rows (M),Columns (M),Non-zeros (M),Rows after presolve (M),Columns after presolve (M),Build time,Solve time,Total run time,Peak RAM (GB),Termination,Objective (M EUR),Run date
+A,NL+BE regional clusters,Gurobi 13.0.3,2.75,3.17,6.54,0.36,0.56,1h 08m,0h 11m,1h 24m,53.9,Optimal,"3,941,040",2026-10-16
+A,NL+BE country level,Gurobi 13.0.3,2.46,2.50,5.78,0.33,0.38,0h 59m,0h 03m,1h 06m,51.2,Optimal,"3,774,842",2026-10-16
+A/B,Mixed resolution,Gurobi 13.0.3,3.56,3.97,8.53,0.48,0.70,1h 59m,0h 18m,2h 23m,59.0,Optimal,"7,606,649",2026-10-16
+B,National CO2 caps,Gurobi 13.0.3,3.59,4.00,8.60,0.48,0.72,2h 09m,0h 24m,2h 39m,65.9,Optimal,"7,784,577",2026-10-27
+B,10 repr. days,Gurobi 13.0.3,11.80,12.97,28.26,1.59,2.31,9h 02m,27h 31m,36h 41m,102.0,Optimal,"8,418,436",2026-10-22
+B,Optimistic CCS,Gurobi 13.0.3,3.56,3.97,8.53,0.48,0.70,2h 14m,0h 25m,2h 45m,68.2,Optimal,"7,190,084",2026-10-28
+B,With FR + LU,Xpress 9.7,3.92,4.32,9.41,0.53,0.74,0h 55m,4h 08m,5h 05m,n/a,Optimal,"9,251,098",2026-11-02

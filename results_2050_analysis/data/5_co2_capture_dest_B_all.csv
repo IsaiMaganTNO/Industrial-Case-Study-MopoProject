@@ -1,0 +1,144 @@
+run,year,kind,item,mt
+MR,2030,captured,"refinery (SMR+CC, internal H2)",2.552150650316232
+MR,2030,destination,stored_NL,2.5
+MR,2030,destination,CCU_methanol,0.0
+MR,2030,destination,net_export,0.05215065031623267
+MR,2030,emissions,net_emissions,239.3229481677085
+MR,2040,captured,ammonia,6.26452488
+MR,2040,captured,cement,4.510611175485799
+MR,2040,captured,chemicals / e-fuels,11.058387010763997
+MR,2040,captured,glass,0.14689972779042498
+MR,2040,captured,plastics,7.2813401428689986
+MR,2040,captured,"refinery (SMR+CC, internal H2)",2.5521506503162326
+MR,2040,captured,steel,5.682442000586
+MR,2040,destination,stored_NL,10.5
+MR,2040,destination,CCU_methanol,0.0
+MR,2040,destination,net_export,26.996355587811525
+MR,2040,emissions,net_emissions,135.58422236799663
+MR,2050,captured,ammonia,6.26452488
+MR,2050,captured,cement,4.510611175485799
+MR,2050,captured,chemicals / e-fuels,11.058387010763997
+MR,2050,captured,glass,0.24118294151865
+MR,2050,captured,plastics,7.2813401428689986
+MR,2050,captured,"refinery (SMR+CC, internal H2)",14.135692780225371
+MR,2050,captured,steel,7.235342001171999
+MR,2050,destination,stored_NL,15.999999999999998
+MR,2050,destination,CCU_methanol,0.0
+MR,2050,destination,net_export,34.727080932034944
+MR,2050,emissions,net_emissions,89.73939517842865
+NATCAP,2030,captured,ammonia,6.26452488
+NATCAP,2030,captured,cement,3.909852624785799
+NATCAP,2030,captured,chemicals / e-fuels,2.8361072984205298
+NATCAP,2030,captured,power generation,0.6173745127687879
+NATCAP,2030,captured,"refinery (SMR+CC, internal H2)",7.638946713749313
+NATCAP,2030,destination,stored_NL,2.5
+NATCAP,2030,destination,CCU_methanol,0.0
+NATCAP,2030,destination,net_export,18.766806029724425
+NATCAP,2030,emissions,net_emissions,184.19580602972428
+NATCAP,2040,captured,ammonia,6.26452488
+NATCAP,2040,captured,bioenergy (BECCS),2.994088314300185
+NATCAP,2040,captured,cement,5.035216624785799
+NATCAP,2040,captured,chemicals / e-fuels,11.058387010763997
+NATCAP,2040,captured,glass,0.140824505505725
+NATCAP,2040,captured,plastics,7.281340142868998
+NATCAP,2040,captured,power generation,4.127982009781029
+NATCAP,2040,captured,"refinery (SMR+CC, internal H2)",11.443573372975571
+NATCAP,2040,captured,steel,7.235342001171999
+NATCAP,2040,destination,stored_NL,10.5
+NATCAP,2040,destination,CCU_methanol,0.0
+NATCAP,2040,destination,net_export,45.081278862153326
+NATCAP,2040,emissions,net_emissions,81.84327886215335
+NATCAP,2050,captured,ammonia,6.26452488
+NATCAP,2050,captured,bioenergy (BECCS),2.994088314300185
+NATCAP,2050,captured,cement,5.035216624785799
+NATCAP,2050,captured,chemicals / e-fuels,11.058387010764
+NATCAP,2050,captured,glass,0.18405852441634998
+NATCAP,2050,captured,plastics,9.12377071878269
+NATCAP,2050,captured,power generation,0.911285623085076
+NATCAP,2050,captured,"refinery (SMR+CC, internal H2)",20.334714915729386
+NATCAP,2050,captured,steel,7.235342001171999
+NATCAP,2050,destination,stored_NL,16.000000000000004
+NATCAP,2050,destination,CCU_methanol,0.0
+NATCAP,2050,destination,net_export,47.14138861303548
+NATCAP,2050,emissions,net_emissions,47.14138861303548
+RP10,2030,destination,stored_NL,0.0
+RP10,2030,destination,CCU_methanol,0.0
+RP10,2030,destination,net_export,0.0
+RP10,2030,emissions,net_emissions,245.01619963003282
+RP10,2040,captured,ammonia,6.264524879999999
+RP10,2040,captured,cement,2.617456800703099
+RP10,2040,captured,chemicals / e-fuels,11.045954837263908
+RP10,2040,captured,glass,0.14689972779042498
+RP10,2040,captured,plastics,7.243630902869
+RP10,2040,captured,steel,7.235342001171998
+RP10,2040,destination,stored_NL,10.499999999999996
+RP10,2040,destination,CCU_methanol,0.0
+RP10,2040,destination,net_export,24.053809149797704
+RP10,2040,emissions,net_emissions,119.6891491134465
+RP10,2050,captured,ammonia,6.264524879999999
+RP10,2050,captured,cement,2.6174568007030996
+RP10,2050,captured,chemicals / e-fuels,11.058387004870841
+RP10,2050,captured,glass,0.28509083329615
+RP10,2050,captured,plastics,8.141189856046719
+RP10,2050,captured,steel,7.235342001171998
+RP10,2050,destination,stored_NL,15.999999999999996
+RP10,2050,destination,CCU_methanol,2.429798001930731e-08
+RP10,2050,destination,net_export,19.601991352914975
+RP10,2050,emissions,net_emissions,97.23231624917443
+CCSOPT,2030,captured,"refinery (SMR+CC, internal H2)",0.9409369497256445
+CCSOPT,2030,destination,stored_NL,0.9409369497256447
+CCSOPT,2030,destination,CCU_methanol,0.0
+CCSOPT,2030,destination,net_export,0.0
+CCSOPT,2030,emissions,net_emissions,242.7244371211746
+CCSOPT,2040,captured,ammonia,5.552824799999999
+CCSOPT,2040,captured,cement,5.035216624785799
+CCSOPT,2040,captured,chemicals / e-fuels,11.058387010763996
+CCSOPT,2040,captured,glass,0.146899727790425
+CCSOPT,2040,captured,plastics,7.462748642868999
+CCSOPT,2040,captured,power generation,36.9923999038628
+CCSOPT,2040,captured,"refinery (SMR+CC, internal H2)",0.9409369497256445
+CCSOPT,2040,captured,steel,3.617671000585999
+CCSOPT,2040,destination,stored_NL,27.199999999999996
+CCSOPT,2040,destination,CCU_methanol,0.0
+CCSOPT,2040,destination,net_export,43.60708466038379
+CCSOPT,2040,emissions,net_emissions,127.9847037358431
+CCSOPT,2050,captured,ammonia,5.5528248
+CCSOPT,2050,captured,bioenergy (BECCS),3.0213883075960157
+CCSOPT,2050,captured,cement,5.035216624785799
+CCSOPT,2050,captured,chemicals / e-fuels,11.058387010763996
+CCSOPT,2050,captured,glass,0.29379945558085
+CCSOPT,2050,captured,plastics,14.925497285737999
+CCSOPT,2050,captured,power generation,36.780409742015095
+CCSOPT,2050,captured,"refinery (SMR+CC, internal H2)",12.432312973811511
+CCSOPT,2050,captured,steel,7.235342001171998
+CCSOPT,2050,destination,stored_NL,27.2
+CCSOPT,2050,destination,CCU_methanol,0.0
+CCSOPT,2050,destination,net_export,69.13517820146325
+CCSOPT,2050,emissions,net_emissions,93.88293861154568
+FRLU,2030,captured,"refinery (SMR+CC, internal H2)",2.5
+FRLU,2030,destination,stored_NL,2.5
+FRLU,2030,destination,CCU_methanol,0.0
+FRLU,2030,destination,net_export,0.0
+FRLU,2030,emissions,net_emissions,239.4116260164304
+FRLU,2040,captured,ammonia,1.9691521357444537
+FRLU,2040,captured,cement,2.617456800703099
+FRLU,2040,captured,chemicals / e-fuels,11.058387010763996
+FRLU,2040,captured,glass,0.13819110550572497
+FRLU,2040,captured,plastics,1.1599555341196874
+FRLU,2040,captured,"refinery (SMR+CC, internal H2)",8.249191123939097
+FRLU,2040,captured,steel,7.235342001172001
+FRLU,2040,destination,stored_NL,10.5
+FRLU,2040,destination,CCU_methanol,0.0
+FRLU,2040,destination,net_export,21.92767571194805
+FRLU,2040,emissions,net_emissions,129.1024324928627
+FRLU,2050,captured,ammonia,0.6444382261834122
+FRLU,2050,captured,cement,2.617456800703099
+FRLU,2050,captured,chemicals / e-fuels,11.058387010763996
+FRLU,2050,captured,glass,0.18405852441634998
+FRLU,2050,captured,plastics,1.1599555341196874
+FRLU,2050,captured,"refinery (SMR+CC, internal H2)",12.771375249665091
+FRLU,2050,captured,steel,7.235342001172001
+FRLU,2050,destination,stored_NL,15.999999999999998
+FRLU,2050,destination,CCU_methanol,0.0
+FRLU,2050,destination,net_export,19.671013347023617
+FRLU,2050,emissions,net_emissions,56.70668628257432

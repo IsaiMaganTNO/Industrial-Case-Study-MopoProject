@@ -452,30 +452,65 @@ brings the cost structure closer to the EU reference (unit investment 53.8%).
 
 ### 7.4 Which caps to rescale - and which not to
 
+> **CORRECTED 2026-10-04.** The `biomass-stock` row of the table below was
+> **WRONG** and is struck through. The upstream trace this section asked for has
+> now been done and it shows biomass **is** a 365x-inflated annual budget. See
+> `docs/FINDING_biomass_cap_365x_CONFIRMED.md`. The reasoning error is explained
+> immediately after the table - it is worth reading, because the same trap
+> applies to any `state_max = 1` node.
+
 Do **not** blanket-divide every cap by 365. 126 nodes have
 `storage_longterm_active = True`, and they are not all annual budgets. The
 effective budget is `cap x storage_state_max`, and `storage_state_max` differs
-per node - that difference is the main clue to authoring intent:
+per node - that difference is *a* clue to authoring intent, but **not a
+sufficient one** (see below):
 
 | node | cap | `state_max` | effective | used/rep-day | days of headroom | verdict |
 |---|---|---|---|---|---|---|
 | `atmosphere` 2030 | 165.40 | 1000 | 165,400 | 965.60 | 171.3 | annual budget -> **rescale** |
 | `atmosphere` 2040 | 36.80 | 1000 | 36,800 | 1,011.78 | 36.4 | annual budget -> **rescale** |
-| `biomass-stock_BEC1` | 1,088.07 | **1** | 1,088.1 | 717.91 | **1.5** | already per-period -> leave |
-| `CH4-geo-formation_BEC1` | 1,103.75 | **1** | 1,103.8 | 110.38 | **10.0** | already per-period -> leave |
+| ~~`biomass-stock_BEC1`~~ | ~~1,088.07~~ | ~~**1**~~ | ~~1,088.1~~ | ~~717.91~~ | ~~**1.5**~~ | ~~already per-period -> leave~~ **WRONG - see below** |
+| `CH4-geo-formation_BEC1` | 1,103.75 | **1** | 1,103.8 | 110.38 | **10.0** | per-period -> leave (**unverified**, same trap possible) |
 | `CO2-storage-NSNL031` | 10,000 | 1000 | 10,000,000 | 860.33 | 11,623 | non-binding either way -> leave |
 
-Rule of thumb:
+**Why the `biomass-stock` verdict was wrong.** It was inferred from "only 1.5
+days of headroom", reasoning that so little headroom must mean the cap was
+authored per-period. That is backwards: **1.5 days of headroom is exactly what a
+per-day-*binding* budget looks like.** The symptom was mistaken for the intent.
 
-- `state_max = 1000` **and** tens-to-hundreds of days of headroom -> annual
-  budget, drawn down once instead of 365 times. Rescale.
-- `state_max = 1` **and** a handful of days of headroom -> already authored
-  per-period. Dividing by 365 would put it far below one day's consumption and
-  likely make the model infeasible.
+The decisive evidence is `node_state` (**not** `node_state_longterm`, which
+samples only milestone boundaries and aliases the refill away). For
+`biomass-stock_BEC1` in 2050 the stock is refilled to 1,088.07 and drained to
+**exactly 0.00 on all three representative days**. The representative-day
+weights sum to 365.000, so:
 
-This is an **inference from the data**, not something verified against a
-specification. If you can trace where `biomass-stock` availability is authored
-upstream, confirm it.
+```
+effective annual availability = 1,088.07 x 365.0 = 397,145
+authored annual cap           = 1,088.07
+inflation factor              = 365.0   (exact)
+```
+
+The upstream trace confirms the authored value is **annual**:
+`data-pipelines/europe/_biomass/biomass_DB.py` line 264 converts PJ/yr to MWh/yr
+(`* 277777.77`), then `scenario_run.py:biomass_limitations()` applies
+`biomass_potential_realistic: 0.5`. Intended NL+BE cap ~43 TWh/yr; the Group 1
+run consumed 1,043 TWh.
+
+**The real discriminator is not `state_max` - it is `storage_state_fix`.**
+`atmosphere` has none, so its state accumulates across the horizon and the cap
+binds cumulatively, as intended. `biomass-stock_*` carries both
+`storage_state_fix` and `storage_investment_count_fix_cumulative`, which re-pin
+the stock to full on every representative day. Same coarsening, opposite
+handling.
+
+Revised rule of thumb:
+
+- Check for `storage_state_fix` **first**. If a node is re-pinned every
+  representative period, its cap is multiplied by the weight sum (365) no matter
+  what `state_max` says.
+- Low headroom is **not** evidence of per-period authoring. Verify against
+  `node_state` within a representative day, and trace the upstream source.
+- `CH4-geo-formation_*` has not been re-checked and may have the same defect.
 
 ### 7.5 Why it fails silently
 

@@ -1,0 +1,145 @@
+run,label,country,year,item,twh
+IC1,NL+BE regional clusters,NL,2030,"Fixed demand (buildings, transport, other)",96.68505555637009
+IC1,NL+BE regional clusters,NL,2030,Industry,45.61025955670586
+IC1,NL+BE regional clusters,NL,2030,Refineries,1.2052777666457375
+IC1,NL+BE regional clusters,NL,2030,Electrolysis,0.0
+IC1,NL+BE regional clusters,NL,2030,"Building heat (HP, e-heating)",1.3785937376847077
+IC1,NL+BE regional clusters,NL,2030,Battery charging,0.0
+IC1,NL+BE regional clusters,NL,2030,Power generation (H2 turbines),0.0
+IC1,NL+BE regional clusters,NL,2030,Net export,2.357639607470844
+IC1,NL+BE regional clusters,NL,2040,"Fixed demand (buildings, transport, other)",96.68505555637009
+IC1,NL+BE regional clusters,NL,2040,Industry,111.95605620514618
+IC1,NL+BE regional clusters,NL,2040,Refineries,4.259499430452432
+IC1,NL+BE regional clusters,NL,2040,Electrolysis,56.58431061565653
+IC1,NL+BE regional clusters,NL,2040,"Building heat (HP, e-heating)",18.501464646127797
+IC1,NL+BE regional clusters,NL,2040,Battery charging,9.014954482738114
+IC1,NL+BE regional clusters,NL,2040,Power generation (H2 turbines),0.0
+IC1,NL+BE regional clusters,NL,2040,Net export,7.999670711494635
+IC1,NL+BE regional clusters,NL,2050,"Fixed demand (buildings, transport, other)",96.68505555637009
+IC1,NL+BE regional clusters,NL,2050,Industry,129.85446082375407
+IC1,NL+BE regional clusters,NL,2050,Refineries,5.4457486372463295
+IC1,NL+BE regional clusters,NL,2050,Electrolysis,208.36361256587688
+IC1,NL+BE regional clusters,NL,2050,"Building heat (HP, e-heating)",19.69746560735638
+IC1,NL+BE regional clusters,NL,2050,Battery charging,11.745261778907082
+IC1,NL+BE regional clusters,NL,2050,Power generation (H2 turbines),0.0
+IC1,NL+BE regional clusters,NL,2050,Net export,8.760000000000035
+CTRY,NL+BE country level,NL,2030,"Fixed demand (buildings, transport, other)",96.6850555563701
+CTRY,NL+BE country level,NL,2030,Industry,45.56377062151689
+CTRY,NL+BE country level,NL,2030,Refineries,1.2061110151459702
+CTRY,NL+BE country level,NL,2030,Electrolysis,0.0
+CTRY,NL+BE country level,NL,2030,"Building heat (HP, e-heating)",1.2813909025427832
+CTRY,NL+BE country level,NL,2030,Battery charging,1.2905933530577123
+CTRY,NL+BE country level,NL,2030,Power generation (H2 turbines),0.0
+CTRY,NL+BE country level,NL,2030,Net export,0.0
+CTRY,NL+BE country level,NL,2040,"Fixed demand (buildings, transport, other)",96.6850555563701
+CTRY,NL+BE country level,NL,2040,Industry,129.231463934692
+CTRY,NL+BE country level,NL,2040,Refineries,3.9526650721999124
+CTRY,NL+BE country level,NL,2040,Electrolysis,5.266949410788103
+CTRY,NL+BE country level,NL,2040,"Building heat (HP, e-heating)",21.29831719399334
+CTRY,NL+BE country level,NL,2040,Battery charging,11.203085480246653
+CTRY,NL+BE country level,NL,2040,Power generation (H2 turbines),0.0
+CTRY,NL+BE country level,NL,2040,Net export,8.744001781147373
+CTRY,NL+BE country level,NL,2050,"Fixed demand (buildings, transport, other)",96.6850555563701
+CTRY,NL+BE country level,NL,2050,Industry,146.1636880794552
+CTRY,NL+BE country level,NL,2050,Refineries,5.704053042067843
+CTRY,NL+BE country level,NL,2050,Electrolysis,116.99915331703355
+CTRY,NL+BE country level,NL,2050,"Building heat (HP, e-heating)",30.198047394520092
+CTRY,NL+BE country level,NL,2050,Battery charging,10.25695523833824
+CTRY,NL+BE country level,NL,2050,Power generation (H2 turbines),0.0
+CTRY,NL+BE country level,NL,2050,Net export,8.760000000000016
+MR,Mixed resolution,NL,2030,"Fixed demand (buildings, transport, other)",96.39758810503646
+MR,Mixed resolution,NL,2030,Industry,41.86999814233047
+MR,Mixed resolution,NL,2030,Refineries,1.527069890109888
+MR,Mixed resolution,NL,2030,Electrolysis,0.0
+MR,Mixed resolution,NL,2030,"Building heat (HP, e-heating)",0.6898474427865808
+MR,Mixed resolution,NL,2030,Battery charging,7.323664236381035
+MR,Mixed resolution,NL,2030,Power generation (H2 turbines),0.0
+MR,Mixed resolution,NL,2030,Net export,20.664194935965657
+MR,Mixed resolution,NL,2040,"Fixed demand (buildings, transport, other)",96.39758810503646
+MR,Mixed resolution,NL,2040,Industry,68.8794300172046
+MR,Mixed resolution,NL,2040,Refineries,1.527069890109888
+MR,Mixed resolution,NL,2040,Electrolysis,0.0
+MR,Mixed resolution,NL,2040,"Building heat (HP, e-heating)",5.417671015432279
+MR,Mixed resolution,NL,2040,Battery charging,7.35253992967856
+MR,Mixed resolution,NL,2040,Power generation (H2 turbines),0.0
+MR,Mixed resolution,NL,2040,Net export,20.591557333113997
+MR,Mixed resolution,NL,2050,"Fixed demand (buildings, transport, other)",96.39758810503646
+MR,Mixed resolution,NL,2050,Industry,77.25753593202121
+MR,Mixed resolution,NL,2050,Refineries,5.230190271999254
+MR,Mixed resolution,NL,2050,Electrolysis,44.58606115463688
+MR,Mixed resolution,NL,2050,"Building heat (HP, e-heating)",8.858447968274715
+MR,Mixed resolution,NL,2050,Battery charging,17.50209461303306
+MR,Mixed resolution,NL,2050,Power generation (H2 turbines),0.0
+MR,Mixed resolution,NL,2050,Net export,37.24721302962698
+IC1,NL+BE regional clusters,BE,2030,"Fixed demand (buildings, transport, other)",64.82054101809877
+IC1,NL+BE regional clusters,BE,2030,Industry,42.82703063668123
+IC1,NL+BE regional clusters,BE,2030,Refineries,0.8179827106227114
+IC1,NL+BE regional clusters,BE,2030,Electrolysis,0.0
+IC1,NL+BE regional clusters,BE,2030,"Building heat (HP, e-heating)",0.8486671370560777
+IC1,NL+BE regional clusters,BE,2030,Battery charging,0.0
+IC1,NL+BE regional clusters,BE,2030,Power generation (H2 turbines),0.0
+IC1,NL+BE regional clusters,BE,2030,Net export,0.0
+IC1,NL+BE regional clusters,BE,2040,"Fixed demand (buildings, transport, other)",64.82054101809877
+IC1,NL+BE regional clusters,BE,2040,Industry,77.61693821207305
+IC1,NL+BE regional clusters,BE,2040,Refineries,0.0
+IC1,NL+BE regional clusters,BE,2040,Electrolysis,0.0
+IC1,NL+BE regional clusters,BE,2040,"Building heat (HP, e-heating)",14.019929787596555
+IC1,NL+BE regional clusters,BE,2040,Battery charging,0.0
+IC1,NL+BE regional clusters,BE,2040,Power generation (H2 turbines),0.0
+IC1,NL+BE regional clusters,BE,2040,Net export,0.0
+IC1,NL+BE regional clusters,BE,2050,"Fixed demand (buildings, transport, other)",64.82054101809877
+IC1,NL+BE regional clusters,BE,2050,Industry,78.91092539041979
+IC1,NL+BE regional clusters,BE,2050,Refineries,0.0
+IC1,NL+BE regional clusters,BE,2050,Electrolysis,0.0
+IC1,NL+BE regional clusters,BE,2050,"Building heat (HP, e-heating)",12.309750909254372
+IC1,NL+BE regional clusters,BE,2050,Battery charging,1.6407582493756596
+IC1,NL+BE regional clusters,BE,2050,Power generation (H2 turbines),0.0
+IC1,NL+BE regional clusters,BE,2050,Net export,0.0
+CTRY,NL+BE country level,BE,2030,"Fixed demand (buildings, transport, other)",64.8205410180988
+CTRY,NL+BE country level,BE,2030,Industry,43.829559493046354
+CTRY,NL+BE country level,BE,2030,Refineries,0.8179827106227114
+CTRY,NL+BE country level,BE,2030,Electrolysis,0.0
+CTRY,NL+BE country level,BE,2030,"Building heat (HP, e-heating)",0.5608653582600106
+CTRY,NL+BE country level,BE,2030,Battery charging,0.0
+CTRY,NL+BE country level,BE,2030,Power generation (H2 turbines),0.0
+CTRY,NL+BE country level,BE,2030,Net export,1.9960527938820616
+CTRY,NL+BE country level,BE,2040,"Fixed demand (buildings, transport, other)",64.8205410180988
+CTRY,NL+BE country level,BE,2040,Industry,86.2259774860903
+CTRY,NL+BE country level,BE,2040,Refineries,0.0
+CTRY,NL+BE country level,BE,2040,Electrolysis,0.0
+CTRY,NL+BE country level,BE,2040,"Building heat (HP, e-heating)",10.177121989764812
+CTRY,NL+BE country level,BE,2040,Battery charging,0.43204394119047207
+CTRY,NL+BE country level,BE,2040,Power generation (H2 turbines),0.0
+CTRY,NL+BE country level,BE,2040,Net export,0.0
+CTRY,NL+BE country level,BE,2050,"Fixed demand (buildings, transport, other)",64.8205410180988
+CTRY,NL+BE country level,BE,2050,Industry,87.62136761404234
+CTRY,NL+BE country level,BE,2050,Refineries,0.0
+CTRY,NL+BE country level,BE,2050,Electrolysis,0.0
+CTRY,NL+BE country level,BE,2050,"Building heat (HP, e-heating)",14.071286717066316
+CTRY,NL+BE country level,BE,2050,Battery charging,0.23628396920942654
+CTRY,NL+BE country level,BE,2050,Power generation (H2 turbines),0.0
+CTRY,NL+BE country level,BE,2050,Net export,0.0
+MR,Mixed resolution,BE,2030,"Fixed demand (buildings, transport, other)",64.49794403948654
+MR,Mixed resolution,BE,2030,Industry,41.704460535292675
+MR,Mixed resolution,BE,2030,Refineries,0.8179827106227091
+MR,Mixed resolution,BE,2030,Electrolysis,0.0
+MR,Mixed resolution,BE,2030,"Building heat (HP, e-heating)",0.05860190462021714
+MR,Mixed resolution,BE,2030,Battery charging,0.0
+MR,Mixed resolution,BE,2030,Power generation (H2 turbines),0.0
+MR,Mixed resolution,BE,2030,Net export,5.9991849997413995
+MR,Mixed resolution,BE,2040,"Fixed demand (buildings, transport, other)",64.49794403948654
+MR,Mixed resolution,BE,2040,Industry,62.03299550576951
+MR,Mixed resolution,BE,2040,Refineries,0.26397238964963726
+MR,Mixed resolution,BE,2040,Electrolysis,0.0
+MR,Mixed resolution,BE,2040,"Building heat (HP, e-heating)",0.2618394208411808
+MR,Mixed resolution,BE,2040,Battery charging,0.0
+MR,Mixed resolution,BE,2040,Power generation (H2 turbines),0.0
+MR,Mixed resolution,BE,2040,Net export,0.0
+MR,Mixed resolution,BE,2050,"Fixed demand (buildings, transport, other)",64.49794403948654
+MR,Mixed resolution,BE,2050,Industry,71.424330647794
+MR,Mixed resolution,BE,2050,Refineries,0.0
+MR,Mixed resolution,BE,2050,Electrolysis,0.0
+MR,Mixed resolution,BE,2050,"Building heat (HP, e-heating)",2.7748225803459055
+MR,Mixed resolution,BE,2050,Battery charging,1.410580902348376
+MR,Mixed resolution,BE,2050,Power generation (H2 turbines),0.0
+MR,Mixed resolution,BE,2050,Net export,3.699541535936757

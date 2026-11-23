@@ -117,7 +117,7 @@ println("WARNING: Check whether there are extreme periods from the loop with the
 # number_of_representatives is OVERRIDDEN by the seed file whenever it exists;
 # the value below only applies on the unseeded path.
 
-number_of_representatives = 1   # overridden by the seed file when it exists.
+number_of_representatives = 7   # overridden by the seed file when it exists.
 number_of_timesteps = 24   # one full day, restoring the diurnal cycle.
 
 function get_data(input_folder,year)

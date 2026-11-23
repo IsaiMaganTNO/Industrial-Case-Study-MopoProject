@@ -90,7 +90,7 @@ STAGE1_ORDER = [
     "scenario_setup",
 ]
 
-MIN_FREE_DISK_GB = 20.0
+MIN_FREE_DISK_GB = 12.0  # FR+LU run 2026-10-30, was 20.0
 MAX_RAM_FRACTION = 0.85
 
 

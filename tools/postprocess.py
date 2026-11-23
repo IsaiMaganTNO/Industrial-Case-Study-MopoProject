@@ -23,9 +23,14 @@ warnings.filterwarnings("ignore")
 DEFAULT_DB = r".spinetoolbox\items\investment_results\Investment_Results.sqlite"
 MODEL_DB = r".spinetoolbox\items\final_spineopt_model\Final_SpineOpt_Model.sqlite"
 GEOJSON = r"geodata\IC1.geojson"
-REGION = re.compile(r"_((?:BE|NL)C\d)$")
-# Matches a region code anywhere in a name, e.g. connection 'NLC2_CO2_NLC5'.
-REGION_ANY = re.compile(r"(?:BE|NL)C\d")
+# IC1 regions (BEC1..NLC9) plus the country-level regions of the mixed-resolution
+# run (2026-10-09). The IC1-only pattern silently dropped every DE/DK/NO/UK
+# carrier node (e.g. `elec_DE` never matched CARRIER_NODES) - so those countries
+# vanished from supply/flows while still appearing (region=None) in emissions.
+REGION = re.compile(r"_((?:BE|NL)C\d|BE|NL|DE|DK|NO|UK|FR|LU)$")  # BE/NL: country-merged nodes (3day_nb_ctry)
+# Matches a region code anywhere in a name, e.g. connection 'NLC2_CO2_NLC5' or
+# 'DE_H2_NLC9'. Country codes need letter boundaries so 'DEA' etc. never match.
+REGION_ANY = re.compile(r"(?:BE|NL)C\d|(?<![A-Za-z])(?:DE|DK|NO|UK|FR|LU)(?![A-Za-z0-9])")
 
 # Milestone (investment) years actually modelled. Operational temporal blocks
 # may sit on a *different* calendar year than the milestone they represent:
@@ -133,7 +138,7 @@ def co2_source(tech: str) -> str:
     """Where a tonne entering the CO2 network came from."""
     l = tech.lower()
     if l.startswith("dac"):                       return "direct air capture"
-    if "smr" in l or "ref-" in l:                 return "hydrogen (SMR+CC)"
+    if "smr" in l or "ref-" in l:                 return "refinery (SMR+CC, internal H2)"
     if "ccgt" in l or "ocgt" in l:                return "power generation"
     if l.startswith("bio"):                       return "bioenergy (BECCS)"
     if "cem2" in l or "lc3" in l:                 return "cement"
@@ -1224,3 +1229,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

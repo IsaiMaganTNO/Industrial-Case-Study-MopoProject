@@ -1,0 +1,325 @@
+run,kind,country,year,item,twh
+EU baseline,EL,BE,2030,Gas power,24.078619999999997
+EU baseline,EL,BE,2040,Gas power,0.64275
+EU baseline,EL,BE,2050,Gas power,0.0458
+EU baseline,EL,BE,2030,Nuclear,35.51992
+EU baseline,EL,BE,2040,Nuclear,141.22913
+EU baseline,EL,BE,2050,Nuclear,145.49196000000003
+EU baseline,EL,BE,2030,Offshore wind,6.82852
+EU baseline,EL,BE,2040,Offshore wind,5.7894
+EU baseline,EL,BE,2050,Offshore wind,4.6229
+EU baseline,EL,BE,2030,Onshore wind,7.365609999999999
+EU baseline,EL,BE,2040,Onshore wind,7.65725
+EU baseline,EL,BE,2050,Onshore wind,8.8911
+EU baseline,EL,BE,2030,Other,5.99215
+EU baseline,EL,BE,2040,Other,4.91707
+EU baseline,EL,BE,2050,Other,3.8895200000000005
+EU baseline,EL,BE,2030,Solar PV,20.15702
+EU baseline,EL,BE,2040,Solar PV,20.15703
+EU baseline,EL,BE,2050,Solar PV,20.15703
+EU baseline,EL,NL,2030,Gas power,55.3568
+EU baseline,EL,NL,2040,Gas power,2.8931600000000004
+EU baseline,EL,NL,2050,Gas power,2.23741
+EU baseline,EL,NL,2030,Nuclear,4.4191400000000005
+EU baseline,EL,NL,2040,Nuclear,109.82795
+EU baseline,EL,NL,2050,Nuclear,113.15227
+EU baseline,EL,NL,2030,Offshore wind,6.42854
+EU baseline,EL,NL,2040,Offshore wind,72.47965
+EU baseline,EL,NL,2050,Offshore wind,162.95767
+EU baseline,EL,NL,2030,Onshore wind,15.26543
+EU baseline,EL,NL,2040,Onshore wind,16.01955
+EU baseline,EL,NL,2050,Onshore wind,19.42785
+EU baseline,EL,NL,2030,Other,1.28516
+EU baseline,EL,NL,2040,Other,1.16184
+EU baseline,EL,NL,2050,Other,0.94829
+EU baseline,EL,NL,2030,Solar PV,46.68914
+EU baseline,EL,NL,2040,Solar PV,45.64393
+EU baseline,EL,NL,2050,Solar PV,46.68914
+EU baseline,H2,BE,2030,Electrolysis,0.0
+EU baseline,H2,BE,2040,Electrolysis,10.20794
+EU baseline,H2,BE,2050,Electrolysis,19.881619999999998
+EU baseline,H2,BE,2030,Gas reforming,2e-05
+EU baseline,H2,BE,2040,Gas reforming,1e-05
+EU baseline,H2,BE,2050,Gas reforming,0.0
+EU baseline,H2,BE,2030,LH2 import terminal,12.72694
+EU baseline,H2,BE,2040,LH2 import terminal,19.3033
+EU baseline,H2,BE,2050,LH2 import terminal,19.7767
+EU baseline,H2,NL,2030,Electrolysis,0.0
+EU baseline,H2,NL,2040,Electrolysis,33.58019
+EU baseline,H2,NL,2050,Electrolysis,94.673
+EU baseline,H2,NL,2030,Gas reforming,1.81699
+EU baseline,H2,NL,2040,Gas reforming,0.7494299999999999
+EU baseline,H2,NL,2050,Gas reforming,0.0
+EU baseline,H2,NL,2030,LH2 import terminal,30.00036
+EU baseline,H2,NL,2040,LH2 import terminal,29.57235
+EU baseline,H2,NL,2050,LH2 import terminal,29.952360000000002
+NL+BE regional clusters,EL,NL,2030,Offshore wind,47.37327328958989
+NL+BE regional clusters,EL,NL,2030,Onshore wind,20.04377963849764
+NL+BE regional clusters,EL,NL,2030,Solar PV,40.90247749276481
+NL+BE regional clusters,EL,NL,2030,Nuclear,5.0188546609063245
+NL+BE regional clusters,EL,NL,2030,Gas power,19.06854553000538
+NL+BE regional clusters,EL,NL,2030,Gas power + CCS,0.0
+NL+BE regional clusters,EL,NL,2030,Hydrogen turbines,20.050007571972344
+NL+BE regional clusters,EL,NL,2030,Biomass power,0.1691515536354415
+NL+BE regional clusters,EL,NL,2030,Biomass power + CCS,0.0
+NL+BE regional clusters,EL,NL,2040,Offshore wind,217.4847207944393
+NL+BE regional clusters,EL,NL,2040,Onshore wind,24.895764577784
+NL+BE regional clusters,EL,NL,2040,Solar PV,42.45729859095938
+NL+BE regional clusters,EL,NL,2040,Nuclear,35.56559999999999
+NL+BE regional clusters,EL,NL,2040,Gas power,0.0
+NL+BE regional clusters,EL,NL,2040,Gas power + CCS,0.0
+NL+BE regional clusters,EL,NL,2040,Hydrogen turbines,3.033445554372629
+NL+BE regional clusters,EL,NL,2040,Biomass power,0.0
+NL+BE regional clusters,EL,NL,2040,Biomass power + CCS,0.0
+NL+BE regional clusters,EL,NL,2050,Offshore wind,379.64692448844886
+NL+BE regional clusters,EL,NL,2050,Onshore wind,27.144217703145436
+NL+BE regional clusters,EL,NL,2050,Solar PV,42.498204206628
+NL+BE regional clusters,EL,NL,2050,Nuclear,43.79999999999999
+NL+BE regional clusters,EL,NL,2050,Gas power,0.0
+NL+BE regional clusters,EL,NL,2050,Gas power + CCS,0.0
+NL+BE regional clusters,EL,NL,2050,Hydrogen turbines,5.543510752653117
+NL+BE regional clusters,EL,NL,2050,Biomass power,0.0
+NL+BE regional clusters,EL,NL,2050,Biomass power + CCS,0.0
+NL+BE country level,EL,NL,2030,Offshore wind,50.40288223038165
+NL+BE country level,EL,NL,2030,Onshore wind,20.04377963849764
+NL+BE country level,EL,NL,2030,Solar PV,42.00169779121613
+NL+BE country level,EL,NL,2030,Nuclear,4.921071444679296
+NL+BE country level,EL,NL,2030,Gas power,19.34958826978578
+NL+BE country level,EL,NL,2030,Gas power + CCS,0.0
+NL+BE country level,EL,NL,2030,Hydrogen turbines,0.0
+NL+BE country level,EL,NL,2030,Biomass power,0.1671354048472553
+NL+BE country level,EL,NL,2030,Biomass power + CCS,0.0
+NL+BE country level,EL,NL,2040,Offshore wind,226.28331483115315
+NL+BE country level,EL,NL,2040,Onshore wind,23.851716125076432
+NL+BE country level,EL,NL,2040,Solar PV,41.91529840043715
+NL+BE country level,EL,NL,2040,Nuclear,0.4772124290835317
+NL+BE country level,EL,NL,2040,Gas power,0.0
+NL+BE country level,EL,NL,2040,Gas power + CCS,0.0
+NL+BE country level,EL,NL,2040,Hydrogen turbines,0.0
+NL+BE country level,EL,NL,2040,Biomass power,0.0
+NL+BE country level,EL,NL,2040,Biomass power + CCS,0.0
+NL+BE country level,EL,NL,2050,Offshore wind,369.2088264093291
+NL+BE country level,EL,NL,2050,Onshore wind,27.14421770314543
+NL+BE country level,EL,NL,2050,Solar PV,42.08163533350739
+NL+BE country level,EL,NL,2050,Nuclear,0.0
+NL+BE country level,EL,NL,2050,Gas power,0.0
+NL+BE country level,EL,NL,2050,Gas power + CCS,0.0
+NL+BE country level,EL,NL,2050,Hydrogen turbines,0.0
+NL+BE country level,EL,NL,2050,Biomass power,0.0
+NL+BE country level,EL,NL,2050,Biomass power + CCS,0.0
+Mixed resolution,EL,NL,2030,Offshore wind,26.344897693035836
+Mixed resolution,EL,NL,2030,Onshore wind,15.412840474383076
+Mixed resolution,EL,NL,2030,Solar PV,40.12762989287019
+Mixed resolution,EL,NL,2030,Nuclear,5.024445387796767
+Mixed resolution,EL,NL,2030,Gas power,29.45959315365117
+Mixed resolution,EL,NL,2030,Gas power + CCS,0.0
+Mixed resolution,EL,NL,2030,Hydrogen turbines,0.0
+Mixed resolution,EL,NL,2030,Biomass power,6.098978736435367
+Mixed resolution,EL,NL,2030,Biomass power + CCS,0.0
+Mixed resolution,EL,NL,2040,Offshore wind,134.35549550215376
+Mixed resolution,EL,NL,2040,Onshore wind,23.45769221575304
+Mixed resolution,EL,NL,2040,Solar PV,42.00066754272653
+Mixed resolution,EL,NL,2040,Nuclear,0.4691042450854476
+Mixed resolution,EL,NL,2040,Gas power,9.020562472416769
+Mixed resolution,EL,NL,2040,Gas power + CCS,0.0
+Mixed resolution,EL,NL,2040,Hydrogen turbines,0.0
+Mixed resolution,EL,NL,2040,Biomass power,5.462735671795002
+Mixed resolution,EL,NL,2040,Biomass power + CCS,0.0
+Mixed resolution,EL,NL,2050,Offshore wind,206.91044078114356
+Mixed resolution,EL,NL,2050,Onshore wind,27.062260216160897
+Mixed resolution,EL,NL,2050,Solar PV,41.61766334750685
+Mixed resolution,EL,NL,2050,Nuclear,16.06173014500774
+Mixed resolution,EL,NL,2050,Gas power,0.0
+Mixed resolution,EL,NL,2050,Gas power + CCS,0.0
+Mixed resolution,EL,NL,2050,Hydrogen turbines,0.0
+Mixed resolution,EL,NL,2050,Biomass power,0.0
+Mixed resolution,EL,NL,2050,Biomass power + CCS,0.0
+NL+BE regional clusters,EL,BE,2030,Offshore wind,7.785255667387934
+NL+BE regional clusters,EL,BE,2030,Onshore wind,8.730936512328903
+NL+BE regional clusters,EL,BE,2030,Solar PV,10.582123440526496
+NL+BE regional clusters,EL,BE,2030,Nuclear,41.2596
+NL+BE regional clusters,EL,BE,2030,Gas power,33.47196000000001
+NL+BE regional clusters,EL,BE,2030,Gas power + CCS,0.0
+NL+BE regional clusters,EL,BE,2030,Hydrogen turbines,3.720299721067261
+NL+BE regional clusters,EL,BE,2030,Biomass power,0.0
+NL+BE regional clusters,EL,BE,2030,Biomass power + CCS,0.0
+NL+BE regional clusters,EL,BE,2040,Offshore wind,30.789916689877536
+NL+BE regional clusters,EL,BE,2040,Onshore wind,9.369765649065393
+NL+BE regional clusters,EL,BE,2040,Solar PV,11.554160749771889
+NL+BE regional clusters,EL,BE,2040,Nuclear,75.33599999999998
+NL+BE regional clusters,EL,BE,2040,Gas power,0.0808474449475411
+NL+BE regional clusters,EL,BE,2040,Gas power + CCS,0.0
+NL+BE regional clusters,EL,BE,2040,Hydrogen turbines,0.5404702486603744
+NL+BE regional clusters,EL,BE,2040,Biomass power,0.0
+NL+BE regional clusters,EL,BE,2040,Biomass power + CCS,0.0
+NL+BE regional clusters,EL,BE,2050,Offshore wind,43.70093101072509
+NL+BE regional clusters,EL,BE,2050,Onshore wind,10.182881829468268
+NL+BE regional clusters,EL,BE,2050,Solar PV,11.55416074977189
+NL+BE regional clusters,EL,BE,2050,Nuclear,52.56
+NL+BE regional clusters,EL,BE,2050,Gas power,0.0
+NL+BE regional clusters,EL,BE,2050,Gas power + CCS,0.0
+NL+BE regional clusters,EL,BE,2050,Hydrogen turbines,7.452058228946767
+NL+BE regional clusters,EL,BE,2050,Biomass power,0.0
+NL+BE regional clusters,EL,BE,2050,Biomass power + CCS,0.0
+NL+BE country level,EL,BE,2030,Offshore wind,7.785255667387934
+NL+BE country level,EL,BE,2030,Onshore wind,8.730936512328903
+NL+BE country level,EL,BE,2030,Solar PV,10.582123440526493
+NL+BE country level,EL,BE,2030,Nuclear,41.25959999999999
+NL+BE country level,EL,BE,2030,Gas power,33.08678123691765
+NL+BE country level,EL,BE,2030,Gas power + CCS,0.0
+NL+BE country level,EL,BE,2030,Hydrogen turbines,20.493556065017604
+NL+BE country level,EL,BE,2030,Biomass power,0.0
+NL+BE country level,EL,BE,2030,Biomass power + CCS,0.0
+NL+BE country level,EL,BE,2040,Offshore wind,32.98237945524808
+NL+BE country level,EL,BE,2040,Onshore wind,9.369765649065393
+NL+BE country level,EL,BE,2040,Solar PV,11.55416074977189
+NL+BE country level,EL,BE,2040,Nuclear,75.336
+NL+BE country level,EL,BE,2040,Gas power,0.6691133342592829
+NL+BE country level,EL,BE,2040,Gas power + CCS,0.0
+NL+BE country level,EL,BE,2040,Hydrogen turbines,2.038177855136346
+NL+BE country level,EL,BE,2040,Biomass power,0.0
+NL+BE country level,EL,BE,2040,Biomass power + CCS,0.0
+NL+BE country level,EL,BE,2050,Offshore wind,43.70093101072509
+NL+BE country level,EL,BE,2050,Onshore wind,10.18288182946827
+NL+BE country level,EL,BE,2050,Solar PV,11.554160749771889
+NL+BE country level,EL,BE,2050,Nuclear,52.56000000000002
+NL+BE country level,EL,BE,2050,Gas power,0.0
+NL+BE country level,EL,BE,2050,Gas power + CCS,0.0
+NL+BE country level,EL,BE,2050,Hydrogen turbines,13.654904817612744
+NL+BE country level,EL,BE,2050,Biomass power,0.0
+NL+BE country level,EL,BE,2050,Biomass power + CCS,0.0
+Mixed resolution,EL,BE,2030,Offshore wind,7.529419495431803
+Mixed resolution,EL,BE,2030,Onshore wind,4.027849728631191
+Mixed resolution,EL,BE,2030,Solar PV,10.512169152668411
+Mixed resolution,EL,BE,2030,Nuclear,41.2596
+Mixed resolution,EL,BE,2030,Gas power,31.38832266220843
+Mixed resolution,EL,BE,2030,Gas power + CCS,0.0
+Mixed resolution,EL,BE,2030,Hydrogen turbines,0.0
+Mixed resolution,EL,BE,2030,Biomass power,20.244857532452126
+Mixed resolution,EL,BE,2030,Biomass power + CCS,0.0
+Mixed resolution,EL,BE,2040,Offshore wind,19.92230243700249
+Mixed resolution,EL,BE,2040,Onshore wind,8.956059134315714
+Mixed resolution,EL,BE,2040,Solar PV,11.51620442593826
+Mixed resolution,EL,BE,2040,Nuclear,24.087586143336623
+Mixed resolution,EL,BE,2040,Gas power,6.712174594113674
+Mixed resolution,EL,BE,2040,Gas power + CCS,0.0
+Mixed resolution,EL,BE,2040,Hydrogen turbines,0.0
+Mixed resolution,EL,BE,2040,Biomass power,37.7696416064078
+Mixed resolution,EL,BE,2040,Biomass power + CCS,0.0
+Mixed resolution,EL,BE,2050,Offshore wind,38.607426773593865
+Mixed resolution,EL,BE,2050,Onshore wind,9.903543776073024
+Mixed resolution,EL,BE,2050,Solar PV,11.51620442593826
+Mixed resolution,EL,BE,2050,Nuclear,52.56
+Mixed resolution,EL,BE,2050,Gas power,0.0
+Mixed resolution,EL,BE,2050,Gas power + CCS,0.0
+Mixed resolution,EL,BE,2050,Hydrogen turbines,0.0
+Mixed resolution,EL,BE,2050,Biomass power,16.214339755039667
+Mixed resolution,EL,BE,2050,Biomass power + CCS,0.0
+NL+BE regional clusters,H2,NL,2030,Electrolysis,0.0
+NL+BE regional clusters,H2,NL,2030,LH2 import terminal,22.500936000000003
+NL+BE regional clusters,H2,NL,2030,Gas reforming,0.0
+NL+BE regional clusters,H2,NL,2030,Gas reforming + CCS,0.0
+NL+BE regional clusters,H2,NL,2030,Other H2 supply,0.0
+NL+BE regional clusters,H2,NL,2030,Net pipeline import,13.325424548351195
+NL+BE regional clusters,H2,NL,2040,Electrolysis,35.25202551355398
+NL+BE regional clusters,H2,NL,2040,LH2 import terminal,22.500936000000003
+NL+BE regional clusters,H2,NL,2040,Gas reforming,0.0
+NL+BE regional clusters,H2,NL,2040,Gas reforming + CCS,0.0
+NL+BE regional clusters,H2,NL,2040,Other H2 supply,0.0
+NL+BE regional clusters,H2,NL,2040,Net pipeline import,0.0
+NL+BE regional clusters,H2,NL,2050,Electrolysis,129.81053062854122
+NL+BE regional clusters,H2,NL,2050,LH2 import terminal,22.500936
+NL+BE regional clusters,H2,NL,2050,Gas reforming,0.0
+NL+BE regional clusters,H2,NL,2050,Gas reforming + CCS,0.0
+NL+BE regional clusters,H2,NL,2050,Other H2 supply,-2.8421709430404014e-14
+NL+BE regional clusters,H2,NL,2050,Net pipeline import,0.0
+NL+BE country level,H2,NL,2030,Electrolysis,0.0
+NL+BE country level,H2,NL,2030,LH2 import terminal,22.500936000000003
+NL+BE country level,H2,NL,2030,Gas reforming,0.0
+NL+BE country level,H2,NL,2030,Gas reforming + CCS,0.0
+NL+BE country level,H2,NL,2030,Other H2 supply,0.0
+NL+BE country level,H2,NL,2030,Net pipeline import,0.0
+NL+BE country level,H2,NL,2040,Electrolysis,3.281309482920996
+NL+BE country level,H2,NL,2040,LH2 import terminal,22.500936000000003
+NL+BE country level,H2,NL,2040,Gas reforming,0.0
+NL+BE country level,H2,NL,2040,Gas reforming + CCS,0.0
+NL+BE country level,H2,NL,2040,Other H2 supply,-3.552713678800501e-15
+NL+BE country level,H2,NL,2040,Net pipeline import,0.0
+NL+BE country level,H2,NL,2050,Electrolysis,72.89047251651199
+NL+BE country level,H2,NL,2050,LH2 import terminal,22.500936000000003
+NL+BE country level,H2,NL,2050,Gas reforming,0.0
+NL+BE country level,H2,NL,2050,Gas reforming + CCS,0.0
+NL+BE country level,H2,NL,2050,Other H2 supply,-1.4210854715202004e-14
+NL+BE country level,H2,NL,2050,Net pipeline import,0.0
+Mixed resolution,H2,NL,2030,Electrolysis,0.0
+Mixed resolution,H2,NL,2030,LH2 import terminal,17.062669294786996
+Mixed resolution,H2,NL,2030,Gas reforming,0.0
+Mixed resolution,H2,NL,2030,Gas reforming + CCS,13.269230769230766
+Mixed resolution,H2,NL,2030,Other H2 supply,0.0
+Mixed resolution,H2,NL,2030,Net pipeline import,0.0
+Mixed resolution,H2,NL,2040,Electrolysis,0.0
+Mixed resolution,H2,NL,2040,LH2 import terminal,22.500936000000003
+Mixed resolution,H2,NL,2040,Gas reforming,0.0
+Mixed resolution,H2,NL,2040,Gas reforming + CCS,13.26923076923077
+Mixed resolution,H2,NL,2040,Other H2 supply,0.0
+Mixed resolution,H2,NL,2040,Net pipeline import,0.0
+Mixed resolution,H2,NL,2050,Electrolysis,27.777116099338787
+Mixed resolution,H2,NL,2050,LH2 import terminal,22.500936000000003
+Mixed resolution,H2,NL,2050,Gas reforming,0.0
+Mixed resolution,H2,NL,2050,Gas reforming + CCS,0.0
+Mixed resolution,H2,NL,2050,Other H2 supply,-1.4210854715202004e-14
+Mixed resolution,H2,NL,2050,Net pipeline import,0.0
+NL+BE regional clusters,H2,BE,2030,Electrolysis,0.0
+NL+BE regional clusters,H2,BE,2030,LH2 import terminal,19.999956000000005
+NL+BE regional clusters,H2,BE,2030,Gas reforming,0.0
+NL+BE regional clusters,H2,BE,2030,Gas reforming + CCS,0.0
+NL+BE regional clusters,H2,BE,2030,Other H2 supply,0.0
+NL+BE regional clusters,H2,BE,2030,Net pipeline import,0.0
+NL+BE regional clusters,H2,BE,2040,Electrolysis,0.0
+NL+BE regional clusters,H2,BE,2040,LH2 import terminal,19.999956000000005
+NL+BE regional clusters,H2,BE,2040,Gas reforming,0.0
+NL+BE regional clusters,H2,BE,2040,Gas reforming + CCS,0.0
+NL+BE regional clusters,H2,BE,2040,Other H2 supply,0.0
+NL+BE regional clusters,H2,BE,2040,Net pipeline import,12.62991743930374
+NL+BE regional clusters,H2,BE,2050,Electrolysis,0.0
+NL+BE regional clusters,H2,BE,2050,LH2 import terminal,19.999956000000005
+NL+BE regional clusters,H2,BE,2050,Gas reforming,0.0
+NL+BE regional clusters,H2,BE,2050,Gas reforming + CCS,0.0
+NL+BE regional clusters,H2,BE,2050,Other H2 supply,0.0
+NL+BE regional clusters,H2,BE,2050,Net pipeline import,45.02423962301406
+NL+BE country level,H2,BE,2030,Electrolysis,0.0
+NL+BE country level,H2,BE,2030,LH2 import terminal,14.148614521389757
+NL+BE country level,H2,BE,2030,Gas reforming,0.0
+NL+BE country level,H2,BE,2030,Gas reforming + CCS,0.0
+NL+BE country level,H2,BE,2030,Other H2 supply,0.0
+NL+BE country level,H2,BE,2030,Net pipeline import,22.47816040159893
+NL+BE country level,H2,BE,2040,Electrolysis,0.0
+NL+BE country level,H2,BE,2040,LH2 import terminal,19.999956000000005
+NL+BE country level,H2,BE,2040,Gas reforming,0.0
+NL+BE country level,H2,BE,2040,Gas reforming + CCS,0.0
+NL+BE country level,H2,BE,2040,Other H2 supply,0.0
+NL+BE country level,H2,BE,2040,Net pipeline import,13.934505248842973
+NL+BE country level,H2,BE,2050,Electrolysis,0.0
+NL+BE country level,H2,BE,2050,LH2 import terminal,19.999956000000005
+NL+BE country level,H2,BE,2050,Gas reforming,0.0
+NL+BE country level,H2,BE,2050,Gas reforming + CCS,0.0
+NL+BE country level,H2,BE,2050,Other H2 supply,0.0
+NL+BE country level,H2,BE,2050,Net pipeline import,56.09835948522476
+Mixed resolution,H2,BE,2030,Electrolysis,0.0
+Mixed resolution,H2,BE,2030,LH2 import terminal,0.0
+Mixed resolution,H2,BE,2030,Gas reforming,0.0
+Mixed resolution,H2,BE,2030,Gas reforming + CCS,0.2767996055246192
+Mixed resolution,H2,BE,2030,Other H2 supply,0.0
+Mixed resolution,H2,BE,2030,Net pipeline import,0.0
+Mixed resolution,H2,BE,2040,Electrolysis,0.0
+Mixed resolution,H2,BE,2040,LH2 import terminal,19.999956
+Mixed resolution,H2,BE,2040,Gas reforming,0.0
+Mixed resolution,H2,BE,2040,Gas reforming + CCS,0.2767996055246192
+Mixed resolution,H2,BE,2040,Other H2 supply,0.0
+Mixed resolution,H2,BE,2040,Net pipeline import,0.0
+Mixed resolution,H2,BE,2050,Electrolysis,0.0
+Mixed resolution,H2,BE,2050,LH2 import terminal,19.999956
+Mixed resolution,H2,BE,2050,Gas reforming,0.0
+Mixed resolution,H2,BE,2050,Gas reforming + CCS,0.0
+Mixed resolution,H2,BE,2050,Other H2 supply,0.0
+Mixed resolution,H2,BE,2050,Net pipeline import,1.459545507290131

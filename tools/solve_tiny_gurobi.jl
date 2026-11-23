@@ -193,6 +193,12 @@ const SCENARIO = get(ENV, "IC1_SCENARIO", "ic1_tiny__Run_Model_Planning")
 const RESULT_ALTERNATIVE = string(SCENARIO, "@", Dates.format(now(), "yyyy-mm-ddTHH:MM:SS"))
 say("  alternative: $RESULT_ALTERNATIVE")
 
+# Scenario filter (FINDING_2040_midpoint_and_no_scenario_filter.md, 2026-10-09).
+# Without it SpineInterface loads ALL alternatives and the highest-id one wins
+# (medium_CO2, GA_flex20, limited_fossil-CH4 leaked into earlier runs).
+const SCENARIO_FILTER = get(ENV, "IC1_SCENARIO_FILTER", "baseline_blended_representative_periods")
+say("  scenario filter: $SCENARIO_FILTER")
+
 t0 = time()
 m = run_spineopt(
     ARGS...;
@@ -200,6 +206,7 @@ m = run_spineopt(
     lp_solver=solver,
     log_level=3,
     alternative=RESULT_ALTERNATIVE,
+    filters=Dict("tool" => "object_activity_control", "scenario" => SCENARIO_FILTER),
 )
 dt = time() - t0
 

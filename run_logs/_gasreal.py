@@ -1,0 +1,20 @@
+be_lng=83.625; nl_lng=95.588889; nl_ext=31.616438
+print("If values are NATIONAL totals (per source note: 'To Country'):")
+print(f"  BE LNG national  {be_lng:8.3f} GWh/d = {be_lng*365/1000:7.1f} TWh/yr at 100% LF")
+print(f"  NL LNG national  {nl_lng:8.3f} GWh/d = {nl_lng*365/1000:7.1f} TWh/yr")
+print(f"  NL extraction    {nl_ext:8.3f} GWh/d = {nl_ext*365/1000:7.1f} TWh/yr")
+tot_correct=(be_lng+nl_lng+nl_ext)*365/1000
+print(f"  CORRECT max total                     = {tot_correct:7.1f} TWh/yr")
+print()
+print("As built in model (replicated per region):")
+model=(be_lng*8+nl_lng*9+nl_ext*9)*365/1000
+print(f"  BE 8 regions x LNG + NL 9 x (LNG+ext) = {model:7.1f} TWh/yr")
+print(f"  OVERSTATEMENT FACTOR                  = {model/tot_correct:7.2f}x")
+print()
+print("Model 2050 actual methane supply = 662.1 TWh  (558.2 LNG + 103.9 extraction)")
+print(f"  -> {662.1/tot_correct:.2f}x the physically correct ceiling of {tot_correct:.1f} TWh")
+print()
+print("Real-world reference (approx, for scale):")
+print("  NL total gas consumption ~2023   ~ 310-330 TWh/yr and falling")
+print("  BE total gas consumption ~2023   ~ 170-190 TWh/yr")
+print("  Groningen extraction CLOSED Oct 2023 -> NL production now ~small offshore only")

@@ -1,0 +1,42 @@
+[gurobi] licence file: C:\gurobi1203\gurobi.lic
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2574744
+[gurobi] licence checkout attempt 1/6 failed; retrying in 10.0s
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2574744
+[gurobi] licence checkout attempt 2/6 failed; retrying in 10.0s
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2574744
+[gurobi] licence checkout attempt 3/6 failed; retrying in 10.0s
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2574744
+[gurobi] licence checkout attempt 4/6 failed; retrying in 10.0s
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2574744
+[gurobi] licence checkout attempt 5/6 failed; retrying in 10.0s
+Set parameter WLSAccessID
+Set parameter WLSSecret
+Set parameter LicenseID to value 2574744
+[gurobi] licence checkout attempt 6/6 failed; retrying in 10.0s
+[gurobi] licence checkout FAILED after 6 attempts.
+[gurobi] Check: gurobi_cl --license   (GRB_LICENSE_FILE=C:\gurobi1203\gurobi.lic)
+ERROR: LoadError: Gurobi Error 10009: License 2574744 has expired
+Stacktrace:
+ [1] _gurobi_env_with_retry(; attempts::Int64, delay::Float64)
+   @ Main C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\tools\solve_tiny_gurobi.jl:145
+ [2] _gurobi_env_with_retry()
+   @ Main C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\tools\solve_tiny_gurobi.jl:127
+ [3] top-level scope
+   @ C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\tools\solve_tiny_gurobi.jl:148
+ [4] include(mod::Module, _path::String)
+   @ Base .\Base.jl:306
+ [5] exec_options(opts::Base.JLOptions)
+   @ Base .\client.jl:317
+ [6] _start()
+   @ Base .\client.jl:550
+in expression starting at C:\Users\maganih\Documents\github-repos\Industrial-Case-Study-MopoProject\tools\solve_tiny_gurobi.jl:148

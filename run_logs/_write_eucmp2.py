@@ -1,0 +1,12 @@
+import io
+t = """
+
+### Why the EU case has more hydrogen supply
+
+The main reason for the higher hydrogen supply in the EU case is a demand that our model does not contain: ammonia as fuel for international shipping. In the EU baseline, NL+BE use about 194 TWh of hydrogen in 2050 for new Haber-Bosch ammonia plants (NL 111, BE 82 TWh). Almost all of this ammonia (about 163 TWh) is used as fuel for international maritime bunkering in the ports of Rotterdam and Antwerp. Hydrogen for road transport adds another 16 TWh. To meet this demand, NL+BE build 115 TWh of electrolysis and import 46 TWh of hydrogen by pipeline from other countries. Our model only covers hydrogen demand from industry, power generation and the power system. Ammonia for fertiliser is already produced in our runs, but there is no demand for ammonia as shipping fuel. Our total hydrogen use in NL+BE is therefore lower, about 37-116 TWh in 2050 depending on the scenario.
+
+### Industrial decarbonisation compared with the EU case
+
+In both models, NL+BE heavy industry decarbonises mainly through carbon capture and switching to cleaner fuels, but the EU baseline has fewer options than our NL+BE-only runs. In the EU baseline, primary steel moves from blast furnaces to gas-based direct reduction with capture, cement moves to oxy-fuel kilns with capture, and olefins move to the methanol route with capture. Existing ammonia plants keep running on natural gas with capture, and glass continues to use unabated natural gas. Refinery output falls by about three quarters as fuel demand declines. This pattern is very close to our Mixed resolution run, where NL+BE can export CO2 to neighbouring countries for storage and gas with capture is the cheapest route. Our NL+BE-only runs reach a different outcome. Because CO2 storage is limited to the Dutch storage site and CO2 cannot be exported, the model switches ammonia to green hydrogen, primary steel largely to electric routes, glass to electricity and hydrogen, and part of the olefins to methanol made from captured CO2. The comparison shows that the choice between hydrogen and electric routes on one side and carbon capture on the other depends mainly on how much CO2 storage the region can access. With good access to storage, as in the EU case and our Mixed resolution run, capture on gas-based routes is preferred.
+"""
+io.open('results_2050_analysis/FIGURE_DESCRIPTIONS.md','a',encoding='utf-8',newline='\n').write(t)

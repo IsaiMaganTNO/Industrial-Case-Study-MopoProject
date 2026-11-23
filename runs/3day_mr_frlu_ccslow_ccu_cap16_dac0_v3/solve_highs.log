@@ -1,0 +1,757 @@
+[22:00:33] STAGE-1 SOLVE - IC1 tiny test model
+[22:00:33]   RAM in use : 39.2 / 143.5 GB
+[22:00:33]   time limit : 2880 min
+[22:00:33]   guard      : external (tools/watch_build.ps1)
+[22:00:33]   results    : Investment_Results.sqlite
+[22:00:33] 
+[22:00:33]   alternative: ic1_tiny__Run_Model_Planning@2026-11-01T22:00:33
+
+Running SpineOpt...
+[SpineOpt version 1.0.0 (git hash: N/A)]
+[SpineInterface version 0.18.0 (git hash: N/A)]
+Execution started at 2026-11-01T22:00:46.755
+Reading input data from sqlite:///C:/Users/maganih/Documents/github-repos/Industrial-Case-Study-MopoProject/runs/3day_mr_frlu_ccslow_ccu_cap16_dac0_v3/input/Final_SpineOpt_Model.tiny.3day.mr_frlu_ccslow_ccu_cap16_dac0.v3.sqlite...
+Initializing  data structure from db... 60.975501 seconds (150.10 M allocations: 6.490 GiB, 2.75% gc time, 64.56% compilation time)
+Preprocessing  data structure... 23.083855 seconds (34.72 M allocations: 1.674 GiB, 1.52% gc time, 96.14% compilation time)
+Checking  data structure...  1.262209 seconds (2.22 M allocations: 123.499 MiB, 85.97% compilation time)
+
+Build started at 2026-11-01T22:02:59.660
+Creating capacity_planning temporal structure... 10.786794 seconds (15.65 M allocations: 742.130 MiB, 0.66% gc time, 96.37% compilation time: 6% of which was recompilation)
+Creating capacity_planning stochastic structure...  5.725638 seconds (9.08 M allocations: 448.839 MiB, 1.07% gc time, 98.50% compilation time: 4% of which was recompilation)
+Adding capacity_planning independent variables...
+- [variable_binary_gas_connection_flow]  4.026803 seconds (4.33 M allocations: 212.927 MiB, 102.84% compilation time)
+- [variable_connection_flow]218.531473 seconds (935.73 M allocations: 92.700 GiB, 14.24% gc time, 7.83% compilation time: <1% of which was recompilation)
+- [variable_connection_intact_flow]177.821519 seconds (452.08 M allocations: 69.445 GiB, 13.44% gc time, 0.77% compilation time)
+- [variable_connections_decommissioned]  6.493783 seconds (16.06 M allocations: 886.558 MiB, 2.53% gc time, 66.36% compilation time)
+- [variable_connections_invested]  4.133246 seconds (15.01 M allocations: 841.053 MiB, 8.77% gc time, 65.49% compilation time)
+- [variable_connections_invested_available]  3.940023 seconds (14.82 M allocations: 831.823 MiB, 5.75% gc time, 40.79% compilation time: <1% of which was recompilation)
+- [variable_min_capacity_margin_slack]  3.240264 seconds (2.92 M allocations: 135.389 MiB, 103.69% compilation time)
+- [variable_node_injection] 77.035140 seconds (230.09 M allocations: 28.718 GiB, 12.11% gc time, 12.03% compilation time)
+- [variable_node_pressure]  0.722841 seconds (779.34 k allocations: 38.141 MiB, 97.91% compilation time)
+- [variable_node_slack_neg]  1.136592 seconds (1.27 M allocations: 70.984 MiB, 110.84% compilation time)
+- [variable_node_slack_pos]  0.028863 seconds (133.29 k allocations: 15.165 MiB)
+- [variable_node_state]230.281839 seconds (1.25 G allocations: 71.609 GiB, 8.70% gc time, 4.74% compilation time)
+- [variable_node_state_longterm] 10.109021 seconds (14.95 M allocations: 627.817 MiB, 1.41% gc time, 87.88% compilation time)
+- [variable_node_voltage_angle]  0.761185 seconds (795.62 k allocations: 38.933 MiB, 106.17% compilation time)
+- [variable_nonspin_units_shut_down]  1.640926 seconds (2.30 M allocations: 113.101 MiB, 106.98% compilation time: 2% of which was recompilation)
+- [variable_nonspin_units_started_up]  0.934641 seconds (1.19 M allocations: 59.460 MiB, 96.14% compilation time)
+- [variable_storages_decommissioned]  4.003637 seconds (10.40 M allocations: 560.473 MiB, 6.97% gc time, 64.60% compilation time)
+- [variable_storages_invested]  2.044427 seconds (9.54 M allocations: 524.118 MiB, 6.01% gc time, 37.96% compilation time)
+- [variable_storages_invested_available]  1.901925 seconds (9.28 M allocations: 511.401 MiB, 5.79% gc time, 21.90% compilation time)
+- [variable_unit_flow]722.004940 seconds (14.37 G allocations: 573.847 GiB, 16.71% gc time, 1.60% compilation time: <1% of which was recompilation)
+- [variable_unit_flow_op]  1.279328 seconds (2.22 M allocations: 114.495 MiB, 94.49% compilation time)
+- [variable_unit_flow_op_active]  0.903886 seconds (1.64 M allocations: 84.426 MiB, 94.05% compilation time)
+- [variable_units_invested] 25.970534 seconds (90.48 M allocations: 5.974 GiB, 9.12% gc time, 13.89% compilation time)
+- [variable_units_invested_available] 22.774985 seconds (87.28 M allocations: 5.825 GiB, 10.05% gc time, 1.91% compilation time)
+- [variable_units_mothballed] 21.697606 seconds (81.16 M allocations: 5.505 GiB, 9.37% gc time, 3.64% compilation time)
+- [variable_units_on]797.832211 seconds (3.02 G allocations: 221.106 GiB, 9.82% gc time, 1.28% compilation time)
+- [variable_units_out_of_service]  0.736913 seconds (978.12 k allocations: 48.327 MiB, 118.71% compilation time)
+- [variable_units_returned_to_service]  0.197293 seconds (232.67 k allocations: 11.273 MiB, 94.21% compilation time)
+- [variable_units_shut_down]  0.496167 seconds (551.79 k allocations: 26.944 MiB, 96.87% compilation time)
+- [variable_units_started_up]  0.031301 seconds (95.37 k allocations: 4.458 MiB)
+- [variable_units_taken_out_of_service]  0.029466 seconds (95.37 k allocations: 4.458 MiB)
+- [variable_user_constraint_slack_neg]  1.126740 seconds (1.87 M allocations: 90.064 MiB, 99.25% compilation time)
+- [variable_user_constraint_slack_pos]  0.021546 seconds (59.39 k allocations: 2.359 MiB)
+2353.402932 seconds (20.65 G allocations: 1.057 TiB, 12.38% gc time, 4.83% compilation time: <1% of which was recompilation)
+Adding capacity_planning dependent variables...
+- [variable_connection_flow] 37.544977 seconds (483.90 M allocations: 24.133 GiB, 21.02% gc time, 8.41% compilation time)
+- [variable_unit_flow] 89.025883 seconds (4.11 G allocations: 132.238 GiB, 18.29% gc time, 1.71% compilation time)
+126.819302 seconds (4.60 G allocations: 156.387 GiB, 19.06% gc time, 3.89% compilation time)
+Adding capacity_planning expressions...
+- [expression_capacity_margin]  0.405253 seconds (1.54 M allocations: 74.114 MiB, 99.56% compilation time)
+  0.405541 seconds (1.54 M allocations: 74.117 MiB, 99.48% compilation time)
+Adding capacity_planning constraints...
+- [constraint_candidate_connection_flow_lb]  0.549091 seconds (991.50 k allocations: 48.158 MiB, 99.62% compilation time)
+- [constraint_candidate_connection_flow_ub]  0.111506 seconds (397.44 k allocations: 19.337 MiB, 97.35% compilation time)
+- [constraint_compression_ratio]  0.142045 seconds (350.09 k allocations: 17.232 MiB, 97.61% compilation time)
+- [constraint_connection_flow_capacity] 14.536699 seconds (89.70 M allocations: 5.177 GiB, 28.22% gc time, 20011 lock conflicts, 35.50% compilation time)
+- [constraint_connection_flow_gas_capacity]  0.080000 seconds (92.62 k allocations: 4.851 MiB, 96.99% compilation time)
+- [constraint_connection_flow_intact_flow]  0.342782 seconds (432.85 k allocations: 21.288 MiB, 99.62% compilation time)
+- [constraint_connection_flow_lodf]  0.421964 seconds (1.19 M allocations: 59.996 MiB, 99.91% compilation time: 17% of which was recompilation)
+- [constraint_connection_intact_flow_capacity]  0.220028 seconds (246.28 k allocations: 12.113 MiB, 98.67% compilation time)
+- [constraint_connection_intact_flow_ptdf]  0.192538 seconds (247.23 k allocations: 12.263 MiB, 99.27% compilation time)
+- [constraint_connection_lifetime]  8.114338 seconds (23.47 M allocations: 1.462 GiB, 45.97% gc time, 8 lock conflicts, 38.10% compilation time)
+- [constraint_connection_min_flow]  0.942961 seconds (1.20 M allocations: 59.290 MiB, 98.22% compilation time)
+- [constraint_connection_unitary_gas_flow]  0.004355 seconds (14.56 k allocations: 947.344 KiB)
+- [constraint_connections_invested_available]  4.436437 seconds (1.52 M allocations: 74.086 MiB, 77.28% gc time, 26.43% compilation time)
+- [constraint_connections_invested_transition]  7.803751 seconds (37.41 M allocations: 2.078 GiB, 32.80% gc time, 18 lock conflicts, 30.64% compilation time: <1% of which was recompilation)
+- [constraint_cyclic_node_state] 18.482863 seconds (102.65 M allocations: 6.547 GiB, 25.10% gc time, 80 lock conflicts, 16.88% compilation time)
+- [constraint_fix_node_pressure_point]  0.180281 seconds (587.91 k allocations: 28.756 MiB, 98.69% compilation time)
+- [constraint_fix_ratio_out_in_connection_flow]  0.237114 seconds (747.89 k allocations: 41.769 MiB, 70.06% compilation time)
+- [constraint_fix_ratio_unit_flow]297.919693 seconds (1.86 G allocations: 170.398 GiB, 34.10% gc time, 156443 lock conflicts, 1.58% compilation time)
+- [constraint_investment_group_equal_investments]  0.413919 seconds (258.53 k allocations: 12.714 MiB, 99.93% compilation time)
+- [constraint_investment_group_maximum_capacity_invested_available]  0.054285 seconds (78.34 k allocations: 3.943 MiB, 99.51% compilation time)
+- [constraint_investment_group_maximum_entities_invested_available] 15.445915 seconds (75.11 M allocations: 4.676 GiB, 29.23% gc time, 20 lock conflicts, 21.59% compilation time)
+- [constraint_investment_group_minimum_capacity_invested_available]  0.076933 seconds (78.33 k allocations: 3.942 MiB, 99.45% compilation time)
+- [constraint_investment_group_minimum_entities_invested_available]  0.075889 seconds (78.33 k allocations: 3.942 MiB, 99.47% compilation time)
+- [constraint_max_node_pressure]  0.257591 seconds (727.83 k allocations: 35.710 MiB, 98.96% compilation time)
+- [constraint_max_node_voltage_angle]  0.074333 seconds (125.06 k allocations: 6.395 MiB, 95.92% compilation time)
+- [constraint_max_ratio_out_in_connection_flow]  0.046967 seconds (72.25 k allocations: 3.684 MiB, 95.36% compilation time)
+- [constraint_max_ratio_unit_flow]  0.008726 seconds (39.53 k allocations: 2.713 MiB)
+- [constraint_flow_limits_max_cumulative]  0.174617 seconds (613.51 k allocations: 30.532 MiB, 95.00% compilation time)
+- [constraint_min_capacity_margin]  0.046041 seconds (63.84 k allocations: 3.123 MiB, 97.27% compilation time)
+- [constraint_min_down_time]  0.167495 seconds (583.22 k allocations: 28.339 MiB, 99.00% compilation time)
+- [constraint_min_node_pressure]  0.041426 seconds (33.73 k allocations: 1.804 MiB, 87.69% compilation time)
+- [constraint_min_node_voltage_angle]  0.045856 seconds (38.13 k allocations: 2.070 MiB, 84.20% compilation time)
+- [constraint_min_ratio_out_in_connection_flow]  0.079531 seconds (72.25 k allocations: 3.683 MiB, 97.34% compilation time)
+- [constraint_min_ratio_unit_flow]  0.006618 seconds (39.53 k allocations: 2.713 MiB)
+- [constraint_min_scheduled_outage_duration]  0.198923 seconds (644.58 k allocations: 31.345 MiB, 99.08% compilation time)
+- [constraint_flow_limits_min_cumulative]  0.009031 seconds (54.56 k allocations: 3.469 MiB)
+- [constraint_min_up_time]  0.084601 seconds (107.91 k allocations: 5.404 MiB, 97.90% compilation time)
+- [constraint_minimum_operating_point]  0.101097 seconds (124.62 k allocations: 6.909 MiB, 90.41% compilation time)
+- [constraint_nodal_balance] 24.503709 seconds (188.81 M allocations: 9.975 GiB, 22.17% gc time, 82230 lock conflicts, 10.59% compilation time: 3% of which was recompilation)
+- [constraint_node_injection]1374.978000 seconds (6.48 G allocations: 411.252 GiB, 11.33% gc time, 103367 lock conflicts, 0.25% compilation time)
+- [constraint_node_state_capacity]256.511200 seconds (1.98 G allocations: 114.024 GiB, 16.84% gc time, 604 lock conflicts, 1.30% compilation time)
+- [constraint_node_state_longterm_trajectory]  7.774275 seconds (24.90 M allocations: 1.478 GiB, 40.74% gc time, 50 lock conflicts, 38.05% compilation time)
+- [constraint_min_node_state] 12.047871 seconds (30.60 M allocations: 1.721 GiB, 50.33% gc time, 6 lock conflicts, 18.97% compilation time)
+- [constraint_node_voltage_angle]  0.082206 seconds (110.93 k allocations: 5.517 MiB, 98.17% compilation time)
+- [constraint_non_spinning_reserves_lower_bound]  0.146398 seconds (239.31 k allocations: 12.452 MiB, 83.40% compilation time)
+- [constraint_non_spinning_reserves_shut_down_upper_bound]  0.045442 seconds (143.02 k allocations: 7.729 MiB)
+- [constraint_non_spinning_reserves_start_up_upper_bound]  0.033567 seconds (143.02 k allocations: 7.729 MiB)
+- [constraint_operating_point_bounds]  0.363508 seconds (845.18 k allocations: 43.111 MiB, 97.75% compilation time)
+- [constraint_operating_point_rank]  0.139762 seconds (432.89 k allocations: 21.835 MiB, 93.14% compilation time)
+- [constraint_ramp_down]  0.266861 seconds (876.35 k allocations: 44.246 MiB, 93.74% compilation time)
+- [constraint_ramp_up]  0.124854 seconds (271.53 k allocations: 14.884 MiB, 86.39% compilation time)
+- [constraint_ratio_out_in_connection_intact_flow]  0.632664 seconds (794.64 k allocations: 39.311 MiB, 99.54% compilation time)
+- [constraint_storage_lifetime]  5.438463 seconds (12.61 M allocations: 795.795 MiB, 50.70% gc time, 4 lock conflicts, 35.29% compilation time)
+- [constraint_storage_line_pack]  0.691627 seconds (691.13 k allocations: 43.192 MiB, 99.67% compilation time)
+- [constraint_storages_invested_available]  3.251945 seconds (544.62 k allocations: 27.547 MiB, 84.26% gc time, 20.34% compilation time)
+- [constraint_storages_invested_transition]  5.718826 seconds (24.28 M allocations: 1.304 GiB, 48.05% gc time, 6 lock conflicts, 15.41% compilation time)
+- [constraint_unit_flow_capacity]1051.369419 seconds (8.24 G allocations: 412.876 GiB, 12.50% gc time, 2033 lock conflicts, 0.31% compilation time)
+- [constraint_unit_flow_op_bounds]  0.151484 seconds (481.85 k allocations: 25.707 MiB, 64.83% compilation time)
+- [constraint_unit_flow_op_rank]  0.218833 seconds (577.55 k allocations: 30.616 MiB, 70.60% compilation time)
+- [constraint_unit_flow_op_sum]  0.181047 seconds (612.70 k allocations: 30.495 MiB, 94.57% compilation time)
+- [constraint_unit_lifetime] 44.284224 seconds (289.74 M allocations: 19.517 GiB, 22.32% gc time, 34 lock conflicts, 5.60% compilation time)
+- [constraint_unit_state_transition]  0.361445 seconds (850.44 k allocations: 41.646 MiB, 98.94% compilation time)
+- [constraint_units_available]3333.315386 seconds (21.05 G allocations: 1.390 TiB, 14.70% gc time, 1268 lock conflicts, 0.06% compilation time)
+- [constraint_units_invested_available]  3.658752 seconds (1.84 M allocations: 101.873 MiB, 86.96% gc time, 14.39% compilation time)
+- [constraint_units_invested_transition] 42.376416 seconds (235.65 M allocations: 16.059 GiB, 21.49% gc time, 37 lock conflicts, 3.98% compilation time)
+- [constraint_units_out_of_service_contiguity]  0.086888 seconds (107.90 k allocations: 5.398 MiB, 97.98% compilation time)
+- [constraint_units_out_of_service_transition]  0.089838 seconds (93.58 k allocations: 4.716 MiB, 95.55% compilation time)
+- [constraint_user_constraint] 10.217063 seconds (11.63 M allocations: 656.954 MiB, 28.30% gc time, 7 lock conflicts, 68.83% compilation time)
+6632.989670 seconds (41.40 G allocations: 2.574 TiB, 15.14% gc time, 366226 lock conflicts, 1.25% compilation time: <1% of which was recompilation)
+Setting capacity_planning objective...106.856818 seconds (516.89 M allocations: 32.863 GiB, 8.80% gc time, 12.73% compilation time: <1% of which was recompilation)
+Build complete. Started at 2026-11-01T22:02:59.660, ended at 2026-11-02T00:36:57.503, elapsed time: 2 hours, 33 minutes, 57 seconds, 843 milliseconds
+
+Solve started at 2026-11-02T00:36:57.788
+
+capacity_planning - window 1 of 1: 2030-01-01T00:00~(1565 weeks, 2 days)~>2060-01-01T00:00
+Optimizing capacity_planning...Running HiGHS 1.15.1 (git hash: 04024d701f): Copyright (c) 2026 under MIT licence terms
+Includes third-party software components, see THIRD_PARTY_NOTICES.md for full details
+Using BLAS: blastrampoline 
+LP has 3905826 rows; 4309068 cols; 9384744 nonzeros
+Coefficient ranges:
+  Matrix  [1e-03, 9e+04]
+  Cost    [3e-07, 2e+06]
+  Bound   [4e-07, 1e+07]
+  RHS     [1e-07, 2e+05]
+WARNING: Problem has some excessively small costs
+WARNING: Problem has some excessively large costs
+WARNING: Problem has some excessively small column bounds
+WARNING: Problem has some excessively large column bounds
+WARNING: Problem has some excessively small row bounds
+WARNING:    Consider scaling the objective by 1e-1, or setting the user_objective_scale option to -1
+WARNING:    Consider scaling the    bounds by 1e-1, or setting the user_bound_scale option to -4
+Presolving model
+1205171 rows, 1546839 cols, 4639802 nonzeros 15s
+561985 rows, 1004133 cols, 3444348 nonzeros 20s
+Dependent equations search running on 118171 equations with time limit of 1000.00s
+Dependent equations search removed 0 rows and 0 nonzeros in 0.09s (limit = 1000.00s)
+551464 rows, 856688 cols, 3144443 nonzeros 28s
+Presolve reductions: rows 551464(-3354362); columns 856688(-3452380); nonzeros 3144443(-6240301) 
+Solving the presolved LP
+Using dual simplex solver
+  Iteration        Objective     Infeasibilities num(sum)
+          0    -5.0907253477e+04 Ph1: 30487(5.2057e+06); Du: 19584(50907.3) 35.1s
+       9598    -1.1717066505e+06 Pr: 108634(1.94279e+08); Du: 0(6.43485e-13) 40.2s
+      11912    -1.8278639509e+05 Pr: 108611(7.45705e+07); Du: 0(3.32803e-07) 45.3s
+      14350    -1.2993437285e+05 Pr: 108655(4.59004e+07); Du: 0(3.32804e-07) 50.7s
+      16364    -1.2993437285e+05 Pr: 108726(2.66203e+07); Du: 0(3.32804e-07) 55.9s
+      18383    -1.2993437285e+05 Pr: 108613(1.04508e+08); Du: 0(3.32804e-07) 62.9s
+      20139    -1.2993437282e+05 Pr: 108544(2.44213e+08); Du: 0(3.35111e-07) 69.5s
+      21835    -1.2992513136e+05 Pr: 108516(1.5617e+08); Du: 0(0.000645452) 76.6s
+      23448    -1.2992482918e+05 Pr: 108692(6.11635e+07); Du: 0(0.000425247) 83.6s
+      24533    -1.2992301318e+05 Pr: 108634(6.4425e+08); Du: 0(0.000350969) 88.6s
+      26084    -1.2991847381e+05 Pr: 108712(3.96232e+08); Du: 0(0.000463558) 96.1s
+      27300    -1.2991672634e+05 Pr: 108772(4.52403e+08); Du: 0(0.000396195) 102.6s
+      28212    -1.2991664567e+05 Pr: 108834(7.15819e+08); Du: 0(0.00032158) 107.6s
+      29526    -1.2991008527e+05 Pr: 108873(7.15328e+08); Du: 0(0.000356997) 114.8s
+      30589    -1.2990497802e+05 Pr: 108961(1.46565e+09); Du: 0(0.000381073) 120.9s
+      31720    -1.2990286844e+05 Pr: 109047(8.09989e+08); Du: 0(0.000317943) 127.4s
+      32779    -1.2987730566e+05 Pr: 109151(1.39985e+09); Du: 0(0.000349111) 133.6s
+      33754    -1.2986850873e+05 Pr: 109109(1.27608e+09); Du: 0(0.000329188) 139.6s
+      34803    -1.2986205018e+05 Pr: 109289(3.57111e+09); Du: 0(0.000255147) 146.3s
+      35818    -1.2983173789e+05 Pr: 109276(8.31502e+08); Du: 0(0.000311859) 152.9s
+      36603    -1.2978053669e+05 Pr: 109370(6.64008e+09); Du: 0(0.000272039) 158.4s
+      37420    -1.2942757328e+05 Pr: 109435(1.1508e+10); Du: 0(0.000256203) 164.3s
+      38336    -1.2175226370e+05 Pr: 109543(9.863e+08); Du: 0(0.00025467) 170.8s
+      39331    -1.0654317272e+05 Pr: 109611(1.57102e+12); Du: 0(0.000278795) 177.5s
+      40354    -1.0107823438e+05 Pr: 109687(2.01539e+10); Du: 0(0.000277647) 184.5s
+      41142    -9.3870102352e+04 Pr: 109711(4.82038e+10); Du: 0(0.000421716) 190.5s
+      42008    -8.4718034959e+04 Pr: 109745(2.05322e+10); Du: 0(0.000418106) 196.9s
+      43026    -7.5139201371e+04 Pr: 109801(1.25532e+11); Du: 0(0.000413535) 204.3s
+      44074    -7.1249142794e+04 Pr: 109851(1.3045e+11); Du: 0(0.00044968) 212.5s
+      45176    -7.1190200267e+04 Pr: 109850(1.31819e+11); Du: 0(0.000502574) 221.8s
+      46130    -7.0966749855e+04 Pr: 110078(1.32134e+11); Du: 0(0.000451873) 230.3s
+      47259    -6.9964977436e+04 Pr: 110152(1.5449e+11); Du: 0(0.000491206) 240.1s
+      48159    -6.2018869148e+04 Pr: 110197(8.47651e+10); Du: 0(0.00047623) 248.5s
+      49016    -5.2340864700e+04 Pr: 110224(3.26897e+10); Du: 0(0.000490154) 256.7s
+      49807    -3.8943154600e+04 Pr: 110286(1.14238e+11); Du: 0(0.000540503) 264.4s
+      50584    -7.5324710434e+03 Pr: 110399(3.15575e+10); Du: 0(0.000537915) 272.1s
+      51373     1.1581878038e+04 Pr: 110452(6.37783e+10); Du: 0(0.000556303) 280.2s
+      52235     3.4265692180e+04 Pr: 110469(7.85187e+10); Du: 0(0.000588798) 289.1s
+      53025     6.4203813597e+04 Pr: 110541(5.44397e+10); Du: 0(0.000588295) 297.6s
+      53839     8.7401566329e+04 Pr: 110464(3.12635e+10); Du: 0(0.000576338) 305.9s
+      54655     1.0559486168e+05 Pr: 110541(1.1614e+10); Du: 0(0.00055115) 314.3s
+      55471     1.2749977262e+05 Pr: 110599(3.02272e+10); Du: 0(0.000550559) 322.7s
+      56245     1.4659552762e+05 Pr: 110597(7.02185e+09); Du: 0(0.000548222) 331.1s
+      57072     1.6596413818e+05 Pr: 110688(7.98243e+10); Du: 0(0.000542231) 340.2s
+      58141     1.7533888185e+05 Pr: 110694(7.46185e+10); Du: 0(0.000572224) 349.1s
+      60757     1.7821218555e+05 Pr: 110353(7.48464e+10); Du: 0(0.000790994) 354.6s
+      62711     1.7821334202e+05 Pr: 110401(7.48294e+10); Du: 0(0.00158467) 361.1s
+      64648     1.7821446689e+05 Pr: 110410(7.48699e+10); Du: 0(0.00188404) 368.2s
+      66124     1.7821446811e+05 Pr: 110304(7.49391e+10); Du: 0(0.00174193) 373.7s
+      67452     1.7821446822e+05 Pr: 110466(7.48687e+10); Du: 0(0.00162421) 379.2s
+      69035     1.7821514648e+05 Pr: 110300(7.50193e+10); Du: 0(0.00173514) 386.5s
+      70448     1.7821514648e+05 Pr: 110144(7.50125e+10); Du: 0(0.00173593) 393.5s
+      71808     1.7821514648e+05 Pr: 110480(7.50035e+10); Du: 0(0.00173389) 401.0s
+      73144     1.7821514642e+05 Pr: 110688(7.49845e+10); Du: 0(0.001721) 408.6s
+      74340     1.7821514640e+05 Pr: 110925(7.50699e+10); Du: 0(0.00168583) 416.3s
+      75485     1.7821519694e+05 Pr: 110655(7.50169e+10); Du: 0(0.00173531) 424.1s
+      76819     1.7821519691e+05 Pr: 110535(7.50013e+10); Du: 0(0.00172879) 433.0s
+      78248     1.7821519684e+05 Pr: 110880(7.50141e+10); Du: 0(0.00166184) 443.2s
+      79597     1.7821519670e+05 Pr: 110891(7.48704e+10); Du: 0(0.00156392) 452.4s
+      80684     1.7821525296e+05 Pr: 111079(7.51733e+10); Du: 0(0.00154386) 460.2s
+      81829     1.7821525734e+05 Pr: 111163(7.51936e+10); Du: 0(0.0015341) 468.9s
+      82941     1.7821560861e+05 Pr: 111328(7.56286e+10); Du: 0(0.00165919) 477.2s
+      83615     1.7821561081e+05 Pr: 111063(7.52525e+10); Du: 0(0.00165326) 482.3s
+      84681     1.7821564481e+05 Pr: 111236(7.53881e+10); Du: 0(0.00164288) 491.0s
+      85347     1.7821564481e+05 Pr: 111338(7.55554e+10); Du: 0(0.00162306) 496.3s
+      85971     1.7821564477e+05 Pr: 111389(7.56566e+10); Du: 0(0.00160097) 501.6s
+      86704     1.7821564476e+05 Pr: 111056(7.558e+10); Du: 0(0.00156794) 507.6s
+      87695     1.7821566624e+05 Pr: 111166(7.51398e+10); Du: 0(0.00155541) 516.0s
+      88321     1.7821566622e+05 Pr: 111219(7.49319e+10); Du: 0(0.0015177) 521.6s
+      89489     1.7821567279e+05 Pr: 111658(7.53858e+10); Du: 0(0.00142101) 532.1s
+      90096     1.7821567281e+05 Pr: 111600(7.66269e+10); Du: 0(0.00136666) 537.5s
+      91179     1.7821567307e+05 Pr: 111930(7.51335e+10); Du: 0(0.0012934) 547.2s
+      91776     1.7821567308e+05 Pr: 111941(7.50744e+10); Du: 0(0.00126413) 552.9s
+      92724     1.7821603270e+05 Pr: 111813(7.52537e+10); Du: 0(0.00127017) 562.0s
+      93670     1.7821683395e+05 Pr: 112023(7.50929e+10); Du: 0(0.0012942) 571.1s
+      94727     1.7821760819e+05 Pr: 111703(7.6574e+10); Du: 0(0.00131888) 581.4s
+      95268     1.7821834351e+05 Pr: 111758(7.5844e+10); Du: 0(0.00136406) 587.2s
+      96315     1.7821903580e+05 Pr: 111384(7.59036e+10); Du: 0(0.00132926) 597.3s
+      96891     1.7821903610e+05 Pr: 111607(7.76686e+10); Du: 0(0.00128644) 602.8s
+      97446     1.7821903621e+05 Pr: 111786(7.5542e+10); Du: 0(0.00124227) 608.3s
+      97982     1.7821903615e+05 Pr: 111800(7.51461e+10); Du: 0(0.00119558) 613.6s
+      98504     1.7822066281e+05 Pr: 111666(7.60052e+10); Du: 0(0.00124777) 618.8s
+      99035     1.7822068310e+05 Pr: 111673(7.91096e+10); Du: 0(0.00120614) 624.0s
+      99549     1.7822068451e+05 Pr: 111704(7.71782e+10); Du: 0(0.00116798) 629.4s
+     100100     1.7822068462e+05 Pr: 111772(8.02871e+10); Du: 0(0.00114718) 634.9s
+     100590     1.7822342316e+05 Pr: 111523(7.61548e+10); Du: 0(0.00139261) 640.1s
+     101073     1.7822386098e+05 Pr: 111586(7.53161e+10); Du: 0(0.00133034) 645.3s
+     102019     1.7822667447e+05 Pr: 111492(7.70951e+10); Du: 0(0.00140382) 654.8s
+     102935     1.7823107143e+05 Pr: 111507(7.76022e+10); Du: 0(0.00147374) 664.2s
+     103910     1.7823228420e+05 Pr: 111576(7.52134e+10); Du: 0(0.00137387) 674.2s
+     104413     1.7823534423e+05 Pr: 111531(7.64348e+10); Du: 0(0.00135361) 679.4s
+     104954     1.7823535911e+05 Pr: 111687(8.90193e+10); Du: 0(0.00127207) 684.8s
+     105480     1.7823861841e+05 Pr: 111746(7.7443e+10); Du: 0(0.00127563) 690.1s
+     105983     1.7824142515e+05 Pr: 111774(7.73798e+10); Du: 0(0.00130661) 695.3s
+     106466     1.7824395763e+05 Pr: 111743(7.62421e+10); Du: 0(0.00132601) 700.3s
+     106965     1.7824398426e+05 Pr: 111810(7.67012e+10); Du: 0(0.00124039) 705.6s
+     107473     1.7825055143e+05 Pr: 111836(7.7772e+10); Du: 0(0.00126674) 710.8s
+     108452     1.7825568654e+05 Pr: 111744(7.9458e+10); Du: 0(0.00123244) 720.8s
+     109038     1.7825993633e+05 Pr: 111837(1.10715e+11); Du: 0(0.00122911) 727.0s
+     109534     1.7827221818e+05 Pr: 111786(9.97645e+10); Du: 0(0.00133597) 732.2s
+     110041     1.7827446592e+05 Pr: 111896(7.93554e+10); Du: 0(0.00125268) 737.7s
+     110509     1.7828549663e+05 Pr: 112229(8.05072e+10); Du: 0(0.00122623) 742.8s
+     111049     1.7829235967e+05 Pr: 112285(8.81299e+10); Du: 0(0.00116109) 748.5s
+     111606     1.7830564236e+05 Pr: 112216(9.37938e+10); Du: 0(0.00122614) 754.4s
+     112143     1.7831724022e+05 Pr: 112199(8.1592e+10); Du: 0(0.00124086) 760.2s
+     112653     1.7832986739e+05 Pr: 112366(8.43315e+10); Du: 0(0.00122894) 765.9s
+     113214     1.7833786630e+05 Pr: 112406(7.84927e+10); Du: 0(0.00116982) 772.1s
+     113719     1.7835780732e+05 Pr: 112516(8.64566e+10); Du: 0(0.00117595) 777.5s
+     114215     1.7843400630e+05 Pr: 112309(1.01996e+11); Du: 0(0.00119039) 782.9s
+     114741     1.7848658011e+05 Pr: 112342(9.21051e+10); Du: 0(0.00121611) 788.8s
+     115252     1.7851827817e+05 Pr: 112397(1.09916e+11); Du: 0(0.00129718) 794.6s
+     115825     1.7854172818e+05 Pr: 112416(1.01723e+11); Du: 0(0.00127) 800.8s
+     116375     1.7859945807e+05 Pr: 112397(1.07323e+11); Du: 0(0.00123461) 806.8s
+     116908     1.7867753035e+05 Pr: 112208(1.10887e+11); Du: 0(0.00132744) 812.8s
+     117455     1.7872570806e+05 Pr: 112305(1.16843e+11); Du: 0(0.00134376) 818.8s
+     118006     1.7879617670e+05 Pr: 112259(9.55868e+10); Du: 0(0.00127992) 825.3s
+     118510     1.7904823141e+05 Pr: 112336(1.08774e+11); Du: 0(0.00131159) 830.9s
+     119019     1.7919028496e+05 Pr: 112334(1.16684e+11); Du: 0(0.00127851) 836.6s
+     119595     1.7936023822e+05 Pr: 112557(3.18211e+11); Du: 0(0.00126117) 843.3s
+     120129     1.7960054354e+05 Pr: 112568(7.77516e+10); Du: 0(0.00121067) 849.6s
+     120627     1.7993423417e+05 Pr: 112445(1.66933e+11); Du: 0(0.00121165) 855.5s
+     121129     1.8028449812e+05 Pr: 112451(4.51797e+11); Du: 0(0.00121091) 861.3s
+     121618     1.8059910400e+05 Pr: 112370(2.74047e+11); Du: 0(0.00122018) 867.1s
+     122131     1.8093291466e+05 Pr: 112337(1.33717e+11); Du: 0(0.00121265) 873.1s
+     122642     1.8157204368e+05 Pr: 112400(4.63029e+11); Du: 0(0.00122389) 879.0s
+     123130     1.8267241460e+05 Pr: 112262(4.8246e+11); Du: 0(0.0012276) 885.1s
+     123605     1.8387106479e+05 Pr: 112399(1.22659e+12); Du: 0(0.00125596) 890.9s
+     124136     1.8463615554e+05 Pr: 112372(1.35104e+11); Du: 0(0.00132217) 897.2s
+     124614     1.8621685990e+05 Pr: 112405(1.16436e+12); Du: 0(0.00130124) 902.9s
+     125126     1.8711858501e+05 Pr: 112671(1.56218e+11); Du: 0(0.00131671) 909.2s
+     125917     1.8916273603e+05 Pr: 112410(9.93404e+10); Du: 0(0.00131201) 918.6s
+     126354     1.9129038464e+05 Pr: 112390(1.15446e+12); Du: 0(0.00133446) 924.2s
+     126782     1.9278871648e+05 Pr: 112331(1.64005e+12); Du: 0(0.00138736) 929.2s
+     127233     1.9364545976e+05 Pr: 112402(1.6606e+12); Du: 0(0.0013912) 934.8s
+     127690     1.9432729396e+05 Pr: 112379(1.59034e+12); Du: 0(0.00137555) 940.4s
+     128219     1.9509819300e+05 Pr: 112315(1.6384e+12); Du: 0(0.00142127) 946.8s
+     128721     1.9532155141e+05 Pr: 112321(1.97148e+12); Du: 0(0.00145707) 952.6s
+     129195     1.9550267795e+05 Pr: 112389(7.16755e+11); Du: 0(0.00144608) 958.3s
+     129597     1.9572651597e+05 Pr: 112442(5.84312e+11); Du: 0(0.00144622) 963.3s
+     130059     1.9627626456e+05 Pr: 112364(1.99072e+12); Du: 0(0.00144574) 969.2s
+     130571     1.9730380356e+05 Pr: 112271(1.99795e+12); Du: 0(0.00145013) 975.3s
+     131030     1.9766813763e+05 Pr: 112318(2.13103e+12); Du: 0(0.00144965) 980.9s
+     131495     1.9836570097e+05 Pr: 112285(2.1358e+12); Du: 0(0.00144991) 986.8s
+     131946     1.9898857793e+05 Pr: 112281(2.20351e+12); Du: 0(0.00142611) 992.5s
+     132447     2.0029389525e+05 Pr: 112239(2.29183e+12); Du: 0(0.00144222) 998.7s
+     132913     2.0076201015e+05 Pr: 112269(2.33027e+12); Du: 0(0.0014566) 1004.5s
+     136975     2.1532115442e+05 Pr: 112448(3.03272e+12); Du: 0(0.00179429) 1055.3s
+     141011     2.5255872485e+05 Pr: 112422(8.97457e+10); Du: 0(0.00187171) 1107.5s
+     145225     3.0430801218e+05 Pr: 112390(1.68253e+10); Du: 0(0.00179737) 1157.7s
+     149545     3.2572727350e+05 Pr: 112503(1.1675e+10); Du: 0(0.00179369) 1209.1s
+     153648     3.3114274717e+05 Pr: 112189(3.32472e+10); Du: 0(0.00179938) 1262.7s
+     157613     3.3965817497e+05 Pr: 112204(7.42518e+09); Du: 0(0.00181541) 1315.6s
+     161617     3.4880977540e+05 Pr: 112173(3.67086e+10); Du: 0(0.00182479) 1366.4s
+     165934     3.5636143277e+05 Pr: 112286(3.60668e+09); Du: 0(0.00186544) 1416.6s
+     169626     3.6522587537e+05 Pr: 112398(1.72865e+10); Du: 0(0.0019035) 1470.0s
+     173128     3.7623568399e+05 Pr: 112735(1.04033e+10); Du: 0(0.00183234) 1521.6s
+     176666     3.8710747714e+05 Pr: 112209(2.9426e+10); Du: 0(0.0018534) 1572.7s
+     180293     3.9940397805e+05 Pr: 112409(3.75214e+10); Du: 0(0.00181156) 1627.7s
+     184126     4.0794183960e+05 Pr: 112266(3.86661e+10); Du: 0(0.00180686) 1679.7s
+     187646     4.1307140200e+05 Pr: 112486(5.353e+10); Du: 0(0.00184432) 1736.2s
+     191189     4.2446554426e+05 Pr: 112385(5.13774e+09); Du: 0(0.00177331) 1787.8s
+     194422     4.2853621051e+05 Pr: 112341(2.43805e+09); Du: 0(0.00183297) 1840.8s
+     197601     4.3355942144e+05 Pr: 112191(3.36318e+09); Du: 0(0.00187428) 1893.8s
+     200778     4.3881065107e+05 Pr: 112091(2.34653e+10); Du: 0(0.00186827) 1947.5s
+     203912     4.4194926985e+05 Pr: 112056(2.35331e+09); Du: 0(0.00183783) 2000.8s
+     207303     4.4481572186e+05 Pr: 111968(5.3475e+09); Du: 0(0.00184493) 2058.8s
+     210680     4.4647467140e+05 Pr: 111915(2.58327e+09); Du: 0(0.00190304) 2116.5s
+     213640     4.4852222616e+05 Pr: 112160(3.48106e+09); Du: 0(0.0019528) 2166.9s
+     217026     4.5133695312e+05 Pr: 112290(2.0405e+09); Du: 0(0.00197133) 2224.2s
+     220257     4.5420343554e+05 Pr: 112607(5.52011e+09); Du: 0(0.00197163) 2279.6s
+     223474     4.5900571411e+05 Pr: 112489(9.82411e+09); Du: 0(0.00199403) 2335.2s
+     226649     4.6361916057e+05 Pr: 112743(3.94343e+09); Du: 0(0.00202883) 2390.9s
+     229778     4.6914754150e+05 Pr: 113080(2.75529e+10); Du: 0(0.0020837) 2446.1s
+     233087     4.7324174643e+05 Pr: 112916(1.02386e+10); Du: 0(0.00209086) 2503.4s
+     236001     4.7654023824e+05 Pr: 112744(4.49504e+09); Du: 0(0.00204638) 2554.0s
+     246448     4.7778324051e+05 Pr: 112627(2.39543e+09); Du: 0(0.00202748) 2606.3s
+     254149     4.7778324051e+05 Pr: 112029(2.39497e+09); Du: 0(0.00202748) 2657.3s
+     260683     4.7778335598e+05 Pr: 112530(2.40241e+09); Du: 0(0.00833283) 2711.5s
+     266542     4.7778335907e+05 Pr: 113591(2.40996e+09); Du: 0(0.00611234) 2765.6s
+     271564     4.7778336555e+05 Pr: 114126(2.40578e+09); Du: 0(0.00470448) 2816.4s
+     276559     4.7778343164e+05 Pr: 114191(2.46099e+09); Du: 0(0.0039002) 2871.2s
+     281186     4.7778348087e+05 Pr: 114400(2.45249e+09); Du: 0(0.00341797) 2925.2s
+     285592     4.7778349571e+05 Pr: 114273(3.33004e+09); Du: 0(0.0031137) 2978.7s
+     289507     4.7778364232e+05 Pr: 114748(2.78929e+09); Du: 0(0.00336668) 3031.1s
+     293421     4.7778365651e+05 Pr: 114951(2.86294e+09); Du: 0(0.00305834) 3083.0s
+     296833     4.8249540585e+05 Pr: 114872(3.04246e+09); Du: 0(0.00299589) 3137.3s
+     299598     4.8249545297e+05 Pr: 115113(3.01295e+09); Du: 0(0.00292426) 3189.8s
+     302227     4.8249556226e+05 Pr: 115450(3.01727e+09); Du: 0(0.00298754) 3240.6s
+     305250     4.8249575246e+05 Pr: 115244(2.97883e+09); Du: 0(0.00309132) 3298.7s
+     307927     4.8249576890e+05 Pr: 115470(4.91098e+09); Du: 0(0.00282447) 3350.0s
+     310879     4.8249604299e+05 Pr: 114925(3.04552e+09); Du: 0(0.00294041) 3406.9s
+     313567     4.8249622070e+05 Pr: 114928(2.75075e+09); Du: 0(0.00283425) 3458.7s
+     316196     4.8249643006e+05 Pr: 115043(3.44086e+09); Du: 0(0.00281224) 3509.8s
+     318762     4.8249680998e+05 Pr: 115064(4.39785e+09); Du: 0(0.00279165) 3560.9s
+     321415     4.8249734813e+05 Pr: 114846(2.73298e+09); Du: 0(0.00283576) 3612.2s
+     324026     4.8249800432e+05 Pr: 115097(3.43725e+09); Du: 0(0.00286917) 3663.2s
+     326580     4.8249856388e+05 Pr: 114923(2.51566e+10); Du: 0(0.00276383) 3713.7s
+     329153     4.8249995557e+05 Pr: 114956(4.52136e+09); Du: 0(0.00276675) 3764.0s
+     331737     4.8250199735e+05 Pr: 114664(3.95316e+09); Du: 0(0.00271434) 3814.0s
+     334330     4.8250478968e+05 Pr: 114876(3.16147e+09); Du: 0(0.00271197) 3864.9s
+     336941     4.8250731899e+05 Pr: 114721(3.72932e+09); Du: 0(0.00271328) 3915.5s
+     339672     4.8251199616e+05 Pr: 114399(5.28434e+09); Du: 0(0.00267522) 3969.1s
+     342696     4.8252421121e+05 Pr: 114638(5.96292e+09); Du: 0(0.00262483) 4020.8s
+     346229     4.8255562790e+05 Pr: 114799(8.60356e+09); Du: 0(0.00264784) 4076.1s
+     349738     4.8269566036e+05 Pr: 114789(5.53385e+09); Du: 0(0.00265043) 4132.2s
+     353055     4.8324277572e+05 Pr: 114570(5.98219e+09); Du: 0(0.00269847) 4189.1s
+     356133     4.8432109152e+05 Pr: 114576(7.3305e+10); Du: 0(0.00275507) 4241.7s
+     359432     4.8544950768e+05 Pr: 114651(9.1401e+09); Du: 0(0.0028159) 4298.8s
+     362886     4.8627779705e+05 Pr: 114601(2.06531e+10); Du: 0(0.00284569) 4356.6s
+     366276     4.8784956087e+05 Pr: 114127(4.97923e+09); Du: 0(0.00288541) 4413.1s
+     369293     4.9127972734e+05 Pr: 114028(7.8301e+09); Du: 0(0.00291959) 4463.2s
+     372595     4.9245722472e+05 Pr: 113896(1.51299e+10); Du: 0(0.00289167) 4517.3s
+     375950     4.9390128514e+05 Pr: 113827(1.84231e+10); Du: 0(0.00294463) 4569.6s
+     379850     4.9596465458e+05 Pr: 113849(1.7972e+10); Du: 0(0.0029362) 4619.8s
+     383676     4.9864797080e+05 Pr: 113881(1.75515e+10); Du: 0(0.0028129) 4669.8s
+     387616     5.0165038080e+05 Pr: 114035(6.48473e+09); Du: 0(0.0028097) 4723.1s
+     391409     5.0254839136e+05 Pr: 113689(4.82528e+09); Du: 0(0.00284706) 4784.7s
+     394833     5.0348547238e+05 Pr: 113437(1.42434e+10); Du: 0(0.00283069) 4840.2s
+     398266     5.0493987737e+05 Pr: 113462(6.48392e+09); Du: 0(0.00282434) 4898.0s
+     401578     5.0643463909e+05 Pr: 113507(7.87946e+09); Du: 0(0.00290704) 4954.0s
+     404846     5.0789946678e+05 Pr: 113654(4.80758e+09); Du: 0(0.00294762) 5009.4s
+     408083     5.0932645019e+05 Pr: 113625(4.43448e+09); Du: 0(0.00293305) 5065.0s
+     411293     5.1072529849e+05 Pr: 113524(4.86542e+09); Du: 0(0.00299327) 5120.8s
+     414352     5.1268110565e+05 Pr: 113829(5.39434e+09); Du: 0(0.00301648) 5174.4s
+     417413     5.1382751713e+05 Pr: 114174(8.14854e+09); Du: 0(0.00299616) 5227.8s
+     420208     5.1543489509e+05 Pr: 114265(8.37062e+09); Du: 0(0.00301801) 5286.6s
+     422767     5.1641001116e+05 Pr: 114016(7.57065e+09); Du: 0(0.00300215) 5338.0s
+     425743     5.1820368135e+05 Pr: 113955(6.63039e+09); Du: 0(0.0029859) 5394.0s
+     428667     5.1951453081e+05 Pr: 114219(1.24801e+11); Du: 0(0.00301669) 5446.5s
+     431830     5.2189090559e+05 Pr: 113995(1.82245e+09); Du: 0(0.00304662) 5503.8s
+     434470     5.2494469836e+05 Pr: 114581(7.83545e+09); Du: 0(0.00306787) 5554.6s
+     436733     5.2680743192e+05 Pr: 114889(1.15815e+10); Du: 0(0.00304944) 5605.2s
+     439379     5.2794946049e+05 Pr: 114994(2.07218e+10); Du: 0(0.00306372) 5662.1s
+     442071     5.3025167793e+05 Pr: 114762(8.4002e+09); Du: 0(0.00309605) 5713.4s
+     445459     5.3406085153e+05 Pr: 114764(1.06896e+10); Du: 0(0.00313172) 5767.8s
+     449504     5.3864479646e+05 Pr: 115024(1.03833e+10); Du: 0(0.00308257) 5822.3s
+     453609     5.4570302570e+05 Pr: 115425(1.02897e+10); Du: 0(0.00306947) 5878.3s
+     457780     5.5725246082e+05 Pr: 115810(1.08431e+10); Du: 0(0.00310195) 5932.7s
+     461704     5.7911191427e+05 Pr: 115509(5.34833e+09); Du: 0(0.00307668) 5987.8s
+     465360     6.0739903074e+05 Pr: 115989(2.17111e+10); Du: 0(0.00316886) 6038.9s
+     469095     6.4092841277e+05 Pr: 115985(3.7498e+10); Du: 0(0.00317568) 6094.1s
+     472336     6.5776946145e+05 Pr: 115798(3.92454e+09); Du: 0(0.00306081) 6145.1s
+     475242     6.7633382359e+05 Pr: 115953(3.18719e+10); Du: 0(0.00295514) 6197.9s
+     477929     6.9463400215e+05 Pr: 115936(1.90669e+11); Du: 0(0.00298031) 6249.6s
+     480444     6.9614546827e+05 Pr: 115711(1.90361e+11); Du: 0(0.00293115) 6306.1s
+     482889     6.9743804671e+05 Pr: 115864(1.8962e+11); Du: 0(0.0028852) 6360.7s
+     485379     6.9942735545e+05 Pr: 115929(1.9e+11); Du: 0(0.00286299) 6417.5s
+     488106     7.0139426765e+05 Pr: 116291(1.90369e+11); Du: 0(0.00287583) 6477.3s
+     490472     7.0365857029e+05 Pr: 116102(2.09721e+11); Du: 0(0.00289882) 6531.3s
+     492921     7.0621559736e+05 Pr: 116194(2.10191e+11); Du: 0(0.00293413) 6587.8s
+     495190     7.0895523297e+05 Pr: 116239(2.12505e+11); Du: 0(0.00293448) 6639.7s
+     497687     7.1124794745e+05 Pr: 116197(2.10272e+11); Du: 0(0.00294202) 6698.8s
+     500098     7.1324815885e+05 Pr: 116252(2.10236e+11); Du: 0(0.00288995) 6754.3s
+     502404     7.1603409152e+05 Pr: 116530(2.09364e+11); Du: 0(0.00289779) 6808.0s
+     505094     7.1794813260e+05 Pr: 116683(2.13315e+11); Du: 0(0.00289895) 6867.9s
+     507733     7.2005734678e+05 Pr: 116624(2.05938e+11); Du: 0(0.00292034) 6928.4s
+     510186     7.2210766129e+05 Pr: 116371(2.24193e+11); Du: 0(0.002849) 6985.5s
+     512602     7.2429011290e+05 Pr: 116519(2.42553e+11); Du: 0(0.00288351) 7043.6s
+     515038     7.2657393585e+05 Pr: 116528(2.46258e+11); Du: 0(0.00287842) 7102.0s
+     517512     7.2958956203e+05 Pr: 116618(2.46897e+11); Du: 0(0.00287425) 7160.8s
+     519978     7.3305032051e+05 Pr: 116734(2.51234e+11); Du: 0(0.00287751) 7219.9s
+     522509     7.3738743568e+05 Pr: 116538(2.57648e+11); Du: 0(0.00285774) 7279.7s
+     524817     7.4514617186e+05 Pr: 117069(2.46288e+11); Du: 0(0.00281611) 7336.6s
+     526995     7.4930755045e+05 Pr: 117258(2.50483e+11); Du: 0(0.00279858) 7391.3s
+     529326     7.5641575193e+05 Pr: 116814(1.40091e+11); Du: 0(0.00278825) 7447.5s
+     531638     7.5901156745e+05 Pr: 116846(1.40358e+11); Du: 0(0.00280738) 7502.3s
+     534051     7.6201861791e+05 Pr: 117321(1.81767e+12); Du: 0(0.00284854) 7557.1s
+     536166     7.6730292738e+05 Pr: 116032(6.16618e+07); Du: 0(0.00284369) 7608.1s
+     540601     7.8522462228e+05 Pr: 115419(3.82077e+07); Du: 0(0.00289315) 7666.8s
+     543969     7.9152550567e+05 Pr: 115376(1.19069e+08); Du: 0(0.0029773) 7717.6s
+     549946     9.9480091044e+05 Pr: 115708(7.20994e+08); Du: 0(0.00315435) 7772.2s
+     554871     1.0384466307e+06 Pr: 115253(6.8303e+08); Du: 0(0.00316125) 7828.8s
+     559239     1.0497244311e+06 Pr: 115631(2.97487e+09); Du: 0(0.00321757) 7886.5s
+     565427     1.2395792583e+06 Pr: 115003(1.64189e+09); Du: 0(0.00331004) 7946.9s
+     569168     1.2468699763e+06 Pr: 115037(3.3187e+10); Du: 0(0.0032873) 8003.2s
+     573289     1.2548818123e+06 Pr: 114994(2.77705e+10); Du: 0(0.00340505) 8060.9s
+     576931     1.2626685434e+06 Pr: 113346(1.07606e+08); Du: 0(0.00343098) 8121.4s
+     579661     1.2647767993e+06 Pr: 114283(1.13462e+08); Du: 0(0.00346299) 8175.2s
+     582149     1.2659475488e+06 Pr: 113828(1.23544e+08); Du: 0(0.00349742) 8231.4s
+     587176     1.2830400602e+06 Pr: 113715(2.00803e+08); Du: 0(0.00349916) 8288.1s
+     589781     1.2883739394e+06 Pr: 113634(4.03915e+08); Du: 0(0.00349832) 8340.0s
+     592587     1.2918858489e+06 Pr: 113734(5.83941e+10); Du: 0(0.0036024) 8391.9s
+     595762     1.2953123518e+06 Pr: 114408(1.70171e+10); Du: 0(0.00360474) 8450.2s
+     599759     1.3860061600e+06 Pr: 113749(2.30538e+09); Du: 0(0.00358233) 8511.5s
+     603193     1.3925502675e+06 Pr: 113151(1.00089e+09); Du: 0(0.00360739) 8563.0s
+     606033     1.3946816713e+06 Pr: 112717(7.53711e+08); Du: 0(0.00361748) 8616.5s
+     610347     1.3985370729e+06 Pr: 112955(1.93381e+08); Du: 0(0.00366825) 8678.2s
+     614767     1.4025402132e+06 Pr: 111733(5.8577e+07); Du: 0(0.00370235) 8738.0s
+     617599     1.4038738633e+06 Pr: 113540(7.13067e+09); Du: 0(0.00364923) 8793.4s
+     620245     1.4053453158e+06 Pr: 112517(3.12022e+07); Du: 0(0.00363687) 8849.0s
+     624934     1.4313741609e+06 Pr: 113375(2.51916e+09); Du: 0(0.00362662) 8904.9s
+     627668     1.4338050547e+06 Pr: 112686(3.82194e+08); Du: 0(0.00364487) 8960.5s
+     631544     1.4450457589e+06 Pr: 111732(5.382e+08); Du: 0(0.00367017) 9016.5s
+     634513     1.4484264774e+06 Pr: 111835(1.22708e+08); Du: 0(0.00368799) 9068.8s
+     639162     1.4683798090e+06 Pr: 112497(1.39326e+09); Du: 0(0.00374548) 9128.3s
+     644486     1.6102909641e+06 Pr: 111910(7.58886e+08); Du: 0(0.003767) 9180.6s
+     647249     1.6114648818e+06 Pr: 111394(5.20366e+08); Du: 0(0.00373315) 9240.6s
+     650774     1.6145152701e+06 Pr: 111636(1.28995e+08); Du: 0(0.00375379) 9295.4s
+     653576     1.6163387772e+06 Pr: 110858(8.9159e+07); Du: 0(0.00385476) 9351.1s
+     656346     1.6171360513e+06 Pr: 111763(2.21308e+08); Du: 0(0.00382398) 9412.9s
+     659033     1.6190599425e+06 Pr: 112104(2.14207e+08); Du: 0(0.00386002) 9468.2s
+     661989     1.6204570483e+06 Pr: 111491(1.86553e+08); Du: 0(0.00384009) 9529.3s
+     664703     1.6228226232e+06 Pr: 111863(5.63603e+08); Du: 0(0.00380398) 9589.8s
+     667845     1.6265597991e+06 Pr: 111798(4.47978e+08); Du: 0(0.00385104) 9641.5s
+     670808     1.6301444897e+06 Pr: 111427(6.76741e+07); Du: 0(0.0039165) 9700.3s
+     673721     1.6322967319e+06 Pr: 112016(2.33321e+08); Du: 0(0.00391314) 9754.6s
+     675930     1.6331756332e+06 Pr: 113143(1.50279e+09); Du: 0(0.00381958) 9807.0s
+     678288     1.6337987085e+06 Pr: 112289(9.984e+07); Du: 0(0.0037767) 9861.8s
+     681096     1.6348092673e+06 Pr: 112693(2.71769e+08); Du: 0(0.00374669) 9921.7s
+     684596     1.6366867630e+06 Pr: 112585(9.75249e+08); Du: 0(0.00381695) 9978.2s
+     688259     1.6570283715e+06 Pr: 113117(3.83747e+10); Du: 0(0.00381847) 10033.2s
+     712833     1.8405633571e+06 Pr: 112261(8.57967e+10); Du: 0(0.00397612) 10536.2s
+     737023     1.8525282940e+06 Pr: 111282(8.58084e+07); Du: 0(0.00389782) 11046.5s
+     761191     1.8646192719e+06 Pr: 111989(2.87664e+09); Du: 0(0.00393725) 11553.4s
+     786467     1.9181735624e+06 Pr: 111227(4.67871e+09); Du: 0(0.00408613) 12057.5s
+     809766     1.9290478355e+06 Pr: 111849(1.58137e+10); Du: 0(0.00400644) 12571.3s
+     831672     1.9376929089e+06 Pr: 112107(1.65092e+09); Du: 0(0.00388941) 13079.2s
+     853953     1.9551787424e+06 Pr: 112162(4.41759e+08); Du: 0(0.00402115) 13581.6s
+     877297     2.0818420693e+06 Pr: 112093(5.49451e+08); Du: 0(0.00396111) 14084.4s
+     900308     2.0912996540e+06 Pr: 111974(3.41895e+08); Du: 0(0.00401361) 14598.0s
+     923232     2.1018829290e+06 Pr: 112311(1.60707e+10); Du: 0(0.00409308) 15105.2s
+     944892     2.1150197566e+06 Pr: 113400(2.1585e+09); Du: 0(0.00432875) 15607.8s
+     972211     2.5195602893e+06 Pr: 111269(6.12587e+10); Du: 0(0.00430638) 16117.4s
+     995676     2.5345353299e+06 Pr: 110535(1.16984e+08); Du: 0(0.00435115) 16629.3s
+    1017230     2.5445723500e+06 Pr: 111704(4.32206e+09); Du: 0(0.00440152) 17146.0s
+    1038890     2.5524459848e+06 Pr: 113399(2.23445e+11); Du: 0(0.00450434) 17650.2s
+    1060046     2.5612087191e+06 Pr: 111571(4.51122e+08); Du: 0(0.00449064) 18158.0s
+    1082449     2.5706778828e+06 Pr: 112357(5.02083e+08); Du: 0(0.00442363) 18668.5s
+    1104113     2.6069015602e+06 Pr: 113111(3.66115e+10); Du: 0(0.00435286) 19184.3s
+    1126506     2.6152648671e+06 Pr: 112423(4.7847e+08); Du: 0(0.00450209) 19691.0s
+    1147229     2.6224841293e+06 Pr: 110687(6.12677e+08); Du: 0(0.00445155) 20193.2s
+    1170406     2.6346483968e+06 Pr: 112571(1.09321e+11); Du: 0(0.00448862) 20700.3s
+    1191105     2.6422542768e+06 Pr: 112930(1.33683e+09); Du: 0(0.00437967) 21206.1s
+    1215070     2.6878435557e+06 Pr: 112265(1.60009e+10); Du: 0(0.00436961) 21721.3s
+    1236768     2.6947753053e+06 Pr: 112383(2.3662e+10); Du: 0(0.00435699) 22226.1s
+    1258219     2.7009286177e+06 Pr: 112992(4.3119e+08); Du: 0(0.00444247) 22741.3s
+    1279961     2.7078833039e+06 Pr: 110381(2.45083e+08); Du: 0(0.00437593) 23247.1s
+    1301122     2.7134178838e+06 Pr: 111237(1.48325e+08); Du: 0(0.00431291) 23752.4s
+    1324273     2.7418905613e+06 Pr: 111567(4.23334e+09); Du: 0(0.00437592) 24258.3s
+    1346101     2.7481612615e+06 Pr: 111166(1.71228e+10); Du: 0(0.00442115) 24771.1s
+    1366282     2.7521056747e+06 Pr: 110122(1.27826e+08); Du: 0(0.00430171) 25272.2s
+    1386803     2.7560186900e+06 Pr: 112350(2.30566e+09); Du: 0(0.00430119) 25784.7s
+    1405776     2.7854487890e+06 Pr: 110935(2.26742e+09); Du: 0(0.00427826) 26296.5s
+    1423662     2.7875285698e+06 Pr: 110615(2.94233e+08); Du: 0(0.00441108) 26803.3s
+    1441966     2.7905611950e+06 Pr: 110330(9.01994e+08); Du: 0(0.00436164) 27315.9s
+    1459742     2.7931557423e+06 Pr: 110370(8.22822e+08); Du: 0(0.00431077) 27827.7s
+    1479657     3.0942474166e+06 Pr: 112004(2.32331e+10); Du: 0(0.00432032) 28330.1s
+    1498819     3.0972014763e+06 Pr: 111555(1.96879e+09); Du: 0(0.00436103) 28837.8s
+    1517818     3.1000725333e+06 Pr: 111383(1.42996e+09); Du: 0(0.00449166) 29351.9s
+    1537124     3.1023964012e+06 Pr: 111503(3.90312e+08); Du: 0(0.00451975) 29864.8s
+    1553056     3.1046653556e+06 Pr: 111897(1.93233e+09); Du: 0(0.00421425) 30368.7s
+    1571134     3.1075334809e+06 Pr: 110683(8.94259e+09); Du: 0(0.00423321) 30869.3s
+    1589874     3.1107989877e+06 Pr: 111110(9.67721e+08); Du: 0(0.00424975) 31372.0s
+    1609421     3.1143857079e+06 Pr: 111161(8.86483e+08); Du: 0(0.00430269) 31886.1s
+    1629293     3.1185372379e+06 Pr: 109332(3.59869e+08); Du: 0(0.0042318) 32394.2s
+    1649959     3.1237121880e+06 Pr: 111493(8.24327e+09); Du: 0(0.00413029) 32895.1s
+    1669800     3.1281486112e+06 Pr: 110713(3.98175e+08); Du: 0(0.00423141) 33397.4s
+    1690482     3.1340798409e+06 Pr: 110600(6.01629e+08); Du: 0(0.00424795) 33911.5s
+    1710419     3.1393561830e+06 Pr: 111854(2.00095e+10); Du: 0(0.0041797) 34412.7s
+    1730535     3.1437850506e+06 Pr: 110464(1.87706e+09); Du: 0(0.00429775) 34917.7s
+    1752244     3.1597052142e+06 Pr: 110610(1.36343e+12); Du: 0(0.00429513) 35419.9s
+    1772317     3.1703798888e+06 Pr: 109826(2.66778e+08); Du: 0(0.00426765) 35933.1s
+    1790540     3.1756069414e+06 Pr: 110798(1.28349e+09); Du: 0(0.00427539) 36439.5s
+    1809117     3.1809358339e+06 Pr: 111881(1.07285e+09); Du: 0(0.00431976) 36945.4s
+    1827941     3.1861180522e+06 Pr: 110126(1.9069e+08); Du: 0(0.00424595) 37459.0s
+    1846694     3.1924142132e+06 Pr: 111324(8.10312e+08); Du: 0(0.00438857) 37971.1s
+    1866034     3.2008351310e+06 Pr: 110733(2.6103e+11); Du: 0(0.00450122) 38474.5s
+    1886107     3.2070271673e+06 Pr: 110910(8.91077e+09); Du: 0(0.0043652) 38992.4s
+    1905265     3.2132878862e+06 Pr: 111018(1.12316e+10); Du: 0(0.00445361) 39493.2s
+    1924041     3.2211271389e+06 Pr: 110801(6.76894e+09); Du: 0(0.00438898) 40004.6s
+    1942519     3.2273000384e+06 Pr: 111187(2.77666e+11); Du: 0(0.00440689) 40506.3s
+    1961522     3.2343802472e+06 Pr: 109226(4.53442e+08); Du: 0(0.00448053) 41012.4s
+    1981254     3.2391208143e+06 Pr: 110862(5.53937e+08); Du: 0(0.00439465) 41524.2s
+    2000345     3.2430420193e+06 Pr: 110801(1.13993e+09); Du: 0(0.00425389) 42033.7s
+    2019793     3.2473502425e+06 Pr: 111723(3.244e+09); Du: 0(0.00435178) 42534.2s
+    2039174     3.2530754934e+06 Pr: 110732(3.69489e+08); Du: 0(0.00437233) 43050.2s
+    2058794     3.2599078367e+06 Pr: 110361(7.48385e+09); Du: 0(0.00440347) 43560.3s
+    2077431     3.2685547036e+06 Pr: 110318(3.00271e+09); Du: 0(0.00450522) 44064.7s
+    2096970     3.2737974133e+06 Pr: 109600(1.60802e+08); Du: 0(0.00456835) 44576.6s
+    2117540     3.2786704924e+06 Pr: 110755(1.01622e+10); Du: 0(0.00450886) 45085.5s
+    2137450     3.2853766288e+06 Pr: 110412(3.81052e+09); Du: 0(0.00466556) 45598.2s
+    2156583     3.2890654725e+06 Pr: 109920(4.36052e+08); Du: 0(0.00449656) 46104.6s
+    2175519     3.2934539310e+06 Pr: 110412(4.56516e+08); Du: 0(0.0043989) 46608.0s
+    2194722     3.2978745743e+06 Pr: 110678(5.02766e+09); Du: 0(0.00447993) 47122.7s
+    2213877     3.3037430122e+06 Pr: 110368(1.06985e+09); Du: 0(0.00442393) 47625.0s
+    2232686     3.3099568542e+06 Pr: 112148(1.38359e+10); Du: 0(0.00447015) 48127.9s
+    2251463     3.3178174088e+06 Pr: 111667(3.11704e+11); Du: 0(0.00446334) 48642.3s
+    2270548     3.3227804717e+06 Pr: 112066(1.70649e+11); Du: 0(0.00443214) 49148.5s
+    2289192     3.3278432077e+06 Pr: 112723(6.37281e+10); Du: 0(0.00450938) 49654.0s
+    2308249     3.3330481034e+06 Pr: 110045(3.89919e+08); Du: 0(0.00443053) 50167.3s
+    2326092     3.3392195207e+06 Pr: 110677(3.87818e+08); Du: 0(0.00448254) 50672.5s
+    2344711     3.3441967244e+06 Pr: 111319(1.42886e+09); Du: 0(0.00452482) 51179.6s
+    2364270     3.3515937549e+06 Pr: 110907(6.18766e+09); Du: 0(0.00449885) 51685.0s
+    2384331     3.3565321265e+06 Pr: 110215(8.26888e+08); Du: 0(0.00453515) 52196.3s
+    2405146     3.3614379031e+06 Pr: 110127(2.1827e+10); Du: 0(0.00445514) 52709.0s
+    2425762     3.3668722584e+06 Pr: 110692(4.60974e+09); Du: 0(0.00444087) 53224.1s
+    2445802     3.3715695812e+06 Pr: 110308(2.91681e+09); Du: 0(0.00444196) 53731.3s
+    2465826     3.3779070841e+06 Pr: 109487(2.33675e+08); Du: 0(0.00439659) 54233.3s
+    2485090     3.3830406507e+06 Pr: 111355(6.35182e+09); Du: 0(0.00446113) 54736.1s
+    2504159     3.3879690796e+06 Pr: 110032(9.34109e+08); Du: 0(0.0044582) 55247.5s
+    2523945     3.3939860252e+06 Pr: 110258(7.17108e+09); Du: 0(0.00434579) 55750.9s
+    2542768     3.3995704658e+06 Pr: 111258(5.53947e+09); Du: 0(0.00451025) 56257.0s
+    2559829     3.4048758062e+06 Pr: 110163(6.21085e+08); Du: 0(0.00452509) 56764.4s
+    2577239     3.4106944426e+06 Pr: 111349(4.34606e+09); Du: 0(0.0043756) 57269.1s
+    2595260     3.4176758217e+06 Pr: 110446(4.33186e+08); Du: 0(0.00447501) 57773.9s
+    2614039     3.4239907722e+06 Pr: 110858(6.64809e+10); Du: 0(0.00450197) 58277.8s
+    2633017     3.4317059134e+06 Pr: 110896(5.60198e+08); Du: 0(0.00447449) 58795.3s
+    2652335     3.4405156495e+06 Pr: 110727(1.58011e+11); Du: 0(0.00456123) 59309.4s
+    2669909     3.4476930402e+06 Pr: 109713(4.44438e+09); Du: 0(0.0044638) 59813.0s
+    2688644     3.4549597282e+06 Pr: 111775(1.17111e+12); Du: 0(0.00460474) 60324.6s
+    2706955     3.4623321168e+06 Pr: 109903(8.01948e+08); Du: 0(0.00455454) 60836.2s
+    2726290     3.4672444929e+06 Pr: 108754(2.55129e+08); Du: 0(0.00465209) 61351.2s
+    2746014     3.4720911982e+06 Pr: 109465(1.98537e+10); Du: 0(0.004665) 61857.6s
+    2764079     3.4752472306e+06 Pr: 109369(1.68297e+09); Du: 0(0.004634) 62365.9s
+    2782493     3.4784724687e+06 Pr: 109348(3.97789e+09); Du: 0(0.00461364) 62878.4s
+    2799321     3.4829664274e+06 Pr: 110002(9.84793e+09); Du: 0(0.00451812) 63382.3s
+    2817766     3.5080627394e+06 Pr: 107930(1.28252e+08); Du: 0(0.00455862) 63883.9s
+    2836220     3.5115105225e+06 Pr: 109286(3.36751e+08); Du: 0(0.00470112) 64398.2s
+    2854129     3.5147842300e+06 Pr: 108576(2.57598e+08); Du: 0(0.00459196) 64903.5s
+    2872214     3.5183837242e+06 Pr: 109170(2.93292e+09); Du: 0(0.00450602) 65412.5s
+    2891290     3.5247553010e+06 Pr: 108146(7.19266e+09); Du: 0(0.00454241) 65923.4s
+    2910162     3.5368525237e+06 Pr: 108911(1.98337e+11); Du: 0(0.00475401) 66427.2s
+    2928537     3.5402855813e+06 Pr: 109788(2.60357e+09); Du: 0(0.00452032) 66934.9s
+    2946849     3.5436039134e+06 Pr: 108354(1.88006e+09); Du: 0(0.00469152) 67441.3s
+    2965109     3.5475166397e+06 Pr: 107939(1.22384e+09); Du: 0(0.00493634) 67950.8s
+    2983478     3.5525831568e+06 Pr: 106693(1.56526e+09); Du: 0(0.00497868) 68466.6s
+    3002331     3.5548871519e+06 Pr: 106213(1.05467e+08); Du: 0(0.00484204) 68969.9s
+    3021467     3.5580627538e+06 Pr: 107725(3.60493e+08); Du: 0(0.00481617) 69474.4s
+    3040638     3.5616763719e+06 Pr: 109022(1.06751e+09); Du: 0(0.00474679) 69989.8s
+    3059716     3.5650117898e+06 Pr: 107238(4.44263e+08); Du: 0(0.00471379) 70505.6s
+    3078785     3.5686865315e+06 Pr: 108911(2.83304e+09); Du: 0(0.00492751) 71012.0s
+    3095374     3.5722532546e+06 Pr: 107921(1.17161e+08); Du: 0(0.00481682) 71515.6s
+    3113571     3.5840183925e+06 Pr: 107235(3.05473e+08); Du: 0(0.00481325) 72023.5s
+    3133782     3.5862787892e+06 Pr: 108089(1.31618e+08); Du: 0(0.00480639) 72533.3s
+    3153907     3.5888406043e+06 Pr: 108064(6.06043e+08); Du: 0(0.00477489) 73033.7s
+    3174284     3.5911069817e+06 Pr: 107373(1.12398e+08); Du: 0(0.0048578) 73549.1s
+    3194445     3.5932005264e+06 Pr: 108346(4.12508e+08); Du: 0(0.00485942) 74068.2s
+    3214990     3.5959410836e+06 Pr: 108302(1.11044e+09); Du: 0(0.00473607) 74580.8s
+    3235561     3.5984871661e+06 Pr: 108291(5.82681e+08); Du: 0(0.00491931) 75094.1s
+    3256451     3.6012602613e+06 Pr: 109938(3.00741e+11); Du: 0(0.0047568) 75608.9s
+    3279149     3.6037867820e+06 Pr: 108177(5.05043e+08); Du: 0(0.00491007) 76123.8s
+    3301003     3.6059000310e+06 Pr: 107469(3.59275e+08); Du: 0(0.00490895) 76636.2s
+    3321450     3.6091256692e+06 Pr: 107702(6.17141e+07); Du: 0(0.00498426) 77150.2s
+    3341627     3.6115363255e+06 Pr: 108543(6.70984e+08); Du: 0(0.00475947) 77657.1s
+    3361777     3.6142630801e+06 Pr: 108861(2.10126e+09); Du: 0(0.0048764) 78166.5s
+    3381819     3.6180198477e+06 Pr: 108557(9.98243e+08); Du: 0(0.00494177) 78672.5s
+    3401912     3.6215885869e+06 Pr: 107357(3.06005e+08); Du: 0(0.00479017) 79177.1s
+    3422232     3.6290340725e+06 Pr: 109423(2.51709e+11); Du: 0(0.00490247) 79693.8s
+    3442285     3.6353133119e+06 Pr: 107746(5.78421e+09); Du: 0(0.00494159) 80206.5s
+    3462514     3.6383633639e+06 Pr: 108006(1.70413e+08); Du: 0(0.00504516) 80707.8s
+    3483340     3.6418705530e+06 Pr: 107104(3.27836e+08); Du: 0(0.00503656) 81220.5s
+    3503201     3.6440179924e+06 Pr: 107882(1.51053e+08); Du: 0(0.00491491) 81733.0s
+    3523878     3.6567402770e+06 Pr: 107844(7.12121e+10); Du: 0(0.00507176) 82237.8s
+    3544424     3.6589867489e+06 Pr: 106945(1.41963e+09); Du: 0(0.00506545) 82746.6s
+    3565152     3.6615963779e+06 Pr: 107605(1.01378e+09); Du: 0(0.00493463) 83248.5s
+    3585284     3.6644019567e+06 Pr: 107149(8.83639e+08); Du: 0(0.0051005) 83753.5s
+    3605075     3.6677730350e+06 Pr: 107172(4.29477e+08); Du: 0(0.00502689) 84256.8s
+    3624988     3.6699272480e+06 Pr: 106389(3.71821e+08); Du: 0(0.0049667) 84761.2s
+    3645409     3.6726950712e+06 Pr: 106094(3.26668e+08); Du: 0(0.00492366) 85273.1s
+    3664983     3.6753257233e+06 Pr: 106873(2.19431e+08); Du: 0(0.00483454) 85773.8s
+    3685745     3.6791451542e+06 Pr: 107003(2.9451e+08); Du: 0(0.0049873) 86284.6s
+    3706316     3.6831216830e+06 Pr: 107231(2.59621e+09); Du: 0(0.00497904) 86791.7s
+    3726659     3.6865669485e+06 Pr: 106694(2.37221e+09); Du: 0(0.00505755) 87303.8s
+    3746900     3.6906504401e+06 Pr: 106363(2.92534e+10); Du: 0(0.00493316) 87806.0s
+    3766915     3.6934050496e+06 Pr: 106498(1.79701e+08); Du: 0(0.00494971) 88308.1s
+    3786571     3.6961580774e+06 Pr: 106511(2.75317e+09); Du: 0(0.00482377) 88812.9s
+    3806576     3.6990174902e+06 Pr: 107310(1.27736e+09); Du: 0(0.00496667) 89330.3s
+    3826310     3.7022253064e+06 Pr: 106524(3.97335e+09); Du: 0(0.00491272) 89846.6s
+    3845495     3.7052084922e+06 Pr: 105975(1.2887e+08); Du: 0(0.00488743) 90351.9s
+    3864946     3.7077567622e+06 Pr: 107798(4.09921e+08); Du: 0(0.00501871) 90864.5s
+    3883594     3.7109571737e+06 Pr: 107910(8.72066e+09); Du: 0(0.00502716) 91367.5s
+    3903313     3.7140669363e+06 Pr: 106551(2.38236e+09); Du: 0(0.00505158) 91880.4s
+    3924421     3.7175902406e+06 Pr: 104880(3.47507e+08); Du: 0(0.00502872) 92393.2s
+    3943916     3.7205151713e+06 Pr: 107464(1.30022e+11); Du: 0(0.0050238) 92897.9s
+    3963472     3.7231683204e+06 Pr: 105454(6.7101e+09); Du: 0(0.00506226) 93413.0s
+    3983353     3.7258673339e+06 Pr: 106261(5.38077e+11); Du: 0(0.005063) 93920.6s
+    4004336     3.7616582721e+06 Pr: 106628(3.91356e+09); Du: 0(0.00509736) 94433.1s
+    4023746     3.7656947850e+06 Pr: 105533(2.71552e+08); Du: 0(0.00514432) 94949.3s
+    4042827     3.7680682155e+06 Pr: 107343(7.93257e+08); Du: 0(0.00505593) 95449.4s
+    4063764     3.7719253062e+06 Pr: 107680(7.28631e+09); Du: 0(0.00513001) 95953.9s
+    4084392     3.7747939903e+06 Pr: 107520(3.56547e+09); Du: 0(0.00505782) 96466.4s
+    4104893     3.7770924637e+06 Pr: 107016(2.77673e+09); Du: 0(0.0050162) 96978.5s
+    4124909     3.7799281418e+06 Pr: 106490(6.02143e+09); Du: 0(0.00516455) 97486.3s
+    4144416     3.7825947502e+06 Pr: 105905(5.1599e+08); Du: 0(0.00514722) 97992.3s
+    4164580     3.7843228430e+06 Pr: 107856(1.39431e+09); Du: 0(0.00505348) 98503.5s
+    4184063     3.7868065978e+06 Pr: 109164(1.77201e+12); Du: 0(0.00502314) 99010.6s
+    4203954     3.7882650041e+06 Pr: 108254(4.46258e+09); Du: 0(0.00499368) 99513.2s
+    4225318     3.7902629206e+06 Pr: 106902(2.88088e+08); Du: 0(0.00523921) 100013.5s
+    4423042     3.8283928576e+06 Pr: 106628(2.31234e+08); Du: 0(0.00496822) 105031.8s
+    4615593     3.8515996174e+06 Pr: 108519(3.16419e+08); Du: 0(0.00509241) 110034.9s
+    4808201     3.8784104910e+06 Pr: 106325(8.16905e+08); Du: 0(0.00503905) 115036.8s
+    4988046     3.9164117132e+06 Pr: 107617(7.51239e+08); Du: 0(0.00493463) 120039.6s
+    5168475     3.9318205836e+06 Pr: 107097(6.53041e+08); Du: 0(0.00497911) 125056.7s
+    5349209     3.9603337746e+06 Pr: 106695(3.52852e+08); Du: 0(0.00503156) 130064.4s
+    5528777     4.0007654125e+06 Pr: 106930(1.8865e+10); Du: 0(0.00493776) 135076.8s
+    5703669     4.0269341784e+06 Pr: 108834(3.56265e+10); Du: 0(0.00508224) 140085.4s
+    5877439     4.0838282603e+06 Pr: 107102(1.10701e+09); Du: 0(0.00486512) 145086.4s
+    6049511     4.1347549405e+06 Pr: 108857(3.16399e+08); Du: 0(0.00491739) 150094.8s
+    6228907     4.1835343110e+06 Pr: 107861(3.68779e+09); Du: 0(0.00494944) 155100.0s
+WARNING:    Increasing Markowitz threshold to 0.5
+    6411429     4.2269473180e+06 Pr: 108624(3.05607e+12); Du: 0(0.00501557) 160102.7s
+    6597962     4.2505436683e+06 Pr: 109053(1.23647e+10); Du: 0(0.00474903) 165125.5s
+    6783968     4.3013467443e+06 Pr: 107734(1.04024e+09); Du: 0(0.00502163) 170136.8s
+    6886036     4.3302150995e+06 172800.1s
+Model status        : Time limit reached
+Simplex   iterations: 6886036
+Objective value     :  4.3302461401e+06
+HiGHS run time      :     172800.21
+172863.971606 seconds (183.78 M allocations: 9.792 GiB, 0.00% gc time, 0.00% compilation time: 24% of which was recompilation)
+Rolling capacity_planning temporal structure...  0.000282 seconds (764 allocations: 35.156 KiB, 62.30% compilation time)
+Rolling complete
+
+Ôöî Warning: no solution available for capacity_planning - window 2030-01-01T00:00~(1565 weeks, 2 days)~>2060-01-01T00:00 - moving on...
+Ôöö @ SpineOpt C:\Users\maganih\.julia\packages\SpineOpt\1NRBB\src\run_spineopt_basic.jl:749
+Solve complete. Started at 2026-11-02T00:36:57.788, ended at 2026-11-04T00:38:03.746, elapsed time: 2 days, 1 minute, 5 seconds, 958 milliseconds
+Time summary:
+
+Action                                          Ôöé min            Ôöé max            Ôöé avg           
+ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔö╝ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔö╝ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔö╝ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
+Optimizing capacity_planning...                 Ôöé 172863.9728703 Ôöé 172863.9728703 Ôöé 172863.9728703
+Rolling capacity_planning temporal structure... Ôöé 0.0004016      Ôöé 0.0004016      Ôöé 0.0004016     
+
+Writing report to sqlite:///C:/Users/maganih/Documents/github-repos/Industrial-Case-Study-MopoProject/runs/3day_mr_frlu_ccslow_ccu_cap16_dac0_v3/output/Investment_Results.3day_mr_frlu_ccslow_ccu_cap16_dac0.v3.highs.sqlite ...  2.365527 seconds (1.01 M allocations: 47.704 MiB, 53.33% compilation time: 25% of which was recompilation)
+
+SpineOpt model instance summary:
+*** Active SpineOpt `variables`: ***
+connection_flow
+connection_intact_flow
+connections_decommissioned
+connections_invested
+connections_invested_available
+node_injection
+node_slack_neg
+node_slack_pos
+node_state
+node_state_longterm
+storages_decommissioned
+storages_invested
+storages_invested_available
+unit_flow
+units_invested
+units_invested_available
+units_mothballed
+units_on
+*** Active SpineOpt `objective_terms`: ***
+connection_flow_costs
+connection_investment_costs
+fixed_om_costs
+objective_penalties
+storage_investment_costs
+taxes
+unit_investment_costs
+variable_om_costs
+*** Active SpineOpt `constraints`: ***
+connection_flow_capacity
+connection_flow_fix
+connection_flow_lb
+connection_flow_ub
+connection_lifetime
+connections_invested_available
+connections_invested_transition
+cyclic_node_state
+flow_ratio_equality_coefficient
+investment_group_maximum_entities_invested_available
+min_node_state
+min_node_state_longterm
+nodal_balance
+node_injection
+node_state_capacity
+node_state_longterm_capacity
+node_state_longterm_trajectory
+storage_lifetime
+storages_invested_available
+storages_invested_transition
+unit_flow_capacity
+unit_flow_fix
+unit_flow_lb
+unit_flow_ub
+unit_lifetime
+units_available
+units_invested_available
+units_invested_transition
+user_constraint
+
+Active model outputs not included in the report:
+
+Execution complete. Started at 2026-11-01T22:00:46.755, ended at 2026-11-04T00:38:07.876, elapsed time: 2 days, 2 hours, 37 minutes, 21 seconds, 121 milliseconds
+[00:38:10] 
+[00:38:10] RUN FINISHED in 3037.6 min
+[00:38:10]   RAM at start : 39.2 GB
+[00:38:10]   RAM at end   : 67.5 GB
+[00:38:10]   termination  : TIME_LIMIT
+[00:38:10]   primal       : NO_SOLUTION

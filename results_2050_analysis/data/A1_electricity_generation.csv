@@ -1,0 +1,271 @@
+run,label,country,year,item,twh
+IC1,NL+BE regional clusters,NL,2030,Offshore wind,47.37327328958989
+IC1,NL+BE regional clusters,NL,2030,Onshore wind,20.04377963849764
+IC1,NL+BE regional clusters,NL,2030,Solar PV,40.90247749276481
+IC1,NL+BE regional clusters,NL,2030,Nuclear,5.0188546609063245
+IC1,NL+BE regional clusters,NL,2030,Gas power,19.06854553000538
+IC1,NL+BE regional clusters,NL,2030,Gas power + CCS,0.0
+IC1,NL+BE regional clusters,NL,2030,Hydrogen turbines,20.050007571972344
+IC1,NL+BE regional clusters,NL,2030,Biomass power,0.16915155363544152
+IC1,NL+BE regional clusters,NL,2030,Biomass power + CCS,0.0
+IC1,NL+BE regional clusters,NL,2030,Coal power,0.0
+IC1,NL+BE regional clusters,NL,2030,Oil power,0.0
+IC1,NL+BE regional clusters,NL,2030,Waste incineration,0.0
+IC1,NL+BE regional clusters,NL,2030,Hydro (run-of-river),0.10043878194033926
+IC1,NL+BE regional clusters,NL,2030,Battery discharge,0.0
+IC1,NL+BE regional clusters,NL,2030,Other,0.0
+IC1,NL+BE regional clusters,NL,2040,Offshore wind,217.48472079443934
+IC1,NL+BE regional clusters,NL,2040,Onshore wind,24.895764577783996
+IC1,NL+BE regional clusters,NL,2040,Solar PV,42.45729859095938
+IC1,NL+BE regional clusters,NL,2040,Nuclear,35.56559999999999
+IC1,NL+BE regional clusters,NL,2040,Gas power,0.0
+IC1,NL+BE regional clusters,NL,2040,Gas power + CCS,0.0
+IC1,NL+BE regional clusters,NL,2040,Hydrogen turbines,3.0334455543726295
+IC1,NL+BE regional clusters,NL,2040,Biomass power,0.0
+IC1,NL+BE regional clusters,NL,2040,Biomass power + CCS,0.0
+IC1,NL+BE regional clusters,NL,2040,Coal power,0.0
+IC1,NL+BE regional clusters,NL,2040,Oil power,0.0
+IC1,NL+BE regional clusters,NL,2040,Waste incineration,0.0
+IC1,NL+BE regional clusters,NL,2040,Hydro (run-of-river),0.10043878194033926
+IC1,NL+BE regional clusters,NL,2040,Battery discharge,8.48217067280829
+IC1,NL+BE regional clusters,NL,2040,Other,5.684341886080802e-14
+IC1,NL+BE regional clusters,NL,2050,Offshore wind,379.64692448844886
+IC1,NL+BE regional clusters,NL,2050,Onshore wind,27.144217703145433
+IC1,NL+BE regional clusters,NL,2050,Solar PV,42.498204206627996
+IC1,NL+BE regional clusters,NL,2050,Nuclear,43.79999999999999
+IC1,NL+BE regional clusters,NL,2050,Gas power,0.0
+IC1,NL+BE regional clusters,NL,2050,Gas power + CCS,0.0
+IC1,NL+BE regional clusters,NL,2050,Hydrogen turbines,5.543510752653117
+IC1,NL+BE regional clusters,NL,2050,Biomass power,0.0
+IC1,NL+BE regional clusters,NL,2050,Biomass power + CCS,0.0
+IC1,NL+BE regional clusters,NL,2050,Coal power,0.0
+IC1,NL+BE regional clusters,NL,2050,Oil power,0.0
+IC1,NL+BE regional clusters,NL,2050,Waste incineration,0.0
+IC1,NL+BE regional clusters,NL,2050,Hydro (run-of-river),0.10043878194033926
+IC1,NL+BE regional clusters,NL,2050,Battery discharge,11.05111680777367
+IC1,NL+BE regional clusters,NL,2050,Other,5.684341886080802e-14
+CTRY,NL+BE country level,NL,2030,Offshore wind,50.40288223038165
+CTRY,NL+BE country level,NL,2030,Onshore wind,20.043779638497636
+CTRY,NL+BE country level,NL,2030,Solar PV,42.001697791216124
+CTRY,NL+BE country level,NL,2030,Nuclear,4.921071444679296
+CTRY,NL+BE country level,NL,2030,Gas power,19.34958826978578
+CTRY,NL+BE country level,NL,2030,Gas power + CCS,0.0
+CTRY,NL+BE country level,NL,2030,Hydrogen turbines,0.0
+CTRY,NL+BE country level,NL,2030,Biomass power,0.1671354048472553
+CTRY,NL+BE country level,NL,2030,Biomass power + CCS,0.0
+CTRY,NL+BE country level,NL,2030,Coal power,0.0
+CTRY,NL+BE country level,NL,2030,Oil power,0.0
+CTRY,NL+BE country level,NL,2030,Waste incineration,0.0
+CTRY,NL+BE country level,NL,2030,Hydro (run-of-river),0.10043878194033926
+CTRY,NL+BE country level,NL,2030,Battery discharge,1.2143192858920013
+CTRY,NL+BE country level,NL,2030,Other,2.842170943040401e-14
+CTRY,NL+BE country level,NL,2040,Offshore wind,226.28331483115315
+CTRY,NL+BE country level,NL,2040,Onshore wind,23.851716125076432
+CTRY,NL+BE country level,NL,2040,Solar PV,41.91529840043715
+CTRY,NL+BE country level,NL,2040,Nuclear,0.4772124290835317
+CTRY,NL+BE country level,NL,2040,Gas power,0.0
+CTRY,NL+BE country level,NL,2040,Gas power + CCS,0.0
+CTRY,NL+BE country level,NL,2040,Hydrogen turbines,0.0
+CTRY,NL+BE country level,NL,2040,Biomass power,0.0
+CTRY,NL+BE country level,NL,2040,Biomass power + CCS,0.0
+CTRY,NL+BE country level,NL,2040,Coal power,0.0
+CTRY,NL+BE country level,NL,2040,Oil power,0.0
+CTRY,NL+BE country level,NL,2040,Waste incineration,0.0
+CTRY,NL+BE country level,NL,2040,Hydro (run-of-river),0.10043878194033926
+CTRY,NL+BE country level,NL,2040,Battery discharge,10.540983128364074
+CTRY,NL+BE country level,NL,2040,Other,0.0
+CTRY,NL+BE country level,NL,2050,Offshore wind,369.2088264093291
+CTRY,NL+BE country level,NL,2050,Onshore wind,27.14421770314543
+CTRY,NL+BE country level,NL,2050,Solar PV,42.08163533350739
+CTRY,NL+BE country level,NL,2050,Nuclear,0.0
+CTRY,NL+BE country level,NL,2050,Gas power,0.0
+CTRY,NL+BE country level,NL,2050,Gas power + CCS,0.0
+CTRY,NL+BE country level,NL,2050,Hydrogen turbines,0.0
+CTRY,NL+BE country level,NL,2050,Biomass power,0.0
+CTRY,NL+BE country level,NL,2050,Biomass power + CCS,0.0
+CTRY,NL+BE country level,NL,2050,Coal power,0.0
+CTRY,NL+BE country level,NL,2050,Oil power,0.0
+CTRY,NL+BE country level,NL,2050,Waste incineration,0.0
+CTRY,NL+BE country level,NL,2050,Hydro (run-of-river),0.10043878194033926
+CTRY,NL+BE country level,NL,2050,Battery discharge,9.650769183752448
+CTRY,NL+BE country level,NL,2050,Other,0.0
+MR,Mixed resolution,NL,2030,Offshore wind,26.344897693035833
+MR,Mixed resolution,NL,2030,Onshore wind,15.412840474383076
+MR,Mixed resolution,NL,2030,Solar PV,40.12762989287019
+MR,Mixed resolution,NL,2030,Nuclear,5.024445387796767
+MR,Mixed resolution,NL,2030,Gas power,29.45959315365117
+MR,Mixed resolution,NL,2030,Gas power + CCS,0.0
+MR,Mixed resolution,NL,2030,Hydrogen turbines,0.0
+MR,Mixed resolution,NL,2030,Biomass power,6.098978736435367
+MR,Mixed resolution,NL,2030,Biomass power + CCS,0.0
+MR,Mixed resolution,NL,2030,Coal power,29.363667160173886
+MR,Mixed resolution,NL,2030,Oil power,1.9837039017352753
+MR,Mixed resolution,NL,2030,Waste incineration,0.0
+MR,Mixed resolution,NL,2030,Hydro (run-of-river),0.10469122668739204
+MR,Mixed resolution,NL,2030,Battery discharge,6.890835680010914
+MR,Mixed resolution,NL,2030,Other,0.0
+MR,Mixed resolution,NL,2040,Offshore wind,134.35549550215376
+MR,Mixed resolution,NL,2040,Onshore wind,23.457692215753042
+MR,Mixed resolution,NL,2040,Solar PV,42.00066754272653
+MR,Mixed resolution,NL,2040,Nuclear,0.4691042450854476
+MR,Mixed resolution,NL,2040,Gas power,9.020562472416769
+MR,Mixed resolution,NL,2040,Gas power + CCS,0.0
+MR,Mixed resolution,NL,2040,Hydrogen turbines,0.0
+MR,Mixed resolution,NL,2040,Biomass power,5.462735671795002
+MR,Mixed resolution,NL,2040,Biomass power + CCS,0.0
+MR,Mixed resolution,NL,2040,Coal power,0.0
+MR,Mixed resolution,NL,2040,Oil power,0.0
+MR,Mixed resolution,NL,2040,Waste incineration,0.0
+MR,Mixed resolution,NL,2040,Hydro (run-of-river),0.10469122668739204
+MR,Mixed resolution,NL,2040,Battery discharge,6.918004819834556
+MR,Mixed resolution,NL,2040,Other,2.842170943040401e-14
+MR,Mixed resolution,NL,2050,Offshore wind,206.91044078114354
+MR,Mixed resolution,NL,2050,Onshore wind,27.062260216160897
+MR,Mixed resolution,NL,2050,Solar PV,41.61766334750685
+MR,Mixed resolution,NL,2050,Nuclear,16.06173014500774
+MR,Mixed resolution,NL,2050,Gas power,0.0
+MR,Mixed resolution,NL,2050,Gas power + CCS,0.0
+MR,Mixed resolution,NL,2050,Hydrogen turbines,0.0
+MR,Mixed resolution,NL,2050,Biomass power,0.0
+MR,Mixed resolution,NL,2050,Biomass power + CCS,0.0
+MR,Mixed resolution,NL,2050,Coal power,0.0
+MR,Mixed resolution,NL,2050,Oil power,0.0
+MR,Mixed resolution,NL,2050,Waste incineration,0.0
+MR,Mixed resolution,NL,2050,Hydro (run-of-river),0.10469122668739204
+MR,Mixed resolution,NL,2050,Battery discharge,16.4677208214028
+MR,Mixed resolution,NL,2050,Other,0.0
+IC1,NL+BE regional clusters,BE,2030,Offshore wind,7.785255667387934
+IC1,NL+BE regional clusters,BE,2030,Onshore wind,8.730936512328903
+IC1,NL+BE regional clusters,BE,2030,Solar PV,10.582123440526495
+IC1,NL+BE regional clusters,BE,2030,Nuclear,41.2596
+IC1,NL+BE regional clusters,BE,2030,Gas power,33.47196000000001
+IC1,NL+BE regional clusters,BE,2030,Gas power + CCS,0.0
+IC1,NL+BE regional clusters,BE,2030,Hydrogen turbines,3.7202997210672604
+IC1,NL+BE regional clusters,BE,2030,Biomass power,0.0
+IC1,NL+BE regional clusters,BE,2030,Biomass power + CCS,0.0
+IC1,NL+BE regional clusters,BE,2030,Coal power,0.0
+IC1,NL+BE regional clusters,BE,2030,Oil power,0.0
+IC1,NL+BE regional clusters,BE,2030,Waste incineration,0.0
+IC1,NL+BE regional clusters,BE,2030,Hydro (run-of-river),0.1863676930081076
+IC1,NL+BE regional clusters,BE,2030,Battery discharge,0.0
+IC1,NL+BE regional clusters,BE,2030,Other,0.0
+IC1,NL+BE regional clusters,BE,2040,Offshore wind,30.789916689877536
+IC1,NL+BE regional clusters,BE,2040,Onshore wind,9.369765649065391
+IC1,NL+BE regional clusters,BE,2040,Solar PV,11.554160749771889
+IC1,NL+BE regional clusters,BE,2040,Nuclear,75.33599999999998
+IC1,NL+BE regional clusters,BE,2040,Gas power,0.08084744494754113
+IC1,NL+BE regional clusters,BE,2040,Gas power + CCS,0.0
+IC1,NL+BE regional clusters,BE,2040,Hydrogen turbines,0.5404702486603744
+IC1,NL+BE regional clusters,BE,2040,Biomass power,0.0
+IC1,NL+BE regional clusters,BE,2040,Biomass power + CCS,0.0
+IC1,NL+BE regional clusters,BE,2040,Coal power,0.0
+IC1,NL+BE regional clusters,BE,2040,Oil power,0.0
+IC1,NL+BE regional clusters,BE,2040,Waste incineration,0.0
+IC1,NL+BE regional clusters,BE,2040,Hydro (run-of-river),0.1863676930081076
+IC1,NL+BE regional clusters,BE,2040,Battery discharge,0.0
+IC1,NL+BE regional clusters,BE,2040,Other,1.4210854715202004e-14
+IC1,NL+BE regional clusters,BE,2050,Offshore wind,43.70093101072509
+IC1,NL+BE regional clusters,BE,2050,Onshore wind,10.182881829468268
+IC1,NL+BE regional clusters,BE,2050,Solar PV,11.55416074977189
+IC1,NL+BE regional clusters,BE,2050,Nuclear,52.56
+IC1,NL+BE regional clusters,BE,2050,Gas power,0.0
+IC1,NL+BE regional clusters,BE,2050,Gas power + CCS,0.0
+IC1,NL+BE regional clusters,BE,2050,Hydrogen turbines,7.452058228946767
+IC1,NL+BE regional clusters,BE,2050,Biomass power,0.0
+IC1,NL+BE regional clusters,BE,2050,Biomass power + CCS,0.0
+IC1,NL+BE regional clusters,BE,2050,Coal power,0.0
+IC1,NL+BE regional clusters,BE,2050,Oil power,0.0
+IC1,NL+BE regional clusters,BE,2050,Waste incineration,0.0
+IC1,NL+BE regional clusters,BE,2050,Hydro (run-of-river),0.1863676930081076
+IC1,NL+BE regional clusters,BE,2050,Battery discharge,1.5437894368375573
+IC1,NL+BE regional clusters,BE,2050,Other,0.0
+CTRY,NL+BE country level,BE,2030,Offshore wind,7.785255667387934
+CTRY,NL+BE country level,BE,2030,Onshore wind,8.730936512328903
+CTRY,NL+BE country level,BE,2030,Solar PV,10.582123440526493
+CTRY,NL+BE country level,BE,2030,Nuclear,41.25959999999999
+CTRY,NL+BE country level,BE,2030,Gas power,33.08678123691765
+CTRY,NL+BE country level,BE,2030,Gas power + CCS,0.0
+CTRY,NL+BE country level,BE,2030,Hydrogen turbines,20.493556065017604
+CTRY,NL+BE country level,BE,2030,Biomass power,0.0
+CTRY,NL+BE country level,BE,2030,Biomass power + CCS,0.0
+CTRY,NL+BE country level,BE,2030,Coal power,0.0
+CTRY,NL+BE country level,BE,2030,Oil power,0.0
+CTRY,NL+BE country level,BE,2030,Waste incineration,0.0
+CTRY,NL+BE country level,BE,2030,Hydro (run-of-river),0.1863676930081076
+CTRY,NL+BE country level,BE,2030,Battery discharge,0.0
+CTRY,NL+BE country level,BE,2030,Other,1.4210854715202004e-14
+CTRY,NL+BE country level,BE,2040,Offshore wind,32.98237945524808
+CTRY,NL+BE country level,BE,2040,Onshore wind,9.369765649065391
+CTRY,NL+BE country level,BE,2040,Solar PV,11.55416074977189
+CTRY,NL+BE country level,BE,2040,Nuclear,75.336
+CTRY,NL+BE country level,BE,2040,Gas power,0.6691133342592829
+CTRY,NL+BE country level,BE,2040,Gas power + CCS,0.0
+CTRY,NL+BE country level,BE,2040,Hydrogen turbines,2.038177855136346
+CTRY,NL+BE country level,BE,2040,Biomass power,0.0
+CTRY,NL+BE country level,BE,2040,Biomass power + CCS,0.0
+CTRY,NL+BE country level,BE,2040,Coal power,0.0
+CTRY,NL+BE country level,BE,2040,Oil power,0.0
+CTRY,NL+BE country level,BE,2040,Waste incineration,0.0
+CTRY,NL+BE country level,BE,2040,Hydro (run-of-river),0.1863676930081076
+CTRY,NL+BE country level,BE,2040,Battery discharge,0.40651014426611515
+CTRY,NL+BE country level,BE,2040,Other,0.0
+CTRY,NL+BE country level,BE,2050,Offshore wind,43.70093101072509
+CTRY,NL+BE country level,BE,2050,Onshore wind,10.18288182946827
+CTRY,NL+BE country level,BE,2050,Solar PV,11.554160749771889
+CTRY,NL+BE country level,BE,2050,Nuclear,52.56000000000002
+CTRY,NL+BE country level,BE,2050,Gas power,0.0
+CTRY,NL+BE country level,BE,2050,Gas power + CCS,0.0
+CTRY,NL+BE country level,BE,2050,Hydrogen turbines,13.654904817612744
+CTRY,NL+BE country level,BE,2050,Biomass power,0.0
+CTRY,NL+BE country level,BE,2050,Biomass power + CCS,0.0
+CTRY,NL+BE country level,BE,2050,Coal power,0.0
+CTRY,NL+BE country level,BE,2050,Oil power,0.0
+CTRY,NL+BE country level,BE,2050,Waste incineration,0.0
+CTRY,NL+BE country level,BE,2050,Hydro (run-of-river),0.1863676930081076
+CTRY,NL+BE country level,BE,2050,Battery discharge,0.22231958662914938
+CTRY,NL+BE country level,BE,2050,Other,2.842170943040401e-14
+MR,Mixed resolution,BE,2030,Offshore wind,7.529419495431803
+MR,Mixed resolution,BE,2030,Onshore wind,4.027849728631191
+MR,Mixed resolution,BE,2030,Solar PV,10.512169152668411
+MR,Mixed resolution,BE,2030,Nuclear,41.2596
+MR,Mixed resolution,BE,2030,Gas power,31.38832266220843
+MR,Mixed resolution,BE,2030,Gas power + CCS,0.0
+MR,Mixed resolution,BE,2030,Hydrogen turbines,0.0
+MR,Mixed resolution,BE,2030,Biomass power,20.244857532452126
+MR,Mixed resolution,BE,2030,Biomass power + CCS,0.0
+MR,Mixed resolution,BE,2030,Coal power,8.30448
+MR,Mixed resolution,BE,2030,Oil power,0.0
+MR,Mixed resolution,BE,2030,Waste incineration,1.6451280000000001
+MR,Mixed resolution,BE,2030,Hydro (run-of-river),0.19426542341089884
+MR,Mixed resolution,BE,2030,Battery discharge,0.0
+MR,Mixed resolution,BE,2030,Other,1.4210854715202004e-14
+MR,Mixed resolution,BE,2040,Offshore wind,19.922302437002486
+MR,Mixed resolution,BE,2040,Onshore wind,8.956059134315714
+MR,Mixed resolution,BE,2040,Solar PV,11.51620442593826
+MR,Mixed resolution,BE,2040,Nuclear,24.087586143336623
+MR,Mixed resolution,BE,2040,Gas power,6.712174594113674
+MR,Mixed resolution,BE,2040,Gas power + CCS,0.0
+MR,Mixed resolution,BE,2040,Hydrogen turbines,0.0
+MR,Mixed resolution,BE,2040,Biomass power,37.769641606407795
+MR,Mixed resolution,BE,2040,Biomass power + CCS,0.0
+MR,Mixed resolution,BE,2040,Coal power,0.0
+MR,Mixed resolution,BE,2040,Oil power,0.0
+MR,Mixed resolution,BE,2040,Waste incineration,0.0
+MR,Mixed resolution,BE,2040,Hydro (run-of-river),0.19426542341089884
+MR,Mixed resolution,BE,2040,Battery discharge,0.0
+MR,Mixed resolution,BE,2040,Other,0.0
+MR,Mixed resolution,BE,2050,Offshore wind,38.607426773593865
+MR,Mixed resolution,BE,2050,Onshore wind,9.903543776073025
+MR,Mixed resolution,BE,2050,Solar PV,11.51620442593826
+MR,Mixed resolution,BE,2050,Nuclear,52.56
+MR,Mixed resolution,BE,2050,Gas power,0.0
+MR,Mixed resolution,BE,2050,Gas power + CCS,0.0
+MR,Mixed resolution,BE,2050,Hydrogen turbines,0.0
+MR,Mixed resolution,BE,2050,Biomass power,16.214339755039667
+MR,Mixed resolution,BE,2050,Biomass power + CCS,0.0
+MR,Mixed resolution,BE,2050,Coal power,0.0
+MR,Mixed resolution,BE,2050,Oil power,0.0
+MR,Mixed resolution,BE,2050,Waste incineration,0.0
+MR,Mixed resolution,BE,2050,Hydro (run-of-river),0.19426542341089884
+MR,Mixed resolution,BE,2050,Battery discharge,1.3272155710195872
+MR,Mixed resolution,BE,2050,Other,0.0

@@ -66,7 +66,14 @@ def main() -> None:
     ap.add_argument("--db", default=DEFAULT_DB)
     ap.add_argument("--expect-days", type=int, nargs="+", default=None,
                     help="day-of-year values you INTENDED to run, e.g. 12 231")
+    ap.add_argument("--cap-below", type=float, default=None,
+                    help="threshold for 'CO2 cap rescaled'. Default 1.0 suits the "
+                         "BE+NL budget (165.4/365=0.45). The six-country mixed run "
+                         "needs ~10 (1146.35/365=3.14; unpatched would be 1146).")
     a = ap.parse_args()
+    global CAP_PATCHED_BELOW
+    if a.cap_below is not None:
+        CAP_PATCHED_BELOW = a.cap_below
 
     if not os.path.isfile(a.db):
         sys.exit("not found: %s" % a.db)
