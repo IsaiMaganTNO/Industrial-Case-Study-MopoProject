@@ -1,7 +1,7 @@
 scenarios:
   # GA_flex0 not GA_flex5: our transport pipeline emits flex scenarios 0/10/20, the EU pipeline 0/5/10.
   # high_CO2 carries storages_fix_cumulative for the CO2 storage nodes; without it sequestration is uncapped.
-  baseline_blended_representative_periods: ["Base","wy2009","medium_bio","current","GA","GA_flex0","high_CO2",flex_buildings,flex_buildings_wy2009_current,flex_industry] 
+  baseline_blended_representative_periods: ["Base","wy2009","medium_bio","current","GA","GA_flex0","low_CO2",flex_buildings,flex_buildings_wy2009_current,flex_industry] 
 emission_factor: 1.0 #percentage of carbon budget considered in the model based on the included countries
 # balance_penalty on the atmosphere node. Set to null once the model solves without it.
 #
@@ -18,6 +18,13 @@ emission_factor: 1.0 #percentage of carbon budget considered in the model based 
 # diagnose the CCS chain first; only then consider slack, and report it explicitly.
 co2_overshoot_penalty: 10000
 resolution: "1h"
+# operations_* blocks: one timestep per year (former make_tiny_model.py). Required for correct
+# *_cumulative budgets and the representative_period_scaling below. Remove to keep 1h.
+operations_resolution: "365D"
+# Representative days pinned for clustering (1-based day of year), used by tools/make_cluster_seed.py
+# (Toolbox tool make_cluster_seed). The count sets the number of representative periods.
+representative_weather_year: "wy2009"
+representative_days: [134, 253, 358]
 future_inflation: 0.03
 default_technology_discount_rate: 0.05
 economic_reference_year: 2025
@@ -157,7 +164,10 @@ renewable_potentials:
   # main(), so IC1 has never applied it. Re-enable once per-IC1-region
   # historical wind/solar capacities exist; the country figures cannot simply
   # be reused, as each would become a floor for all 17 regions.
-  include_onshore_potential_limitations: False
+  # Enabled for IC1: onshore_potentials() now distributes the per-country history pro rata
+  # to the regional polygons (see scenario_run.py). Replaces tools/patch_onshore_vre_potential.py.
+  include_onshore_potential_limitations: True
+  cap_never_raised: True
   onshore_potentials: 0.15 # percentage of available onshore potentials for wind and solar. 
   max_capacity_history:
     wind-on:
@@ -297,3 +307,40 @@ economic_parameters:
   node:
     battery-storage:
       WACC: 0.07
+
+# ---------------------------------------------------------------------------------------------
+# IC1 settings that replace the former post-build patches (tools/patch_*.py, docs/STANDARD_model_patches.md)
+# ---------------------------------------------------------------------------------------------
+# Annual cumulative budgets (atmosphere CO2 budget, CO2-storage site caps, biomass stocks) are
+# debited once per representative block while flows are weighted to a full year; divide them
+# by this factor. 365 for daily representative periods, 1.0 for a full-year chronological run.
+representative_period_scaling: 365
+
+# Per-country NEW-BUILD caps in GW (workbook global_constraints_industry_case_study.xlsx,
+# set_technology_buildout, TYNDP2024). Alternative Base; existing plants excluded.
+# Countries without candidate units in the model are skipped.
+technology_buildout_by_country:
+  nuclear-3:
+    NL: {2030: 0, 2040: 4, 2050: 5}
+    BE: {2030: 0, 2040: 6, 2050: 6}
+    UK: {2030: 6, 2040: 11, 2050: 13}
+    NO: {2030: 0, 2040: 0, 2050: 0}
+    DE: {2030: 0, 2040: 0, 2050: 0}
+    DK: {2030: 0, 2040: 0, 2050: 0}
+    FR: {2030: 0, 2040: 6, 2050: 27}
+    LU: {2030: 0, 2040: 0, 2050: 0}
+
+# Explicit case decisions (entity = regex on the entity name).
+set_parameters:
+  - {class: unit, entity: "^gas-extraction_NL", parameter: availability_factor, value: 0.0}   # Groningen closed
+  - {class: unit, entity: "^DAC_", parameter: investment_count_max_cumulative, value: 0.0}  # no DAC in the IC1 baseline
+  - {class: unit, entity: "^DAC_", parameter: existing_units, value: 0.0}  # DAC has no existing_units in the data, so SpineOpt would otherwise default it to 1
+
+# Forced retirement of endowed industrial incumbents where an alternative route can meet demand.
+retire_industry:
+  active: True
+  region_regex: "_((?:BE|NL)C\\d|DE|DK|NO|UK|FR|LU)$"
+  carrier_regex: "^(elec|heat|cool|CO2|CH4|H2|bio|atmosphere|HC|MeOH|oil|coal|LNG|U-92|water|waste|gas|wind|solar|nuclear|battery|hydro)"
+
+# Give every yearly 2030/2041/2050 series a 2040-01-01 point equal to the 2041 value.
+align_milestones_to_periods: True

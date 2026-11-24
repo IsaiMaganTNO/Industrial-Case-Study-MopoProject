@@ -21,19 +21,31 @@ Source of truth:
     (verified byte-identical entity set to the vre15 model: 201 existing units)
 """
 import argparse
+import json
 import os
 import sqlite3
 import sys
 
 PARAM = "units_existing"
-SRC = "backups/spinetoolbox-items-pre-mixedres/items/power_db/power_db.sqlite"
+SRC = "data-pipelines/europe/_power/power_fleet_pin.json"
+LEGACY_SRC = "backups/spinetoolbox-items-pre-mixedres/items/power_db/power_db.sqlite"
 DST = ".spinetoolbox/items/power_db/power_db.sqlite"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+def _abs(p):
+    return p if os.path.isabs(p) else os.path.join(ROOT, p)
 
 
 def read_series(path):
     """Return {(param, entity, alternative): (value_blob, type)}."""
     if not os.path.exists(path):
         sys.exit("missing database: %s" % path)
+    if path.endswith(".json"):
+        with open(path, encoding="utf-8") as fh:
+            rows = json.load(fh)["series"]
+        return {(PARAM, r["entity"], r["alternative"]): (r["value"].encode("utf-8"), r["type"])
+                for r in rows}
     con = sqlite3.connect("file:%s?mode=ro" % path, uri=True)
     rows = con.execute(
         """SELECT pd.name, e.name, a.name, pv.value, pv.type
@@ -51,9 +63,24 @@ def main():
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument("--check", action="store_true")
     g.add_argument("--apply", action="store_true")
+    g.add_argument("--export", metavar="JSON",
+                   help="write the series of --src (sqlite) to a committed JSON pin file")
     ap.add_argument("--src", default=SRC)
     ap.add_argument("--dst", default=DST)
     args = ap.parse_args()
+    args.src, args.dst = _abs(args.src), _abs(args.dst)
+
+    if args.export:
+        src = args.src if args.src.endswith(".sqlite") else _abs(LEGACY_SRC)
+        ser = read_series(src)
+        out = {"parameter": PARAM, "source": src, "series": [
+            {"entity": k[1], "alternative": k[2], "type": v[1],
+             "value": v[0].decode("utf-8") if isinstance(v[0], bytes) else v[0]}
+            for k, v in sorted(ser.items())]}
+        with open(args.export, "w", encoding="utf-8", newline="\n") as fh:
+            json.dump(out, fh, indent=1)
+        print("exported %d series to %s" % (len(ser), args.export))
+        return 0
 
     src = read_series(args.src)
     dst = read_series(args.dst)

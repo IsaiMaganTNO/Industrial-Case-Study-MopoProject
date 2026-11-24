@@ -75,3 +75,9 @@ lifetime_to_duration:
         - storage_lifetime_economic
         - storage_lifetime_technical
     
+# Explicit CO2 bookings applied in process_emissions() (see the comment there).
+process_emissions:
+  output_bookings:
+    methanation: {node_prefix: CH4, value: 0.2}   # t CO2 per MWh synthetic CH4 (= fossil-CH4 gateway factor)
+  input_fallbacks:
+    HC: 0.24                                      # t CO2 per MWh HC (commodity_data.csv CO2_content)

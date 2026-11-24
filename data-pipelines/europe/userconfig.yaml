@@ -98,17 +98,16 @@ global_constraints:
   # The 2050 zero is INTENTIONAL - see the long comment in scenario_config.yml.
   # Net zero is reached via the CCS chain, not by relaxing the budget. Do not
   # floor it to force feasibility.
-  # FR+LU sensitivity (2026-10-28, global_constraints_industry_case_study_FR_LU.xlsx):
-  #   FR 540.83 -> 243.374 / 54.083 ; LU 12.72 -> 5.725 / 1.272
-  # 6-country values (restore without FR/LU): 1146352500 / 254745000 / 0.0
   co2_annual_budget:
-    "2030": 1389726310 # NL+BE+NO+DE+DK+UK+FR+LU, ton CO2eq
-    "2040": 308828100  # ton CO2eq
+    "2030": 1146352500 # NL+BE+NO+DE+DK+UK, ton CO2eq
+    "2040": 254745000  # ton CO2eq
     "2050": 0.0
   co2_sequestration_cost: 65 # €/ton CO2
   co2_transport_cost: 40 # €/ton CO2
   # Must be keyed by the same polygons as the gas_sector target_resolution; CCS_data/ holds the source variants.
-  co2_data_file: CO2_data_IC1.xlsx
+  # Final IC1 baseline = pessimistic CCS: high-cost transport/injection tariffs (verification/CO2_data_IC1_high_cost.xlsx)
+  # with the low-storage NSNL012 2050 value set to 13.5 Mt/yr. CO2_data_IC1.xlsx = low-cost (optimistic) variant.
+  co2_data_file: CO2_data_IC1_pessimistic.xlsx
 
 # Use country code to model a specific country  and define Europe as country, then, the remaining countries are modeled following requirements
 # IC1 industrial case: BE and NL only. Previously written as the scalar "-NL -BE",
@@ -127,8 +126,11 @@ countries :
   - "DK"
   - "NO"
   - "UK"
-  - "FR"   # FR+LU sensitivity (2026-10-28); remove both for the 6-country baseline
-  - "LU"
+
+# Country-level data for the non-IC1 countries above (all except BE/NL) is copied from the
+# EU case sector databases by tools/merge_eu_country_rows.py (Toolbox tool eu_country_rows).
+# Path to the EU case .spinetoolbox/items folder, relative to the repository root.
+eu_case_dir: "EU_case/.spinetoolbox/items"
 
 # Sectors optimized
 commodity: 
@@ -193,9 +195,11 @@ network:
   H2: 
     status: True
     interconnection_out_model: True
-  CO2: 
+  CO2:
     status: True
     interconnection_out_model: False
+    # The CO2 network sheet is an undirected edge list; write both directions.
+    bidirectional: True
   # IC1: True lets other EU countries connect to the IC1 regions for these commodities
   MeOH: 
     status: True

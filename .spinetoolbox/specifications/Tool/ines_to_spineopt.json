@@ -1,5 +1,5 @@
 {
-    "name": "ines_to_spinetop",
+    "name": "ines_to_spineopt",
     "tooltype": "python",
     "includes": [
         "ines_to_spineopt.py"

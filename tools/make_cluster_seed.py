@@ -61,6 +61,21 @@ PERIOD_DURATION = 24  # hours; must match number_of_timesteps in tulipa_call.jl
 # 12 Jan = the original midwinter medoid; 231 = 19 Aug, the summer day that the
 # 3-representative clustering run selected.
 DEFAULT_DAYS = [12, 231]
+SCENARIO_CONFIG = os.path.join(
+    REPO, "Pan-European-Framework-Energy-System-Planning", "src",
+    "_planning-input-processsing", "scenario_config.yml")
+
+
+def config_defaults():
+    """representative_days / representative_weather_year from scenario_config.yml."""
+    try:
+        import yaml
+        with open(SCENARIO_CONFIG, encoding="utf8") as fh:
+            cfg = yaml.safe_load(fh) or {}
+    except (OSError, ImportError):
+        cfg = {}
+    return (cfg.get("representative_weather_year", "wy2009"),
+            [int(d) for d in cfg.get("representative_days", DEFAULT_DAYS)])
 
 
 def build(weather_year: str, days: list[int]) -> None:
@@ -151,12 +166,13 @@ def build(weather_year: str, days: list[int]) -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--weather-year", default="wy2009")
+    wy, days = config_defaults()
+    ap.add_argument("--weather-year", default=wy)
     ap.add_argument(
         "--days",
         type=int,
         nargs="+",
-        default=DEFAULT_DAYS,
+        default=days,
         help="1-based day-of-year indices to pin (default: %(default)s)",
     )
     args = ap.parse_args()

@@ -8,6 +8,7 @@ import pandas as pd
 import sys
 import numpy as np
 import json
+import re
 import yaml 
 import time as time_lib
 
@@ -60,6 +61,12 @@ def _scaled_value(target_parameter : dict, factor : float):
         raw.setdefault("type", "time_series")
         return raw
     return target_parameter["parsed_value"]
+
+def _rp_scaling(config) -> float:
+    """Divisor for annual (cumulative) budgets that SpineOpt debits once per representative
+    block while flows are weighted to a full year (docs/FINDING_co2_storage_cap_365x.md).
+    1.0 (default) leaves values unchanged; 365 for daily representative periods."""
+    return float(config.get("representative_period_scaling", 1.0))
 
 def add_entity_group(db_map : DatabaseMapping, class_name : str, group : str, member : str) -> None:
     _, error = db_map.add_entity_group_item(group_name = group, member_name = member, entity_class_name=class_name)
@@ -173,9 +180,12 @@ def update_parameters(config):
 
         resolution_ = config["resolution"]
         parameter_value = {"type":"duration","data":resolution_}
+        # operations_* blocks may get their own (coarse) resolution, see collapse_representative_maps
+        ops_value = {"type":"duration","data":config["operations_resolution"]} if config.get("operations_resolution") else parameter_value
         for parameter_map in sopt_db.get_parameter_value_items(parameter_definition_name = "resolution"):
             if "planning" not in parameter_map["entity_byname"][0]:
-                add_or_update_parameter_value(sopt_db, parameter_map["entity_class_name"], "resolution", parameter_map["alternative_name"], parameter_map["entity_byname"], parameter_value)
+                value_ = ops_value if parameter_map["entity_byname"][0].startswith("operations") else parameter_value
+                add_or_update_parameter_value(sopt_db, parameter_map["entity_class_name"], "resolution", parameter_map["alternative_name"], parameter_map["entity_byname"], value_)
             # IC1 fix: the EU case has a single node named exactly "CO2-storage", but IC1
         # names sequestration sites per reservoir - "CO2-storage-NSNL012" and
         # "CO2-storage-NSNL031" (each with low_CO2/medium_CO2/high_CO2 series). An exact
@@ -191,7 +201,7 @@ def update_parameters(config):
             ]
             for target_parameter in target_parameters:
                 entity_byname = target_parameter["entity_byname"]
-                parameter_value = _scaled_value(target_parameter, config["emission_factor"])
+                parameter_value = _scaled_value(target_parameter, config["emission_factor"]/_rp_scaling(config))
                 add_or_update_parameter_value(sopt_db, "node", co2_parameter, target_parameter["alternative_name"], entity_byname, parameter_value)
 
         # The atmosphere carbon budget enters SpineOpt as a *variable bound*:
@@ -207,7 +217,7 @@ def update_parameters(config):
         for atm_parameter in ["storage_investment_count_initial_cumulative","storage_investment_count_max_cumulative"]:
             target_parameters = sopt_db.get_parameter_value_items(entity_class_name = "node", entity_byname = ("atmosphere", ), parameter_definition_name = atm_parameter)
             for target_parameter in target_parameters:
-                parameter_value = _scaled_value(target_parameter, config["emission_factor"])
+                parameter_value = _scaled_value(target_parameter, config["emission_factor"]/_rp_scaling(config))
                 add_or_update_parameter_value(sopt_db, "node", atm_parameter, target_parameter["alternative_name"], ("atmosphere", ), parameter_value)
 
         # Secondary, cheaper relief: prices the node balance slack. Kept because it does
@@ -326,13 +336,31 @@ def onshore_potentials(config_renewable):
         with DatabaseMapping(url_spineopt) as sopt_db:
             maximum_entities = [parameter_map  for parameter_map in sopt_db.get_parameter_value_items(parameter_definition_name = "investment_count_total_max_cumulative") if "wind-on" in parameter_map["entity_byname"][0] or "solar-PV" in parameter_map["entity_byname"][0]]
 
+            # max_capacity_history is per COUNTRY. When a country is split into several
+            # polygons (IC1: BEC1..BEC8, NLC1..NLC9) the national history is distributed
+            # pro rata to each polygon's share of the national potential, so the country
+            # total lands on max(onshore_potentials * potential, history). For one polygon
+            # per country (share 1) this is identical to the original rule.
+            # cap_never_raised: a polygon's cap is never set above its original potential.
+            maximum_entities = [m for m in maximum_entities if "MT" not in m["entity_byname"][0] and m["alternative_name"] == "Base"]
+            def _split(name):
+                tech_type = "wind-on" if "wind-on" in name else "solar-PV"
+                polygon = name.split("_")[1]
+                return tech_type, polygon, polygon[:2]
+            national = {}
             for max_entity in maximum_entities:
-                if "MT" not in max_entity["entity_byname"][0]:
-                    tech_type = "wind-on" if "wind-on" in max_entity["entity_byname"][0] else "solar-PV"
-                    polygon = max_entity["entity_byname"][0].split("_")[1]
-                    initial_value = config["max_capacity_history"][tech_type][polygon]
-                    parameter_value = max_entity["parsed_value"]*config["onshore_potentials"] if max_entity["parsed_value"]*config["onshore_potentials"] > initial_value else initial_value
-                    add_or_update_parameter_value(sopt_db,"investment_group","investment_count_total_max_cumulative","Base",max_entity["entity_byname"],parameter_value)
+                tech_type, polygon, country = _split(max_entity["entity_byname"][0])
+                national[(tech_type, country)] = national.get((tech_type, country), 0.0) + max_entity["parsed_value"]
+            for max_entity in maximum_entities:
+                tech_type, polygon, country = _split(max_entity["entity_byname"][0])
+                value = max_entity["parsed_value"]
+                share = value/national[(tech_type, country)] if national[(tech_type, country)] else 0.0
+                history = config["max_capacity_history"][tech_type].get(polygon, config["max_capacity_history"][tech_type].get(country, 0.0))
+                floor = history if polygon in config["max_capacity_history"][tech_type] else history*share
+                parameter_value = max(value*config["onshore_potentials"], floor)
+                if config.get("cap_never_raised", False):
+                    parameter_value = min(value, parameter_value)
+                add_or_update_parameter_value(sopt_db,"investment_group","investment_count_total_max_cumulative","Base",max_entity["entity_byname"],parameter_value)
 
             try:
                 sopt_db.commit_session("vre onshore potentials update")
@@ -340,16 +368,20 @@ def onshore_potentials(config_renewable):
                 print("###################################################################### vre onshore potentials update commit error")  
 
 def biomass_limitations(config):
-    if config["include_biomass_potential_limitations"]:
+    # Biomass-stock caps are annual volumes debited from a long-term storage once per
+    # representative block, so they are divided by representative_period_scaling as well
+    # (docs/FINDING_biomass_cap.md). The two factors are applied together, once.
+    factor = (config["biomass_potential_realistic"] if config["include_biomass_potential_limitations"] else 1.0)/_rp_scaling(config)
+    if factor != 1.0:
         print("WARNING: If you haven't reset the model, you are reducing the biomass potentials once again.")
         with DatabaseMapping(url_spineopt) as sopt_db:
             for parameter_name in ["storage_investment_count_max_cumulative","storage_state_fix","storage_investment_count_fix_cumulative","storage_investment_count_initial_cumulative"]:
                 for parameter_map in sopt_db.get_parameter_value_items(parameter_definition_name = parameter_name):
                     if "biomass-stock" in parameter_map["entity_byname"][0]:
                         if parameter_map["type"] == "float":
-                            parameter_value = config["biomass_potential_realistic"]*parameter_map["parsed_value"]
+                            parameter_value = factor*parameter_map["parsed_value"]
                         elif parameter_map["type"] == "time_series":
-                            values_ = config["biomass_potential_realistic"]*parameter_map["parsed_value"].values
+                            values_ = factor*parameter_map["parsed_value"].values
                             indexes_ = [pd.Timestamp(i).isoformat() for i in parameter_map["parsed_value"].indexes]
                             parameter_value = {"type":"time_series","data":dict(zip(indexes_,values_))}
                         add_or_update_parameter_value(sopt_db,parameter_map["entity_class_name"],parameter_name,parameter_map["alternative_name"],parameter_map["entity_byname"],parameter_value)
@@ -560,6 +592,23 @@ def limit_buildout(config):
                 add_parameter_value(sopt_db,"investment_group","investment_count_total_max_cumulative","limited_"+entity,(entity,),parameter_value)
                 for tech in entities[entity]:
                     add_entity(sopt_db,"unit__investment_group",(tech,entity))
+            # Per-country NEW-BUILD caps, alternative Base. Units <tech>_<CC> or <tech>_<CC>C<n>
+            # are grouped in investment_group <tech>_<CC>; existing units (<tech>-existing_*) are excluded.
+            for tech, countries in (config.get("technology_buildout_by_country") or {}).items():
+                for country, caps in countries.items():
+                    country = "NO" if country is False else str(country)  # YAML 1.1 reads NO as false
+                    units = [e["name"] for e in sopt_db.get_entity_items(entity_class_name = "unit")
+                             if re.match(r"^" + re.escape(tech) + "_" + country + r"(C\d+)?$", e["name"])]
+                    if not units:
+                        print(f"technology_buildout_by_country: no {tech} units in {country}, skipped")
+                        continue
+                    group = f"{tech}_{country}"
+                    add_entity(sopt_db,"investment_group",(group,))
+                    for unit in units:
+                        add_entity(sopt_db,"unit__investment_group",(unit,group))
+                    indexes = [str(i)+"-01-01T00:00:00" for i in caps] + ["2060-01-01T00:00:00"]
+                    values = [float(v) for v in caps.values()] + [float(list(caps.values())[-1])]
+                    add_parameter_value(sopt_db,"investment_group","investment_count_total_max_cumulative","Base",(group,),{"type":"time_series","data":dict(zip(indexes,values))})
             try:
                 sopt_db.commit_session("Added technology buildout")
             except:
@@ -683,6 +732,158 @@ def limit_commodity(config):
             except:
                 print("############################## error limited commodity parameters")
 
+def set_parameters(config):
+    """Explicit parameter overrides from scenario_config.yml (`set_parameters`). Each entry:
+    {class, entity (regex on the entity name), parameter, value, alternative (default Base)}.
+    Used for case decisions that are not data, e.g. closed gas fields or excluded DAC."""
+    entries = config.get("set_parameters") or []
+    if not entries:
+        return
+    with DatabaseMapping(url_spineopt) as sopt_db:
+        for entry in entries:
+            names = [e["name"] for e in sopt_db.get_entity_items(entity_class_name = entry["class"]) if re.match(entry["entity"], e["name"])]
+            print(f"  set {entry['parameter']} = {entry['value']} on {len(names)} {entry['class']} ({entry['entity']})")
+            for name in names:
+                add_or_update_parameter_value(sopt_db, entry["class"], entry["parameter"], entry.get("alternative","Base"), (name,), entry["value"])
+        try:
+            sopt_db.commit_session("set_parameters overrides")
+        except:
+            print("###################################################################### set_parameters commit error")
+
+def _values(item):
+    if item is None:
+        return []
+    if item["type"] == "float":
+        return [float(item["parsed_value"])]
+    if item["type"] == "time_series":
+        return [float(v) for v in item["parsed_value"].values]
+    return []
+
+def retire_industry(config):
+    """Force retirement of endowed industrial incumbents where this is feasible
+    (docs/STANDARD_model_patches.md #4). A unit with existing capacity X feeding a
+    sector node gets investment_count_max_cumulative = {2030: X, 2041: X/2, 2050: 0, 2060: 0}
+    only if, in its own region, at least one other unit feeds the same node and the others'
+    final capacity covers the node demand (the screen that excludes e.g. Scraps_EAF_BEC3/5).
+    Carrier nodes and units whose max is not a scalar are left alone."""
+    settings = config.get("retire_industry") or {}
+    if not settings.get("active", False):
+        return
+    carrier = re.compile(settings["carrier_regex"])
+    region = re.compile(settings["region_regex"])
+    with DatabaseMapping(url_spineopt) as sopt_db:
+        def by_name(param, cls):
+            return {p["entity_byname"]: p for p in sopt_db.get_parameter_value_items(entity_class_name = cls, parameter_definition_name = param)}
+        init = by_name("investment_count_initial_cumulative", "unit")
+        mx = by_name("investment_count_max_cumulative", "unit")
+        dem = by_name("demand", "node")
+        capu = {k: (_values(v) or [1.0])[0] for k, v in by_name("capacity_per_unit", "unit__to_node").items()}
+        feeders = {}
+        for e in sopt_db.get_entity_items(entity_class_name = "unit__to_node"):
+            unit, node = e["element_name_list"]
+            feeders.setdefault(node, []).append(unit)
+        targets = []
+        for node in sorted(feeders):
+            if carrier.match(region.sub("", node)) or node.endswith("-group"):
+                continue
+            units = feeders[node]
+            demand = (_values(dem.get((node,))) or [0.0])[0]
+            for unit in units:
+                endowment = (_values(init.get((unit,))) or [0.0])[0]
+                if endowment <= 1e-9:
+                    continue
+                others = [u for u in units if u != unit]
+                alt_capacity = sum(((_values(mx.get((u,))) or [0.0])[-1])*capu.get((u, node), 1.0) for u in others)
+                already = ((_values(mx.get((unit,))) or [0.0])[-1]) <= 1e-12
+                if others and alt_capacity >= demand - 1e-12 and not already:
+                    targets.append((unit, endowment))
+        changed = 0
+        for unit, endowment in targets:
+            item = mx.get((unit,))
+            if item is None:
+                raise RuntimeError(f"retire_industry: no investment_count_max_cumulative for {unit}")
+            if item["type"] != "float":
+                continue
+            value = {"type":"time_series","data":{"2030-01-01T00:00:00": endowment, "2041-01-01T00:00:00": endowment/2.0,
+                                                  "2050-01-01T00:00:00": 0.0, "2060-01-01T00:00:00": 0.0}}
+            add_or_update_parameter_value(sopt_db, "unit", "investment_count_max_cumulative", item["alternative_name"], (unit,), value)
+            changed += 1
+        print(f"  retire_industry: {len(targets)} retire-safe incumbents, {changed} patched")
+        try:
+            sopt_db.commit_session("retire industrial incumbents")
+        except:
+            print("###################################################################### retire industry commit error")
+
+def collapse_representative_maps(config):
+    """Companion of operations_resolution (one operational timestep per year).
+    With 1h operations blocks, node_state_longterm applies its per-period delta ~8760 times
+    per milestone, shrinking every *_cumulative budget by that factor. With one timestep per
+    year, representative_blocks_by_period must have ONE entry per block: the per-period rows
+    (each summing to 1) are averaged over the year and renormalised to sum exactly 1
+    (SpineOpt rejects any other sum). Replaces the former tools/make_tiny_model.py."""
+    if not config.get("operations_resolution"):
+        return
+    n = 0
+    with DatabaseMapping(url_spineopt) as sopt_db:
+        for pv in list(sopt_db.get_parameter_value_items(entity_class_name="temporal_block", parameter_definition_name="representative_blocks_by_period")):
+            m = api.from_database(pv["value"], pv["type"])
+            idx = list(m.indexes)
+            if len(idx) <= 1:
+                continue
+            rows = [list(r.values) for r in m.values]
+            for r in rows:
+                if abs(sum(r) - 1.0) > 1e-9:
+                    raise ValueError(f"{pv['entity_byname'][0]}: a row sums to {sum(r)!r}, expected 1.0")
+            shares = [sum(r[i] for r in rows) / len(rows) for i in range(len(rows[0]))]
+            s = sum(shares)
+            shares = [x / s for x in shares]
+            new_map = {"type": "map", "index_type": "date_time", "index_name": "t",
+                       "data": [(str(idx[0]), {"type": "array", "value_type": "float", "data": shares})]}
+            val, typ = api.to_database(new_map)
+            sopt_db.update_item("parameter_value", id=pv["id"], value=val, type=typ)
+            n += 1
+        print(f"  collapse_representative_maps: {n} maps collapsed to one entry")
+        try:
+            sopt_db.commit_session("collapse representative_blocks_by_period for coarse operations")
+        except:
+            print("###################################################################### collapse maps commit error")
+
+def align_milestones_to_periods(config):
+    """Source data stamp the middle milestone 2041 while the investment period starts
+    2040-01-01, so SpineOpt reads the 2030/2041 average for 2040 investments
+    (docs/FINDING_2040_midpoint_and_no_scenario_filter.md). Insert a 2040-01-01 point equal to
+    the 2041 value in every yearly milestone series (2030, 2041, 2050[, 2060]).
+    Operational 2040 blocks (calendar 2041) are unaffected; temporal_block maps are skipped."""
+    if not config.get("align_milestones_to_periods", False):
+        return
+    patterns = {("2030-01-01","2041-01-01","2050-01-01","2060-01-01"), ("2030-01-01","2041-01-01","2050-01-01")}
+    n = 0
+    with DatabaseMapping(url_spineopt) as sopt_db:
+        for v in sopt_db.get_parameter_value_items():
+            if v["type"] not in ("time_series", "map") or v["entity_class_name"] == "temporal_block":
+                continue
+            x = api.from_database(v["value"], v["type"])
+            idx = [str(i)[:10] for i in x.indexes]
+            if "2040-01-01" in idx or tuple(idx) not in patterns:
+                continue
+            k = idx.index("2041-01-01"); vals = list(x.values)
+            if not all(isinstance(y, (int, float, np.floating)) for y in vals):
+                continue
+            if isinstance(x, api.TimeSeriesVariableResolution):
+                ni = list(x.indexes); ni.insert(k, np.datetime64("2040-01-01T00:00:00")); vals.insert(k, vals[k])
+                nx = api.TimeSeriesVariableResolution(np.array(ni, dtype="datetime64[s]"), np.array(vals, dtype=float), x.ignore_year, x.repeat, index_name=x.index_name)
+            else:
+                ni = list(x.indexes); ni.insert(k, type(ni[k])("2040-01-01T00:00:00")); vals.insert(k, vals[k])
+                nx = api.Map(ni, vals, index_name=x.index_name)
+            val, typ = api.to_database(nx)
+            sopt_db.update_item("parameter_value", id=v["id"], value=val, type=typ)
+            n += 1
+        print(f"  align_milestones_to_periods: {n} series given a 2040-01-01 point")
+        try:
+            sopt_db.commit_session("align 2041 milestones to the 2040 period")
+        except:
+            print("###################################################################### align milestones commit error")
+
 def main():
 
     with open(sys.argv[2], 'r') as file:
@@ -735,6 +936,14 @@ def main():
 
     print("biomass potentials updates")
     biomass_limitations(config)
+    print("industry retirement")
+    retire_industry(config)
+    print("parameter overrides")
+    set_parameters(config)
+    print("representative maps for coarse operations")
+    collapse_representative_maps(config)
+    print("milestone alignment (must run last)")
+    align_milestones_to_periods(config)
 
 if __name__ == "__main__":
     main()

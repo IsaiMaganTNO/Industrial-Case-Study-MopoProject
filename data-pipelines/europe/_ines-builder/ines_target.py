@@ -80,7 +80,7 @@ def define_polygons(config : dict, region_data : dict, on_level : str, off_level
         #"IT",  # Italy
         #"LV",  # Latvia
         #"LT",  # Lithuania
-        "LU",  # Luxembourg (FR+LU sensitivity 2026-10-28)
+        #"LU",  # Luxembourg
         #"MT",  # Malta
         "NL",  # Netherlands
         #"PL",  # Poland
@@ -1595,13 +1595,21 @@ def add_policy_constraints(db_map : DatabaseMapping, config : dict):
                             definition_condition = True
 
                         if definition_condition:
-                            try:
-                                add_entity(db_map,"link",(link_name,))
-                                add_entity(db_map,"node__link__node",(node1,link_name,node2))
-                                add_parameter_value(db_map,"node__link__node","efficiency","Base",(node1,link_name,node2),1.0)
-                                add_parameter_value(db_map,"node__link__node","operational_cost","Base",(node1,link_name,node2),tariff)
-                            except:
-                                pass
+                            # The CO2 `network` sheet is an UNDIRECTED edge list (one row per corridor,
+                            # symmetric km and tariff). With `bidirectional: true` in userconfig the
+                            # reverse link to_from is written too, as CH4/H2 already have
+                            # (docs/FINDING_co2_network_unidirectional.md).
+                            directions = [(node1,link_name,node2)]
+                            if config["user"]["network"]["CO2"].get("bidirectional", False):
+                                directions.append((node2,to_node+"_CO2_"+from_node,node1))
+                            for n_from,l_name,n_to in directions:
+                                try:
+                                    add_entity(db_map,"link",(l_name,))
+                                    add_entity(db_map,"node__link__node",(n_from,l_name,n_to))
+                                    add_parameter_value(db_map,"node__link__node","efficiency","Base",(n_from,l_name,n_to),1.0)
+                                    add_parameter_value(db_map,"node__link__node","operational_cost","Base",(n_from,l_name,n_to),tariff)
+                                except:
+                                    pass
 
 def units_modification(db_map : DatabaseMapping, config : dict):
     energy_units = config["user"]["model"]["units"]["energy"]

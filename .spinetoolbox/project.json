@@ -61,7 +61,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": ".spinetoolbox/specifications/Tool/ines_to_spinetop.json"
+                    "path": ".spinetoolbox/specifications/Tool/ines_to_spineopt.json"
                 },
                 {
                     "type": "path",
@@ -112,6 +112,21 @@
                     "type": "path",
                     "relative": true,
                     "path": ".spinetoolbox/specifications/Tool/commodity_importer.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/power_fleet_pin.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/eu_country_rows.json"
+                },
+                {
+                    "type": "path",
+                    "relative": true,
+                    "path": ".spinetoolbox/specifications/Tool/make_cluster_seed.json"
                 }
             ]
         },
@@ -662,9 +677,9 @@
                 }
             },
             {
-                "name": "from ines_to_spinetop to SpineOpt_target",
+                "name": "from ines_to_spineopt to SpineOpt_target",
                 "from": [
-                    "ines_to_spinetop",
+                    "ines_to_spineopt",
                     "right"
                 ],
                 "to": [
@@ -683,13 +698,13 @@
                 }
             },
             {
-                "name": "from INES_DB to ines_to_spinetop",
+                "name": "from INES_DB to ines_to_spineopt",
                 "from": [
                     "INES_DB",
                     "right"
                 ],
                 "to": [
-                    "ines_to_spinetop",
+                    "ines_to_spineopt",
                     "left"
                 ],
                 "filter_settings": {
@@ -1392,6 +1407,240 @@
                         "scenario_filter": true
                     }
                 }
+            },
+            {
+                "name": "from power_importer to power_fleet_pin",
+                "from": [
+                    "power_importer",
+                    "top"
+                ],
+                "to": [
+                    "power_fleet_pin",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from power_fleet_pin to Power_DB",
+                "from": [
+                    "power_fleet_pin",
+                    "right"
+                ],
+                "to": [
+                    "Power_DB",
+                    "top"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from industry_importer to eu_country_rows",
+                "from": [
+                    "industry_importer",
+                    "bottom"
+                ],
+                "to": [
+                    "eu_country_rows",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from transport_importer to eu_country_rows",
+                "from": [
+                    "transport_importer",
+                    "bottom"
+                ],
+                "to": [
+                    "eu_country_rows",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from hydro_importer to eu_country_rows",
+                "from": [
+                    "hydro_importer",
+                    "bottom"
+                ],
+                "to": [
+                    "eu_country_rows",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from heat_importer to eu_country_rows",
+                "from": [
+                    "heat_importer",
+                    "bottom"
+                ],
+                "to": [
+                    "eu_country_rows",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from eu_country_rows to Industry_DB",
+                "from": [
+                    "eu_country_rows",
+                    "right"
+                ],
+                "to": [
+                    "Industry_DB",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from eu_country_rows to Other_Industry_DB",
+                "from": [
+                    "eu_country_rows",
+                    "right"
+                ],
+                "to": [
+                    "Other_Industry_DB",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from eu_country_rows to Transport_DB",
+                "from": [
+                    "eu_country_rows",
+                    "right"
+                ],
+                "to": [
+                    "Transport_DB",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from eu_country_rows to Hydro_DB",
+                "from": [
+                    "eu_country_rows",
+                    "right"
+                ],
+                "to": [
+                    "Hydro_DB",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from eu_country_rows to Heat_DB",
+                "from": [
+                    "eu_country_rows",
+                    "right"
+                ],
+                "to": [
+                    "Heat_DB",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from clustering_input to make_cluster_seed",
+                "from": [
+                    "clustering_input",
+                    "bottom"
+                ],
+                "to": [
+                    "make_cluster_seed",
+                    "left"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
+            },
+            {
+                "name": "from make_cluster_seed to run_clustering",
+                "from": [
+                    "make_cluster_seed",
+                    "right"
+                ],
+                "to": [
+                    "run_clustering",
+                    "bottom"
+                ],
+                "filter_settings": {
+                    "auto_online": true,
+                    "enabled_filter_types": {
+                        "alternative_filter": false,
+                        "scenario_filter": true
+                    }
+                }
             }
         ],
         "jumps": []
@@ -1871,7 +2120,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "geodata/IC1_NWEU_FRLU.geojson"
+                    "path": "geodata/IC1_NWEU.geojson"
                 },
                 {
                     "type": "path",
@@ -1940,7 +2189,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/geodata/IC1_NWEU_FRLU.geojson"
+                    "arg": "<project>/geodata/IC1_NWEU.geojson"
                 },
                 {
                     "type": "resource",
@@ -2006,7 +2255,7 @@
                 },
                 {
                     "type": "resource",
-                    "arg": "<project>/data/Rdemand/other_electricity_demand_IC1_NWEU_FRLU.csv"
+                    "arg": "<project>/data/Rdemand/other_electricity_demand_IC1_NWEU.csv"
                 },
                 {
                     "type": "resource",
@@ -2029,7 +2278,7 @@
                 {
                     "type": "path",
                     "relative": true,
-                    "path": "data/Rdemand/other_electricity_demand_IC1_NWEU_FRLU.csv"
+                    "path": "data/Rdemand/other_electricity_demand_IC1_NWEU.csv"
                 },
                 {
                     "type": "path",
@@ -2280,26 +2529,6 @@
                 }
             ],
             "kill_completed_processes": false,
-            "log_process_output": false
-        },
-        "ines_to_spinetop": {
-            "type": "Tool",
-            "description": "",
-            "x": 404.71402770228985,
-            "y": -38.40575225661814,
-            "specification": "ines_to_spinetop",
-            "execute_in_work": false,
-            "cmd_line_args": [
-                {
-                    "type": "resource",
-                    "arg": "db_url@INES_DB"
-                },
-                {
-                    "type": "resource",
-                    "arg": "db_url@SpineOpt_target"
-                }
-            ],
-            "kill_completed_processes": true,
             "log_process_output": false
         },
         "SpineOpt_target": {
@@ -2849,6 +3078,69 @@
                 },
                 "schema": ""
             }
+        },
+        "ines_to_spineopt": {
+            "type": "Tool",
+            "description": "",
+            "x": 404.71402770228985,
+            "y": -38.40575225661814,
+            "specification": "ines_to_spineopt",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "resource",
+                    "arg": "db_url@INES_DB"
+                },
+                {
+                    "type": "resource",
+                    "arg": "db_url@SpineOpt_target"
+                }
+            ],
+            "kill_completed_processes": true,
+            "log_process_output": false
+        },
+        "power_fleet_pin": {
+            "type": "Tool",
+            "description": "",
+            "x": -690,
+            "y": -300,
+            "specification": "power_fleet_pin",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "literal",
+                    "arg": "--apply"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "eu_country_rows": {
+            "type": "Tool",
+            "description": "",
+            "x": -200,
+            "y": 470,
+            "specification": "eu_country_rows",
+            "execute_in_work": false,
+            "cmd_line_args": [
+                {
+                    "type": "literal",
+                    "arg": "--apply"
+                }
+            ],
+            "kill_completed_processes": false,
+            "log_process_output": false
+        },
+        "make_cluster_seed": {
+            "type": "Tool",
+            "description": "",
+            "x": 660,
+            "y": 290,
+            "specification": "make_cluster_seed",
+            "execute_in_work": false,
+            "cmd_line_args": [],
+            "kill_completed_processes": false,
+            "log_process_output": false
         }
     }
 }

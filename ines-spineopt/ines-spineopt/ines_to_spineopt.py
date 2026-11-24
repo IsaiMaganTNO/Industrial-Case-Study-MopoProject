@@ -149,7 +149,7 @@ def main():
             limiting_investments_notallowed(source_db,target_db)
 
             # Process emisssions balance equations
-            process_emissions(source_db,target_db)
+            process_emissions(source_db,target_db,settings.get("process_emissions") or {})
 
             # Fix boundary condition for storages
             storage_state_fix_method(source_db,target_db)
@@ -174,7 +174,8 @@ def main():
             link_parameters_to_directions(source_db,target_db,settings["link_parameters_to_directions"])
         
 
-def process_emissions(source_db, target_db):
+def process_emissions(source_db, target_db, emission_settings = None):
+    emission_settings = emission_settings or {}
 
     # unit flow coming from fossil nodes
     co2_params = source_db.get_parameter_value_items(entity_class_name="node",parameter_definition_name="co2_content",alternative_name="Base")
@@ -236,6 +237,40 @@ def process_emissions(source_db, target_db):
             add_entity(target_db,"unit_flow__unit_flow",(unit_name,"atmosphere",unit__from_nodes[0],unit_name))
             add_parameter_value(target_db,"unit_flow__unit_flow","flow_ratio_equality_coefficient","Base",(unit_name,"atmosphere",unit__from_nodes[0],unit_name),co2_value[unit__from_nodes[0]])
 
+    # Explicit bookings for carriers whose co2_content cannot reach the model: the commodity
+    # projection only attaches co2_content to GLOBAL nodes, while CH4/HC exist only as
+    # regional nodes (docs/FINDING_co2_gateway_accounting.md). Configured in settings.yaml.
+    #
+    # output_bookings: units whose name starts with <unit_prefix> book <value> t/MWh on their
+    #   <node_prefix>_* OUTPUT, e.g. methanation: synthetic CH4 is later burned without any
+    #   booking, so its carbon must be booked where it is made (closes the CCU leak).
+    # input_fallbacks: units that consume <node_prefix>_* and still have NO atmosphere flow
+    #   book <value> t/MWh on that INPUT, e.g. HC burned in power/heat units.
+    #   Units with route-based or fuel-based bookings are skipped, so nothing is booked twice.
+    has_atmosphere = {e["entity_byname"][0] for e in target_db.get_entity_items(entity_class_name="unit__to_node") if e["entity_byname"][1] == "atmosphere"}
+    extra = 0
+    for unit_prefix, booking in (emission_settings.get("output_bookings") or {}).items():
+        for u2n in target_db.get_entity_items(entity_class_name="unit__to_node"):
+            unit_name, to_node = u2n["entity_byname"]
+            if not unit_name.startswith(unit_prefix + "_") or not to_node.startswith(booking["node_prefix"] + "_"):
+                continue
+            if unit_name in has_atmosphere:
+                print(f"WARNING process_emissions: {unit_name} already books CO2; output booking skipped")
+                continue
+            add_entity(target_db,"unit__to_node",(unit_name,"atmosphere"))
+            add_entity(target_db,"unit_flow__unit_flow",(unit_name,"atmosphere",unit_name,to_node))
+            add_parameter_value(target_db,"unit_flow__unit_flow","flow_ratio_equality_coefficient","Base",(unit_name,"atmosphere",unit_name,to_node),float(booking["value"]))
+            has_atmosphere.add(unit_name); extra += 1
+    for node_prefix, value in (emission_settings.get("input_fallbacks") or {}).items():
+        for n2u in target_db.get_entity_items(entity_class_name="node__to_unit"):
+            from_node, unit_name = n2u["entity_byname"]
+            if not from_node.startswith(node_prefix + "_") or unit_name in has_atmosphere:
+                continue
+            add_entity(target_db,"unit__to_node",(unit_name,"atmosphere"))
+            add_entity(target_db,"unit_flow__unit_flow",(unit_name,"atmosphere",from_node,unit_name))
+            add_parameter_value(target_db,"unit_flow__unit_flow","flow_ratio_equality_coefficient","Base",(unit_name,"atmosphere",from_node,unit_name),float(value))
+            has_atmosphere.add(unit_name); extra += 1
+    print(f"process_emissions: {extra} explicit output/input bookings from settings")
     print(f"process_emissions: {route_applied} unit(s) got route-based emission factors "
           f"({len(route_value)} technologies carried co2_emission); "
           f"remaining units used the fuel-content fallback")

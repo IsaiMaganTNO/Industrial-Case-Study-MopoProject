@@ -12,16 +12,42 @@ entity_byname. The EU DBs already store regions as plain 'DE'/'UK' and
 composites as '<x>__DE', which is exactly what define_polygons emits for our
 country-level polygons. No aggregation path is involved.
 
+Source data: the EU case sector databases. Obtain the EU case dataset, run its
+data-preparation pipelines (importers only) so that its
+.spinetoolbox/items/<sector>_db/*.sqlite files exist, and point `eu_case_dir`
+in data-pipelines/europe/userconfig.yaml at that items folder (default:
+EU_case/.spinetoolbox/items, relative to the repository root).
+
+Countries: every entry of `countries` in userconfig.yaml except BE and NL.
+
 Usage:
-    python tools/merge_eu_country_rows.py --check
-    python tools/merge_eu_country_rows.py --apply
+    python tools/merge_eu_country_rows.py --apply   # copy rows (idempotent)
+    python tools/merge_eu_country_rows.py --check   # exit 1 if rows are missing
 """
 import argparse
 import os
 import sqlite3
 import sys
 
-COUNTRIES = ("DE", "DK", "NO", "UK", "FR", "LU")
+import yaml
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+USERCONFIG = os.path.join(ROOT, "data-pipelines", "europe", "userconfig.yaml")
+IC1_COUNTRIES = ("BE", "NL")  # modelled at cluster level by the IC1 importers
+
+
+def load_config():
+    with open(USERCONFIG, encoding="utf8") as fh:
+        cfg = yaml.safe_load(fh)
+    # Unquoted NO is parsed by YAML 1.1 as False; map it back defensively.
+    ctry = ["NO" if c is False else str(c) for c in cfg.get("countries", [])]
+    eu_dir = cfg.get("eu_case_dir", "EU_case/.spinetoolbox/items")
+    if not os.path.isabs(eu_dir):
+        eu_dir = os.path.join(ROOT, eu_dir)
+    return tuple(c for c in ctry if c not in IC1_COUNTRIES), os.path.normpath(eu_dir)
+
+
+COUNTRIES, EU_DIR = load_config()
 
 # EU pipeline vs IC1 pipeline disagree on these names. IC1 userconfig.yaml and
 # the IC1 DBs use an underscore before "production"; the EU DBs use a hyphen.
@@ -31,24 +57,23 @@ NAME_FIXUPS = {
     "wood-and-wood-products-production-reference": "wood-and-wood-products_production-reference",
 }
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# (label, target DB in this project, source DB in the EU case items folder)
 PAIRS = [
     ("heat_db",
      os.path.join(ROOT, ".spinetoolbox", "items", "heat_db", "heat_db.sqlite"),
-     os.path.join(ROOT, "EU_case", ".spinetoolbox", "items", "heat_db", "heat_db.sqlite")),
+     os.path.join(EU_DIR, "heat_db", "heat_db.sqlite")),
     ("transport_db",
      os.path.join(ROOT, ".spinetoolbox", "items", "transport_db", "transport_db.sqlite"),
-     os.path.join(ROOT, "EU_case", ".spinetoolbox", "items", "transport_db", "transport_db.sqlite")),
+     os.path.join(EU_DIR, "transport_db", "transport_db.sqlite")),
     ("industry_db",
      os.path.join(ROOT, ".spinetoolbox", "items", "industry_db", "industry_db.sqlite"),
-     os.path.join(ROOT, "EU_case", ".spinetoolbox", "items", "industry_db", "industry_db.sqlite")),
+     os.path.join(EU_DIR, "industry_db", "industry_db.sqlite")),
     ("other_industry_db",
-     os.path.join(ROOT, ".spinetoolbox", "items", "other_industry_db", "other_industry_db.sqlite"),
-     os.path.join(ROOT, "EU_case", ".spinetoolbox", "items", "other_industry_db", "Other_Industry_DB.sqlite")),
+     os.path.join(ROOT, ".spinetoolbox", "items", "other_industry_db", "Other_Industry_DB.sqlite"),
+     os.path.join(EU_DIR, "other_industry_db", "Other_Industry_DB.sqlite")),
     ("hydro_db",
      os.path.join(ROOT, ".spinetoolbox", "items", "hydro_db", "hydro_db.sqlite"),
-     os.path.join(ROOT, "EU_case", ".spinetoolbox", "items", "hydro_db", "hydro_db.sqlite")),
+     os.path.join(EU_DIR, "hydro_db", "hydro_db.sqlite")),
 ]
 
 
@@ -94,9 +119,7 @@ def read_source(path):
 
 
 def merge(label, target_path, source_path, apply_changes):
-    if not os.path.exists(source_path):
-        print("  %-18s SOURCE MISSING %s" % (label, source_path))
-        return
+    """Return the number of source rows still missing in the target."""
     s_classes, s_alts, s_pdefs, s_ents, s_elements, s_values = read_source(source_path)
 
     con = sqlite3.connect(target_path)
@@ -149,13 +172,24 @@ def merge(label, target_path, source_path, apply_changes):
              missing_cls or "-", needed_alts or "-", needed_pdefs or "-"))
 
     if not apply_changes:
+        t_vals = set(cur.execute(
+            "SELECT parameter_definition_id, entity_id, alternative_id FROM parameter_value"))
+        miss_v = 0
+        for pdid, seid, saltid, _t, _v in s_values:
+            if seid not in wanted:
+                continue
+            cls, nm = wanted[seid]
+            key = (t_pdefs.get(s_pdefs[pdid]), t_ents.get((cls, nm)), t_alts.get(s_alts[saltid]))
+            if None in key or key not in t_vals:
+                miss_v += 1
         con.close()
-        return
+        print("     missing in target: entities=%d values=%d" % (len(new_ents), miss_v))
+        return len(new_ents) + miss_v
 
     if missing_cls:
         print("     ABORT: entity classes absent in target: %s" % missing_cls)
         con.close()
-        return
+        return 1
 
     for name in needed_alts:
         cur.execute("INSERT INTO alternative (name) VALUES (?)", (name,))
@@ -229,6 +263,7 @@ def merge(label, target_path, source_path, apply_changes):
     con.close()
     print("     APPLIED entities %d->%d  elements+%d  values %d->%d"
           % (pre_ents, post_ents, el_rows, pre_total, post_total))
+    return 0
 
 
 def main():
@@ -238,13 +273,26 @@ def main():
     args = ap.parse_args()
     if not (args.apply or args.check):
         ap.error("pass --check or --apply")
-    print("MERGE EU country rows (%s)" % ("APPLY" if args.apply else "CHECK"))
+    print("MERGE EU country rows (%s) countries=%s" % ("APPLY" if args.apply else "CHECK", ",".join(COUNTRIES)))
+    print("  EU case items folder: %s" % EU_DIR)
+    if not COUNTRIES:
+        print("  no countries besides BE/NL in userconfig.yaml -> nothing to do")
+        return 0
+    absent = [p for _l, t, p in PAIRS if not os.path.exists(p)] + \
+             [t for _l, t, p in PAIRS if not os.path.exists(t)]
+    if absent:
+        print("ERROR: missing database(s):\n  " + "\n  ".join(absent))
+        print("Run this project's importers first, and run the EU case data-preparation\n"
+              "pipelines so its sector databases exist; set `eu_case_dir` in userconfig.yaml.")
+        return 2
+    missing = 0
     for label, tgt, src in PAIRS:
-        if not os.path.exists(tgt):
-            print("  %-18s TARGET MISSING" % label)
-            continue
-        merge(label, tgt, src, args.apply)
+        missing += merge(label, tgt, src, args.apply) or 0
+    if args.check and missing:
+        print("CHECK FAILED: %d rows missing" % missing)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

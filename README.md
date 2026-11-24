@@ -136,13 +136,28 @@ Now you can open spinetoolbox and work on things. If you only work in the data a
 For more info on this workflow and how to fix merge errors, see the detailed version we wrote for Tulipa contributors [here.](https://tulipaenergy.github.io/TulipaEnergyModel.jl/stable/90-contributing/91-developer/#Contributing-Workflow)
 
 
-# TODO Running the Workflow
+# Running the Workflow
 
-- Launch spinetoolbox
-- Tooling order
-- Avoiding rerunning from raw
-- Scenario filters
-- Config files
+Prerequisites: the input data of this case (see `data/README.md`) and the EU case dataset. Prepare the EU case
+by running its data-pipeline importers only (not the model), and place it so its sector databases are at
+`EU_case/.spinetoolbox/items/<sector>_db/` (or set `eu_case_dir` in `data-pipelines/europe/userconfig.yaml`).
+The country-level regions (DE, DK, NO, UK; all `countries` except BE/NL) are taken from it.
+
+Run the Spine Toolbox items in this order:
+
+1. All importers (`*_importer`, `gas_import`, `cargo_import`).
+2. `power_fleet_pin` - fixes the NL+BE existing power fleet to `data-pipelines/europe/_power/power_fleet_pin.json`
+   (`power_DB.py` draws retirement years at random).
+3. `eu_country_rows` - copies the non-BE/NL country rows from the EU case into the sector databases.
+4. `ines_builder`, then `template_1`, then `ines_to_spineopt`.
+5. `merge_spineopt` - copies SpineOpt_target into Final_SpineOpt_Model (rerun it for a fresh model).
+6. `clustering_input`, `make_cluster_seed`, `run_clustering`, `clustering_output`. The representative days are
+   set by `representative_days` in `scenario_config.yml`.
+7. `scenario_setup` - applies `scenario_config.yml`.
+8. `Run_Model_Planning`.
+
+Model settings are in `data-pipelines/europe/userconfig.yaml` (regions, CO2 data file) and
+`Pan-European-Framework-Energy-System-Planning/src/_planning-input-processsing/scenario_config.yml` (scenario).
 
 # Note to developers
 
