@@ -138,10 +138,21 @@ For more info on this workflow and how to fix merge errors, see the detailed ver
 
 # Running the Workflow
 
-Prerequisites: the input data of this case (see `data/README.md`) and the EU case dataset. Prepare the EU case
-by running its data-pipeline importers only (not the model), and place it so its sector databases are at
-`EU_case/.spinetoolbox/items/<sector>_db/` (or set `eu_case_dir` in `data-pipelines/europe/userconfig.yaml`).
-The country-level regions (DE, DK, NO, UK; all `countries` except BE/NL) are taken from it.
+## Input data
+
+Two datasets are needed besides this repository:
+
+1. **Industrial case input data** (this case): ZENODO_DOI_PLACEHOLDER.
+   Unzip `IC1_mixedres_input_data.zip` in the repository root; it fills `data/`.
+2. **Pan-European dataset** v0.6: https://doi.org/10.5281/zenodo.23496362.
+   Unzip `Pan-European_Energy_System_Dataset.zip` into a folder `Pan-European_Energy_System_Dataset/`
+   in the repository root (or elsewhere and set `eu_case_dir` in `data-pipelines/europe/userconfig.yaml`).
+   It already contains the built sector databases; its importers do not need to be run. Only
+   `.spinetoolbox/items/{heat_db,transport_db,industry_db,other_industry_db,hydro_db}` are used.
+
+The country-level regions (DE, DK, NO, UK; all `countries` except BE/NL) are taken from the Pan-European dataset.
+
+## Order
 
 Run the Spine Toolbox items in this order:
 

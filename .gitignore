@@ -39,5 +39,5 @@ reports/*.pdf
 final_runs_pessimistic_ccs/**/*.pdf
 runs/**/slides_png/
 
-# EU case dataset (downloaded and prepared separately, see README)
-EU_case/
+# Pan-European dataset (downloaded separately from Zenodo, see README)
+Pan-European_Energy_System_Dataset/

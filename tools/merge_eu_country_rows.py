@@ -12,11 +12,11 @@ entity_byname. The EU DBs already store regions as plain 'DE'/'UK' and
 composites as '<x>__DE', which is exactly what define_polygons emits for our
 country-level polygons. No aggregation path is involved.
 
-Source data: the EU case sector databases. Obtain the EU case dataset, run its
-data-preparation pipelines (importers only) so that its
-.spinetoolbox/items/<sector>_db/*.sqlite files exist, and point `eu_case_dir`
-in data-pipelines/europe/userconfig.yaml at that items folder (default:
-EU_case/.spinetoolbox/items, relative to the repository root).
+Source data: the sector databases of the Pan-European dataset
+(https://doi.org/10.5281/zenodo.23496362, v0.6), which ships them already built
+in .spinetoolbox/items/<sector>_db/. Unzip it into
+Pan-European_Energy_System_Dataset/ in the repository root, or point
+`eu_case_dir` in data-pipelines/europe/userconfig.yaml at its items folder.
 
 Countries: every entry of `countries` in userconfig.yaml except BE and NL.
 
@@ -41,7 +41,7 @@ def load_config():
         cfg = yaml.safe_load(fh)
     # Unquoted NO is parsed by YAML 1.1 as False; map it back defensively.
     ctry = ["NO" if c is False else str(c) for c in cfg.get("countries", [])]
-    eu_dir = cfg.get("eu_case_dir", "EU_case/.spinetoolbox/items")
+    eu_dir = cfg.get("eu_case_dir", "Pan-European_Energy_System_Dataset/.spinetoolbox/items")
     if not os.path.isabs(eu_dir):
         eu_dir = os.path.join(ROOT, eu_dir)
     return tuple(c for c in ctry if c not in IC1_COUNTRIES), os.path.normpath(eu_dir)
