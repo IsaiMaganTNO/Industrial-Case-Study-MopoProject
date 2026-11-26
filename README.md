@@ -142,7 +142,7 @@ For more info on this workflow and how to fix merge errors, see the detailed ver
 
 Two datasets are needed besides this repository:
 
-1. **Industrial case input data** (this case): ZENODO_DOI_PLACEHOLDER.
+1. **Industrial case input data** (this case): https://doi.org/10.5281/zenodo.24565514.
    Unzip `IC1_mixedres_input_data.zip` in the repository root; it fills `data/`.
 2. **Pan-European dataset** v0.6: https://doi.org/10.5281/zenodo.23496362.
    Unzip `Pan-European_Energy_System_Dataset.zip` into a folder `Pan-European_Energy_System_Dataset/`
