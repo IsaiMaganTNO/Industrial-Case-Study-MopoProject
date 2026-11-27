@@ -41,3 +41,4 @@ runs/**/slides_png/
 
 # Pan-European dataset (downloaded separately from Zenodo, see README)
 Pan-European_Energy_System_Dataset/
+Pan-European_Energy_System/

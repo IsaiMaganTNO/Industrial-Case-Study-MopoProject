@@ -107,7 +107,7 @@ global_constraints:
   # Must be keyed by the same polygons as the gas_sector target_resolution; CCS_data/ holds the source variants.
   # Final IC1 baseline = pessimistic CCS: high-cost transport/injection tariffs (verification/CO2_data_IC1_high_cost.xlsx)
   # with the low-storage NSNL012 2050 value set to 13.5 Mt/yr. CO2_data_IC1.xlsx = low-cost (optimistic) variant.
-  co2_data_file: CO2_data_IC1_pessimistic.xlsx
+  co2_data_file: ../../../data/CO2_network/CO2_data_IC1_high_cost.xlsx
 
 # Use country code to model a specific country  and define Europe as country, then, the remaining countries are modeled following requirements
 # IC1 industrial case: BE and NL only. Previously written as the scalar "-NL -BE",
@@ -130,7 +130,7 @@ countries :
 # Country-level data for the non-IC1 countries above (all except BE/NL) is copied from the
 # EU case sector databases by tools/merge_eu_country_rows.py (Toolbox tool eu_country_rows).
 # Path to the EU case .spinetoolbox/items folder, relative to the repository root.
-eu_case_dir: "Pan-European_Energy_System_Dataset/.spinetoolbox/items"
+eu_case_dir: "Pan-European_Energy_System/.spinetoolbox/items"
 
 # Sectors optimized
 commodity: 

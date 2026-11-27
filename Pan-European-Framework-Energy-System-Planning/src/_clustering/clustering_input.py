@@ -71,6 +71,7 @@ def input_data():
         long = (wide.reset_index(names="timestep").melt(id_vars="timestep", var_name="profile_name", value_name="value").sort_values(["profile_name", "timestep"]).reset_index(drop=True))    
 
         long = long[["profile_name","timestep","value"]]
+        os.makedirs("profiles", exist_ok=True)
         long.to_csv(f"profiles/profiles_{alternative_name}.csv",index=False)
 
 if __name__ == "__main__":

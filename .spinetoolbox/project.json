@@ -2377,36 +2377,36 @@
                     "arg": "db_url@Heat_DB"
                 },
                 {
-                    "type": "resource",
-                    "arg": "<project>/data/Buildings/heat_technology_params.csv"
+                    "type": "literal",
+                    "arg": "data/Buildings/heat_technology_params.csv"
                 },
                 {
-                    "type": "resource",
-                    "arg": "<project>/data/Buildings/heat_storage_params.csv"
+                    "type": "literal",
+                    "arg": "data/Buildings/heat_storage_params.csv"
                 },
                 {
-                    "type": "resource",
-                    "arg": "<project>/data/Buildings/simplified_capacities_with_decommissioning_MW.csv"
+                    "type": "literal",
+                    "arg": "data/Buildings/simplified_capacities_with_decommissioning_MW.csv"
                 },
                 {
-                    "type": "resource",
-                    "arg": "<project>/data/Buildings/scenario_total_yearly_demands_GWh.csv"
+                    "type": "literal",
+                    "arg": "data/Buildings/scenario_total_yearly_demands_GWh.csv"
                 },
                 {
-                    "type": "resource",
-                    "arg": "<project>/data/Buildings/cop-timeseries"
+                    "type": "literal",
+                    "arg": "data/Buildings/cop-timeseries"
                 },
                 {
-                    "type": "resource",
-                    "arg": "<project>/data/Buildings/demand-timeseries"
+                    "type": "literal",
+                    "arg": "data/Buildings/demand-timeseries"
                 },
                 {
-                    "type": "resource",
-                    "arg": "<project>/data-pipelines/europe/userconfig.yaml"
+                    "type": "literal",
+                    "arg": "data-pipelines/europe/userconfig.yaml"
                 },
                 {
-                    "type": "resource",
-                    "arg": "<project>/data/version_track.yml"
+                    "type": "literal",
+                    "arg": "data/version_track.yml"
                 }
             ],
             "kill_completed_processes": false,
