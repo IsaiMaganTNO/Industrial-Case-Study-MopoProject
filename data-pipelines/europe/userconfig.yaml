@@ -130,7 +130,7 @@ countries :
 # Country-level data for the non-IC1 countries above (all except BE/NL) is copied from the
 # EU case sector databases by tools/merge_eu_country_rows.py (Toolbox tool eu_country_rows).
 # Path to the EU case .spinetoolbox/items folder, relative to the repository root.
-eu_case_dir: "Pan-European_Energy_System/.spinetoolbox/items"
+eu_case_dir: "Pan-European_Energy_System_Dataset/.spinetoolbox/items"
 
 # Sectors optimized
 commodity: 
